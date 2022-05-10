@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".fragment.RaghuEmaKuligaiFragment">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
+            android:paddingVertical="10dp"
+            android:id="@+id/notesTxt"
+            android:text="@string/raghuEmaIntrTxt" />
+
+        <include
+            android:id="@+id/raahuEmaLayout"
+            layout="@layout/daily_raaghu_ema_layout" />
+
+        <include
+            android:id="@+id/vaaraSoolaiLayout"
+            layout="@layout/daily_soolam_layout" />
+
+    </LinearLayout>
+</layout>

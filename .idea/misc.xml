@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/library/src/main/res/drawable/day_bg.xml" value="0.1" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/library/src/main/res/drawable/day_holiday_bg.xml" value="0.1625" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/library/src/main/res/drawable/day_selected_bg.xml" value="0.1" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/library/src/main/res/drawable/day_today_bg.xml" value="0.1" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/library/src/main/res/drawable/header_back.xml" value="0.19166666666666668" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/library/src/main/res/layout/calendar_week_1_layout.xml" value="0.17552083333333332" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/library/src/main/res/layout/calendar_week_2_layout.xml" value="0.17552083333333332" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/library/src/main/res/layout/calendar_week_3_layout.xml" value="0.17552083333333332" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/library/src/main/res/layout/calendar_week_4_layout.xml" value="0.17552083333333332" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/library/src/main/res/layout/calendar_week_5_layout.xml" value="0.17552083333333332" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/library/src/main/res/layout/calendar_week_6_layout.xml" value="0.17552083333333332" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/library/src/main/res/layout/custom_calendar_layout.xml" value="0.17391304347826086" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/library/src/main/res/layout/day_in_month_layout.xml" value="0.1" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/library/src/main/res/layout/week_header_layout.xml" value="0.17552083333333332" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/drawable-anydpi/drop_down_arrow.xml" value="0.19166666666666668" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/drawable/bg_spinner.xml" value="0.1" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/drawable/gradient_bg.xml" value="0.19166666666666668" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/activity_calendar.xml" value="0.1" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/activity_daily.xml" value="0.17552083333333332" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/activity_day.xml" value="0.17552083333333332" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/activity_gowri_panchangam.xml" value="0.1" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/activity_main.xml" value="0.16145833333333334" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/activity_muhurtham.xml" value="0.1140625" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/activity_panchangam.xml" value="0.11197916666666667" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/activity_raghu_ema_kuligai.xml" value="0.13177083333333334" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/activity_sample1.xml" value="0.128125" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/activity_sample2.xml" value="0.128125" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/daily_gowri_panchangam_layout.xml" value="0.3484573502722323" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/daily_header_layout.xml" value="0.17552083333333332" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/daily_panchangam_layout.xml" value="0.22" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/daily_raaghu_ema_layout.xml" value="0.17552083333333332" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/daily_rasi_layout.xml" value="0.17552083333333332" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/daily_soolam_layout.xml" value="0.17552083333333332" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/fragment_dashboard.xml" value="0.1" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/fragment_gowri_panchangam.xml" value="0.1" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/fragment_muhurtham.xml" value="0.3" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/fragment_notifications.xml" value="0.1" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/fragment_panchangam.xml" value="0.11197916666666667" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/fragment_raghu_ema_kuligai.xml" value="0.2096505823627288" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/gowri_panchangam_item.xml" value="0.22" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/muhurtham_item.xml" value="0.17552083333333332" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/nalla_neram_layout.xml" value="0.17552083333333332" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/panchangam_layout.xml" value="0.1140625" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

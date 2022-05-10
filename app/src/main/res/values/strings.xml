@@ -1,0 +1,216 @@
+<resources>
+    <string name="app_name">Calendar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="raghu">இராகு</string>
+    <string name="kuligai">குளிகை</string>
+    <string name="emakandam">எமகண்டம்</string>
+    <string name="soolam">சூலம்</string>
+    <string name="parigaram">பரிகாரம்</string>
+    <string name="nazhigai">நாழிகை</string>
+    <string name="colon_separator">:</string>
+    <string name="raghuEmaIntrTxt">சூரிய உதயம் <b>காலை 6 மணி</b> என்ற கணிப்பில் இந்த நேரங்கள் கொடுக்கப்பட்டுள்ளன. நீங்கள் சூரிய உதய நேரம் அறிந்து அதற்கு ஏற்ற படி நேரத்தை சரி செய்து கொள்ளவும்</string>
+    <string-array name="directions">
+        <item>வடக்கு</item>
+        <item>கிழக்கு</item>
+        <item>தெற்கு</item>
+        <item>மேற்கு</item>
+    </string-array>
+
+    <string-array name="parigaram">
+        <item>வெல்லம்</item>
+        <item>தயிர்</item>
+        <item>பால்</item>
+        <item>எண்ணெய்</item>
+    </string-array>
+
+    <string name="nazhigaiTime">%1$d (%2$d ம. %3$d நி.)</string>
+
+    <string name="raghu_ema_kuligai_title">இராகு,எமகண்டம்,குளிகை</string>
+    <string name="todayRasiPalanLabel">இன்றைய ராசிபலன்</string>
+    <string-array name="weekday_short_names">
+        <item>திங்கள்</item>
+        <item>செவ்வாய்</item>
+        <item>புதன்</item>
+        <item>வியாழன்</item>
+        <item>வெள்ளி</item>
+        <item>சனி</item>
+        <item>ஞாயிறு</item>
+    </string-array>
+    <string-array name="weekday_names">
+        <item>திங்கள்</item>
+        <item>செவ்வாய்</item>
+        <item>புதன்</item>
+        <item>வியாழன்</item>
+        <item>வெள்ளி</item>
+        <item>சனி</item>
+        <item>ஞாயிறு</item>
+    </string-array>
+    <string-array name="en_month_names">
+        <item>ஜனவரி</item>
+        <item>பிப்ரவரி</item>
+        <item>மார்ச்</item>
+        <item>ஏப்ரல்</item>
+        <item>மே</item>
+        <item>ஜூன்</item>
+        <item>ஜூலை</item>
+        <item>ஆகஸ்ட்</item>
+        <item>செப்டம்பர்</item>
+        <item>அக்டோபர்</item>
+        <item>நவம்பர்</item>
+        <item>டிசம்பர்</item>
+    </string-array>
+    <string-array name="tamizh_month_names">
+        <item>சித்திரை</item>
+        <item>வைகாசி</item>
+        <item>ஆனி</item>
+        <item>ஆடி</item>
+        <item>ஆவணி</item>
+        <item>புரட்டாசி</item>
+        <item>ஐப்பசி</item>
+        <item>கார்த்திகை</item>
+        <item>மார்கழி</item>
+        <item>தை</item>
+        <item>மாசி</item>
+        <item>பங்குனி</item>
+    </string-array>
+
+    <string-array name="rasi_names">
+        <item>@string/mesham</item>
+        <item>@string/rishabam</item>
+        <item>@string/mithunam</item>
+        <item>@string/kadagam</item>
+        <item>@string/simmam</item>
+        <item>@string/kanni</item>
+        <item>@string/thulam</item>
+        <item>@string/vrichagam</item>
+        <item>@string/thanusu</item>
+        <item>@string/magaram</item>
+        <item>@string/kumbam</item>
+        <item>@string/meenam</item>
+    </string-array>
+    <string name="mesham">மேஷம்</string>
+    <string name="rishabam">ரிஷபம்</string>
+    <string name="mithunam">மிதுனம்</string>
+    <string name="kadagam">கடகம்</string>
+    <string name="simmam">சிம்மம்</string>
+    <string name="kanni">கன்னி</string>
+    <string name="thulam">துலாம்</string>
+    <string name="vrichagam">விருச்சிகம்</string>
+    <string name="thanusu">தனுசு</string>
+    <string name="magaram">மகரம்</string>
+    <string name="kumbam">கும்பம்</string>
+    <string name="meenam">மீனம்</string>
+    <string name="nallaNeramLabel">நல்ல நேரம்</string>
+    <string name="gowriNallaNeramLabel">கௌரி ந. நே.</string>
+    <string name="morningLabel">காலை</string>
+    <string name="panchangamLabel">இன்றைய பஞ்சாங்கம்</string>
+    <string name="thitiLabel">திதி</string>
+    <string name="starLabel">நட்சத்திரம்</string>
+    <string name="karanamLabel">கரணம்</string>
+    <string name="yogamLabel">யோகம்</string>
+    <string name="weekLabel">வாரம்</string>
+    <string name="raaghuEmaKuligaiLabel">இராகு,எம,குளிகை காலம்</string>
+    <string name="vaaraSoolaiLabel">வாரசூலை</string>
+    <string name="eveningLabel">மாலை</string>
+    <string name="gowriPanchangamLabel">கௌரி பஞ்சாங்கம்</string>
+    <string name="kalamLabel">காலம்</string>
+    <string name="dayLabel">பகல்</string>
+    <string name="nightLabel">இரவு</string>
+    <string name="title_activity_gowri_panchangam">GowriPanchangamActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="graha_orai_label">கிரஹ ஓரை பஞ்சாங்கம்</string>
+    <string name="laknamLabel">லக்கினம்</string>
+    <string name="timeLabel">நேரம்</string>
+    <string name="valapirai_muhurtham">வளர்பிறை முகூர்த்தங்கள்</string>
+    <string name="theipirai_muhurtham">தேய்பிறை முகூர்த்தங்கள்</string>
+    <string-array name="gowri_values">
+        <item>ரோகம்</item>
+        <item>சோரம்</item>
+        <item>விஷம்</item>
+        <item>லாபம்</item>
+        <item>தனம்</item>
+        <item>சுகம்</item>
+        <item>உத்தி</item>
+        <item>அமிர்த</item>
+    </string-array>
+    <string-array name="orai_values">
+        <item>சூரியன்</item>
+        <item>சுக்கிரன்</item>
+        <item>புதன்</item>
+        <item>சந்திரன்</item>
+        <item>சனி</item>
+        <item>குரு</item>
+        <item>செவ்வாய்</item>
+    </string-array>
+    <string-array name="thiti_names">
+        <item>அமாவாசை</item>
+        <item>பிரதமை</item>
+        <item>துவிதியை</item>
+        <item>திருதியை</item>
+        <item>சதுர்த்தி</item>
+        <item>பஞ்சமி</item>
+        <item>சஷ்டி</item>
+        <item>சப்தமி</item>
+        <item>அஷ்டமி</item>
+        <item>நவமி</item>
+        <item>தசமி</item>
+        <item>ஏகாதசி</item>
+        <item>துவாதசி</item>
+        <item>திரயோதசி</item>
+        <item>சதுர்த்தசி</item>
+        <item>பௌர்ணமி</item>
+        <item>பிரதமை</item>
+        <item>துவிதியை</item>
+        <item>திருதியை</item>
+        <item>சதுர்த்தி</item>
+        <item>பஞ்சமி</item>
+        <item>சஷ்டி</item>
+        <item>சப்தமி</item>
+        <item>அஷ்டமி</item>
+        <item>நவமி</item>
+        <item>தசமி</item>
+        <item>ஏகாதசி</item>
+        <item>துவாதசி</item>
+        <item>திரயோதசி</item>
+        <item>சதுர்த்தசி</item>
+    </string-array>
+
+    <string-array name="star_names">
+        <item>அஸ்வினி</item>
+        <item>பரணி</item>
+        <item>கார்த்திகை</item>
+        <item>ரோகிணி</item>
+        <item>மிருகசீரிடம்</item>
+        <item>திருவாதிரை</item>
+        <item>புனர்பூசம்</item>
+        <item>பூசம்</item>
+        <item>ஆயில்யம்</item>
+        <item>மகம்</item>
+        <item>பூரம்</item>
+        <item>உத்தரம்</item>
+        <item>அஸ்தம்</item>
+        <item>சித்திரை</item>
+        <item>சுவாதி</item>
+        <item>விசாகம்</item>
+        <item>அனுஷம்</item>
+        <item>கேட்டை</item>
+        <item>மூலம்</item>
+        <item>பூராடம்</item>
+        <item>உத்திராடம்</item>
+        <item>திருவோணம்</item>
+        <item>அவிட்டம்</item>
+        <item>சதயம்</item>
+        <item>பூரட்டாதி</item>
+        <item>உத்திரட்டாதி</item>
+        <item>ரேவதி</item>
+    </string-array>
+    <string-array name="yogam_names">
+        <item>சித்த</item>
+        <item>அமிர்த</item>
+        <item>மரண</item>
+    </string-array>
+
+    <string name="empty_muhurtham_msg">%1$s மாதத்தில் சுபமுகூர்த்தம் ஏதும் இல்லை.</string>
+</resources>
