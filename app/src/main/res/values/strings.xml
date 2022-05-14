@@ -101,6 +101,7 @@
     <string name="magaram">மகரம்</string>
     <string name="kumbam">கும்பம்</string>
     <string name="meenam">மீனம்</string>
+
     <string name="nallaNeramLabel">நல்ல நேரம்</string>
     <string name="gowriNallaNeramLabel">கௌரி ந. நே.</string>
     <string name="morningLabel">காலை</string>
@@ -207,10 +208,254 @@
         <item>ரேவதி</item>
     </string-array>
     <string-array name="yogam_names">
-        <item>சித்த</item>
-        <item>அமிர்த</item>
-        <item>மரண</item>
+        <item>சித்தயோகம்</item>
+        <item>அமிர்தயோகம்</item>
+        <item>மரணயோகம்</item>
     </string-array>
 
     <string name="empty_muhurtham_msg">%1$s மாதத்தில் சுபமுகூர்த்தம் ஏதும் இல்லை.</string>
+    <string name="daily_calendar_txt">நாட்காட்டி</string>
+    <string name="monthly_calendar_txt">மாத காட்டி</string>
+    <string name="karananLabel">கரணன்</string>
+    <string name="sunriseLabel">சூரிய உதயம்</string>
+    <string name="sunrise_laknam_msg">%1$s லக்னம் இருப்பு நா. %2$s வி. %3$s</string>
+    <string name="fullday_pangachangam">இன்று முழுவதும் %1$s</string>
+    <string name="two_panchangam">இன்று %1$s வரை %2$s பின்பு %3$s</string>
+    <string name="three_panchangam">இன்று %1$s வரை %3$s பின்பு %2$s வரை %4$s பின்பு %5$s</string>
+    <string name="four_panchangam" >இன்று %1$s வரை %4$s பின்பு %2$s வரை %5$s பின்பு %3$s வரை %6$s பின்பு %7$s</string>
+    <string-array name="tamil_year_names">
+        <item>பிரபவ</item>
+        <item>விபவ</item>
+        <item>சுக்ல</item>
+        <item>பிரமோதூத</item>
+        <item>பிரசோற்பத்தி</item>
+        <item>ஆங்கீரச</item>
+        <item>ஸ்ரீமுக</item>
+        <item>பவ</item>
+        <item>யுவ</item>
+        <item>தாது</item>
+        <item>ஈஸ்வர</item>
+        <item>வெகுதானிய</item>
+        <item>பிரமாதி</item>
+        <item>விக்ரம</item>
+        <item>விஷு</item>
+        <item>சித்திரபானு</item>
+        <item>சுபானு</item>
+        <item>தாரண</item>
+        <item>பார்த்திப</item>
+        <item>விய</item>
+        <item>சர்வஜித்</item>
+        <item>சர்வதாரி</item>
+        <item>விரோதி</item>
+        <item>விக்ருதி</item>
+        <item>கர</item>
+        <item>நந்தன</item>
+        <item>விஜய</item>
+        <item>ஜய</item>
+        <item>மன்மத</item>
+        <item>துன்முகி</item>
+        <item>ஹேவிளம்பி</item>
+        <item>விளம்பி</item>
+        <item>விகாரி</item>
+        <item>சார்வரி</item>
+        <item>பிலவ</item>
+        <item>சுபகிருது</item>
+        <item>சோபக்ருத்</item>
+        <item>க்ரோதி</item>
+        <item>விசுவாசுவ</item>
+        <item>பரபாவ</item>
+        <item>ப்லவங்க</item>
+        <item>கீலக</item>
+        <item>சௌம்ய</item>
+        <item>சாதாரண</item>
+        <item>விரோதகிருது</item>
+        <item>பரிதாபி</item>
+        <item>பிரமாதீச</item>
+        <item>ஆனந்த</item>
+        <item>ராட்சச</item>
+        <item>நள</item>
+        <item>பிங்கள</item>
+        <item>காளயுக்தி</item>
+        <item>சித்தார்த்தி</item>
+        <item>ரௌத்திரி</item>
+        <item>துன்மதி</item>
+        <item>துந்துபி</item>
+        <item>ருத்ரோத்காரி</item>
+        <item>ரக்தாட்சி</item>
+        <item>க்ரோதன</item>
+        <item>அட்சய</item>
+    </string-array>
+    <string-array name="rasi_short_names" >
+        <item>மேஷ</item>
+        <item>ரிஷப</item>
+        <item>மிதுன</item>
+        <item>கடக</item>
+        <item>சிம்ம</item>
+        <item>கன்னி</item>
+        <item>துலா</item>
+        <item>விருச்ச</item>
+        <item>தனுர்</item>
+        <item>மகர</item>
+        <item>கும்ப</item>
+        <item>மீன</item>
+    </string-array>
+
+    <string-array name="weekday_long_names">
+        <item>திங்கட்கிழமை</item>
+        <item>செவ்வாய் கிழமை</item>
+        <item>புதன்கிழமை</item>
+        <item>வியாழக்கிழமை</item>
+        <item>வெள்ளிக் கிழமை</item>
+        <item>சனிக்கிழமை</item>
+        <item>ஞாயிற்றுக்கிழமை</item>
+
+    </string-array>
+    <string-array name="karanam_names" >
+        <item>கரசை</item>
+        <item>வணிசை</item>
+        <item>பத்திரை</item>
+        <item>பவம்</item>
+        <item>பாலவம்</item>
+        <item>கௌலவம்</item>
+        <item>தைதுலம்</item>
+        <item>சகுனி</item>
+        <item>சதுஷ்பாதம்</item>
+        <item>நாகவம்</item>
+        <item>கிமிஸ்துக்கினம்</item>
+    </string-array>
+
+    <string-array name="rasi_values">
+        <item>பெருமை</item>
+        <item>சிந்தனை</item>
+        <item>சாதனை</item>
+        <item>புகழ்</item>
+        <item>மகிழ்ச்சி</item>
+        <item>ஊக்கம்</item>
+        <item>உழைப்பு</item>
+        <item>நற்செயல்</item>
+        <item>சிரமம்</item>
+        <item>முயற்சி</item>
+        <item>கீர்த்தி</item>
+        <item>உயர்வு</item>
+        <item>போட்டி</item>
+        <item>நன்மை</item>
+        <item>உதவி</item>
+        <item>நலம்</item>
+        <item>ஆரோக்கியம்</item>
+        <item>பிரீதி</item>
+        <item>சுபம்</item>
+        <item>கோபம்</item>
+        <item>சுகம்</item>
+        <item>தனம்</item>
+        <item>லாபம்</item>
+        <item>தோல்வி</item>
+        <item>வெற்றி</item>
+        <item>மேன்மை</item>
+        <item>அமைதி</item>
+        <item>தெளிவு</item>
+        <item>பொறுமை</item>
+        <item>தேர்ச்சி</item>
+        <item>நட்பு</item>
+        <item>பகை</item>
+        <item>பாராட்டு</item>
+        <item>நோய்</item>
+        <item>களிப்பு</item>
+        <item>பாசம்</item>
+        <item>அன்பு</item>
+        <item>கவனம்</item>
+        <item>சோர்வு</item>
+        <item>விருத்தி</item>
+        <item>தொல்லை</item>
+        <item>பயம்</item>
+        <item>பரிசு</item>
+        <item>விவேகம்</item>
+        <item>சினம்</item>
+        <item>உற்சாகம்</item>
+        <item>இரக்கம்</item>
+        <item>பக்தி</item>
+        <item>ஜெயம்</item>
+        <item>ஆதரவு</item>
+        <item>வரவு</item>
+        <item>ஆதாயம்</item>
+        <item>செலவு</item>
+        <item>ஆர்வம்</item>
+        <item>நிறைவு</item>
+        <item>சோதனை</item>
+        <item>தாமதம்</item>
+        <item>தடங்கல்</item>
+        <item>மறதி</item>
+        <item>இன்சொல்</item>
+        <item>துணிவு</item>
+        <item>நஷ்டம்</item>
+        <item>யோகம்</item>
+        <item>ஈகை</item>
+        <item>கவலை</item>
+        <item>எதிர்ப்பு</item>
+        <item>திடம்</item>
+        <item>ஆசை</item>
+        <item>வாழ்வு</item>
+        <item>ஓய்வு</item>
+        <item>நிம்மதி</item>
+        <item>இன்பம்</item>
+        <item>அலைச்சல்</item>
+        <item>சாந்தம்</item>
+        <item>கஷ்டம்</item>
+        <item>சலனம்</item>
+        <item>ஆக்கம்</item>
+        <item>பணிவு</item>
+        <item>பேராசை</item>
+        <item>அசதி</item>
+        <item>வருத்தம்</item>
+        <item>சிக்கல்</item>
+        <item>அச்சம்</item>
+        <item>ஏமாற்றம்</item>
+        <item>பொறாமை</item>
+        <item>நற்சொல்</item>
+        <item>பீடை</item>
+        <item>சுமை</item>
+        <item>வீம்பு</item>
+        <item>உறுதி</item>
+        <item>பிரயாசை</item>
+        <item>பரிவு</item>
+        <item>விருப்பம்</item>
+        <item>தடை</item>
+        <item>நேர்மை</item>
+        <item>அனுகூலம்</item>
+        <item>குழப்பம்</item>
+        <item>திறமை</item>
+        <item>சிரத்தை</item>
+        <item>தீரம்</item>
+        <item>சாந்தி</item>
+        <item>வீரம்</item>
+        <item>நற்செய்தி</item>
+        <item>வட்டி</item>
+        <item>துணிச்சல்</item>
+        <item>பிரமை</item>
+        <item>சந்தோஷம்</item>
+        <item>கடன்தீரல்</item>
+        <item>பிரயாணம்</item>
+        <item>வளர்ச்சி</item>
+        <item>நம்பிக்கை</item>
+        <item>சோரம்</item>
+        <item>துயரம்</item>
+        <item>குரோதம்</item>
+        <item>துன்பம்</item>
+        <item>சுபச்செலவு</item>
+        <item>காரியசித்தி</item>
+        <item>பயணம்</item>
+        <item>நேசம்</item>
+        <item>தனவிருத்தி</item>
+        <item>பணவசதி</item>
+        <item>முன்னேற்றம்</item>
+        <item>அவதி</item>
+        <item>சஞ்சலம்</item>
+        <item>இழப்பு</item>
+        <item>வேதனை</item>
+        <item>ஆராய்ச்சி</item>
+        <item>சுகவீனம்</item>
+        <item>வசதி</item>
+        <item>அறிவு</item>
+        <item>பிரிவு</item>
+        <item>சேர்க்கை</item>
+    </string-array>
 </resources>

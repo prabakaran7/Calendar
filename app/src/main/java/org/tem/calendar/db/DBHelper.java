@@ -8,10 +8,16 @@ import net.sqlcipher.SQLException;
 import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.SQLiteOpenHelper;
 
+import org.tem.calendar.model.KaranamData;
 import org.tem.calendar.model.MonthData;
 import org.tem.calendar.model.MuhurthamData;
+import org.tem.calendar.model.NallaNeramData;
 import org.tem.calendar.model.PanchangamData;
+import org.tem.calendar.model.RasiData;
+import org.tem.calendar.model.StarData;
+import org.tem.calendar.model.ThitiData;
 import org.tem.calendar.model.WeekData;
+import org.tem.calendar.model.YogamData;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -19,12 +25,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static final int DB_VERSION = 5;
+    private static final int DB_VERSION = 12;
     private static final String DB_NAME = "tamizh_calendar.db";
     private static DBHelper dbHelper;
     private final File DB_FILE;
@@ -225,5 +233,160 @@ public class DBHelper extends SQLiteOpenHelper {
             } while (c.moveToNext());
         }
         return mdList;
+    }
+
+    public MonthData getDate(LocalDate date) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.query(Table.Master.NAME, null,
+                Table.Master.COL_YEAR + "=? AND " +
+                        Table.Master.COL_MONTH + "=? AND " +
+                        Table.Master.COL_DAY + "=?",
+                new String[]{date.getYear() + "",
+                        date.getMonthValue() + "",
+                        date.getDayOfMonth() + ""},
+                null, null, null
+        );
+
+        MonthData md = null;
+
+        if (null != c && c.moveToFirst()) {
+            md = new MonthData();
+            md.setDate(c.getString(c.getColumnIndexOrThrow(Table.Master.COL_DATE)));
+            md.setDay(c.getInt(c.getColumnIndexOrThrow(Table.Master.COL_DAY)));
+            md.setMonth(c.getInt(c.getColumnIndexOrThrow(Table.Master.COL_MONTH)));
+            md.setYear(c.getInt(c.getColumnIndexOrThrow(Table.Master.COL_YEAR)));
+            md.setWeekday(c.getInt(c.getColumnIndexOrThrow(Table.Master.COL_WEEKDAY)));
+            md.setTyear(c.getInt(c.getColumnIndexOrThrow(Table.Master.COL_TYEAR)));
+            md.setTmonth(c.getInt(c.getColumnIndexOrThrow(Table.Master.COL_TMONTH)));
+            md.setTday(c.getInt(c.getColumnIndexOrThrow(Table.Master.COL_TDAY)));
+        } else {
+            md = new MonthData();
+            md.setDate(date.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+            md.setYear(date.getYear());
+            md.setMonth(date.getMonthValue());
+            md.setDay(date.getDayOfMonth());
+            md.setWeekday(date.getDayOfWeek().getValue());
+        }
+
+        return md;
+    }
+
+    public NallaNeramData getNallaNeram(String date) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.query(Table.NallaNeram.NAME, null, Table.NallaNeram.COL_DATE +"=?",
+                new String[]{date}, null, null, null);
+        NallaNeramData nnd = null;
+        if(c != null && c.moveToFirst()){
+            nnd = new NallaNeramData(date);
+            nnd.setNallaNeramM(c.getString(c.getColumnIndexOrThrow(Table.NallaNeram.COL_NALLA_M)));
+            nnd.setNallaNeramE(c.getString(c.getColumnIndexOrThrow(Table.NallaNeram.COL_NALLA_E)));
+            nnd.setGowriM(c.getString(c.getColumnIndexOrThrow(Table.NallaNeram.COL_GOWRI_M)));
+            nnd.setGowriE(c.getString(c.getColumnIndexOrThrow(Table.NallaNeram.COL_GOWRI_E)));
+            nnd.setLaknam(c.getInt(c.getColumnIndexOrThrow(Table.NallaNeram.COL_LAKNAM)));
+            nnd.setLaknamTime(c.getString(c.getColumnIndexOrThrow(Table.NallaNeram.COL_LAKNAM_TIME)));
+            nnd.setSunRise(c.getString(c.getColumnIndexOrThrow(Table.NallaNeram.COL_SUN_RISE)));
+        }
+        return nnd;
+    }
+
+    public ThitiData getThiti(String dateString) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.query(Table.Thiti.NAME, null, Table.Thiti.COL_DATE +"=?",
+                new String[]{dateString}, null, null, null);
+        if(null != c && c.moveToFirst()){
+            ThitiData td = new ThitiData(dateString);
+            td.setTime1(c.getString(c.getColumnIndexOrThrow(Table.Thiti.COL_TIME1)));
+            td.setTime2(c.getString(c.getColumnIndexOrThrow(Table.Thiti.COL_TIME2)));
+            td.setThiti1(c.getInt(c.getColumnIndexOrThrow(Table.Thiti.COL_THITI1)));
+            td.setThiti2(c.getInt(c.getColumnIndexOrThrow(Table.Thiti.COL_THITI2)));
+            td.setThiti3(c.getInt(c.getColumnIndexOrThrow(Table.Thiti.COL_THITI3)));
+            td.setThiti(c.getInt(c.getColumnIndexOrThrow(Table.Thiti.COL_THITI)));
+            td.setPirai(c.getInt(c.getColumnIndexOrThrow(Table.Thiti.COL_PIRAI)));
+            return td;
+
+        }
+        return null;
+    }
+
+    public StarData getStar(String dateString) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.query(Table.Star.NAME,null,
+                Table.Star.COL_DATE +"=?",
+                new String[]{dateString}, null, null, null);
+
+        if(null != c && c.moveToFirst()){
+            StarData sd = new StarData(dateString);
+            sd.setTime1(c.getString(c.getColumnIndexOrThrow(Table.Star.COL_TIME1)));
+            sd.setTime2(c.getString(c.getColumnIndexOrThrow(Table.Star.COL_TIME2)));
+            sd.setStar1(c.getInt(c.getColumnIndexOrThrow(Table.Star.COL_STAR1)));
+            sd.setStar2(c.getInt(c.getColumnIndexOrThrow(Table.Star.COL_STAR2)));
+            sd.setStar3(c.getInt(c.getColumnIndexOrThrow(Table.Star.COL_STAR3)));
+            sd.setStar(c.getInt(c.getColumnIndexOrThrow(Table.Star.COL_STAR)));
+            sd.setNokku(c.getInt(c.getColumnIndexOrThrow(Table.Star.COL_NOKKU)));
+            sd.setChandrastamam(c.getString(c.getColumnIndexOrThrow(Table.Star.COL_CHANDRASTAMAM)));
+            return sd;
+        }
+        return null;
+    }
+
+    public KaranamData getKaranam(String dateString) {
+        SQLiteDatabase db =getReadableDatabase();
+        Cursor c = db.query(Table.Karanam.NAME, null,
+                Table.Karanam.COL_DATE +"=?",
+                new String[]{dateString}, null, null, null);
+        if(null != c && c.moveToFirst()){
+            KaranamData kd=new KaranamData(dateString);
+            kd.setTime1(c.getString(c.getColumnIndexOrThrow(Table.Karanam.COL_TIME1)));
+            kd.setTime2(c.getString(c.getColumnIndexOrThrow(Table.Karanam.COL_TIME2)));
+            kd.setTime3(c.getString(c.getColumnIndexOrThrow(Table.Karanam.COL_TIME3)));
+            kd.setKara1(c.getInt(c.getColumnIndexOrThrow(Table.Karanam.COL_KARA1)));
+            kd.setKara2(c.getInt(c.getColumnIndexOrThrow(Table.Karanam.COL_KARA2)));
+            kd.setKara3(c.getInt(c.getColumnIndexOrThrow(Table.Karanam.COL_KARA3)));
+            kd.setKara4(c.getInt(c.getColumnIndexOrThrow(Table.Karanam.COL_KARA4)));
+            return kd;
+        }
+        return null;
+    }
+
+    public YogamData getYogam(String dateString) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.query(Table.Yogam.NAME, null,
+                Table.Yogam.COL_DATE +"=?",
+                new String[]{dateString}, null, null, null);
+        if(null != c && c.moveToFirst()){
+            YogamData yd = new YogamData(dateString);
+            yd.setTime1(c.getString(c.getColumnIndexOrThrow(Table.Yogam.COL_TIME1)));
+            yd.setTime2(c.getString(c.getColumnIndexOrThrow(Table.Yogam.COL_TIME2)));
+            yd.setYogam1(c.getInt(c.getColumnIndexOrThrow(Table.Yogam.COL_YOGAM1)));
+            yd.setYogam2(c.getInt(c.getColumnIndexOrThrow(Table.Yogam.COL_YOGAM2)));
+            yd.setYogam3(c.getInt(c.getColumnIndexOrThrow(Table.Yogam.COL_YOGAM3)));
+            yd.setYogam(c.getInt(c.getColumnIndexOrThrow(Table.Yogam.COL_YOGAM)));
+            return yd;
+        }
+        return null;
+    }
+
+    public RasiData getRasi(String dateString) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.query(Table.Rasi.NAME, null,
+                Table.Rasi.COL_DATE +"=?",
+                new String[]{dateString}, null,null,null);
+        if(null != c && c.moveToFirst()){
+            RasiData rd = new RasiData(dateString);
+            rd.setMesham(c.getInt(c.getColumnIndexOrThrow(Table.Rasi.COL_MESHAM)));
+            rd.setRishabam(c.getInt(c.getColumnIndexOrThrow(Table.Rasi.COL_RISHABAM)));
+            rd.setMithunam(c.getInt(c.getColumnIndexOrThrow(Table.Rasi.COL_MITHUNAM)));
+            rd.setKadagam(c.getInt(c.getColumnIndexOrThrow(Table.Rasi.COL_KADAGAM)));
+            rd.setSimmam(c.getInt(c.getColumnIndexOrThrow(Table.Rasi.COL_SIMMAM)));
+            rd.setKanni(c.getInt(c.getColumnIndexOrThrow(Table.Rasi.COL_KANNI)));
+            rd.setThulam(c.getInt(c.getColumnIndexOrThrow(Table.Rasi.COL_THULAM)));
+            rd.setViruchagam(c.getInt(c.getColumnIndexOrThrow(Table.Rasi.COL_VIRUCHAGAM)));
+            rd.setDhanusu(c.getInt(c.getColumnIndexOrThrow(Table.Rasi.COL_DHANUSU)));
+            rd.setMagaram(c.getInt(c.getColumnIndexOrThrow(Table.Rasi.COL_MAGARAM)));
+            rd.setKumbam(c.getInt(c.getColumnIndexOrThrow(Table.Rasi.COL_KUMBAM)));
+            rd.setMeenam(c.getInt(c.getColumnIndexOrThrow(Table.Rasi.COL_MEENAM)));
+            return rd;
+        }
+        return null;
     }
 }

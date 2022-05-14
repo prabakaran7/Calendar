@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/rootView"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/simpleHeaderLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <!--        <LinearLayout-->
+        <!--            android:id="@+id/simpleHeaderLayout"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:orientation="horizontal"-->
+        <!--            android:layout_height="wrap_content">-->
 
-        </LinearLayout>
+        <!--        </LinearLayout>-->
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/scrollView"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <LinearLayout
@@ -30,7 +34,10 @@
 
                 <include
                     android:id="@+id/nallaLayout"
-                    layout="@layout/nalla_neram_layout" />
+                    layout="@layout/daily_nalla_neram_layout" />
+
+                <include android:id="@+id/sunriseLayout"
+                    layout="@layout/daily_sunrise_layout"/>
 
                 <include
                     android:id="@+id/panchangamLayout"
@@ -48,8 +55,8 @@
                     android:id="@+id/rasiLayout"
                     layout="@layout/daily_rasi_layout" />
 
-                <include android:id="@+id/gowriPanchangam"
-                    layout="@layout/daily_panchangam_layout"/>
+                <include android:id="@+id/rasi_chart_layout"
+                    layout="@layout/daily_rasi_chart"/>
             </LinearLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -63,6 +63,7 @@ public class RaghuEmaKuligaiFragment extends Fragment {
         binding.raahuEmaLayout.raaghuTxt.setText(wd.getRaaghu());
         binding.raahuEmaLayout.emaTxt.setText(wd.getEma());
         binding.raahuEmaLayout.kuligaiTxt.setText(wd.getKuligai());
+        binding.raahuEmaLayout.karananTxt.setText(wd.getKaranan());
 
         // Vaara Soolai
         binding.vaaraSoolaiLayout.soolamTxt.setText(getResources().getStringArray(R.array.directions)[wd.getSoolam() - 1]);
@@ -70,5 +71,6 @@ public class RaghuEmaKuligaiFragment extends Fragment {
         int naa = wd.getSoolamTime();
         int[] hourMin = DateUtil.naazhigaiToHourMin(naa);
         binding.vaaraSoolaiLayout.soolamTimeTxt.setText(getString(R.string.nazhigaiTime, naa, hourMin[0], hourMin[1]));
+
     }
 }

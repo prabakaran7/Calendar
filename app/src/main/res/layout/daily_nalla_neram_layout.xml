@@ -68,20 +68,21 @@
                 android:gravity="center_horizontal"
                 android:padding="5dp"
                 android:text="@string/morningLabel"
-                android:textColor="@color/white"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/nallaNeramMorning"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:gravity="center"
-                android:padding="5dp"
                 android:maxLines="1"
+                android:padding="5dp"
+                android:text="9:00 - 10:00"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                app:autoSizeTextType="uniform"
-                android:text="9:00 - 10:00" />
+                app:autoSizeTextType="uniform" />
 
             <TextView
                 android:layout_width="1dp"
@@ -89,15 +90,16 @@
                 android:background="@color/teal_200" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/gowriMorning"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:gravity="center"
-                android:padding="5dp"
                 android:maxLines="1"
-                app:autoSizeTextType="uniform"
+                android:padding="5dp"
+                android:text="9:00 - 10:00"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:text="9:00 - 10:00" />
+                app:autoSizeTextType="uniform" />
         </LinearLayout>
 
         <LinearLayout
@@ -129,20 +131,21 @@
                 android:gravity="center_horizontal"
                 android:paddingVertical="5dp"
                 android:text="@string/eveningLabel"
-                android:textColor="@color/white"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/nallaNeramEvening"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:gravity="center"
-                android:padding="5dp"
                 android:maxLines="1"
-                app:autoSizeTextType="uniform"
+                android:padding="5dp"
+                android:text="9:00 - 10:00"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:text="9:00 - 10:00" />
+                app:autoSizeTextType="uniform" />
 
             <TextView
                 android:layout_width="1dp"
@@ -150,15 +153,16 @@
                 android:background="@color/teal_200" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/gowriEvening"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:gravity="center"
-                android:padding="5dp"
                 android:maxLines="1"
-                app:autoSizeTextType="uniform"
+                android:padding="5dp"
+                android:text="9:00 - 10:00"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:text="9:00 - 10:00" />
+                app:autoSizeTextType="uniform" />
         </LinearLayout>
 
 

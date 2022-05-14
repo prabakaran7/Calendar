@@ -7,20 +7,17 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 
-public class ActivitySwipeDetector implements View.OnTouchListener
-{
+public class ActivitySwipeDetector implements View.OnTouchListener {
     static final String logTag = "SwipeDetector";
-    private SwipeInterface activity;
-    private float downX, downY;
-    private long timeDown;
     private final float MIN_DISTANCE;
     private final int VELOCITY;
     private final float MAX_OFF_PATH;
-
+    private SwipeInterface activity;
+    private float downX, downY;
+    private long timeDown;
     private CalendarDayOnClickListener onClickListener;
 
-    public ActivitySwipeDetector(Context context, SwipeInterface activity)
-    {
+    public ActivitySwipeDetector(Context context, SwipeInterface activity) {
         this.activity = activity;
         final ViewConfiguration vc = ViewConfiguration.get(context);
         DisplayMetrics dm = context.getResources().getDisplayMetrics();
@@ -29,24 +26,19 @@ public class ActivitySwipeDetector implements View.OnTouchListener
         MAX_OFF_PATH = MIN_DISTANCE * 2;
     }
 
-    public void onRightToLeftSwipe(View v) 
-    {
+    public void onRightToLeftSwipe(View v) {
         Log.i(logTag, "RightToLeftSwipe!");
         activity.right2left(v);
     }
 
-    public void onLeftToRightSwipe(View v) 
-    {
+    public void onLeftToRightSwipe(View v) {
         Log.i(logTag, "LeftToRightSwipe!");
         activity.left2right(v);
     }
 
-    public boolean onTouch(View v, MotionEvent event)
-    {
-        switch (event.getAction()) 
-        {
-            case MotionEvent.ACTION_DOWN:
-            {
+    public boolean onTouch(View v, MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN: {
                 Log.d("onTouch", "ACTION_DOWN");
                 timeDown = System.currentTimeMillis();
                 downX = event.getX();
@@ -55,26 +47,21 @@ public class ActivitySwipeDetector implements View.OnTouchListener
                 return true;
             }
 
-        case MotionEvent.ACTION_MOVE:
-            {
+            case MotionEvent.ACTION_MOVE: {
                 float y_up = event.getY();
                 float deltaY = y_up - downY;
                 float absDeltaYMove = Math.abs(deltaY);
 
-                if (absDeltaYMove > 60) 
-                {
+                if (absDeltaYMove > 60) {
                     v.getParent().requestDisallowInterceptTouchEvent(false);
-                } 
-                else
-                {
+                } else {
                     v.getParent().requestDisallowInterceptTouchEvent(true);
                 }
             }
 
             break;
 
-            case MotionEvent.ACTION_UP: 
-            {
+            case MotionEvent.ACTION_UP: {
                 Log.d("onTouch", "ACTION_UP");
                 long timeUp = System.currentTimeMillis();
                 float upX = event.getX();
@@ -87,8 +74,7 @@ public class ActivitySwipeDetector implements View.OnTouchListener
 
                 long time = timeUp - timeDown;
 
-                if (absDeltaY > MAX_OFF_PATH) 
-                {
+                if (absDeltaY > MAX_OFF_PATH) {
                     Log.e(logTag, String.format(
                             "absDeltaY=%.2f, MAX_OFF_PATH=%.2f", absDeltaY,
                             MAX_OFF_PATH));
@@ -96,22 +82,17 @@ public class ActivitySwipeDetector implements View.OnTouchListener
                 }
 
                 final long M_SEC = 1000;
-                if (absDeltaX > MIN_DISTANCE && absDeltaX > time * VELOCITY / M_SEC) 
-                {
-                     v.getParent().requestDisallowInterceptTouchEvent(true);
-                    if (deltaX < 0) 
-                    {
+                if (absDeltaX > MIN_DISTANCE && absDeltaX > time * VELOCITY / M_SEC) {
+                    v.getParent().requestDisallowInterceptTouchEvent(true);
+                    if (deltaX < 0) {
                         this.onLeftToRightSwipe(v);
                         return true;
                     }
-                    if (deltaX > 0) 
-                    {
+                    if (deltaX > 0) {
                         this.onRightToLeftSwipe(v);
                         return true;
                     }
-                }
-                else 
-                {
+                } else {
                     Log.i(logTag,
                             String.format(
                                     "absDeltaX=%.2f, MIN_DISTANCE=%.2f, absDeltaX > MIN_DISTANCE=%b",
@@ -125,7 +106,7 @@ public class ActivitySwipeDetector implements View.OnTouchListener
                                             / M_SEC)));
                 }
 
-                 v.getParent().requestDisallowInterceptTouchEvent(false);
+                v.getParent().requestDisallowInterceptTouchEvent(false);
 
             }
         }

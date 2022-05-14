@@ -2,11 +2,37 @@ package org.tem.calendar.library;
 
 import android.util.Pair;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 public class DateUtil {
+    private static final LocalTime midNight = LocalTime.of(0, 0);
+    private static final LocalTime adhiKaalai = LocalTime.of(5, 59);
+    private static final LocalTime kaalai = LocalTime.of(11, 59);
+    private static final LocalTime pirpagal = LocalTime.of(15, 59);
+    private static final LocalTime maalai = LocalTime.of(21, 59);
+
+
+    public static String expandedTime(String time) {
+
+        LocalTime lt = LocalTime.parse(time.replace(".", ":"), DateTimeFormatter.ofPattern("h:mm a"));
+        String returnValue = "";
+        if (lt.isBefore(adhiKaalai)) {
+            returnValue= "அதிகாலை";
+        } else if (lt.isBefore(kaalai)) {
+            returnValue= "காலை";
+        } else if (lt.isBefore(pirpagal)) {
+            returnValue = "பிற்பகல்";
+        } else if (lt.isBefore(maalai)) {
+            returnValue = "மாலை";
+        } else {
+            returnValue = "இரவு";
+        }
+        return returnValue+" " + lt.format(DateTimeFormatter.ofPattern("h.mm"));
+    }
 
     public static int[] naazhigaiToHourMin(int naazhigai) {
         int minutes = naazhigai * 24;

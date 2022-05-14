@@ -22,7 +22,7 @@ public class CustomCalendar extends LinearLayout {
     private final int weekStartIndex = 7;
     private final List<Integer> weekEndList = Arrays.asList(6, 7);
     private final List<Integer> weekEnds = new ArrayList<>();
-    private String[] weeks = new String[]{"MON", "TUE", "WED", "THU", "SAT", "SUN"};
+    private String[] weeks = new String[]{"MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"};
     private Context mContext;
     private View root;
     private AppCompatImageView previousMonthButton;
