@@ -13,6 +13,7 @@ import org.tem.calendar.model.MonthData;
 import org.tem.calendar.model.MuhurthamData;
 import org.tem.calendar.model.NallaNeramData;
 import org.tem.calendar.model.PanchangamData;
+import org.tem.calendar.model.RasiChartData;
 import org.tem.calendar.model.RasiData;
 import org.tem.calendar.model.StarData;
 import org.tem.calendar.model.ThitiData;
@@ -247,7 +248,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 null, null, null
         );
 
-        MonthData md = null;
+        MonthData md;
 
         if (null != c && c.moveToFirst()) {
             md = new MonthData();
@@ -273,10 +274,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public NallaNeramData getNallaNeram(String date) {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor c = db.query(Table.NallaNeram.NAME, null, Table.NallaNeram.COL_DATE +"=?",
+        Cursor c = db.query(Table.NallaNeram.NAME, null, Table.NallaNeram.COL_DATE + "=?",
                 new String[]{date}, null, null, null);
         NallaNeramData nnd = null;
-        if(c != null && c.moveToFirst()){
+        if (c != null && c.moveToFirst()) {
             nnd = new NallaNeramData(date);
             nnd.setNallaNeramM(c.getString(c.getColumnIndexOrThrow(Table.NallaNeram.COL_NALLA_M)));
             nnd.setNallaNeramE(c.getString(c.getColumnIndexOrThrow(Table.NallaNeram.COL_NALLA_E)));
@@ -291,9 +292,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public ThitiData getThiti(String dateString) {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor c = db.query(Table.Thiti.NAME, null, Table.Thiti.COL_DATE +"=?",
+        Cursor c = db.query(Table.Thiti.NAME, null, Table.Thiti.COL_DATE + "=?",
                 new String[]{dateString}, null, null, null);
-        if(null != c && c.moveToFirst()){
+        if (null != c && c.moveToFirst()) {
             ThitiData td = new ThitiData(dateString);
             td.setTime1(c.getString(c.getColumnIndexOrThrow(Table.Thiti.COL_TIME1)));
             td.setTime2(c.getString(c.getColumnIndexOrThrow(Table.Thiti.COL_TIME2)));
@@ -310,11 +311,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public StarData getStar(String dateString) {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor c = db.query(Table.Star.NAME,null,
-                Table.Star.COL_DATE +"=?",
+        Cursor c = db.query(Table.Star.NAME, null,
+                Table.Star.COL_DATE + "=?",
                 new String[]{dateString}, null, null, null);
 
-        if(null != c && c.moveToFirst()){
+        if (null != c && c.moveToFirst()) {
             StarData sd = new StarData(dateString);
             sd.setTime1(c.getString(c.getColumnIndexOrThrow(Table.Star.COL_TIME1)));
             sd.setTime2(c.getString(c.getColumnIndexOrThrow(Table.Star.COL_TIME2)));
@@ -330,12 +331,12 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public KaranamData getKaranam(String dateString) {
-        SQLiteDatabase db =getReadableDatabase();
+        SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.query(Table.Karanam.NAME, null,
-                Table.Karanam.COL_DATE +"=?",
+                Table.Karanam.COL_DATE + "=?",
                 new String[]{dateString}, null, null, null);
-        if(null != c && c.moveToFirst()){
-            KaranamData kd=new KaranamData(dateString);
+        if (null != c && c.moveToFirst()) {
+            KaranamData kd = new KaranamData(dateString);
             kd.setTime1(c.getString(c.getColumnIndexOrThrow(Table.Karanam.COL_TIME1)));
             kd.setTime2(c.getString(c.getColumnIndexOrThrow(Table.Karanam.COL_TIME2)));
             kd.setTime3(c.getString(c.getColumnIndexOrThrow(Table.Karanam.COL_TIME3)));
@@ -351,9 +352,9 @@ public class DBHelper extends SQLiteOpenHelper {
     public YogamData getYogam(String dateString) {
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.query(Table.Yogam.NAME, null,
-                Table.Yogam.COL_DATE +"=?",
+                Table.Yogam.COL_DATE + "=?",
                 new String[]{dateString}, null, null, null);
-        if(null != c && c.moveToFirst()){
+        if (null != c && c.moveToFirst()) {
             YogamData yd = new YogamData(dateString);
             yd.setTime1(c.getString(c.getColumnIndexOrThrow(Table.Yogam.COL_TIME1)));
             yd.setTime2(c.getString(c.getColumnIndexOrThrow(Table.Yogam.COL_TIME2)));
@@ -369,9 +370,9 @@ public class DBHelper extends SQLiteOpenHelper {
     public RasiData getRasi(String dateString) {
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.query(Table.Rasi.NAME, null,
-                Table.Rasi.COL_DATE +"=?",
-                new String[]{dateString}, null,null,null);
-        if(null != c && c.moveToFirst()){
+                Table.Rasi.COL_DATE + "=?",
+                new String[]{dateString}, null, null, null);
+        if (null != c && c.moveToFirst()) {
             RasiData rd = new RasiData(dateString);
             rd.setMesham(c.getInt(c.getColumnIndexOrThrow(Table.Rasi.COL_MESHAM)));
             rd.setRishabam(c.getInt(c.getColumnIndexOrThrow(Table.Rasi.COL_RISHABAM)));
@@ -388,5 +389,39 @@ public class DBHelper extends SQLiteOpenHelper {
             return rd;
         }
         return null;
+    }
+
+    public RasiChartData getRasiChart(String dateString) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.query(Table.RasiChart.NAME, null,
+                Table.RasiChart.COL_DATE + "=?",
+                new String[]{dateString}, null, null, null);
+
+        if (null != c && c.moveToFirst()) {
+            RasiChartData rcd = new RasiChartData(dateString);
+            rcd.setH1(c.getString(c.getColumnIndexOrThrow(Table.RasiChart.COL_H1)));
+            rcd.setH2(c.getString(c.getColumnIndexOrThrow(Table.RasiChart.COL_H2)));
+            rcd.setH3(c.getString(c.getColumnIndexOrThrow(Table.RasiChart.COL_H3)));
+            rcd.setH4(c.getString(c.getColumnIndexOrThrow(Table.RasiChart.COL_H4)));
+            rcd.setH5(c.getString(c.getColumnIndexOrThrow(Table.RasiChart.COL_H5)));
+            rcd.setH6(c.getString(c.getColumnIndexOrThrow(Table.RasiChart.COL_H6)));
+            rcd.setH7(c.getString(c.getColumnIndexOrThrow(Table.RasiChart.COL_H7)));
+            rcd.setH8(c.getString(c.getColumnIndexOrThrow(Table.RasiChart.COL_H8)));
+            rcd.setH9(c.getString(c.getColumnIndexOrThrow(Table.RasiChart.COL_H9)));
+            rcd.setH10(c.getString(c.getColumnIndexOrThrow(Table.RasiChart.COL_H10)));
+            rcd.setH11(c.getString(c.getColumnIndexOrThrow(Table.RasiChart.COL_H11)));
+            rcd.setH12(c.getString(c.getColumnIndexOrThrow(Table.RasiChart.COL_H12)));
+            rcd.setC1(c.getString(c.getColumnIndexOrThrow(Table.RasiChart.COL_C1)));
+            rcd.setC2(c.getString(c.getColumnIndexOrThrow(Table.RasiChart.COL_C2)));
+            rcd.setC3(c.getString(c.getColumnIndexOrThrow(Table.RasiChart.COL_C3)));
+            rcd.setC4(c.getString(c.getColumnIndexOrThrow(Table.RasiChart.COL_C4)));
+            rcd.setC5(c.getString(c.getColumnIndexOrThrow(Table.RasiChart.COL_C5)));
+            rcd.setC6(c.getString(c.getColumnIndexOrThrow(Table.RasiChart.COL_C6)));
+            rcd.setC7(c.getString(c.getColumnIndexOrThrow(Table.RasiChart.COL_C7)));
+            return rcd;
+        }
+
+        return null;
+
     }
 }

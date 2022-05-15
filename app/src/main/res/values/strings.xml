@@ -223,6 +223,15 @@
     <string name="two_panchangam">இன்று %1$s வரை %2$s பின்பு %3$s</string>
     <string name="three_panchangam">இன்று %1$s வரை %3$s பின்பு %2$s வரை %4$s பின்பு %5$s</string>
     <string name="four_panchangam" >இன்று %1$s வரை %4$s பின்பு %2$s வரை %5$s பின்பு %3$s வரை %6$s பின்பு %7$s</string>
+    <string name="govtHoliday">அரசு விடுமுறை</string>
+    <string name="chandrastamamLabel">சந்திராஷ்டமம்</string>
+    <string name="today_new_moon">இன்று அமாவாசை</string>
+    <string name="today_full_moon">இன்று பௌர்ணமி</string>
+    <string name="today_waxing_moon">இன்று வளர்பிறை</string>
+    <string name="today_waning_moon">இன்று தேய்பிறை</string>
+    <string name="mel_nokku_naal">"இன்று மேல்நோக்கு நாள் "</string>
+    <string name="kizh_nokku_naal">இன்று கீழ்நோக்கு நாள்</string>
+    <string name="sama_nokku_naal">இன்று சமநோக்கு நாள்</string>
     <string-array name="tamil_year_names">
         <item>பிரபவ</item>
         <item>விபவ</item>

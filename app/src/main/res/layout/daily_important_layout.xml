@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/back"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/back"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/specialImage"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:padding="5dp"
+                    android:src="@drawable/magaram" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/thitiImage"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:padding="5dp"
+                    android:src="@drawable/magaram" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/starImage"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:padding="5dp"
+                    android:src="@drawable/magaram" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/kariNaalImage"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:padding="5dp"
+                    android:src="@drawable/magaram" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/muhurthamImage"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:padding="5dp"
+                    android:src="@drawable/wedding" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/nokkuImage"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:padding="5dp"
+                    android:src="@drawable/up_arrow" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/piraiImage"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:padding="5dp"
+                    android:rotation="150"
+                    android:src="@drawable/cresent_white" />
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/viruthamTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/back"
+                android:gravity="center"
+                android:maxLines="2"
+                android:paddingVertical="10dp"
+                android:text="Placeholder for Virutham Days"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/specialDayTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@drawable/back"
+                android:maxLines="5"
+                android:paddingVertical="10dp"
+                android:text="Placeholder for Special Days" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

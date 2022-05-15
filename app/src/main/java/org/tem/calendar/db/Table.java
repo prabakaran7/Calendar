@@ -2,6 +2,30 @@ package org.tem.calendar.db;
 
 public class Table {
 
+    public interface RasiChart {
+        String NAME = "DAY_RASI_CHART";
+        String COL_DATE = "DATE";
+        String COL_H1 = "H1";
+        String COL_H2 = "H2";
+        String COL_H3 = "H3";
+        String COL_H4 = "H4";
+        String COL_H5 = "H5";
+        String COL_H6 = "H6";
+        String COL_H7 = "H7";
+        String COL_H8 = "H8";
+        String COL_H9 = "H9";
+        String COL_H10 = "H10";
+        String COL_H11 = "H11";
+        String COL_H12 = "H12";
+        String COL_C1 = "C1";
+        String COL_C2 = "C2";
+        String COL_C3 = "C3";
+        String COL_C4 = "C4";
+        String COL_C5 = "C5";
+        String COL_C6 = "C6";
+        String COL_C7 = "C7";
+    }
+
     public interface Rasi {
         String NAME = "DAY_RASI";
         String COL_DATE = "DATE";

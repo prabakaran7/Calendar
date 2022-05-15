@@ -64,4 +64,17 @@ public class YogamData {
     public void setYogam(int yogam) {
         this.yogam = yogam;
     }
+
+    @Override
+    public String toString() {
+        return "YogamData{" +
+                "date='" + date + '\'' +
+                ", time1='" + time1 + '\'' +
+                ", time2='" + time2 + '\'' +
+                ", yogam1=" + yogam1 +
+                ", yogam2=" + yogam2 +
+                ", yogam3=" + yogam3 +
+                ", yogam=" + yogam +
+                '}';
+    }
 }

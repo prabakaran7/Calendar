@@ -3,6 +3,7 @@ package org.tem.calendar.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -17,6 +18,7 @@ import org.tem.calendar.library.SwipeInterface;
 import org.tem.calendar.model.KaranamData;
 import org.tem.calendar.model.MonthData;
 import org.tem.calendar.model.NallaNeramData;
+import org.tem.calendar.model.RasiChartData;
 import org.tem.calendar.model.RasiData;
 import org.tem.calendar.model.StarData;
 import org.tem.calendar.model.ThitiData;
@@ -101,6 +103,19 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
             } else {
                 thiti = getString(R.string.three_panchangam, DateUtil.expandedTime(td.getTime1()), DateUtil.expandedTime(td.getTime2()), thitiNames[td.getThiti1()], thitiNames[td.getThiti2()], thitiNames[td.getThiti3()]);
             }
+            if (td.getPirai() == -1) { //Amavasai
+                binding.importantDayLayout.piraiImage.setImageResource(R.drawable.new_moon);
+                binding.importantDayLayout.piraiImage.setOnClickListener(v -> Toast.makeText(this, R.string.today_new_moon, Toast.LENGTH_SHORT).show());
+            } else if (td.getPirai() == -2) { //pournami
+                binding.importantDayLayout.piraiImage.setImageResource(R.drawable.full_moon);
+                binding.importantDayLayout.piraiImage.setOnClickListener(v -> Toast.makeText(this, R.string.today_full_moon, Toast.LENGTH_SHORT).show());
+            } else if (td.getPirai() == 2) { //valarpirai
+                binding.importantDayLayout.piraiImage.setImageResource(R.drawable.cresent_white);
+                binding.importantDayLayout.piraiImage.setOnClickListener(v -> Toast.makeText(this, R.string.today_waxing_moon, Toast.LENGTH_SHORT).show());
+            } else { //theipirai
+                binding.importantDayLayout.piraiImage.setImageResource(R.drawable.cresent_black);
+                binding.importantDayLayout.piraiImage.setOnClickListener(v -> Toast.makeText(this, R.string.today_waning_moon, Toast.LENGTH_SHORT).show());
+            }
         }
         binding.panchangamLayout.thitiTxt.setText(thiti);
 
@@ -116,6 +131,25 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
             } else {
                 star = getString(R.string.three_panchangam, DateUtil.expandedTime(sd.getTime1()), DateUtil.expandedTime(sd.getTime2()),
                         starNames[sd.getStar1() - 1], starNames[sd.getStar2() - 1], starNames[sd.getStar3() - 1]);
+            }
+            String[] chandArry = sd.getChandrastamam().split("[ ]*[,][ ]*");
+            StringBuilder sb = new StringBuilder();
+            for (int index = 0; index < chandArry.length; index++) {
+                sb.append(starNames[Integer.parseInt(chandArry[index]) - 1]);
+                if (index != chandArry.length - 1) {
+                    sb.append(",");
+                }
+            }
+            binding.chandrastamLayout.chandrastamamTxt.setText(sb.toString());
+            if (sd.getNokku() == 1) {
+                binding.importantDayLayout.nokkuImage.setImageResource(R.drawable.up_arrow);
+                binding.importantDayLayout.nokkuImage.setOnClickListener(v->Toast.makeText(this, R.string.mel_nokku_naal, Toast.LENGTH_SHORT).show());
+            } else if (sd.getNokku() == 2) {
+                binding.importantDayLayout.nokkuImage.setImageResource(R.drawable.down_arrow);
+                binding.importantDayLayout.nokkuImage.setOnClickListener(v->Toast.makeText(this, R.string.kizh_nokku_naal, Toast.LENGTH_SHORT).show());
+            } else {
+                binding.importantDayLayout.nokkuImage.setImageResource(R.drawable.both_side_arrow);
+                binding.importantDayLayout.nokkuImage.setOnClickListener(v->Toast.makeText(this, R.string.sama_nokku_naal, Toast.LENGTH_SHORT).show());
             }
         }
         binding.panchangamLayout.starTxt.setText(star);
@@ -146,12 +180,13 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
         YogamData yd = DBHelper.getInstance(this).getYogam(dateString);
         if (null != yd) {
             String[] yogaNames = getResources().getStringArray(R.array.yogam_names);
-            if (yd.getTime1().length() < 2) {
+            if (yd.getTime1().equals("-")) {
                 yogam = getString(R.string.fullday_pangachangam, yogaNames[yd.getYogam1()]);
-            } else if (yd.getTime2().length() < 2) {
+            } else if (yd.getTime2().equals("-")) {
                 yogam = getString(R.string.two_panchangam, DateUtil.expandedTime(yd.getTime1()),
                         yogaNames[yd.getYogam1() - 1], yogaNames[yd.getYogam2() - 1]);
             } else {
+                System.out.println(yd);
                 yogam = getString(R.string.three_panchangam, DateUtil.expandedTime(yd.getTime1()),
                         DateUtil.expandedTime(yd.getTime2()), yogaNames[yd.getYogam1() - 1],
                         yogaNames[yd.getYogam2() - 1], yogaNames[yd.getYogam3() - 1]);
@@ -178,6 +213,67 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
             binding.rasiLayout.meenamTxt.setText(values[rd.getMeenam()]);
         } else {
             binding.rasiLayout.getRoot().setVisibility(View.GONE);
+        }
+
+        RasiChartData rcd = DBHelper.getInstance(this).getRasiChart(dateString);
+        if (null != rcd) {
+            binding.rasiChartLayout.h1Txt.setText(rcd.getH1().equals("-") ? "" : rcd.getH1());
+            binding.rasiChartLayout.h2Txt.setText(rcd.getH2().equals("-") ? "" : rcd.getH2());
+            binding.rasiChartLayout.h3Txt.setText(rcd.getH3().equals("-") ? "" : rcd.getH3());
+            binding.rasiChartLayout.h4Txt.setText(rcd.getH4().equals("-") ? "" : rcd.getH4());
+            binding.rasiChartLayout.h5Txt.setText(rcd.getH5().equals("-") ? "" : rcd.getH5());
+            binding.rasiChartLayout.h6Txt.setText(rcd.getH6().equals("-") ? "" : rcd.getH6());
+            binding.rasiChartLayout.h7Txt.setText(rcd.getH7().equals("-") ? "" : rcd.getH7());
+            binding.rasiChartLayout.h8Txt.setText(rcd.getH8().equals("-") ? "" : rcd.getH8());
+            binding.rasiChartLayout.h9Txt.setText(rcd.getH9().equals("-") ? "" : rcd.getH9());
+            binding.rasiChartLayout.h10Txt.setText(rcd.getH10().equals("-") ? "" : rcd.getH10());
+            binding.rasiChartLayout.h11Txt.setText(rcd.getH11().equals("-") ? "" : rcd.getH11());
+            binding.rasiChartLayout.h12Txt.setText(rcd.getH12().equals("-") ? "" : rcd.getH12());
+
+            if (!rcd.getC1().equals("-")) {
+                binding.rasiChartLayout.c1Txt.setVisibility(View.VISIBLE);
+                binding.rasiChartLayout.c1Txt.setText(rcd.getC1());
+            } else {
+                binding.rasiChartLayout.c1Txt.setVisibility(View.GONE);
+            }
+            if (!rcd.getC2().equals("-")) {
+                binding.rasiChartLayout.c2Txt.setVisibility(View.VISIBLE);
+                binding.rasiChartLayout.c2Txt.setText(rcd.getC2());
+            } else {
+                binding.rasiChartLayout.c2Txt.setVisibility(View.GONE);
+            }
+            if (!rcd.getC3().equals("-")) {
+                binding.rasiChartLayout.c3Txt.setVisibility(View.VISIBLE);
+                binding.rasiChartLayout.c3Txt.setText(rcd.getC3());
+            } else {
+                binding.rasiChartLayout.c3Txt.setVisibility(View.GONE);
+            }
+            if (!rcd.getC4().equals("-")) {
+                binding.rasiChartLayout.c4Txt.setVisibility(View.VISIBLE);
+                binding.rasiChartLayout.c4Txt.setText(rcd.getC4());
+            } else {
+                binding.rasiChartLayout.c4Txt.setVisibility(View.GONE);
+            }
+            if (!rcd.getC5().equals("-")) {
+                binding.rasiChartLayout.c5Txt.setVisibility(View.VISIBLE);
+                binding.rasiChartLayout.c5Txt.setText(rcd.getC5());
+            } else {
+                binding.rasiChartLayout.c5Txt.setVisibility(View.GONE);
+            }
+            if (!rcd.getC6().equals("-")) {
+                binding.rasiChartLayout.c6Txt.setVisibility(View.VISIBLE);
+                binding.rasiChartLayout.c6Txt.setText(rcd.getC6());
+            } else {
+                binding.rasiChartLayout.c6Txt.setVisibility(View.GONE);
+            }
+            if (!rcd.getC7().equals("-")) {
+                binding.rasiChartLayout.c7Txt.setVisibility(View.VISIBLE);
+                binding.rasiChartLayout.c7Txt.setText(rcd.getC7());
+            } else {
+                binding.rasiChartLayout.c7Txt.setVisibility(View.GONE);
+            }
+        } else {
+            binding.rasiChartLayout.getRoot().setVisibility(View.GONE);
         }
     }
 
