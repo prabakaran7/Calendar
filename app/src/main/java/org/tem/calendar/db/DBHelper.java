@@ -8,6 +8,7 @@ import net.sqlcipher.SQLException;
 import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.SQLiteOpenHelper;
 
+import org.tem.calendar.model.FestivalDayData;
 import org.tem.calendar.model.KaranamData;
 import org.tem.calendar.model.MonthData;
 import org.tem.calendar.model.MuhurthamData;
@@ -17,6 +18,8 @@ import org.tem.calendar.model.RasiChartData;
 import org.tem.calendar.model.RasiData;
 import org.tem.calendar.model.StarData;
 import org.tem.calendar.model.ThitiData;
+import org.tem.calendar.model.VirathamData;
+import org.tem.calendar.model.VirathamMonthData;
 import org.tem.calendar.model.WeekData;
 import org.tem.calendar.model.YogamData;
 
@@ -33,7 +36,7 @@ import java.util.List;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static final int DB_VERSION = 12;
+    private static final int DB_VERSION = 4;
     private static final String DB_NAME = "tamizh_calendar.db";
     private static DBHelper dbHelper;
     private final File DB_FILE;
@@ -216,7 +219,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public List<MuhurthamData> getMuhurthamList(int year, int month) {
         SQLiteDatabase db = getReadableDatabase();
-        String qry = "SELECT mm.DATE as DATE, TMONTH, TDAY, thiti,star,yogam,time,laknam FROM MUHURTHAM m, MASTER mm where m.date=mm.date and mm.year=? and mm.MONTH=?";
+        String qry = "SELECT mm.DATE as DATE, TMONTH, TDAY, thiti,star,yogam,time,laknam, PIRAI FROM MUHURTHAM m, MASTER mm where m.date=mm.date and mm.year=? and mm.MONTH=?";
         List<MuhurthamData> mdList = new ArrayList<>();
 
         Cursor c = db.rawQuery(qry, new String[]{year + "", month + ""});
@@ -230,6 +233,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 md.setStar(c.getInt(c.getColumnIndexOrThrow(Table.Muhurtham.COL_STAR)));
                 md.setTime(c.getString(c.getColumnIndexOrThrow(Table.Muhurtham.COL_TIME)));
                 md.setLaknam(c.getInt(c.getColumnIndexOrThrow(Table.Muhurtham.COL_LAKNAM)));
+                md.setPirai(c.getInt(c.getColumnIndexOrThrow(Table.Muhurtham.COL_PIRAI)));
                 mdList.add(md);
             } while (c.moveToNext());
         }
@@ -423,5 +427,93 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return null;
 
+    }
+
+    public MuhurthamData getMuhurtham(String dateString) {
+
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.query(Table.Muhurtham.NAME, null,
+                Table.Muhurtham.COL_DATE + "=?",
+                new String[]{dateString}, null, null, null);
+        System.out.println("DATE:-" + dateString);
+        if (null != c && c.moveToFirst()) {
+            MuhurthamData md = new MuhurthamData(c.getString(c.getColumnIndexOrThrow(Table.Muhurtham.COL_DATE)));
+            //md.setTday(c.getInt(c.getColumnIndexOrThrow(Table.Master.COL_TDAY)));
+            //md.setTmonth(c.getInt(c.getColumnIndexOrThrow(Table.Master.COL_TMONTH)));
+            md.setYogam(c.getInt(c.getColumnIndexOrThrow(Table.Muhurtham.COL_YOGAM)));
+            md.setThiti(c.getInt(c.getColumnIndexOrThrow(Table.Muhurtham.COL_THITI)));
+            md.setStar(c.getInt(c.getColumnIndexOrThrow(Table.Muhurtham.COL_STAR)));
+            md.setTime(c.getString(c.getColumnIndexOrThrow(Table.Muhurtham.COL_TIME)));
+            md.setLaknam(c.getInt(c.getColumnIndexOrThrow(Table.Muhurtham.COL_LAKNAM)));
+            return md;
+        }
+
+
+        return null;
+    }
+
+    public List<VirathamMonthData> getVirathamList(int year, int month) {
+        List<VirathamMonthData> dataList = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT m.DATE, TMONTH, TDAY, VIRATHAM FROM MASTER m, DAY_VIRATHAM dv WHERE m.DATE=dv.DATE AND m.YEAR=? AND m.MONTH=? ORDER BY m.DAY",
+                new String[]{year + "", month + ""});
+        if (null != c && c.moveToFirst()) {
+            do {
+                VirathamMonthData vd = new VirathamMonthData(c.getString(c.getColumnIndexOrThrow(Table.Master.COL_DATE)));
+                vd.setTmonth(c.getInt(c.getColumnIndexOrThrow(Table.Master.COL_TMONTH)));
+                vd.setTday(c.getInt(c.getColumnIndexOrThrow(Table.Master.COL_TDAY)));
+                vd.setViratham(c.getInt(c.getColumnIndexOrThrow(Table.Viratham.COL_VIRATHAM)));
+                dataList.add(vd);
+            } while (c.moveToNext());
+        }
+        return dataList;
+    }
+
+    public List<VirathamData> getVirathamList(String dateString) {
+        List<VirathamData> dataList = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.query(Table.Viratham.NAME, null,
+                Table.Viratham.COL_DATE + "=?",
+                new String[]{dateString}, null, null, null
+        );
+        if (null != c && c.moveToFirst()) {
+            do {
+                VirathamData vd = new VirathamData(dateString);
+                vd.setViratham(c.getInt(c.getColumnIndexOrThrow(Table.Viratham.COL_VIRATHAM)));
+                vd.setTiming(c.getString(c.getColumnIndexOrThrow(Table.Viratham.COL_TIMING)));
+                dataList.add(vd);
+            } while (c.moveToNext());
+        }
+        return dataList;
+    }
+
+    public FestivalDayData getFestivalDays(String dateString) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.query(Table.Festival.NAME, null,
+                Table.Festival.COL_DATE + "=?",
+                new String[]{dateString}, null, null, null, null);
+        if (null != c && c.moveToFirst()) {
+            FestivalDayData fd = new FestivalDayData(dateString);
+            fd.setHindhu(c.getString(c.getColumnIndexOrThrow(Table.Festival.COL_HINDHU)));
+            fd.setMuslims(c.getString(c.getColumnIndexOrThrow(Table.Festival.COL_MUSLIM)));
+            fd.setChrist(c.getString(c.getColumnIndexOrThrow(Table.Festival.COL_CHRIST)));
+            fd.setGovt(c.getString(c.getColumnIndexOrThrow(Table.Festival.COL_GOVT)));
+            fd.setLeave(1 == c.getInt(c.getColumnIndexOrThrow(Table.Festival.COL_LEAVE)));
+            fd.setImportant(c.getString(c.getColumnIndexOrThrow(Table.Festival.COL_IMPORTANT_DAYS)));
+            return fd;
+        }
+
+        return null;
+    }
+
+    public boolean isKariNaal(int tmonth, int tday) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT KARI FROM KARI_NAAL WHERE TMONTH=? AND TDAY=?", new Object[]{tmonth, tday});
+
+        if (null != c && c.moveToFirst()) {
+            return c.getInt(c.getColumnIndexOrThrow("KARI")) == 1;
+        }
+
+        return false;
     }
 }

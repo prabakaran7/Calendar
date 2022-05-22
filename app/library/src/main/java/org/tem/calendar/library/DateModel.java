@@ -7,60 +7,65 @@ public class DateModel {
     private LocalDate date;
     private int primeDay;
     private int secondaryDay;
-    private int tithi;
-    private int fav1;
-    private int fav2;
+    private int tithi = -1;
+    private int star = -1;
+    private int muhurtham = -1;
+    private int special = -1;
 
-    public void setPrimeDay(int primeDay) {
-        this.primeDay = primeDay;
-    }
-
-    public void setSecondaryDay(int secondaryDay) {
-        this.secondaryDay = secondaryDay;
-    }
-
-    public void setTithi(int tithi) {
-        this.tithi = tithi;
-    }
-
-    public void setFav1(int fav1) {
-        this.fav1 = fav1;
-    }
-
-    public void setFav2(int fav2) {
-        this.fav2 = fav2;
+    public LocalDate getDate() {
+        return date;
     }
 
     public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public boolean isToday(){
-        return date.isEqual(LocalDate.now());
-    }
-
     public int getPrimeDay() {
         return primeDay;
+    }
+
+    public void setPrimeDay(int primeDay) {
+        this.primeDay = primeDay;
     }
 
     public int getSecondaryDay() {
         return secondaryDay;
     }
 
+    public void setSecondaryDay(int secondaryDay) {
+        this.secondaryDay = secondaryDay;
+    }
+
     public int getTithi() {
         return tithi;
     }
 
-    public int getFav1() {
-        return fav1;
+    public void setTithi(int tithi) {
+        this.tithi = tithi;
     }
 
-    public int getFav2() {
-        return fav2;
+    public int getStar() {
+        return star;
+    }
+
+    public void setStar(int star) {
+        this.star = star;
+    }
+
+    public int getMuhurtham() {
+        return muhurtham;
+    }
+
+    public void setMuhurtham(int muhurtham) {
+        this.muhurtham = muhurtham;
+    }
+
+    public int getSpecial() {
+        return special;
+    }
+
+    public void setSpecial(int special) {
+        this.special = special;
     }
 
     @Override
@@ -70,8 +75,14 @@ public class DateModel {
                 ", primeDay=" + primeDay +
                 ", secondaryDay=" + secondaryDay +
                 ", tithi=" + tithi +
-                ", fav1=" + fav1 +
-                ", fav2=" + fav2 +
+                ", star=" + star +
+                ", muhurtham=" + muhurtham +
+                ", special=" + special +
                 '}';
+    }
+
+    public boolean isToday() {
+
+        return date.isEqual(LocalDate.now());
     }
 }

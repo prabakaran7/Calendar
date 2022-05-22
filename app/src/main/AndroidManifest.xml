@@ -64,7 +64,7 @@
             <!-- </intent-filter> -->
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MonthActivity"
             android:exported="false">
 
             <!-- <intent-filter> -->

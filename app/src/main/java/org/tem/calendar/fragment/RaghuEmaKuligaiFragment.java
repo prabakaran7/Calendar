@@ -12,13 +12,12 @@ import androidx.fragment.app.Fragment;
 
 import org.tem.calendar.CalendarApp;
 import org.tem.calendar.R;
+import org.tem.calendar.custom.DateUtil;
 import org.tem.calendar.databinding.FragmentRaghuEmaKuligaiBinding;
 import org.tem.calendar.db.DBHelper;
-import org.tem.calendar.library.DateUtil;
 import org.tem.calendar.model.WeekData;
 
 import java.time.DayOfWeek;
-import java.util.List;
 
 public class RaghuEmaKuligaiFragment extends Fragment {
 

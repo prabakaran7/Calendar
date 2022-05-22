@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import org.tem.calendar.activities.DailyActivity;
+import org.tem.calendar.activities.MonthActivity;
 import org.tem.calendar.databinding.ActivityCalendarBinding;
 import org.tem.calendar.db.DBHelper;
 import org.tem.calendar.model.MonthData;
@@ -31,7 +32,7 @@ public class CalendarActivity extends AppCompatActivity {
         });
 
         binding.monthlyCalendarCard.setOnClickListener(view -> {
-            Intent intent = new Intent(CalendarActivity.this, MainActivity.class);
+            Intent intent = new Intent(CalendarActivity.this, MonthActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });

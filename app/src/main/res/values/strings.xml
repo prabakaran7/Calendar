@@ -124,8 +124,10 @@
     <string name="graha_orai_label">கிரஹ ஓரை பஞ்சாங்கம்</string>
     <string name="laknamLabel">லக்கினம்</string>
     <string name="timeLabel">நேரம்</string>
-    <string name="valapirai_muhurtham">வளர்பிறை முகூர்த்தங்கள்</string>
-    <string name="theipirai_muhurtham">தேய்பிறை முகூர்த்தங்கள்</string>
+    <string name="valapirai_muhurthams">வளர்பிறை முகூர்த்தங்கள்</string>
+    <string name="theipirai_muhurthams">தேய்பிறை முகூர்த்தங்கள்</string>
+    <string name="valapirai">வளர்பிறை</string>
+    <string name="theipirai">தேய்பிறை</string>
     <string-array name="gowri_values">
         <item>ரோகம்</item>
         <item>சோரம்</item>
@@ -232,6 +234,8 @@
     <string name="mel_nokku_naal">"இன்று மேல்நோக்கு நாள் "</string>
     <string name="kizh_nokku_naal">இன்று கீழ்நோக்கு நாள்</string>
     <string name="sama_nokku_naal">இன்று சமநோக்கு நாள்</string>
+    <string name="suba_muhurtham">%1$s சுப முகூர்த்தம்</string>
+    <string name="kari_naal">கரிநாள்</string>
     <string-array name="tamil_year_names">
         <item>பிரபவ</item>
         <item>விபவ</item>
@@ -466,5 +470,22 @@
         <item>அறிவு</item>
         <item>பிரிவு</item>
         <item>சேர்க்கை</item>
+    </string-array>
+
+    <string-array name="viratham_names">
+        <item>அமாவாசை</item>
+        <item>பௌர்ணமி</item>
+        <item>கார்த்திகை</item>
+        <item>சிவராத்திரி</item>
+        <item>சதுர்த்தசி</item>
+        <item>திருவோணம்</item>
+        <item>சஷ்டி</item>
+        <item>மகா சிவராத்திரி</item>
+        <item>அஷ்டமி</item>
+        <item>நவமி</item>
+        <item>தசமி</item>
+        <item>சந்திர தரிசனம்</item>
+        <item>ஏகாதசி</item>
+        <item>பிரதோஷம்</item>
     </string-array>
 </resources>

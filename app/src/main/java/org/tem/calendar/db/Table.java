@@ -2,6 +2,24 @@ package org.tem.calendar.db;
 
 public class Table {
 
+    public interface Festival {
+        String NAME = "FESTIVAL_DAYS";
+        String COL_DATE = "DATE";
+        String COL_HINDHU = "HINDHU";
+        String COL_MUSLIM = "MUSLIM";
+        String COL_CHRIST = "CHRIST";
+        String COL_GOVT = "GOVT";
+        String COL_LEAVE = "LEAVE";
+        String COL_IMPORTANT_DAYS = "IMPORTANT_DAYS";
+    }
+
+    public interface Viratham {
+        String NAME = "DAY_VIRATHAM";
+        String COL_DATE = "DATE";
+        String COL_VIRATHAM = "VIRATHAM";
+        String COL_TIMING = "TIMING";
+    }
+
     public interface RasiChart {
         String NAME = "DAY_RASI_CHART";
         String COL_DATE = "DATE";
@@ -132,6 +150,7 @@ public class Table {
         String COL_YOGAM = "YOGAM";
         String COL_TIME = "TIME";
         String COL_LAKNAM = "LAKNAM";
+        String COL_PIRAI = "PIRAI";
     }
 
     public interface NallaNeram {

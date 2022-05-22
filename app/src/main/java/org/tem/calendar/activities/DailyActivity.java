@@ -1,32 +1,44 @@
 package org.tem.calendar.activities;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.databinding.DataBindingUtil;
 
 import org.tem.calendar.Constants;
 import org.tem.calendar.R;
+import org.tem.calendar.custom.ActivitySwipeDetector;
+import org.tem.calendar.custom.DateUtil;
+import org.tem.calendar.custom.StringUtils;
+import org.tem.calendar.custom.SwipeInterface;
 import org.tem.calendar.databinding.ActivityDailyBinding;
 import org.tem.calendar.db.DBHelper;
-import org.tem.calendar.library.ActivitySwipeDetector;
-import org.tem.calendar.library.DateUtil;
-import org.tem.calendar.library.SwipeInterface;
+import org.tem.calendar.model.FestivalDayData;
 import org.tem.calendar.model.KaranamData;
 import org.tem.calendar.model.MonthData;
+import org.tem.calendar.model.MuhurthamData;
 import org.tem.calendar.model.NallaNeramData;
 import org.tem.calendar.model.RasiChartData;
 import org.tem.calendar.model.RasiData;
 import org.tem.calendar.model.StarData;
 import org.tem.calendar.model.ThitiData;
+import org.tem.calendar.model.VirathamData;
 import org.tem.calendar.model.WeekData;
 import org.tem.calendar.model.YogamData;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
 
 public class DailyActivity extends AppCompatActivity implements SwipeInterface {
 
@@ -49,21 +61,52 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
         }
         dateString = selectedDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
+        System.out.println("CURRENT DATE: " + selectedDate);
         binding.headerLayout.dateTxt.setText(selectedDate.format(DateTimeFormatter.ofPattern("d-M-yyyy")));
+        if (selectedDate.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
+            binding.headerLayout.dateTxt.setTypeface(ResourcesCompat.getFont(this, R.font.tourney_semi_bold), Typeface.NORMAL);
+        }
         binding.headerLayout.monthHeaderTxt.setText(monthText());
+
+        if (!LocalDate.now().equals(selectedDate)) {
+            binding.headerLayout.resetBtn.setVisibility(View.VISIBLE);
+
+            binding.headerLayout.resetBtn.setOnClickListener(view -> {
+                if (null == intent) {
+                    return;
+                }
+                finish();
+                //overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra(Constants.EXTRA_DATE_SELECTED, LocalDate.now());
+                startActivity(intent);
+                if (selectedDate.isAfter(LocalDate.now())) {
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                } else {
+                    overridePendingTransition(R.anim.slide_in_right,
+                            R.anim.slide_out_left);
+                }
+            });
+        } else {
+            binding.headerLayout.resetBtn.setVisibility(View.GONE);
+        }
 
         MonthData md = DBHelper.getInstance(this).getDate(selectedDate);
         if (null != md) {
-            binding.headerLayout.secCalTxt.setText(getResources().getStringArray(R.array.tamil_year_names)[md.getTyear() - 1] + " , " +
-                    getResources().getStringArray(R.array.tamizh_month_names)[md.getTmonth() - 1] + " - " +
-                    md.getTday());
+            binding.headerLayout.secCalTxt.setText(
+                    String.format(Locale.getDefault(),
+                            "%s , %s - %d",
+                            getResources().getStringArray(R.array.tamil_year_names)[md.getTyear() - 1],
+                            getResources().getStringArray(R.array.tamizh_month_names)[md.getTmonth() - 1],
+                            md.getTday()
+                    )
+            );
         }
 
         binding.headerLayout.prevBtn.setOnClickListener(v -> moveToPrevDay());
         binding.headerLayout.nextBtn.setOnClickListener(v -> moveToNextDay());
         binding.rootView.setOnTouchListener(new ActivitySwipeDetector(this, this));
         binding.scrollView.setOnTouchListener(new ActivitySwipeDetector(this, this));
-
 
         // raaghu & soolam
         WeekData wd = DBHelper.getInstance(this).getWeekData(selectedDate.getDayOfWeek());
@@ -116,6 +159,7 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
                 binding.importantDayLayout.piraiImage.setImageResource(R.drawable.cresent_black);
                 binding.importantDayLayout.piraiImage.setOnClickListener(v -> Toast.makeText(this, R.string.today_waning_moon, Toast.LENGTH_SHORT).show());
             }
+            binding.importantDayLayout.piraiImage.setVisibility(View.VISIBLE);
         }
         binding.panchangamLayout.thitiTxt.setText(thiti);
 
@@ -143,14 +187,15 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
             binding.chandrastamLayout.chandrastamamTxt.setText(sb.toString());
             if (sd.getNokku() == 1) {
                 binding.importantDayLayout.nokkuImage.setImageResource(R.drawable.up_arrow);
-                binding.importantDayLayout.nokkuImage.setOnClickListener(v->Toast.makeText(this, R.string.mel_nokku_naal, Toast.LENGTH_SHORT).show());
+                binding.importantDayLayout.nokkuImage.setOnClickListener(v -> Toast.makeText(this, R.string.mel_nokku_naal, Toast.LENGTH_SHORT).show());
             } else if (sd.getNokku() == 2) {
                 binding.importantDayLayout.nokkuImage.setImageResource(R.drawable.down_arrow);
-                binding.importantDayLayout.nokkuImage.setOnClickListener(v->Toast.makeText(this, R.string.kizh_nokku_naal, Toast.LENGTH_SHORT).show());
+                binding.importantDayLayout.nokkuImage.setOnClickListener(v -> Toast.makeText(this, R.string.kizh_nokku_naal, Toast.LENGTH_SHORT).show());
             } else {
                 binding.importantDayLayout.nokkuImage.setImageResource(R.drawable.both_side_arrow);
-                binding.importantDayLayout.nokkuImage.setOnClickListener(v->Toast.makeText(this, R.string.sama_nokku_naal, Toast.LENGTH_SHORT).show());
+                binding.importantDayLayout.nokkuImage.setOnClickListener(v -> Toast.makeText(this, R.string.sama_nokku_naal, Toast.LENGTH_SHORT).show());
             }
+            binding.importantDayLayout.nokkuImage.setVisibility(View.VISIBLE);
         }
         binding.panchangamLayout.starTxt.setText(star);
 
@@ -181,7 +226,7 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
         if (null != yd) {
             String[] yogaNames = getResources().getStringArray(R.array.yogam_names);
             if (yd.getTime1().equals("-")) {
-                yogam = getString(R.string.fullday_pangachangam, yogaNames[yd.getYogam1()]);
+                yogam = getString(R.string.fullday_pangachangam, yogaNames[yd.getYogam1() - 1]);
             } else if (yd.getTime2().equals("-")) {
                 yogam = getString(R.string.two_panchangam, DateUtil.expandedTime(yd.getTime1()),
                         yogaNames[yd.getYogam1() - 1], yogaNames[yd.getYogam2() - 1]);
@@ -274,6 +319,145 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
             }
         } else {
             binding.rasiChartLayout.getRoot().setVisibility(View.GONE);
+        }
+
+        StringBuilder sb = new StringBuilder();
+        MuhurthamData muh = DBHelper.getInstance(this).getMuhurtham(dateString);
+        if (null != muh) {
+            binding.importantDayLayout.muhurthamImage.setVisibility(View.VISIBLE);
+            sb.append(getResources().getString(
+                    R.string.suba_muhurtham,
+                    (td != null && (td.getPirai() == -2 || td.getPirai() == 2)) ?
+                            getResources().getString(R.string.valapirai) : getResources().getString(R.string.theipirai)));
+            sb.append(", ");
+            //TODO onclick to show complete detail in Dialog
+        } else {
+            binding.importantDayLayout.muhurthamImage.setVisibility(View.GONE);
+        }
+
+        List<VirathamData> virathamDataList = DBHelper.getInstance(this).getVirathamList(dateString);
+
+        String[] virathams = getResources().getStringArray(R.array.viratham_names);
+        for (int index = 0; index < virathamDataList.size(); index++) {
+            VirathamData vd = virathamDataList.get(index);
+            switch (vd.getViratham()) {
+                case 0: // new moon
+                    binding.importantDayLayout.piraiImage.setVisibility(View.VISIBLE);
+                    binding.importantDayLayout.piraiImage.setImageResource(R.drawable.new_moon);
+                    break;
+
+                case 1: // full moon
+                    binding.importantDayLayout.piraiImage.setVisibility(View.VISIBLE);
+                    binding.importantDayLayout.piraiImage.setImageResource(R.drawable.full_moon);
+                    break;
+
+                case 2:
+                    binding.importantDayLayout.starImage.setVisibility(View.VISIBLE);
+                    binding.importantDayLayout.starImage.setImageResource(R.drawable.star);
+                    break;
+
+                case 3:
+                    binding.importantDayLayout.thitiImage.setVisibility(View.VISIBLE);
+                    binding.importantDayLayout.thitiImage.setImageResource(R.drawable.sivarathri);
+                    break;
+
+                case 4:
+                    binding.importantDayLayout.thitiImage.setVisibility(View.VISIBLE);
+                    binding.importantDayLayout.thitiImage.setImageResource(R.drawable.sathurthasi);
+                    break;
+
+                case 5:
+                    binding.importantDayLayout.starImage.setVisibility(View.VISIBLE);
+                    binding.importantDayLayout.starImage.setImageResource(R.drawable.thiruvonam);
+                    break;
+
+                case 6:
+                    binding.importantDayLayout.thitiImage.setVisibility(View.VISIBLE);
+                    binding.importantDayLayout.thitiImage.setImageResource(R.drawable.shasti);
+                    break;
+
+                case 7: //Maha Sivarathri
+                    binding.importantDayLayout.thitiImage.setVisibility(View.VISIBLE);
+                    binding.importantDayLayout.thitiImage.setImageResource(R.drawable.sivarathri);
+                    break;
+
+                case 8:
+                    binding.importantDayLayout.thitiImage.setVisibility(View.VISIBLE);
+                    binding.importantDayLayout.thitiImage.setImageResource(R.drawable.astami);
+                    break;
+
+                case 9:
+                    binding.importantDayLayout.thitiImage.setVisibility(View.VISIBLE);
+                    binding.importantDayLayout.thitiImage.setImageResource(R.drawable.navami);
+                    break;
+
+                case 10: // thasami
+//                    binding.importantDayLayout.thitiImage.setVisibility(View.VISIBLE);
+//                    binding.importantDayLayout.thitiImage.setImageResource(R.drawable.astami);
+                    break;
+
+                case 11: //Chandra Tharisanam
+                    break;
+
+                case 12:
+                    binding.importantDayLayout.thitiImage.setVisibility(View.VISIBLE);
+                    binding.importantDayLayout.thitiImage.setImageResource(R.drawable.ekadeshi);
+                    break;
+
+                case 13:
+                    binding.importantDayLayout.thitiImage.setVisibility(View.VISIBLE);
+                    binding.importantDayLayout.thitiImage.setImageResource(R.drawable.pradhosam);
+                    break;
+
+
+            }
+            System.out.println(vd);
+            sb.append(virathams[vd.getViratham()]);
+            if (vd.getTiming().length() > 1) {
+                sb.append("[").append(vd.getTiming()).append("]");
+            }
+
+            sb.append(", ");
+        }
+
+        //KariNaal
+        if (null != md && DBHelper.getInstance(this).isKariNaal(md.getTmonth(), md.getTday())) {
+            sb.append(getResources().getString(R.string.kari_naal));
+            sb.append(", ");
+        }
+
+
+        if (sb.length() != 0) {
+            if (sb.toString().endsWith(", ")) {
+                sb.setLength(sb.toString().length() - 2);
+            }
+            binding.importantDayLayout.viruthamTxt.setText(sb.toString());
+        } else {
+            binding.importantDayLayout.viruthamTxt.setVisibility(View.GONE);
+        }
+
+        FestivalDayData fd = DBHelper.getInstance(this).getFestivalDays(dateString);
+        if (null != fd) {
+            binding.govtHolidayTxt.setVisibility(fd.isLeave() ? View.VISIBLE : View.GONE);
+
+            Set<String> festivals = new HashSet<>();
+            if (fd.getHindhu() != null && !fd.getHindhu().equals("-")) {
+                festivals.addAll(Arrays.asList(fd.getHindhu().split("[ ]*[,][ ]*")));
+            }
+
+            if (null != fd.getGovt() && !fd.getGovt().equals("-")) {
+                festivals.addAll(Arrays.asList(fd.getGovt().split("[ ]*[,][ ]*")));
+            }
+
+            if (null != fd.getImportant() && !fd.getImportant().equals("-")) {
+                festivals.addAll(Arrays.asList(fd.getImportant().split("[ ]*[,][ ]*")));
+            }
+            if (!festivals.isEmpty()) {
+                binding.importantDayLayout.specialDayTxt.setVisibility(View.VISIBLE);
+                binding.importantDayLayout.specialDayTxt.setText(StringUtils.join(festivals, ","));
+            } else {
+                binding.importantDayLayout.specialDayTxt.setVisibility(View.GONE);
+            }
         }
     }
 

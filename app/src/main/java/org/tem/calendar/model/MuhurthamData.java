@@ -13,6 +13,7 @@ public class MuhurthamData {
     private int yogam;
     private String time;
     private int laknam;
+    private int pirai;
 
     public MuhurthamData(String date) {
         this.date = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
@@ -78,8 +79,12 @@ public class MuhurthamData {
         this.laknam = laknam;
     }
 
-    public boolean isValarpirai() {
-        return thiti < 16;
+    public void setPirai(int pirai) {
+        this.pirai = pirai;
+    }
+
+    public boolean isValarPirai() {
+        return pirai == 1;
     }
 
     @Override

@@ -6,7 +6,7 @@ import android.util.Pair;
 import net.sqlcipher.database.SQLiteDatabase;
 
 import org.tem.calendar.db.DBHelper;
-import org.tem.calendar.library.DateUtil;
+import org.tem.calendar.custom.DateUtil;
 
 import java.util.ArrayList;
 import java.util.List;

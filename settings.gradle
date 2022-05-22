@@ -8,4 +8,3 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Calendar"
 include ':app'
-include ':app:library'

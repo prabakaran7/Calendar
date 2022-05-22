@@ -7,6 +7,8 @@
     app:cardCornerRadius="10dp"
     app:cardElevation="15dp">
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:padding="5dp"
             android:id="@+id/monthHeaderTxt"
             android:text="ஜூன் - ஞாயிறு"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -65,15 +68,36 @@
                 app:tint="@color/white" />
         </LinearLayout>
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:id="@+id/secCalTxt"
-            android:text="Subha Kruthu Thai 1"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/secCalTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:paddingVertical="5dp"
+                android:gravity="center"
+                android:text="Subha Kruthu Thai 1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/refresh"
+            android:foregroundGravity="top"
+            android:layout_alignParentEnd="true"
+            android:visibility="visible"
+            android:rotationY="-180"
+            android:id="@+id/resetBtn"/>
+        </RelativeLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
 </layout>

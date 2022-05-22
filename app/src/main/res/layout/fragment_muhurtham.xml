@@ -40,7 +40,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="5dp"
-                            android:text="@string/valapirai_muhurtham"
+                            android:text="@string/valapirai_muhurthams"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
                     </LinearLayout>
 
@@ -60,7 +60,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="5dp"
-                            android:text="@string/theipirai_muhurtham"
+                            android:text="@string/theipirai_muhurthams"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
                     </LinearLayout>
 

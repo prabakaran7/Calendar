@@ -1,18 +1,14 @@
 package org.tem.calendar.library;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.core.content.res.ResourcesCompat;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.tem.calendar.library.databinding.DayInMonthLayoutBinding;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,7 +26,7 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
     }
 
     public DayRecyclerAdapter(Context mContext, List<DateModel> dates, List<Integer> weekEnds, SwipeInterface swipeInterface) {
-        this(mContext, dates, weekEnds, null,swipeInterface);
+        this(mContext, dates, weekEnds, null, swipeInterface);
     }
 
     public DayRecyclerAdapter(Context mContext, List<DateModel> dates, List<Integer> weekEnds, CalendarDayOnClickListener onClickListener, SwipeInterface swipeInterface) {
@@ -44,8 +40,8 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        return new ViewHolder(inflater.inflate(R.layout.day_in_month_layout, parent, false));
+        DayInMonthLayoutBinding binding = DataBindingUtil.inflate(LayoutInflater.from(mContext), R.layout.day_in_month_layout, parent, false);
+        return new ViewHolder(binding);
     }
 
     @Override
@@ -56,13 +52,14 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
             holder.itemView.setClickable(false);
             holder.itemView.setEnabled(false);
             holder.itemView.setFocusable(false);
-            holder.primeTxt.setText("");
-            holder.secondaryTxt.setText("");
+            holder.binding.primeDayTxt.setText("");
+            holder.binding.secondaryDayTxt.setText("");
             holder.itemView.setEnabled(false);
             holder.itemView.setClickable(false);
+            return;
         } else {
-            holder.primeTxt.setText(model.getPrimeDay() + "");
-            holder.secondaryTxt.setText(0 != model.getSecondaryDay() ? model.getSecondaryDay() + "" : "");
+            holder.binding.primeDayTxt.setText(model.getPrimeDay() + "");
+            holder.binding.secondaryDayTxt.setText(0 != model.getSecondaryDay() ? model.getSecondaryDay() + "" : "");
 
 
             holder.itemView.setOnClickListener(v -> {
@@ -73,19 +70,50 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
         }
 
         if (weekEnds.contains((position % 7) + 1)) {
-            if(null != model && model.isToday()){
+            if (model.isToday()) {
                 holder.itemView.setBackgroundResource(R.drawable.day_today_holiday_bg);
             } else {
                 holder.itemView.setBackgroundResource(R.drawable.day_holiday_bg);
             }
         } else {
-            if(null != model && model.isToday()){
+            if (model.isToday()) {
                 holder.itemView.setBackgroundResource(R.drawable.day_today_bg);
             } else {
                 holder.itemView.setBackgroundResource(R.drawable.day_bg);
             }
         }
 
+        int count = 0;
+        if (model.getTithi() != -1) {
+            setImage(count, model.getTithi(), holder.binding);
+        }
+
+        if (model.getMuhurtham() != -1) {
+            setImage(count, model.getMuhurtham(), holder.binding);
+            count++;
+        }
+        if (model.getStar() != -1) {
+            setImage(count, model.getStar(), holder.binding);
+            count++;
+        }
+        if (model.getSpecial() != -1) {
+            setImage(count, model.getSpecial(), holder.binding);
+        }
+
+
+    }
+
+    private void setImage(int count, int resourceId, DayInMonthLayoutBinding binding) {
+        switch (count) {
+            case 0:
+                binding.leftBottomImage.setImageResource(resourceId);
+                break;
+            case 1:
+                binding.leftTopImage.setImageResource(resourceId);
+                break;
+            default:
+                binding.rightBottomImage.setImageResource(resourceId);
+        }
     }
 
     @Override
@@ -95,13 +123,11 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        AppCompatTextView primeTxt;
-        AppCompatTextView secondaryTxt;
+        DayInMonthLayoutBinding binding;
 
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            primeTxt = itemView.findViewById(R.id.primeDayTxt);
-            secondaryTxt = itemView.findViewById(R.id.secondaryDayTxt);
+        public ViewHolder(DayInMonthLayoutBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
     }
 }
