@@ -2,6 +2,7 @@ package org.tem.calendar.custom;
 
 import java.time.LocalDate;
 
+@Deprecated
 public class DateHolder {
     private final int year;
     private final int month;

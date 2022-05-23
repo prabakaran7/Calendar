@@ -31,7 +31,6 @@ public class CustomCalendar extends LinearLayout {
     private AppCompatImageView nextMonthButton;
     private CalendarNavigationListener listener;
     private RecyclerView calendarView;
-    private DateHolder dateHolder;
     private CalendarDayOnClickListener dayOnClickListener;
 
     public CustomCalendar(Context context) {
@@ -66,7 +65,6 @@ public class CustomCalendar extends LinearLayout {
         this.dates.addAll(dateList);
 
         int l = dates.get(0).getDate().getDayOfWeek().getValue() - weekStartIndex;
-        dateHolder = new DateHolder(dates.get(0).getDate());
         if (l < 0) {
             l += 7;
         }
@@ -84,33 +82,11 @@ public class CustomCalendar extends LinearLayout {
 
     public void refresh() {
 
-        if (null == listener) {
-            listener = new CalendarNavigationListener() {
-                @Override
-                public void previousClicked(DateHolder dateHolder) {
-                    LocalDate localDate = dateHolder.getDate().minusMonths(1);
-                    generateDates(localDate);
-                    setPrimeMonthTxt(localDate.getMonth().toString());
-                    setPrimeYearTxt(localDate.getYear() + "");
-                    refresh();
-                }
-
-                @Override
-                public void nextClicked(DateHolder dateHolder) {
-                    LocalDate localDate = dateHolder.getDate().plusMonths(1);
-                    generateDates(localDate);
-                    setPrimeMonthTxt(localDate.getMonth().toString());
-                    setPrimeYearTxt(localDate.getYear() + "");
-                    refresh();
-                }
-            };
+        if (null != listener) {
+            previousMonthButton.setOnClickListener(view -> listener.previousClicked());
+            nextMonthButton.setOnClickListener(view -> listener.nextClicked());
         }
-        previousMonthButton.setOnClickListener(view -> listener.previousClicked(dateHolder));
-        nextMonthButton.setOnClickListener(view -> listener.nextClicked(dateHolder));
-
         List<Pair<Integer, String>> weeks = DateUtil.getNormalizedWeeks(weekStartIndex, this.weeks);
-
-        weekEnds.clear();
         weekEnds.addAll(DateUtil.getWeekEnds(weekStartIndex, weekEndList));
 
         for (int index = 0; index < weeks.size(); index++) {
@@ -136,12 +112,12 @@ public class CustomCalendar extends LinearLayout {
 
             @Override
             public void left2right(View v) {
-                listener.previousClicked(dateHolder);
+                listener.previousClicked();
             }
 
             @Override
             public void right2left(View v) {
-                listener.nextClicked(dateHolder);
+                listener.nextClicked();
             }
 
             @Override
