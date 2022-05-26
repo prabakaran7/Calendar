@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/teal_200"
+                android:gravity="center"
+                android:paddingVertical="5dp"
+                android:text="@string/monthly_suba_muhurtham_title"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingVertical="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@android:color/holo_red_dark"
+                android:id="@+id/muhurthamEmptyTxt"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:id="@+id/muhurthamLinearLayout"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <org.tem.calendar.custom.NonScrollRecyclerView
+                    android:id="@+id/muhurthamRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:padding="5dp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/teal_200" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingVertical="5dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:rotation="140"
+                            android:src="@drawable/cresent_white" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autoSizeTextType="uniform"
+                            android:maxLines="1"
+                            android:paddingHorizontal="5dp"
+                            android:text="@string/valapirai_muhurthams" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:rotation="140"
+                            android:src="@drawable/cresent_black" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:autoSizeTextType="uniform"
+                            android:maxLines="1"
+                            android:paddingHorizontal="5dp"
+                            android:text="@string/theipirai_muhurthams" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

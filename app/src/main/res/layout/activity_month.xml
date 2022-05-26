@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/rootView"
         android:layout_width="match_parent"
@@ -21,20 +21,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:orientation="vertical">
+            <include
+                android:id="@+id/muhurtham_layout"
+                layout="@layout/monthly_muhurtham_layout" />
 
-                <FrameLayout
-                    android:id="@+id/muhurtham_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/monthlyCalendar" />
-            </LinearLayout>
+            <include android:id="@+id/hinduFestivalLayout"
+                layout="@layout/monthly_festival_layout"/>
+
+            <include android:id="@+id/govtHolidayLayout"
+                layout="@layout/monthly_festival_layout"/>
+
+
+
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </layout>

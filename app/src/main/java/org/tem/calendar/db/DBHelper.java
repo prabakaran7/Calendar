@@ -8,6 +8,7 @@ import net.sqlcipher.SQLException;
 import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.SQLiteOpenHelper;
 
+import org.tem.calendar.custom.DateUtil;
 import org.tem.calendar.model.FestivalDayData;
 import org.tem.calendar.model.KaranamData;
 import org.tem.calendar.model.MonthData;
@@ -33,6 +34,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -515,5 +518,37 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         return false;
+    }
+
+    public Map<LocalDate, String> getHinduFestivalDays(int year, int month) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT fd.DATE, fd.HINDHU FROM FESTIVAL_DAYS fd, MASTER m where fd.DATE = m.DATE and m.YEAR=? and m.MONTH=? and fd.HINDHU <>'-'",
+                new Object[]{year, month});
+        Map<LocalDate, String> map = new TreeMap<>();
+        if (c != null && c.moveToFirst()) {
+            do {
+                map.put(
+                        DateUtil.ofLocalDate(c.getString(0)),
+                        c.getString(1)
+                );
+            } while (c.moveToNext());
+        }
+        return map;
+    }
+
+    public Map<LocalDate, String> getHolidays(int year, int month) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT fd.DATE, fd.GOVT FROM FESTIVAL_DAYS fd, MASTER m where fd.DATE = m.DATE and m.YEAR=? and m.MONTH=? and fd.GOVT <>'-'",
+                new Object[]{year, month});
+        Map<LocalDate, String> map = new TreeMap<>();
+        if (c != null && c.moveToFirst()) {
+            do {
+                map.put(
+                        DateUtil.ofLocalDate(c.getString(0)),
+                        c.getString(1)
+                );
+            } while (c.moveToNext());
+        }
+        return map;
     }
 }

@@ -29,13 +29,13 @@
     <string name="raghu_ema_kuligai_title">இராகு,எமகண்டம்,குளிகை</string>
     <string name="todayRasiPalanLabel">இன்றைய ராசிபலன்</string>
     <string-array name="weekday_short_names">
-        <item>திங்கள்</item>
-        <item>செவ்வாய்</item>
-        <item>புதன்</item>
-        <item>வியாழன்</item>
-        <item>வெள்ளி</item>
-        <item>சனி</item>
-        <item>ஞாயிறு</item>
+        <item>தி</item>
+        <item>செ</item>
+        <item>பு</item>
+        <item>வி்</item>
+        <item>வெ</item>
+        <item>ச</item>
+        <item>ஞா</item>
     </string-array>
     <string-array name="weekday_names">
         <item>திங்கள்</item>
@@ -236,6 +236,10 @@
     <string name="sama_nokku_naal">இன்று சமநோக்கு நாள்</string>
     <string name="suba_muhurtham">%1$s சுப முகூர்த்தம்</string>
     <string name="kari_naal">கரிநாள்</string>
+    <string name="monthly_suba_muhurtham_title">சுபமுகூர்த்த தினங்கள்</string>
+    <string name="muhurtham_msg">%1$d %2$s - %3$s %4$d</string>
+    <string name="hindu_festivals">இந்து பண்டிகைகள்</string>
+    <string name="govtHolidays">அரசு விடுமுறை நாட்கள்</string>
     <string-array name="tamil_year_names">
         <item>பிரபவ</item>
         <item>விபவ</item>

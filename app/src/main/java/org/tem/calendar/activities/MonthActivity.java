@@ -3,22 +3,22 @@ package org.tem.calendar.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import org.tem.calendar.Constants;
 import org.tem.calendar.R;
+import org.tem.calendar.adapter.MonthMuhurthamRecyclerAdapter;
 import org.tem.calendar.custom.ActivitySwipeDetector;
 import org.tem.calendar.custom.CalendarNavigationListener;
-import org.tem.calendar.custom.DateHolder;
 import org.tem.calendar.custom.DateModel;
 import org.tem.calendar.custom.DateUtil;
 import org.tem.calendar.custom.SwipeInterface;
 import org.tem.calendar.databinding.ActivityMonthBinding;
 import org.tem.calendar.db.DBHelper;
-import org.tem.calendar.fragment.MuhurthamFragment;
 import org.tem.calendar.model.MonthData;
 import org.tem.calendar.model.MuhurthamData;
 import org.tem.calendar.model.VirathamData;
@@ -26,20 +26,19 @@ import org.tem.calendar.model.VirathamMonthData;
 
 import java.time.LocalDate;
 import java.time.format.TextStyle;
-import java.time.temporal.Temporal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 public class MonthActivity extends AppCompatActivity implements SwipeInterface {
 
-    ActivityMonthBinding binding;
-
     final List<Integer> tamilMonth = new ArrayList<>();
+    ActivityMonthBinding binding;
     LocalDate selectedDate;
 
     @Override
@@ -47,7 +46,7 @@ public class MonthActivity extends AppCompatActivity implements SwipeInterface {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_month);
 
-        if(null != getIntent() && null!= getIntent().getExtras() && getIntent().getExtras().containsKey(Constants.EXTRA_DATE_SELECTED)){
+        if (null != getIntent() && null != getIntent().getExtras() && getIntent().getExtras().containsKey(Constants.EXTRA_DATE_SELECTED)) {
             selectedDate = (LocalDate) getIntent().getSerializableExtra(Constants.EXTRA_DATE_SELECTED);
         } else {
             selectedDate = LocalDate.now().withDayOfMonth(1);
@@ -77,9 +76,9 @@ public class MonthActivity extends AppCompatActivity implements SwipeInterface {
         loadCalendar(selectedDate);
 
         binding.rootView.setOnTouchListener(new ActivitySwipeDetector(this, this));
-        binding.muhurthamLayout.setOnTouchListener(new ActivitySwipeDetector(this, this));
+        //binding.muhurthamLayout.setOnTouchListener(new ActivitySwipeDetector(this, this));
 
-        loadMuhurtham();
+
     }
 
     private void nextMonth() {
@@ -100,10 +99,20 @@ public class MonthActivity extends AppCompatActivity implements SwipeInterface {
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
-    private void loadMuhurtham() {
-       FragmentTransaction ft =  getSupportFragmentManager().beginTransaction();
-       ft.replace(R.id.muhurtham_layout, new MuhurthamFragment(selectedDate));
-       ft.commit();
+    private void loadMuhurtham(Map<LocalDate, MuhurthamData> muhurthamDataMap) {
+        if (muhurthamDataMap.isEmpty()) {
+            binding.muhurthamLayout.muhurthamLinearLayout.setVisibility(View.GONE);
+            binding.muhurthamLayout.muhurthamEmptyTxt.setVisibility(View.VISIBLE);
+            binding.muhurthamLayout.muhurthamEmptyTxt.setText(getString(R.string.empty_muhurtham_msg, getResources().getStringArray(R.array.en_month_names)[selectedDate.getMonthValue() - 1]));
+        } else {
+            binding.muhurthamLayout.muhurthamLinearLayout.setVisibility(View.VISIBLE);
+            binding.muhurthamLayout.muhurthamEmptyTxt.setVisibility(View.GONE);
+            Map<LocalDate, MuhurthamData> mdList = new TreeMap<>(muhurthamDataMap);
+            binding.muhurthamLayout.muhurthamRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+            MonthMuhurthamRecyclerAdapter adapter = new MonthMuhurthamRecyclerAdapter(this, new ArrayList<>(mdList.values()));
+            binding.muhurthamLayout.muhurthamRecyclerView.setAdapter(adapter);
+            binding.muhurthamLayout.muhurthamRecyclerView.suppressLayout(true);
+        }
     }
 
 
@@ -138,16 +147,47 @@ public class MonthActivity extends AppCompatActivity implements SwipeInterface {
             //TODO get Viratham List
             List<VirathamMonthData> vdList = DBHelper.getInstance(this).getVirathamList(selectedDate.getYear(), selectedDate.getMonthValue());
             Map<LocalDate, List<VirathamMonthData>> vdMap = new HashMap<>();
-            for(VirathamMonthData vmd:vdList){
+            for (VirathamMonthData vmd : vdList) {
                 LocalDate ld = DateUtil.ofLocalDate(vmd.getDate());
-                if(!vdMap.containsKey(ld)){
+                if (!vdMap.containsKey(ld)) {
                     vdMap.put(ld, new ArrayList<>());
                 }
 
                 Objects.requireNonNull(vdMap.get(ld)).add(vmd);
             }
 
-            // TODO Holiday/Special Day List
+            // TODO Holiday/Festival Day List
+            Map<LocalDate, String> hindhuFestivalMap = DBHelper.getInstance(this).getHinduFestivalDays(selectedDate.getYear(), selectedDate.getMonthValue());
+
+            List<String> festivals = new ArrayList<>();
+            String[] weekShortNames = getResources().getStringArray(R.array.weekday_short_names);
+            for (Map.Entry<LocalDate, String> entry : hindhuFestivalMap.entrySet()) {
+                festivals.add(
+                        entry.getKey().getDayOfMonth() + " " + weekShortNames[entry.getKey().getDayOfWeek().getValue() - 1]
+                                + " - " + entry.getValue()
+                );
+            }
+            if(festivals.isEmpty()){
+                festivals.add("          -          ");
+            }
+            ArrayAdapter<String> festivalAdapter = new ArrayAdapter<>(this, R.layout.simple_textview_item, R.id.text, festivals);
+            binding.hinduFestivalLayout.listView.setAdapter(festivalAdapter);
+            binding.hinduFestivalLayout.headerTitle.setText(getString(R.string.hindu_festivals));
+
+            Map<LocalDate, String> holidayMap = DBHelper.getInstance(this).getHolidays(selectedDate.getYear(), selectedDate.getMonthValue());
+            List<String> holidays = new ArrayList<>();
+            for (Map.Entry<LocalDate, String> entry : holidayMap.entrySet()) {
+                holidays.add(
+                        entry.getKey().getDayOfMonth() + " " + weekShortNames[entry.getKey().getDayOfWeek().getValue() - 1]
+                                + " - " + entry.getValue()
+                );
+            }
+            if(holidays.isEmpty()){
+                holidays.add("          -          ");
+            }
+            ArrayAdapter<String> holidayAdapter = new ArrayAdapter<>(this, R.layout.simple_textview_item, R.id.text, festivals);
+            binding.govtHolidayLayout.listView.setAdapter(holidayAdapter);
+            binding.govtHolidayLayout.headerTitle.setText(getString(R.string.govtHolidays));
 
             // Muhurtham List
             final Map<LocalDate, MuhurthamData> muhurthamDataMap = DBHelper.getInstance(this)
@@ -162,12 +202,11 @@ public class MonthActivity extends AppCompatActivity implements SwipeInterface {
                     tamilMonth.add(md.getTmonth());
                 }
 
-                if(vdMap.containsKey(dateModel.getDate())){
+                if (vdMap.containsKey(dateModel.getDate())) {
                     List<VirathamMonthData> vmdList = vdMap.get(dateModel.getDate());
-                    System.out.println("Size:::" + vmdList.size());
                     assert vmdList != null;
-                    for(VirathamData vd: vmdList){
-                        switch (vd.getViratham()){
+                    for (VirathamData vd : vmdList) {
+                        switch (vd.getViratham()) {
                             case 0:
                                 dateModel.setTithi(R.drawable.new_moon);
                                 break;
@@ -211,6 +250,7 @@ public class MonthActivity extends AppCompatActivity implements SwipeInterface {
                 }
                 dates.add(dateModel);
             }
+            loadMuhurtham(muhurthamDataMap);
         }
         return dates;
     }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp"
+        android:layout_margin="5dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:text="@string/hindu_festivals"
+                android:gravity="center"
+                android:id="@+id/header_title"
+                android:paddingVertical="5dp"
+                android:background="@color/teal_200"/>
+            <org.tem.calendar.custom.NonScrollListView
+                android:divider="@null"
+                android:dividerHeight="0dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/simple_textview_item"
+                android:id="@+id/listView"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>

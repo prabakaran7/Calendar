@@ -11,6 +11,15 @@ public class DateModel {
     private int star = -1;
     private int muhurtham = -1;
     private int special = -1;
+    private boolean isHoliday;
+
+    public boolean isHoliday() {
+        return isHoliday;
+    }
+
+    public void setHoliday(boolean holiday) {
+        isHoliday = holiday;
+    }
 
     public LocalDate getDate() {
         return date;

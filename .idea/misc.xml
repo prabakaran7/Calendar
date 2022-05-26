@@ -38,7 +38,7 @@
         <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/activity_day.xml" value="0.17552083333333332" />
         <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/activity_gowri_panchangam.xml" value="0.1" />
         <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/activity_main.xml" value="0.16145833333333334" />
-        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/activity_month.xml" value="0.17552083333333332" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/activity_month.xml" value="0.1" />
         <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/activity_muhurtham.xml" value="0.1140625" />
         <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/activity_panchangam.xml" value="0.11197916666666667" />
         <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/activity_raghu_ema_kuligai.xml" value="0.13177083333333334" />
@@ -64,9 +64,15 @@
         <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/fragment_panchangam.xml" value="0.11197916666666667" />
         <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/fragment_raghu_ema_kuligai.xml" value="0.2096505823627288" />
         <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/gowri_panchangam_item.xml" value="0.22" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/month_viratham_item.xml" value="0.14010416666666667" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/month_viratham_layout.xml" value="0.14010416666666667" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/monthly_festival_layout.xml" value="0.17552083333333332" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/monthly_muhurtham_item.xml" value="0.17552083333333332" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/monthly_muhurtham_layout.xml" value="0.40540540540540543" />
         <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/muhurtham_item.xml" value="0.17552083333333332" />
         <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/nalla_neram_layout.xml" value="0.17552083333333332" />
         <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/panchangam_layout.xml" value="0.1140625" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/simple_textview_item.xml" value="0.17552083333333332" />
         <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/week_header_layout.xml" value="0.1" />
         <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
       </map>
