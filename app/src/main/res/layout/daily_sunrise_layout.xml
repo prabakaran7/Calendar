@@ -5,76 +5,67 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="10dp"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="5dp">
+        android:layout_marginVertical="@dimen/card_margin"
+        app:cardCornerRadius="@dimen/card_radius"
+        app:cardElevation="@dimen/card_elevation">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/teal_200"
-            android:padding="1dp">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                android:background="@color/white"
-                android:orientation="vertical">
+                android:background="?attr/bgSubTitle"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingVertical="5dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/purple_200"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:paddingVertical="5dp">
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:src="@drawable/sunrise"
-                        app:tint="@color/white" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="@string/sunriseLabel"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:paddingHorizontal="5dp"
-                        android:text="-"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/sunriseTxt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="6.30"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:src="@drawable/sunrise"
+                    app:tint="?attr/tcSubTitle" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/sunriseLaknamTxt"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:maxLines="3"
-                    android:padding="10dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+                    android:text="@string/sunriseLabel"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="?attr/tcSubTitle"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingHorizontal="5dp"
+                    android:text="-"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="?attr/tcSubTitle"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/sunriseTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="6.30"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="?attr/tcSubTitle"
+                    android:textStyle="bold" />
             </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/sunriseLaknamTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="3"
+                android:padding="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </layout>

@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginVertical="10dp"
-    app:cardCornerRadius="5dp"
-    app:cardElevation="5dp">
+    android:layout_marginVertical="@dimen/card_margin"
+    app:cardCornerRadius="@dimen/card_radius"
+    app:cardElevation="@dimen/card_elevation">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/purple_200"
+            android:background="?attr/bgSubTitle"
             android:paddingHorizontal="5dp"
             android:paddingVertical="2dp">
 
@@ -33,13 +33,13 @@
                 android:maxLines="1"
                 android:text="@string/nallaNeramLabel"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/white"
+                android:textColor="?attr/tcSubTitle"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="@color/white" />
+                android:background="?attr/tcSubTitle" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="0dp"
@@ -51,7 +51,7 @@
                 android:paddingHorizontal="10dp"
                 android:text="@string/gowriNallaNeramLabel"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/white"
+                android:textColor="?attr/tcSubTitle"
                 android:textStyle="bold"
                 app:autoSizeTextType="uniform" />
         </LinearLayout>
@@ -64,12 +64,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:background="@color/teal_200"
+                android:background="?attr/bgSideText"
                 android:gravity="center_horizontal"
                 android:padding="5dp"
                 android:text="@string/morningLabel"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/white"
+                android:textColor="?attr/tcSideText"
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -87,7 +87,7 @@
             <TextView
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="@color/teal_200" />
+                android:background="?attr/bgSideText" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/gowriMorning"
@@ -110,13 +110,13 @@
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_weight="2"
-                android:background="@color/white" />
+                android:background="?attr/tcSideText" />
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_weight="6"
-                android:background="@color/teal_200" />
+                android:background="?attr/bgSideText" />
         </LinearLayout>
 
         <LinearLayout
@@ -127,12 +127,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:background="@color/teal_200"
+                android:background="?attr/bgSideText"
                 android:gravity="center_horizontal"
                 android:paddingVertical="5dp"
                 android:text="@string/eveningLabel"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/white"
+                android:textColor="?attr/tcSideText"
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -150,7 +150,7 @@
             <TextView
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="@color/teal_200" />
+                android:background="?attr/bgSideText" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/gowriEvening"

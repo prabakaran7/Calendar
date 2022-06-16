@@ -7,9 +7,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import org.tem.calendar.activities.DailyActivity;
+import org.tem.calendar.activities.ManaiyadiSastharamActivity;
 import org.tem.calendar.activities.MonthActivity;
+import org.tem.calendar.activities.MuhurthamActivity;
+import org.tem.calendar.activities.PanchangamActivity;
+import org.tem.calendar.activities.RaghuEmaKuligaiActivity;
+import org.tem.calendar.activities.VasthuActivity;
 import org.tem.calendar.databinding.ActivityCalendarBinding;
 import org.tem.calendar.db.DBHelper;
+import org.tem.calendar.fragment.PanchangamFragment;
 import org.tem.calendar.model.MonthData;
 import org.tem.calendar.model.NallaNeramData;
 
@@ -33,6 +39,45 @@ public class CalendarActivity extends AppCompatActivity {
 
         binding.monthlyCalendarCard.setOnClickListener(view -> {
             Intent intent = new Intent(CalendarActivity.this, MonthActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        });
+
+
+        binding.muhurthamCard.setOnClickListener(view -> {
+            Intent intent = new Intent(CalendarActivity.this, MuhurthamActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        });
+
+        binding.raghuCard.setOnClickListener(view -> {
+            Intent intent = new Intent(CalendarActivity.this, RaghuEmaKuligaiActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        });
+
+        binding.gowriCard.setOnClickListener(view ->{
+            Intent intent = new Intent(CalendarActivity.this, PanchangamActivity.class);
+            intent.putExtra(Constants.EXTRA_PANCHANGAM, PanchangamFragment.GOWRI_PANCHANGAM);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        });
+
+        binding.horaiCard.setOnClickListener(view ->{
+            Intent intent = new Intent(CalendarActivity.this, PanchangamActivity.class);
+            intent.putExtra(Constants.EXTRA_PANCHANGAM, PanchangamFragment.GRAHA_ORAI_PANCHANGAM);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        });
+
+        binding.vasthuCard.setOnClickListener(view->{
+            Intent intent = new Intent(CalendarActivity.this, VasthuActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        });
+
+        binding.manaiyadiCard.setOnClickListener(view->{
+            Intent intent = new Intent(CalendarActivity.this, ManaiyadiSastharamActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });

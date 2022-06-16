@@ -8,23 +8,25 @@
         android:orientation="vertical"
         tools:context=".activities.MuhurthamActivity">
 
-        <Spinner
-            android:id="@+id/yearSpinner"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/actionBarItemBackground"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:titleTextColor="?attr/actionMenuTextColor" />
 
-            style="@style/Widget.AppCompat.Spinner"/>
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/orange"
-            app:tabIconTint="@color/grey"
-            app:tabIndicatorColor="@color/white"
+            android:background="@android:color/holo_red_dark"
+            app:tabIconTint="@android:color/holo_red_dark"
+            app:tabIndicatorColor="@color/yellow"
             app:tabMode="scrollable"
-            app:tabSelectedTextColor="@color/white"
-            app:tabTextColor="@color/grey" />
+            app:tabSelectedTextColor="@color/yellow"
+            app:tabTextAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:tabTextColor="@color/white" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager"

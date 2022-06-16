@@ -2,7 +2,9 @@ package org.tem.calendar.activities;
 
 import android.os.Bundle;
 import android.util.Pair;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.viewpager2.widget.ViewPager2;
@@ -17,6 +19,7 @@ import org.tem.calendar.databinding.ActivityRaghuEmaKuligaiBinding;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 public class RaghuEmaKuligaiActivity extends AppCompatActivity {
 
@@ -31,9 +34,12 @@ public class RaghuEmaKuligaiActivity extends AppCompatActivity {
 
         List<Pair<Integer, String>> weeks = CalendarApp.getWeekDayNameList();
         setCurrentDayIndex(weeks);
+        binding.toolbar.setTitle(getString(R.string.gowriPanchangamLabel));
+        setSupportActionBar(binding.toolbar);
         if (null != getSupportActionBar()) {
             getSupportActionBar().setTitle(getString(R.string.raghu_ema_kuligai_title));
         }
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         new TabLayoutMediator(binding.tabLayout, binding.viewPager, (tab, position) -> tab.setText(weeks.get(position).second)).attach();
 
@@ -48,6 +54,15 @@ public class RaghuEmaKuligaiActivity extends AppCompatActivity {
                 break;
             }
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            finish();
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

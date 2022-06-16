@@ -363,7 +363,7 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
 
                 case 4:
                     binding.importantDayLayout.thitiImage.setVisibility(View.VISIBLE);
-                    binding.importantDayLayout.thitiImage.setImageResource(R.drawable.sathurthasi);
+                    binding.importantDayLayout.thitiImage.setImageResource(R.drawable.chathurthi);
                     break;
 
                 case 5:
@@ -453,10 +453,10 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
                 festivals.addAll(Arrays.asList(fd.getImportant().split("[ ]*[,][ ]*")));
             }
             if (!festivals.isEmpty()) {
-                binding.importantDayLayout.specialDayTxt.setVisibility(View.VISIBLE);
+                binding.importantDayLayout.specialDayLayout.setVisibility(View.VISIBLE);
                 binding.importantDayLayout.specialDayTxt.setText(StringUtils.join(festivals, ","));
             } else {
-                binding.importantDayLayout.specialDayTxt.setVisibility(View.GONE);
+                binding.importantDayLayout.specialDayLayout.setVisibility(View.GONE);
             }
         }
     }

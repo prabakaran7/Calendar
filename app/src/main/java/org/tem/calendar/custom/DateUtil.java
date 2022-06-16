@@ -5,6 +5,7 @@ import android.util.Pair;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -19,7 +20,7 @@ public class DateUtil {
 
     public static String expandedTime(String time) {
 
-        LocalTime lt = LocalTime.parse(time.replace(".", ":"), DateTimeFormatter.ofPattern("h:mm a"));
+        LocalTime lt = LocalTime.parse(time.replace(".", ":"), new DateTimeFormatterBuilder().parseCaseInsensitive().appendPattern("h:mm a").toFormatter());
         String returnValue = "";
         if (lt.isBefore(adhiKaalai)) {
             returnValue= "அதிகாலை";

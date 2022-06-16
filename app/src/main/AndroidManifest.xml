@@ -9,7 +9,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Calendar">
+        android:theme="@style/Theme.Calendar.Default">
+        <activity
+            android:name=".activities.ManaiyadiSastharamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.VasthuActivity"
+            android:exported="false" />
         <activity
             android:name=".CalendarActivity"
             android:exported="true">
@@ -22,17 +28,18 @@
         <activity
             android:name=".activities.MuhurthamActivity"
             android:exported="false">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".activities.PanchangamActivity"
             android:exported="false"
-            android:label="@string/title_activity_gowri_panchangam"
-            android:theme="@style/Theme.Calendar.NoActionBar">
+            android:label="@string/title_activity_gowri_panchangam">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->

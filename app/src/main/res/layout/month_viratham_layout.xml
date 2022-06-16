@@ -5,7 +5,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_margin="10dp"
         app:cardCornerRadius="5dp"
         app:cardElevation="10dp">
 
@@ -14,90 +14,77 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <include
-                android:id="@+id/amavasai"
-                layout="@layout/month_viratham_item" />
-            <View
+            <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/teal_200"/>
+                android:layout_height="wrap_content"
+                android:background="@color/teal_200"
+                android:gravity="center"
+                android:paddingVertical="5dp"
+                android:text="@string/viratha_thinangal"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <include
+                android:id="@+id/pournami"
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
 
             <include
                 android:id="@+id/amavasai"
-                layout="@layout/month_viratham_item" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/teal_200"/>
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
+
             <include
-                android:id="@+id/amavasai"
-                layout="@layout/month_viratham_item" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/teal_200"/>
+                android:id="@+id/karthigai"
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
+
             <include
-                android:id="@+id/amavasai"
-                layout="@layout/month_viratham_item" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/teal_200"/>
+                android:id="@+id/shastiPlus"
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
+
             <include
-                android:id="@+id/amavasai"
-                layout="@layout/month_viratham_item" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/teal_200"/>
+                android:id="@+id/shasti"
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
+
             <include
-                android:id="@+id/amavasai"
-                layout="@layout/month_viratham_item" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/teal_200"/>
+                android:id="@+id/pradosamPlus"
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
+
             <include
-                android:id="@+id/amavasai"
-                layout="@layout/month_viratham_item" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/teal_200"/>
+                android:id="@+id/pradosam"
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
+
             <include
-                android:id="@+id/amavasai"
-                layout="@layout/month_viratham_item" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/teal_200"/>
+                android:id="@+id/sankata_chathurthi"
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
+
             <include
-                android:id="@+id/amavasai"
-                layout="@layout/month_viratham_item" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/teal_200"/><include
-            android:id="@+id/amavasai"
-            layout="@layout/month_viratham_item" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/teal_200"/>
+                android:id="@+id/chathurthi"
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
+
             <include
-                android:id="@+id/amavasai"
-                layout="@layout/month_viratham_item" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/teal_200"/>
+                android:id="@+id/egadesi"
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
+
             <include
-                android:id="@+id/amavasai"
-                layout="@layout/month_viratham_item" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/teal_200"/>
+                android:id="@+id/sivarathri"
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/thiruvonam"
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
+
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

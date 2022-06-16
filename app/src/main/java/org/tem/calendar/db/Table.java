@@ -164,4 +164,10 @@ public class Table {
         String COL_LAKNAM_TIME = "LAKNAM_TIME";
         String COL_SUN_RISE = "SUN_RISE";
     }
+
+    public interface Vasthu {
+        String NAME = "VASTHU_DAYS";
+        String COL_DATE = "DATE";
+        String COL_TIME = "TIME";
+    }
 }

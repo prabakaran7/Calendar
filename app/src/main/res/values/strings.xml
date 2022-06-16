@@ -224,7 +224,7 @@
     <string name="fullday_pangachangam">இன்று முழுவதும் %1$s</string>
     <string name="two_panchangam">இன்று %1$s வரை %2$s பின்பு %3$s</string>
     <string name="three_panchangam">இன்று %1$s வரை %3$s பின்பு %2$s வரை %4$s பின்பு %5$s</string>
-    <string name="four_panchangam" >இன்று %1$s வரை %4$s பின்பு %2$s வரை %5$s பின்பு %3$s வரை %6$s பின்பு %7$s</string>
+    <string name="four_panchangam">இன்று %1$s வரை %4$s பின்பு %2$s வரை %5$s பின்பு %3$s வரை %6$s பின்பு %7$s</string>
     <string name="govtHoliday">அரசு விடுமுறை</string>
     <string name="chandrastamamLabel">சந்திராஷ்டமம்</string>
     <string name="today_new_moon">இன்று அமாவாசை</string>
@@ -240,6 +240,28 @@
     <string name="muhurtham_msg">%1$d %2$s - %3$s %4$d</string>
     <string name="hindu_festivals">இந்து பண்டிகைகள்</string>
     <string name="govtHolidays">அரசு விடுமுறை நாட்கள்</string>
+    <string name="viratha_thinangal">விரத நாட்கள்</string>
+    <string name="amavasaiTxt">அமாவாசை</string>
+    <string name="pournamiTxt">பௌர்ணமி</string>
+    <string name="karthigaiTxt">கார்த்திகை</string>
+    <string name="sivarathriTxt">சிவராத்திரி</string>
+    <string name="sankada_chathurthi_txt">சங்கடஹர சதுர்த்தி</string>
+    <string name="chathurthiTxt">சதுர்த்தி</string>
+    <string name="thiruvonamTxt">திருவோண விரதம்</string>
+    <string name="shastiValarpiraiTxt">சஷ்டி(வளர்பிறை)விரதம்</string>
+    <string name="shastiTxt">சஷ்டி விரதம்</string>
+    <string name="pradosamValarPiraiTxt">வளர்பிறை பிரதோஷம்</string>
+    <string name="ekadeshiTxt">ஏகாதசி</string>
+    <string name="pradosamTheiPiraiTxt">தேய்பிறை பிரதோஷம்</string>
+    <string name="otherDays">மற்ற நாட்கள்</string>
+    <string name="astamiTxt">அஷ்டமி</string>
+    <string name="navamiTxt">நவமி</string>
+    <string name="kariNaalTxt">கரி நாட்கள்</string>
+    <string name="muhurtham_days">முகூர்த்த நாட்கள்</string>
+    <string name="asuba_days">கரி நாட்கள், அஷ்டமி, நவமி</string>
+    <string name="vasthu">வாஸ்து</string>
+    <string name="vasthu_days">வாஸ்து நாட்கள்</string>
+    <string name="manaiyadi_label">மனையடி சாஸ்திரம்</string>
     <string-array name="tamil_year_names">
         <item>பிரபவ</item>
         <item>விபவ</item>
@@ -302,7 +324,7 @@
         <item>க்ரோதன</item>
         <item>அட்சய</item>
     </string-array>
-    <string-array name="rasi_short_names" >
+    <string-array name="rasi_short_names">
         <item>மேஷ</item>
         <item>ரிஷப</item>
         <item>மிதுன</item>
@@ -327,7 +349,7 @@
         <item>ஞாயிற்றுக்கிழமை</item>
 
     </string-array>
-    <string-array name="karanam_names" >
+    <string-array name="karanam_names">
         <item>கரசை</item>
         <item>வணிசை</item>
         <item>பத்திரை</item>

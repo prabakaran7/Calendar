@@ -5,14 +5,16 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingEnd="10dp"
         android:orientation="horizontal">
         <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="50dp"
+            android:layout_width="40dp"
             android:id="@+id/virathamImage"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:src="@drawable/full_moon"
             android:padding="5dp"/>
         <LinearLayout
@@ -27,23 +29,28 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:id="@+id/virathamHeader"
-                android:text="@string/today_full_moon"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:paddingVertical="5dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 />
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:id="@+id/virathamTxt"
-                android:text="@string/muhurtham_msg"
                 android:gravity="center"
                 android:paddingVertical="5dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 />
 
         </LinearLayout>
+        <View
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/teal_200"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

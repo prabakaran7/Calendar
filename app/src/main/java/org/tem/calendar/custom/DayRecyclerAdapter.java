@@ -70,7 +70,7 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
             });
         }
 
-        if (weekEnds.contains((position % 7) + 1)) {
+        if (weekEnds.contains((position % 7) + 1) || model.isHoliday()) {
             if (model.isToday()) {
                 holder.itemView.setBackgroundResource(R.drawable.day_today_holiday_bg);
             } else {

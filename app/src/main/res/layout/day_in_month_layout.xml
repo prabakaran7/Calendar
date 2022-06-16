@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
-
+<layout>
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        style="@style/CalendarDay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="1px"
+        android:background="@drawable/header_back"
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/leftTopImage"
-            android:layout_width="5pt"
-            android:layout_height="5pt"
-            android:layout_marginTop="5dp"
+            android:layout_width="7pt"
+            android:layout_height="7pt"
+            android:layout_alignParentStart="true"
             android:layout_marginStart="5dp"
-            android:layout_alignParentStart="true" />
+            android:layout_marginTop="5dp" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/secondaryDayTxt"
@@ -24,40 +22,40 @@
             android:minHeight="15dp"
             android:paddingTop="5dp"
             android:paddingEnd="5dp"
+            android:paddingStart="0dp"
             android:text="4"
             android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
-
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/primeDayTxt"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/leftTopImage"
-            android:duplicateParentState="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
             android:gravity="center"
             android:padding="5dp"
             android:text="31"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textStyle="bold" />
 
-
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/leftBottomImage"
             android:layout_width="7pt"
             android:layout_height="7pt"
-            android:layout_marginBottom="5dp"
-            android:layout_marginStart="5dp"
             android:layout_below="@id/primeDayTxt"
-            android:layout_alignParentStart="true"/>
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="5dp" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/rightBottomImage"
             android:layout_width="7pt"
             android:layout_height="7pt"
-            android:layout_marginBottom="5dp"
-            android:layout_marginStart="5dp"
             android:layout_below="@id/primeDayTxt"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="5dp" />
 
     </RelativeLayout>
 </layout>

@@ -5,9 +5,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="10dp"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="5dp">
+        android:layout_marginVertical="@dimen/card_margin"
+        app:cardCornerRadius="@dimen/card_radius"
+        app:cardElevation="@dimen/card_elevation">
 
 
         <LinearLayout
@@ -18,12 +18,12 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/purple_200"
+                android:background="?attr/bgSubTitle"
                 android:gravity="center"
                 android:paddingVertical="2dp"
                 android:text="@string/todayRasiPalanLabel"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/white"
+                android:textColor="?attr/tcSubTitle"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -35,7 +35,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:background="@color/teal_200"
+                    android:background="?attr/bgSideText"
                     android:orientation="horizontal"
                     android:padding="5dp">
 
@@ -45,7 +45,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginHorizontal="10dp"
                         android:src="@drawable/mesham"
-                        app:tint="@color/white" />
+                        app:tint="?attr/tcSideText" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
@@ -56,7 +56,7 @@
                         android:paddingHorizontal="10dp"
                         android:text="@string/mesham"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/tcSideText"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -65,7 +65,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:background="@color/white"
+                    android:background="?attr/tcSideText"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="15dp"
                     android:text="@string/mesham"
@@ -82,13 +82,13 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:background="@color/white" />
+                    android:background="?attr/tcSideText" />
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:background="@color/teal_200" />
+                    android:background="?attr/bgSideText" />
             </LinearLayout>
 
             <LinearLayout
@@ -100,7 +100,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:background="@color/teal_200"
+                    android:background="?attr/bgSideText"
                     android:orientation="horizontal"
                     android:padding="5dp">
 
@@ -110,7 +110,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginHorizontal="10dp"
                         android:src="@drawable/rishabam"
-                        app:tint="@color/white" />
+                        app:tint="?attr/tcSideText" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
@@ -121,7 +121,7 @@
                         android:paddingHorizontal="10dp"
                         android:text="@string/rishabam"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/tcSideText"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -130,7 +130,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:background="@color/white"
+                    android:background="?attr/tcSideText"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="15dp"
                     android:text="@string/rishabam"
@@ -147,13 +147,13 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:background="@color/white" />
+                    android:background="?attr/tcSideText" />
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:background="@color/teal_200" />
+                    android:background="?attr/bgSideText" />
             </LinearLayout>
 
             <LinearLayout
@@ -165,7 +165,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:background="@color/teal_200"
+                    android:background="?attr/bgSideText"
                     android:orientation="horizontal"
                     android:padding="5dp">
 
@@ -175,7 +175,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginHorizontal="10dp"
                         android:src="@drawable/mithunam"
-                        app:tint="@color/white" />
+                        app:tint="?attr/tcSideText" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
@@ -186,7 +186,7 @@
                         android:paddingHorizontal="10dp"
                         android:text="@string/mithunam"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/tcSideText"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -195,7 +195,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:background="@color/white"
+                    android:background="?attr/tcSideText"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="15dp"
                     android:text="@string/mithunam"
@@ -212,13 +212,13 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:background="@color/white" />
+                    android:background="?attr/tcSideText" />
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:background="@color/teal_200" />
+                    android:background="?attr/bgSideText" />
             </LinearLayout>
 
             <LinearLayout
@@ -230,7 +230,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:background="@color/teal_200"
+                    android:background="?attr/bgSideText"
                     android:orientation="horizontal"
                     android:padding="5dp">
 
@@ -240,7 +240,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginHorizontal="10dp"
                         android:src="@drawable/kadagam"
-                        app:tint="@color/white" />
+                        app:tint="?attr/tcSideText" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
@@ -251,7 +251,7 @@
                         android:paddingHorizontal="10dp"
                         android:text="@string/kadagam"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/tcSideText"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -260,7 +260,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:background="@color/white"
+                    android:background="?attr/tcSideText"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="15dp"
                     android:text="@string/kadagam"
@@ -277,13 +277,13 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:background="@color/white" />
+                    android:background="?attr/tcSideText" />
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:background="@color/teal_200" />
+                    android:background="?attr/bgSideText" />
             </LinearLayout>
 
             <LinearLayout
@@ -295,7 +295,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:background="@color/teal_200"
+                    android:background="?attr/bgSideText"
                     android:orientation="horizontal"
                     android:padding="5dp">
 
@@ -305,7 +305,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginHorizontal="10dp"
                         android:src="@drawable/simmam"
-                        app:tint="@color/white" />
+                        app:tint="?attr/tcSideText" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
@@ -316,7 +316,7 @@
                         android:paddingHorizontal="10dp"
                         android:text="@string/simmam"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/tcSideText"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -325,7 +325,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:background="@color/white"
+                    android:background="?attr/tcSideText"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="15dp"
                     android:text="@string/simmam"
@@ -342,13 +342,13 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:background="@color/white" />
+                    android:background="?attr/tcSideText" />
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:background="@color/teal_200" />
+                    android:background="?attr/bgSideText" />
             </LinearLayout>
 
             <LinearLayout
@@ -360,7 +360,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:background="@color/teal_200"
+                    android:background="?attr/bgSideText"
                     android:orientation="horizontal"
                     android:padding="5dp">
 
@@ -370,7 +370,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginHorizontal="10dp"
                         android:src="@drawable/kanni"
-                        app:tint="@color/white" />
+                        app:tint="?attr/tcSideText" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
@@ -381,7 +381,7 @@
                         android:paddingHorizontal="10dp"
                         android:text="@string/kanni"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/tcSideText"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -390,7 +390,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:background="@color/white"
+                    android:background="?attr/tcSideText"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="15dp"
                     android:text="@string/kanni"
@@ -407,13 +407,13 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:background="@color/white" />
+                    android:background="?attr/tcSideText" />
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:background="@color/teal_200" />
+                    android:background="?attr/bgSideText" />
             </LinearLayout>
 
             <LinearLayout
@@ -425,7 +425,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:background="@color/teal_200"
+                    android:background="?attr/bgSideText"
                     android:orientation="horizontal"
                     android:padding="5dp">
 
@@ -435,7 +435,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginHorizontal="10dp"
                         android:src="@drawable/thulaam"
-                        app:tint="@color/white" />
+                        app:tint="?attr/tcSideText" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
@@ -446,7 +446,7 @@
                         android:paddingHorizontal="10dp"
                         android:text="@string/thulam"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/tcSideText"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -455,7 +455,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:background="@color/white"
+                    android:background="?attr/tcSideText"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="15dp"
                     android:text="@string/thulam"
@@ -472,13 +472,13 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:background="@color/white" />
+                    android:background="?attr/tcSideText" />
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:background="@color/teal_200" />
+                    android:background="?attr/bgSideText" />
             </LinearLayout>
 
             <LinearLayout
@@ -490,7 +490,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:background="@color/teal_200"
+                    android:background="?attr/bgSideText"
                     android:orientation="horizontal"
                     android:padding="5dp">
 
@@ -500,7 +500,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginHorizontal="10dp"
                         android:src="@drawable/vricham"
-                        app:tint="@color/white" />
+                        app:tint="?attr/tcSideText" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
@@ -511,7 +511,7 @@
                         android:paddingHorizontal="10dp"
                         android:text="@string/vrichagam"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/tcSideText"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -520,7 +520,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:background="@color/white"
+                    android:background="?attr/tcSideText"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="15dp"
                     android:text="@string/vrichagam"
@@ -537,13 +537,13 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:background="@color/white" />
+                    android:background="?attr/tcSideText" />
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:background="@color/teal_200" />
+                    android:background="?attr/bgSideText" />
             </LinearLayout>
 
             <LinearLayout
@@ -555,7 +555,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:background="@color/teal_200"
+                    android:background="?attr/bgSideText"
                     android:orientation="horizontal"
                     android:padding="5dp">
 
@@ -565,7 +565,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginHorizontal="10dp"
                         android:src="@drawable/thanusu"
-                        app:tint="@color/white" />
+                        app:tint="?attr/tcSideText" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
@@ -576,7 +576,7 @@
                         android:paddingHorizontal="10dp"
                         android:text="@string/thanusu"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/tcSideText"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -585,7 +585,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:background="@color/white"
+                    android:background="?attr/tcSideText"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="15dp"
                     android:text="@string/thanusu"
@@ -602,13 +602,13 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:background="@color/white" />
+                    android:background="?attr/tcSideText" />
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:background="@color/teal_200" />
+                    android:background="?attr/bgSideText" />
             </LinearLayout>
 
             <LinearLayout
@@ -620,7 +620,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:background="@color/teal_200"
+                    android:background="?attr/bgSideText"
                     android:orientation="horizontal"
                     android:padding="5dp">
 
@@ -630,7 +630,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginHorizontal="10dp"
                         android:src="@drawable/magaram"
-                        app:tint="@color/white" />
+                        app:tint="?attr/tcSideText" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
@@ -641,7 +641,7 @@
                         android:paddingHorizontal="10dp"
                         android:text="@string/magaram"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/tcSideText"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -650,7 +650,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:background="@color/white"
+                    android:background="?attr/tcSideText"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="15dp"
                     android:text="@string/magaram"
@@ -667,13 +667,13 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:background="@color/white" />
+                    android:background="?attr/tcSideText" />
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:background="@color/teal_200" />
+                    android:background="?attr/bgSideText" />
             </LinearLayout>
 
             <LinearLayout
@@ -685,7 +685,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:background="@color/teal_200"
+                    android:background="?attr/bgSideText"
                     android:orientation="horizontal"
                     android:padding="5dp">
 
@@ -695,7 +695,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginHorizontal="10dp"
                         android:src="@drawable/kumbam"
-                        app:tint="@color/white" />
+                        app:tint="?attr/tcSideText" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
@@ -706,7 +706,7 @@
                         android:paddingHorizontal="10dp"
                         android:text="@string/kumbam"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/tcSideText"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -715,7 +715,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:background="@color/white"
+                    android:background="?attr/tcSideText"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="15dp"
                     android:text="@string/kumbam"
@@ -732,13 +732,13 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:background="@color/white" />
+                    android:background="?attr/tcSideText" />
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:background="@color/teal_200" />
+                    android:background="?attr/bgSideText" />
             </LinearLayout>
 
             <LinearLayout
@@ -750,7 +750,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:background="@color/teal_200"
+                    android:background="?attr/bgSideText"
                     android:orientation="horizontal"
                     android:padding="5dp">
 
@@ -760,7 +760,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginHorizontal="10dp"
                         android:src="@drawable/meenam"
-                        app:tint="@color/white" />
+                        app:tint="?attr/tcSideText" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
@@ -771,7 +771,7 @@
                         android:paddingHorizontal="10dp"
                         android:text="@string/meenam"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/tcSideText"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -780,7 +780,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:background="@color/white"
+                    android:background="?attr/tcSideText"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="15dp"
                     android:text="@string/meenam"
@@ -797,16 +797,14 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:background="@color/teal_200" />
+                    android:background="?attr/tcSideText" />
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:background="@color/teal_200" />
+                    android:background="?attr/bgSideText" />
             </LinearLayout>
-
-
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

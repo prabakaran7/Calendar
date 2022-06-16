@@ -5,20 +5,20 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="10dp"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="5dp">
+        android:layout_margin="@dimen/card_margin"
+
+        app:cardCornerRadius="@dimen/card_radius"
+        app:cardElevation="@dimen/card_elevation">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/back"
+            android:background="@drawable/back_round_radius"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/back"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -70,14 +70,17 @@
                     android:rotation="150"
                     android:src="@drawable/cresent_white"
                     android:visibility="gone" />
-
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?attr/bgSeparator" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/viruthamTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/back"
                 android:gravity="center"
                 android:maxLines="5"
                 android:paddingVertical="10dp"
@@ -85,16 +88,26 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textStyle="bold" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/specialDayTxt"
+            <LinearLayout
+                android:id="@+id/specialDayLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/back"
-                android:gravity="center"
-                android:maxLines="5"
-                android:paddingVertical="10dp"
-                android:text="Placeholder for Special Days" />
+                android:orientation="vertical">
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?attr/bgSeparator" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/specialDayTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:maxLines="5"
+                    android:paddingVertical="10dp"
+                    android:text="Placeholder for Special Days" />
+            </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </layout>

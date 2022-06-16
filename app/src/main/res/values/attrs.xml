@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="bgMain" format="reference"/>
+    <attr name="bgTitleCardStart" format="reference"/>
+    <attr name="bgTitleCardCenter" format="reference"/>
+    <attr name="bgTitleCardEnd" format="reference"/>
+    <attr name="bgSubTitle" format="reference"/>
+    <attr name="tcSubTitle" format="reference"/>
+    <attr name="tcTitle" format="reference"/>
+    <attr name="bgSeparator" format="reference"/>
+    <attr name="bgSideText" format="reference"/>
+    <attr name="tcSideText" format="reference"/>
+</resources>

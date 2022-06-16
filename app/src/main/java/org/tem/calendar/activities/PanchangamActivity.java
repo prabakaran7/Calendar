@@ -1,14 +1,20 @@
 package org.tem.calendar.activities;
 
+import static org.tem.calendar.fragment.PanchangamFragment.GOWRI_PANCHANGAM;
+import static org.tem.calendar.fragment.PanchangamFragment.GRAHA_ORAI_PANCHANGAM;
+
 import android.os.Bundle;
 import android.util.Pair;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import org.tem.calendar.CalendarApp;
+import org.tem.calendar.Constants;
 import org.tem.calendar.R;
 import org.tem.calendar.adapter.PanchangamViewPageAdapter;
 import org.tem.calendar.databinding.ActivityPanchangamBinding;
@@ -16,6 +22,7 @@ import org.tem.calendar.fragment.PanchangamFragment;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 public class PanchangamActivity extends AppCompatActivity {
 
@@ -25,14 +32,24 @@ public class PanchangamActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        String type = PanchangamFragment.GRAHA_ORAI_PANCHANGAM;
+        String type = GRAHA_ORAI_PANCHANGAM;
         binding = DataBindingUtil.setContentView(this, R.layout.activity_panchangam);
+
+
+        if(getIntent() != null && getIntent().getExtras().containsKey(Constants.EXTRA_PANCHANGAM)){
+            type = getIntent().getStringExtra(Constants.EXTRA_PANCHANGAM);
+        }
+
         binding.viewPager.setAdapter(new PanchangamViewPageAdapter(getSupportFragmentManager(), getLifecycle(), type));
         List<Pair<Integer, String>> weeks = CalendarApp.getWeekDayNameList();
         setCurrentDayIndex(weeks);
-        if (null != getSupportActionBar()) {
-            getSupportActionBar().setTitle(getString(R.string.raghu_ema_kuligai_title));
+        if (GOWRI_PANCHANGAM.equals(type)) {
+            binding.toolbar.setTitle(getString(R.string.gowriPanchangamLabel));
+        }else if(GRAHA_ORAI_PANCHANGAM.equals(type)){
+            binding.toolbar.setTitle(getString(R.string.graha_orai_label));
         }
+        setSupportActionBar(binding.toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         new TabLayoutMediator(binding.tabLayout, binding.viewPager, (tab, position) -> tab.setText(weeks.get(position).second)).attach();
     }
@@ -45,5 +62,14 @@ public class PanchangamActivity extends AppCompatActivity {
                 break;
             }
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            finish();
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

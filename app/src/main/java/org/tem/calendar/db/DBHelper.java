@@ -19,6 +19,7 @@ import org.tem.calendar.model.RasiChartData;
 import org.tem.calendar.model.RasiData;
 import org.tem.calendar.model.StarData;
 import org.tem.calendar.model.ThitiData;
+import org.tem.calendar.model.VasthuData;
 import org.tem.calendar.model.VirathamData;
 import org.tem.calendar.model.VirathamMonthData;
 import org.tem.calendar.model.WeekData;
@@ -33,6 +34,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -458,7 +460,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public List<VirathamMonthData> getVirathamList(int year, int month) {
         List<VirathamMonthData> dataList = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT m.DATE, TMONTH, TDAY, VIRATHAM FROM MASTER m, DAY_VIRATHAM dv WHERE m.DATE=dv.DATE AND m.YEAR=? AND m.MONTH=? ORDER BY m.DAY",
+        Cursor c = db.rawQuery("SELECT m.DATE, TMONTH, TDAY, VIRATHAM, PIRAI FROM MASTER m, DAY_VIRATHAM dv, DAY_THITI dt WHERE m.DATE=dv.DATE AND dv.DATE=dt.DATE AND m.YEAR=? AND m.MONTH=? ORDER BY m.DAY",
                 new String[]{year + "", month + ""});
         if (null != c && c.moveToFirst()) {
             do {
@@ -466,6 +468,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 vd.setTmonth(c.getInt(c.getColumnIndexOrThrow(Table.Master.COL_TMONTH)));
                 vd.setTday(c.getInt(c.getColumnIndexOrThrow(Table.Master.COL_TDAY)));
                 vd.setViratham(c.getInt(c.getColumnIndexOrThrow(Table.Viratham.COL_VIRATHAM)));
+                vd.setPirai(c.getInt(c.getColumnIndexOrThrow(Table.Thiti.COL_PIRAI)));
                 dataList.add(vd);
             } while (c.moveToNext());
         }
@@ -550,5 +553,59 @@ public class DBHelper extends SQLiteOpenHelper {
             } while (c.moveToNext());
         }
         return map;
+    }
+
+    public List<LocalDate> KariNaalList(int year, int month) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT DATE FROM MASTER m, KARI_NAAL kn where m.TDAY=kn.TDAY and m.TMONTH=kn.TMONTH and m.YEAR=? and m.MONTH=?",
+                new Object[]{year, month});
+        List<LocalDate> knList = new ArrayList<>();
+        if (c != null && c.moveToFirst()) {
+            do {
+                knList.add(DateUtil.ofLocalDate(c.getString(0)));
+            } while (c.moveToNext());
+        }
+        return knList;
+    }
+
+    public Collection<Integer> getVasthuYearList() {
+        List<Integer> result = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT DISTINCT YEAR  from MASTER m, VASTHU_DAYS vd where m.DATE = vd.DATE", null);
+        if (null != c && c.moveToFirst()) {
+            do {
+                result.add(c.getInt(0));
+            } while (c.moveToNext());
+        }
+        return result;
+    }
+
+    public List<VasthuData> getVasthuList(int year) {
+        List<VasthuData> result = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT m.DATE, TMONTH,TDAY,TIME  from MASTER m, VASTHU_DAYS vd where m.DATE = vd.DATE and m.YEAR=?", new Object[]{year});
+        if (c != null && c.moveToFirst()) {
+            do {
+                VasthuData vd = new VasthuData();
+                vd.setDate(c.getString(c.getColumnIndexOrThrow(Table.Master.COL_DATE)));
+                vd.setTmonth(c.getInt(c.getColumnIndexOrThrow(Table.Master.COL_TMONTH)));
+                vd.setTday(c.getInt(c.getColumnIndexOrThrow(Table.Master.COL_TDAY)));
+                vd.setTime(c.getString(c.getColumnIndexOrThrow(Table.Vasthu.COL_TIME)));
+                result.add(vd);
+            } while (c.moveToNext());
+        }
+        return result;
+    }
+
+    public List<Integer> getMuhurthamYearList() {
+        List<Integer> result = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT DISTINCT YEAR FROM MASTER m, MUHURTHAM mm where m.DATE = mm.DATE ORDER BY YEAR DESC", null);
+        if (c != null && c.moveToFirst()) {
+            do {
+                result.add(c.getInt(0));
+            } while (c.moveToNext());
+        }
+        return result;
     }
 }

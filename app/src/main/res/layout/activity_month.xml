@@ -21,9 +21,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <include android:id="@+id/viratham"
+                layout="@layout/month_viratham_layout"/>
+
             <include
                 android:id="@+id/muhurtham_layout"
                 layout="@layout/monthly_muhurtham_layout" />
+
+            <include android:id="@+id/otherDays"
+                layout="@layout/month_asuba_layout"/>
 
             <include android:id="@+id/hinduFestivalLayout"
                 layout="@layout/monthly_festival_layout"/>
