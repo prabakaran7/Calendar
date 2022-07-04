@@ -34,11 +34,9 @@ public class RaghuEmaKuligaiActivity extends AppCompatActivity {
 
         List<Pair<Integer, String>> weeks = CalendarApp.getWeekDayNameList();
         setCurrentDayIndex(weeks);
-        binding.toolbar.setTitle(getString(R.string.gowriPanchangamLabel));
+        binding.toolbar.setSubtitle(R.string.raghu_ema_kuligai_title);
         setSupportActionBar(binding.toolbar);
-        if (null != getSupportActionBar()) {
-            getSupportActionBar().setTitle(getString(R.string.raghu_ema_kuligai_title));
-        }
+
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         new TabLayoutMediator(binding.tabLayout, binding.viewPager, (tab, position) -> tab.setText(weeks.get(position).second)).attach();

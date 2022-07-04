@@ -16,6 +16,7 @@ public class DateUtil {
     private static final LocalTime kaalai = LocalTime.of(11, 59);
     private static final LocalTime pirpagal = LocalTime.of(15, 59);
     private static final LocalTime maalai = LocalTime.of(21, 59);
+    public static final String DATE_FORMAT = "dd-MM-yyyy";
 
 
     public static String expandedTime(String time) {
@@ -73,10 +74,14 @@ public class DateUtil {
     }
 
     public static LocalDate ofLocalDate(String date) {
-        return ofLocalDate(date, "dd-MM-yyyy");
+        return ofLocalDate(date, DATE_FORMAT);
     }
 
     public static LocalDate ofLocalDate(String date, String pattern){
         return LocalDate.parse(date, DateTimeFormatter.ofPattern(pattern));
+    }
+
+    public static String format(LocalDate date) {
+        return date.format(DateTimeFormatter.ofPattern(DATE_FORMAT));
     }
 }

@@ -117,7 +117,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         if (null == mDatabase) {
             // Log.v("DB_PATH", DB_FILE.getAbsolutePath());
-            mDatabase = SQLiteDatabase.openDatabase(DB_FILE.getPath(), "123", null, SQLiteDatabase.OPEN_READONLY);
+            mDatabase = SQLiteDatabase.openDatabase(DB_FILE.getPath(), "123", null, SQLiteDatabase.OPEN_READWRITE);
             // mDataBase = SQLiteDatabase.openDatabase(DB_FILE, null, SQLiteDatabase.NO_LOCALIZED_COLLATORS);
         }
         System.out.println("---------->" + getDatabaseName() + ", " + mDatabase.getVersion());
@@ -525,7 +525,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public Map<LocalDate, String> getHinduFestivalDays(int year, int month) {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT fd.DATE, fd.HINDHU FROM FESTIVAL_DAYS fd, MASTER m where fd.DATE = m.DATE and m.YEAR=? and m.MONTH=? and fd.HINDHU <>'-'",
+        Cursor c = db.rawQuery("SELECT fd.DATE, fd.HINDHU FROM FESTIVAL_DAYS fd, MASTER m where fd.DATE = m.DATE and m.YEAR=? and m.MONTH=? and fd.HINDHU <>'-' and fd.HINDHU is not NULL",
                 new Object[]{year, month});
         Map<LocalDate, String> map = new TreeMap<>();
         if (c != null && c.moveToFirst()) {
@@ -607,5 +607,61 @@ public class DBHelper extends SQLiteOpenHelper {
             } while (c.moveToNext());
         }
         return result;
+    }
+
+    public Collection<Integer> getVirathamYearList() {
+        List<Integer> result = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT DISTINCT YEAR from MASTER m, DAY_VIRATHAM dv where m.DATE = dv.DATE ORDER BY YEAR DESC", null);
+        if (c != null && c.moveToFirst()) {
+            do {
+                result.add(c.getInt(0));
+            } while (c.moveToNext());
+        }
+        return result;
+    }
+
+    public List<Integer> getFestivalYears() {
+        List<Integer> result = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT DISTINCT YEAR FROM MASTER m, FESTIVAL_DAYS fd where m.DATE = fd.DATE ORDER BY YEAR DESC", null);
+        if (c != null && c.moveToFirst()) {
+            do {
+                result.add(c.getInt(0));
+            } while (c.moveToNext());
+        }
+        return result;
+    }
+
+    public Map<LocalDate, String> getChristFestivalDays(int year, int month) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT fd.DATE, fd.CHRIST FROM FESTIVAL_DAYS fd, MASTER m where fd.DATE = m.DATE and m.YEAR=? and m.MONTH=? and fd.CHRIST <>'-' and fd.CHRIST is not NULL",
+                new Object[]{year, month});
+        Map<LocalDate, String> map = new TreeMap<>();
+        if (c != null && c.moveToFirst()) {
+            do {
+                map.put(
+                        DateUtil.ofLocalDate(c.getString(0)),
+                        c.getString(1)
+                );
+            } while (c.moveToNext());
+        }
+        return map;
+    }
+
+    public Map<LocalDate, String> getMuslimFestivalDays(int year, int month) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT fd.DATE, fd.MUSLIM FROM FESTIVAL_DAYS fd, MASTER m where fd.DATE = m.DATE and m.YEAR=? and m.MONTH=? and fd.MUSLIM <>'-' and fd.MUSLIM is not NULL",
+                new Object[]{year, month});
+        Map<LocalDate, String> map = new TreeMap<>();
+        if (c != null && c.moveToFirst()) {
+            do {
+                map.put(
+                        DateUtil.ofLocalDate(c.getString(0)),
+                        c.getString(1)
+                );
+            } while (c.moveToNext());
+        }
+        return map;
     }
 }

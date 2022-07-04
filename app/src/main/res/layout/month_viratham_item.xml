@@ -26,7 +26,7 @@
             android:orientation="vertical">
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/virathamHeader"
                 android:gravity="center"
@@ -36,10 +36,11 @@
                 />
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/virathamTxt"
                 android:gravity="center"
+                android:maxLines="3"
                 android:paddingVertical="5dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 />

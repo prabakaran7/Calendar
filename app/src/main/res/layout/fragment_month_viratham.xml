@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/pournami"
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/amavasai"
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/karthigai"
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/shastiPlus"
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/shasti"
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/pradosamPlus"
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/pradosam"
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/sankata_chathurthi"
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/chathurthi"
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/egadesi"
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/sivarathri"
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/thiruvonam"
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/astami"
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/navami"
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/karinaal"
+                layout="@layout/month_viratham_item"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+</layout>

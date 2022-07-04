@@ -34,7 +34,6 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/sunriseLabel"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="?attr/tcSubTitle"
                     android:textStyle="bold" />
 
@@ -44,7 +43,6 @@
                     android:gravity="center"
                     android:paddingHorizontal="5dp"
                     android:text="-"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="?attr/tcSubTitle"
                     android:textStyle="bold" />
 
@@ -53,7 +51,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="6.30"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="?attr/tcSubTitle"
                     android:textStyle="bold" />
             </LinearLayout>

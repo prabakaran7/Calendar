@@ -28,11 +28,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:autoSizeTextType="uniform"
                 android:gravity="center"
                 android:maxLines="1"
                 android:text="@string/nallaNeramLabel"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="?attr/tcSubTitle"
                 android:textStyle="bold" />
 
@@ -45,15 +43,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:autoSizeTextType="uniform"
                 android:gravity="center"
                 android:maxLines="1"
                 android:paddingHorizontal="10dp"
                 android:text="@string/gowriNallaNeramLabel"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="?attr/tcSubTitle"
-                android:textStyle="bold"
-                app:autoSizeTextType="uniform" />
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -68,7 +63,6 @@
                 android:gravity="center_horizontal"
                 android:padding="5dp"
                 android:text="@string/morningLabel"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="?attr/tcSideText"
                 android:textStyle="bold" />
 
@@ -80,9 +74,7 @@
                 android:gravity="center"
                 android:maxLines="1"
                 android:padding="5dp"
-                android:text="9:00 - 10:00"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                app:autoSizeTextType="uniform" />
+                android:text="9:00 - 10:00" />
 
             <TextView
                 android:layout_width="1dp"
@@ -97,9 +89,7 @@
                 android:gravity="center"
                 android:maxLines="1"
                 android:padding="5dp"
-                android:text="9:00 - 10:00"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                app:autoSizeTextType="uniform" />
+                android:text="9:00 - 10:00" />
         </LinearLayout>
 
         <LinearLayout
@@ -131,7 +121,6 @@
                 android:gravity="center_horizontal"
                 android:paddingVertical="5dp"
                 android:text="@string/eveningLabel"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="?attr/tcSideText"
                 android:textStyle="bold" />
 
@@ -143,9 +132,7 @@
                 android:gravity="center"
                 android:maxLines="1"
                 android:padding="5dp"
-                android:text="9:00 - 10:00"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                app:autoSizeTextType="uniform" />
+                android:text="9:00 - 10:00" />
 
             <TextView
                 android:layout_width="1dp"
@@ -160,9 +147,7 @@
                 android:gravity="center"
                 android:maxLines="1"
                 android:padding="5dp"
-                android:text="9:00 - 10:00"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                app:autoSizeTextType="uniform" />
+                android:text="9:00 - 10:00" />
         </LinearLayout>
 
 

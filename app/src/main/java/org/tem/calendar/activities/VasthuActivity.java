@@ -36,7 +36,7 @@ public class VasthuActivity extends AppCompatActivity implements AdapterView.OnI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_vasthu);
-        binding.toolbar.setTitle(getString(R.string.vasthu_days));
+        binding.toolbar.setSubtitle(R.string.vasthu_days);
         setSupportActionBar(binding.toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         yearList.addAll(DBHelper.getInstance(this).getVasthuYearList());

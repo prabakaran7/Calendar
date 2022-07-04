@@ -2,24 +2,34 @@ package org.tem.calendar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import org.tem.calendar.activities.DailyActivity;
+import org.tem.calendar.activities.FestivalIndexActivity;
 import org.tem.calendar.activities.ManaiyadiSastharamActivity;
 import org.tem.calendar.activities.MonthActivity;
+import org.tem.calendar.activities.MonthVirathamActivity;
 import org.tem.calendar.activities.MuhurthamActivity;
 import org.tem.calendar.activities.PanchangamActivity;
 import org.tem.calendar.activities.RaghuEmaKuligaiActivity;
 import org.tem.calendar.activities.VasthuActivity;
+import org.tem.calendar.custom.DateUtil;
+import org.tem.calendar.custom.StringUtils;
 import org.tem.calendar.databinding.ActivityCalendarBinding;
 import org.tem.calendar.db.DBHelper;
+import org.tem.calendar.fragment.MonthVirathamFragment;
 import org.tem.calendar.fragment.PanchangamFragment;
+import org.tem.calendar.model.FestivalDayData;
 import org.tem.calendar.model.MonthData;
 import org.tem.calendar.model.NallaNeramData;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class CalendarActivity extends AppCompatActivity {
 
@@ -43,9 +53,21 @@ public class CalendarActivity extends AppCompatActivity {
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
 
+        binding.virathamCard.setOnClickListener(view -> {
+            Intent intent = new Intent(CalendarActivity.this, MonthVirathamActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        });
+
 
         binding.muhurthamCard.setOnClickListener(view -> {
             Intent intent = new Intent(CalendarActivity.this, MuhurthamActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        });
+
+        binding.festivalCard.setOnClickListener(view -> {
+            Intent intent = new Intent(CalendarActivity.this, FestivalIndexActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
@@ -56,27 +78,34 @@ public class CalendarActivity extends AppCompatActivity {
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
 
-        binding.gowriCard.setOnClickListener(view ->{
+        binding.asubaCard.setOnClickListener(view -> {
+            Intent intent = new Intent(CalendarActivity.this, MonthVirathamActivity.class);
+            intent.putExtra(Constants.EXTRA_TYPE, MonthVirathamFragment.ASUBA_VIRATHAM);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        });
+
+        binding.gowriCard.setOnClickListener(view -> {
             Intent intent = new Intent(CalendarActivity.this, PanchangamActivity.class);
             intent.putExtra(Constants.EXTRA_PANCHANGAM, PanchangamFragment.GOWRI_PANCHANGAM);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
 
-        binding.horaiCard.setOnClickListener(view ->{
+        binding.horaiCard.setOnClickListener(view -> {
             Intent intent = new Intent(CalendarActivity.this, PanchangamActivity.class);
             intent.putExtra(Constants.EXTRA_PANCHANGAM, PanchangamFragment.GRAHA_ORAI_PANCHANGAM);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
 
-        binding.vasthuCard.setOnClickListener(view->{
+        binding.vasthuCard.setOnClickListener(view -> {
             Intent intent = new Intent(CalendarActivity.this, VasthuActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
 
-        binding.manaiyadiCard.setOnClickListener(view->{
+        binding.manaiyadiCard.setOnClickListener(view -> {
             Intent intent = new Intent(CalendarActivity.this, ManaiyadiSastharamActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -100,6 +129,41 @@ public class CalendarActivity extends AppCompatActivity {
         binding.monthDayTxt.setText(getResources().getStringArray(R.array.en_month_names)[md.getMonth() - 1] + "-" +
                 getResources().getStringArray(R.array.weekday_names)[md.getWeekday() - 1]);
         binding.dateTxt.setText(md.getDate());
+
+        FestivalDayData fdd = DBHelper.getInstance(this).getFestivalDays(DateUtil.format(LocalDate.now()));
+        if (fdd != null) {
+
+            Set<String> festivals = new HashSet<>();
+            if (!StringUtils.isBlank(fdd.getGovt()) && fdd.getGovt().trim().length() > 1) {
+                festivals.addAll(Arrays.asList(fdd.getGovt().split("[ ]*[,][ ]*")));
+            }
+
+            if (!StringUtils.isBlank(fdd.getHindhu()) && fdd.getHindhu().trim().length() > 1) {
+                festivals.addAll(Arrays.asList(fdd.getHindhu().split("[ ]*[,][ ]*")));
+            }
+
+            if (!StringUtils.isBlank(fdd.getChrist()) && fdd.getChrist().trim().length() > 1) {
+                festivals.addAll(Arrays.asList(fdd.getChrist().split("[ ]*[,][ ]*")));
+            }
+
+            if (!StringUtils.isBlank(fdd.getMuslims()) && fdd.getMuslims().trim().length() > 1) {
+                festivals.addAll(Arrays.asList(fdd.getMuslims().split("[ ]*[,][ ]*")));
+            }
+
+            if (!StringUtils.isBlank(fdd.getImportant()) && fdd.getImportant().trim().length() > 1) {
+                festivals.addAll(Arrays.asList(fdd.getImportant().split("[ ]*[,][ ]*")));
+            }
+
+            if (!festivals.isEmpty()) {
+                binding.importantDayTxt.setVisibility(View.VISIBLE);
+                binding.importantDayTxt.setText(StringUtils.join(Arrays.asList(festivals.toArray()), ","));
+            } else {
+                binding.importantDayTxt.setVisibility(View.GONE);
+            }
+
+        } else {
+            binding.importantDayTxt.setVisibility(View.GONE);
+        }
 
     }
 }

@@ -2,5 +2,5 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="card_radius">5dp</dimen>
     <dimen name="card_margin">5dp</dimen>
-    <dimen name="card_elevation">10dp</dimen>
+    <dimen name="card_elevation">5dp</dimen>
 </resources>

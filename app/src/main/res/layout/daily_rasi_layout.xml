@@ -22,7 +22,6 @@
                 android:gravity="center"
                 android:paddingVertical="2dp"
                 android:text="@string/todayRasiPalanLabel"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="?attr/tcSubTitle"
                 android:textStyle="bold" />
 
@@ -40,8 +39,8 @@
                     android:padding="5dp">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="13pt"
-                        android:layout_height="13pt"
+                        android:layout_width="10pt"
+                        android:layout_height="10pt"
                         android:layout_gravity="center_vertical"
                         android:layout_marginHorizontal="10dp"
                         android:src="@drawable/mesham"
@@ -51,11 +50,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:autoSizeTextType="uniform"
                         android:lines="1"
                         android:paddingHorizontal="10dp"
                         android:text="@string/mesham"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="?attr/tcSideText"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -68,8 +65,7 @@
                     android:background="?attr/tcSideText"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="15dp"
-                    android:text="@string/mesham"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:text="@string/mesham"/>
 
             </LinearLayout>
 
@@ -105,8 +101,8 @@
                     android:padding="5dp">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="13pt"
-                        android:layout_height="13pt"
+                        android:layout_width="10pt"
+                        android:layout_height="10pt"
                         android:layout_gravity="center_vertical"
                         android:layout_marginHorizontal="10dp"
                         android:src="@drawable/rishabam"
@@ -116,11 +112,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:autoSizeTextType="uniform"
                         android:lines="1"
                         android:paddingHorizontal="10dp"
                         android:text="@string/rishabam"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="?attr/tcSideText"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -133,8 +127,7 @@
                     android:background="?attr/tcSideText"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="15dp"
-                    android:text="@string/rishabam"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:text="@string/rishabam"/>
 
             </LinearLayout>
 
@@ -170,8 +163,8 @@
                     android:padding="5dp">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="13pt"
-                        android:layout_height="13pt"
+                        android:layout_width="10pt"
+                        android:layout_height="10pt"
                         android:layout_gravity="center_vertical"
                         android:layout_marginHorizontal="10dp"
                         android:src="@drawable/mithunam"
@@ -181,11 +174,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:autoSizeTextType="uniform"
                         android:lines="1"
                         android:paddingHorizontal="10dp"
                         android:text="@string/mithunam"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="?attr/tcSideText"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -198,8 +189,7 @@
                     android:background="?attr/tcSideText"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="15dp"
-                    android:text="@string/mithunam"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:text="@string/mithunam"/>
 
             </LinearLayout>
 
@@ -235,8 +225,8 @@
                     android:padding="5dp">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="13pt"
-                        android:layout_height="13pt"
+                        android:layout_width="10pt"
+                        android:layout_height="10pt"
                         android:layout_gravity="center_vertical"
                         android:layout_marginHorizontal="10dp"
                         android:src="@drawable/kadagam"
@@ -246,11 +236,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:autoSizeTextType="uniform"
                         android:lines="1"
                         android:paddingHorizontal="10dp"
                         android:text="@string/kadagam"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="?attr/tcSideText"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -263,8 +251,7 @@
                     android:background="?attr/tcSideText"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="15dp"
-                    android:text="@string/kadagam"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:text="@string/kadagam"/>
 
             </LinearLayout>
 
@@ -300,8 +287,8 @@
                     android:padding="5dp">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="13pt"
-                        android:layout_height="13pt"
+                        android:layout_width="10pt"
+                        android:layout_height="10pt"
                         android:layout_gravity="center_vertical"
                         android:layout_marginHorizontal="10dp"
                         android:src="@drawable/simmam"
@@ -311,11 +298,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:autoSizeTextType="uniform"
                         android:lines="1"
                         android:paddingHorizontal="10dp"
                         android:text="@string/simmam"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="?attr/tcSideText"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -328,8 +313,7 @@
                     android:background="?attr/tcSideText"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="15dp"
-                    android:text="@string/simmam"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:text="@string/simmam"/>
 
             </LinearLayout>
 
@@ -365,8 +349,8 @@
                     android:padding="5dp">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="13pt"
-                        android:layout_height="13pt"
+                        android:layout_width="10pt"
+                        android:layout_height="10pt"
                         android:layout_gravity="center_vertical"
                         android:layout_marginHorizontal="10dp"
                         android:src="@drawable/kanni"
@@ -376,11 +360,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:autoSizeTextType="uniform"
                         android:lines="1"
                         android:paddingHorizontal="10dp"
                         android:text="@string/kanni"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="?attr/tcSideText"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -393,8 +375,7 @@
                     android:background="?attr/tcSideText"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="15dp"
-                    android:text="@string/kanni"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:text="@string/kanni"/>
 
             </LinearLayout>
 
@@ -430,8 +411,8 @@
                     android:padding="5dp">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="13pt"
-                        android:layout_height="13pt"
+                        android:layout_width="10pt"
+                        android:layout_height="10pt"
                         android:layout_gravity="center_vertical"
                         android:layout_marginHorizontal="10dp"
                         android:src="@drawable/thulaam"
@@ -441,11 +422,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:autoSizeTextType="uniform"
                         android:lines="1"
                         android:paddingHorizontal="10dp"
                         android:text="@string/thulam"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="?attr/tcSideText"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -458,8 +437,7 @@
                     android:background="?attr/tcSideText"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="15dp"
-                    android:text="@string/thulam"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:text="@string/thulam"/>
 
             </LinearLayout>
 
@@ -495,8 +473,8 @@
                     android:padding="5dp">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="13pt"
-                        android:layout_height="13pt"
+                        android:layout_width="10pt"
+                        android:layout_height="10pt"
                         android:layout_gravity="center_vertical"
                         android:layout_marginHorizontal="10dp"
                         android:src="@drawable/vricham"
@@ -506,11 +484,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:autoSizeTextType="uniform"
                         android:lines="1"
                         android:paddingHorizontal="10dp"
                         android:text="@string/vrichagam"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="?attr/tcSideText"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -523,8 +499,7 @@
                     android:background="?attr/tcSideText"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="15dp"
-                    android:text="@string/vrichagam"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:text="@string/vrichagam"/>
 
             </LinearLayout>
 
@@ -560,8 +535,8 @@
                     android:padding="5dp">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="13pt"
-                        android:layout_height="13pt"
+                        android:layout_width="10pt"
+                        android:layout_height="10pt"
                         android:layout_gravity="center_vertical"
                         android:layout_marginHorizontal="10dp"
                         android:src="@drawable/thanusu"
@@ -571,11 +546,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:autoSizeTextType="uniform"
                         android:lines="1"
                         android:paddingHorizontal="10dp"
                         android:text="@string/thanusu"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="?attr/tcSideText"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -588,8 +561,7 @@
                     android:background="?attr/tcSideText"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="15dp"
-                    android:text="@string/thanusu"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:text="@string/thanusu"/>
 
             </LinearLayout>
 
@@ -625,8 +597,8 @@
                     android:padding="5dp">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="13pt"
-                        android:layout_height="13pt"
+                        android:layout_width="10pt"
+                        android:layout_height="10pt"
                         android:layout_gravity="center_vertical"
                         android:layout_marginHorizontal="10dp"
                         android:src="@drawable/magaram"
@@ -636,11 +608,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:autoSizeTextType="uniform"
                         android:lines="1"
                         android:paddingHorizontal="10dp"
                         android:text="@string/magaram"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="?attr/tcSideText"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -653,8 +623,7 @@
                     android:background="?attr/tcSideText"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="15dp"
-                    android:text="@string/magaram"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:text="@string/magaram"/>
 
             </LinearLayout>
 
@@ -690,8 +659,8 @@
                     android:padding="5dp">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="13pt"
-                        android:layout_height="13pt"
+                        android:layout_width="10pt"
+                        android:layout_height="10pt"
                         android:layout_gravity="center_vertical"
                         android:layout_marginHorizontal="10dp"
                         android:src="@drawable/kumbam"
@@ -701,11 +670,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:autoSizeTextType="uniform"
                         android:lines="1"
                         android:paddingHorizontal="10dp"
                         android:text="@string/kumbam"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="?attr/tcSideText"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -718,8 +685,7 @@
                     android:background="?attr/tcSideText"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="15dp"
-                    android:text="@string/kumbam"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:text="@string/kumbam"/>
 
             </LinearLayout>
 
@@ -755,8 +721,8 @@
                     android:padding="5dp">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="13pt"
-                        android:layout_height="13pt"
+                        android:layout_width="10pt"
+                        android:layout_height="10pt"
                         android:layout_gravity="center_vertical"
                         android:layout_marginHorizontal="10dp"
                         android:src="@drawable/meenam"
@@ -766,11 +732,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:autoSizeTextType="uniform"
                         android:lines="1"
                         android:paddingHorizontal="10dp"
                         android:text="@string/meenam"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="?attr/tcSideText"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -783,8 +747,7 @@
                     android:background="?attr/tcSideText"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="15dp"
-                    android:text="@string/meenam"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:text="@string/meenam"/>
 
             </LinearLayout>
 

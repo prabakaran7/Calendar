@@ -36,7 +36,7 @@ public class MuhurthamActivity extends AppCompatActivity implements AdapterView.
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_muhurtham);
 
-        binding.toolbar.setTitle(getString(R.string.muhurtham_days));
+        binding.toolbar.setSubtitle(R.string.muhurtham_days);
         setSupportActionBar(binding.toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         yearList.addAll(DBHelper.getInstance(this).getMuhurthamYearList());

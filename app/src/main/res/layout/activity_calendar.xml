@@ -9,7 +9,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -25,6 +25,7 @@
                     app:cardElevation="@dimen/card_elevation"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginBottom="10dp"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <LinearLayout
@@ -173,6 +174,7 @@
                             android:background="@android:color/holo_red_dark"
                             android:gravity="center"
                             android:padding="5dp"
+                            android:id="@+id/importantDayTxt"
                             android:text="Important day message will come here."
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"
                             android:textColor="@color/white"
@@ -314,7 +316,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/raghu_card"
+                    android:id="@+id/festival_card"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
@@ -325,6 +327,43 @@
                     app:layout_constraintEnd_toStartOf="@id/asuba_card"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/viratham_card">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="20pt"
+                            android:src="@drawable/hindu_festival" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:padding="5dp"
+                            android:text="@string/holidaysAndFestivals"
+                            android:textStyle="bold"
+                            app:autoSizeTextType="uniform" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/raghu_card"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp"
+                    app:layout_constraintEnd_toStartOf="@id/asuba_card"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/festival_card">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -360,7 +399,7 @@
                     app:cardElevation="5dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/raghu_card"
-                    app:layout_constraintTop_toBottomOf="@id/muhurtham_card">
+                    app:layout_constraintTop_toBottomOf="@id/festival_card">
 
                     <LinearLayout
                         android:layout_width="match_parent"

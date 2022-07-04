@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Calendar</string>
+    <string name="app_name">நாட்காட்டி</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="raghu">இராகு</string>
@@ -262,6 +262,10 @@
     <string name="vasthu">வாஸ்து</string>
     <string name="vasthu_days">வாஸ்து நாட்கள்</string>
     <string name="manaiyadi_label">மனையடி சாஸ்திரம்</string>
+    <string name="christian_festivals">கிறிஸ்தவ பண்டிகைகள்</string>
+    <string name="muslim_festivals">முஸ்லிம் பண்டிகைகள்</string>
+    <string name="holidaysAndFestivals">பண்டிகை / விடுமுறை நாட்கள்</string>
+    <string name="empty_festival_msg">%1$s மாதத்தில் %2$s இல்லை</string>
     <string-array name="tamil_year_names">
         <item>பிரபவ</item>
         <item>விபவ</item>

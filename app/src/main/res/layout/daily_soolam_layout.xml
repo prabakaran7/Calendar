@@ -21,7 +21,6 @@
                 android:gravity="center"
                 android:paddingVertical="2dp"
                 android:text="@string/vaaraSoolaiLabel"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="?attr/tcSubTitle"
                 android:textStyle="bold" />
 
@@ -38,7 +37,6 @@
                     android:gravity="center_vertical"
                     android:padding="5dp"
                     android:text="@string/soolam"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="?attr/tcSideText"
                     android:textStyle="bold" />
 
@@ -50,8 +48,7 @@
                     android:gravity="center_vertical"
                     android:maxLines="3"
                     android:padding="5dp"
-                    android:text="dfsdf"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+                    android:text="dfsdf" />
             </LinearLayout>
 
             <LinearLayout
@@ -81,12 +78,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:autoSizeTextType="uniform"
                     android:background="?attr/bgSideText"
                     android:gravity="center_vertical"
                     android:padding="5dp"
                     android:text="@string/parigaram"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="?attr/tcSideText"
                     android:textStyle="bold" />
 
@@ -98,8 +93,7 @@
                     android:gravity="center_vertical"
                     android:maxLines="3"
                     android:padding="5dp"
-                    android:text="dfsdf"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+                    android:text="dfsdf" />
             </LinearLayout>
 
             <LinearLayout
@@ -129,12 +123,10 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
-                    android:autoSizeTextType="uniform"
                     android:background="?attr/bgSideText"
                     android:gravity="center_vertical"
                     android:padding="5dp"
                     android:text="@string/nazhigai"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="?attr/tcSideText"
                     android:textStyle="bold" />
 
@@ -146,8 +138,7 @@
                     android:gravity="center_vertical"
                     android:maxLines="3"
                     android:padding="5dp"
-                    android:text="dfsdf"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+                    android:text="dfsdf" />
             </LinearLayout>
 
         </LinearLayout>

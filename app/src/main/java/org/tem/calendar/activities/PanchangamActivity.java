@@ -44,9 +44,9 @@ public class PanchangamActivity extends AppCompatActivity {
         List<Pair<Integer, String>> weeks = CalendarApp.getWeekDayNameList();
         setCurrentDayIndex(weeks);
         if (GOWRI_PANCHANGAM.equals(type)) {
-            binding.toolbar.setTitle(getString(R.string.gowriPanchangamLabel));
+            binding.toolbar.setSubtitle(R.string.gowriPanchangamLabel);
         }else if(GRAHA_ORAI_PANCHANGAM.equals(type)){
-            binding.toolbar.setTitle(getString(R.string.graha_orai_label));
+            binding.toolbar.setSubtitle(R.string.graha_orai_label);
         }
         setSupportActionBar(binding.toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);

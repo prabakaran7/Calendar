@@ -11,6 +11,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Calendar.Default">
         <activity
+            android:name=".activities.FestivalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.FestivalIndexActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.MonthVirathamActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.ManaiyadiSastharamActivity"
             android:exported="false" />
         <activity
@@ -81,6 +90,7 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
+
     </application>
 
 </manifest>

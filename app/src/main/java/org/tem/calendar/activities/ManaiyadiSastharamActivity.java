@@ -21,7 +21,7 @@ public class ManaiyadiSastharamActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_manaiyadi_sastharam);
 
-        binding.toolbar.setTitle(getString(R.string.manaiyadi_label));
+        binding.toolbar.setSubtitle(R.string.manaiyadi_label);
         setSupportActionBar(binding.toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
