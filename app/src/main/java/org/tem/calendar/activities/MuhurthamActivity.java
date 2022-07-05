@@ -53,7 +53,7 @@ public class MuhurthamActivity extends AppCompatActivity implements AdapterView.
         binding.viewPager.setAdapter(new MuhurthamViewPageAdapter(this, year));
         LocalDate ld = LocalDate.now();
         if (ld.getYear() == year) {
-            binding.viewPager.post(()-> binding.viewPager.setCurrentItem(ld.getMonthValue() - 1));
+            binding.viewPager.postDelayed(()-> binding.viewPager.setCurrentItem(ld.getMonthValue() - 1), 500);
         }
         String[] monthNames = getResources().getStringArray(R.array.en_month_names);
         new TabLayoutMediator(binding.tabLayout, binding.viewPager, (tab, position) -> tab.setText(monthNames[position])).attach();

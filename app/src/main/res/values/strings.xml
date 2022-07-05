@@ -103,8 +103,10 @@
     <string name="meenam">மீனம்</string>
 
     <string name="nallaNeramLabel">நல்ல நேரம்</string>
+    <string name="nallaNeramLabelShort">ந.நே.</string>
     <string name="gowriNallaNeramLabel">கௌரி ந. நே.</string>
     <string name="morningLabel">காலை</string>
+    <string name="morningLabelShort">கா.</string>
     <string name="panchangamLabel">இன்றைய பஞ்சாங்கம்</string>
     <string name="thitiLabel">திதி</string>
     <string name="starLabel">நட்சத்திரம்</string>
@@ -114,6 +116,7 @@
     <string name="raaghuEmaKuligaiLabel">இராகு,எம,குளிகை காலம்</string>
     <string name="vaaraSoolaiLabel">வாரசூலை</string>
     <string name="eveningLabel">மாலை</string>
+    <string name="eveningLabelShort">மா.</string>
     <string name="gowriPanchangamLabel">கௌரி பஞ்சாங்கம்</string>
     <string name="kalamLabel">காலம்</string>
     <string name="dayLabel">பகல்</string>
@@ -518,4 +521,8 @@
         <item>ஏகாதசி</item>
         <item>பிரதோஷம்</item>
     </string-array>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="configure">Configure</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">This is an app widget description</string>
 </resources>
