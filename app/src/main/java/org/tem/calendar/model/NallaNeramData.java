@@ -1,5 +1,7 @@
 package org.tem.calendar.model;
 
+import androidx.annotation.NonNull;
+
 public class NallaNeramData {
     private final String date;
     private String nallaNeramM;
@@ -74,6 +76,7 @@ public class NallaNeramData {
         this.sunRise = sunRise;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "NallaNeramData{" +

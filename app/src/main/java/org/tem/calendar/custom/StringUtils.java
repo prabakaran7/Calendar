@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.List;
 
 public class StringUtils {
+    public static final String EMPTY = "";
+
     public static boolean isBlank(String txt) {
         return null == txt || txt.trim().length() == 0;
     }

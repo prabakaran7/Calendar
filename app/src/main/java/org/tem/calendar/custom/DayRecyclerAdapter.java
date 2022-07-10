@@ -125,7 +125,7 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        DayInMonthLayoutBinding binding;
+        final DayInMonthLayoutBinding binding;
 
         public ViewHolder(DayInMonthLayoutBinding binding) {
             super(binding.getRoot());

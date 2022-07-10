@@ -1,5 +1,7 @@
 package org.tem.calendar.model;
 
+import androidx.annotation.NonNull;
+
 import java.time.DayOfWeek;
 
 public class WeekData {
@@ -76,6 +78,7 @@ public class WeekData {
         this.karanan = karanan;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "WeekData{" +

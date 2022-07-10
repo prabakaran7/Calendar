@@ -1,6 +1,7 @@
 package org.tem.calendar;
 
 import android.app.Application;
+import android.content.Context;
 import android.util.Pair;
 
 import net.sqlcipher.database.SQLiteDatabase;
@@ -16,6 +17,8 @@ public class CalendarApp extends Application {
     private static final int weekStartIndex = 7;
     private static final List<Pair<Integer, String>> weekDayNameList = new ArrayList<>();
     private static final List<Pair<Integer, String>> weekDayShortNameList = new ArrayList<>();
+
+    private static int MAX_QUOTE_NUMBER = -1;
 
     public static List<Pair<Integer, String>> getWeekDayNameList() {
         return weekDayNameList;
@@ -38,6 +41,13 @@ public class CalendarApp extends Application {
             weekDayShortNameList.addAll(DateUtil.getNormalizedWeeks(weekStartIndex, getResources().getStringArray(R.array.weekday_short_names)));
         }
 
+    }
+
+    public static int getMaxQuoteNumber(Context context){
+        if(MAX_QUOTE_NUMBER < 0) {
+            MAX_QUOTE_NUMBER = DBHelper.getInstance(context).getQuoteMaxNumber();
+        }
+        return MAX_QUOTE_NUMBER;
     }
 
     //GOWRI TYPE

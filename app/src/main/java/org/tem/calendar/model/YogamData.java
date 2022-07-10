@@ -1,5 +1,7 @@
 package org.tem.calendar.model;
 
+import androidx.annotation.NonNull;
+
 public class YogamData {
     private final String date;
     private String time1;
@@ -65,6 +67,7 @@ public class YogamData {
         this.yogam = yogam;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "YogamData{" +

@@ -47,7 +47,7 @@ public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecycl
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        FestivalItemBinding binding;
+        final FestivalItemBinding binding;
 
         public ViewHolder(FestivalItemBinding binding) {
             super(binding.getRoot());

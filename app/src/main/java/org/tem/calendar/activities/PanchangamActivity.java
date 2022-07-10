@@ -18,7 +18,6 @@ import org.tem.calendar.Constants;
 import org.tem.calendar.R;
 import org.tem.calendar.adapter.PanchangamViewPageAdapter;
 import org.tem.calendar.databinding.ActivityPanchangamBinding;
-import org.tem.calendar.fragment.PanchangamFragment;
 
 import java.time.LocalDate;
 import java.util.List;

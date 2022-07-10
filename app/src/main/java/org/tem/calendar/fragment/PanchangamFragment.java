@@ -56,7 +56,7 @@ public class PanchangamFragment extends Fragment {
             put(12, "5.00 - 6.00");
         }
     };
-    public static int TYPE_STAND_ALONE = 1;
+    public static final int TYPE_STAND_ALONE = 1;
     public static int TYPE_DAILY = 0;
     private final DayOfWeek dayOfWeek;
     private final int displayType;

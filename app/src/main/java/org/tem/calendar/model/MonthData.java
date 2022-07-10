@@ -1,5 +1,7 @@
 package org.tem.calendar.model;
 
+import androidx.annotation.NonNull;
+
 public class MonthData {
     private String date;
     private int year;
@@ -74,6 +76,7 @@ public class MonthData {
         this.weekday = weekday;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "MonthData{" +

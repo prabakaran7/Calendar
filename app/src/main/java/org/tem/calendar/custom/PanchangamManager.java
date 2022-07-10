@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 public class PanchangamManager {
@@ -85,7 +86,7 @@ public class PanchangamManager {
 	}
 
 	public static boolean isKariNaal(int tamizhMonth, int tamilDay) {
-		return KARI_NAAL.containsKey(tamizhMonth) && KARI_NAAL.get(tamizhMonth).contains(tamilDay);
+		return KARI_NAAL.containsKey(tamizhMonth) && Objects.requireNonNull(KARI_NAAL.get(tamizhMonth)).contains(tamilDay);
 	}
 
 }

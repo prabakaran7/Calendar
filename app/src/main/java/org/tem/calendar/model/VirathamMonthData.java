@@ -1,5 +1,7 @@
 package org.tem.calendar.model;
 
+import androidx.annotation.NonNull;
+
 public class VirathamMonthData extends VirathamData{
     private int tmonth;
     private int tday;
@@ -34,6 +36,7 @@ public class VirathamMonthData extends VirathamData{
         this.pirai = pirai;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "VirathamMonthData{" +

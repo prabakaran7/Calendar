@@ -11,8 +11,6 @@ import org.tem.calendar.R;
 import org.tem.calendar.databinding.PanchangamItemBinding;
 import org.tem.calendar.model.PanchangamData;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class PanchangamRecyclerAdapter extends RecyclerView.Adapter<PanchangamRecyclerAdapter.ViewHolder> {
@@ -47,7 +45,7 @@ public class PanchangamRecyclerAdapter extends RecyclerView.Adapter<PanchangamRe
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        PanchangamItemBinding binding;
+        final PanchangamItemBinding binding;
 
         public ViewHolder(PanchangamItemBinding binding) {
             super(binding.getRoot());

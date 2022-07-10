@@ -2,7 +2,6 @@ package org.tem.calendar.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -13,7 +12,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 
 import org.tem.calendar.R;
@@ -23,7 +21,6 @@ import org.tem.calendar.db.DBHelper;
 import org.tem.calendar.model.VasthuData;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -46,7 +43,7 @@ public class VasthuActivity extends AppCompatActivity implements AdapterView.OnI
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(@NonNull Menu menu) {
         getMenuInflater().inflate(R.menu.menu_dropdown, menu);
         MenuItem item = menu.findItem(R.id.action_bar_spinner);
         Spinner spinner = (Spinner) item.getActionView();

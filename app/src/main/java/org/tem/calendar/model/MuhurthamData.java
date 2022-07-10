@@ -1,5 +1,7 @@
 package org.tem.calendar.model;
 
+import androidx.annotation.NonNull;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -87,6 +89,7 @@ public class MuhurthamData {
         return pirai == 1;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "MuhurthamData{" +

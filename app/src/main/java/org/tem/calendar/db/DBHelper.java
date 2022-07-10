@@ -1,7 +1,6 @@
 package org.tem.calendar.db;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import net.sqlcipher.Cursor;
 import net.sqlcipher.SQLException;
@@ -9,8 +8,10 @@ import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.SQLiteOpenHelper;
 
 import org.tem.calendar.custom.DateUtil;
+import org.tem.calendar.custom.StringUtils;
 import org.tem.calendar.model.FestivalDayData;
 import org.tem.calendar.model.KaranamData;
+import org.tem.calendar.model.KuralData;
 import org.tem.calendar.model.MonthData;
 import org.tem.calendar.model.MuhurthamData;
 import org.tem.calendar.model.NallaNeramData;
@@ -654,5 +655,52 @@ public class DBHelper extends SQLiteOpenHelper {
             } while (c.moveToNext());
         }
         return map;
+    }
+
+    public int getQuoteMaxNumber() {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT COUNT(*) FROM QUOTES", null);
+        if (c != null && c.moveToFirst()) {
+            return c.getInt(1);
+        }
+        return -1;
+    }
+
+    public String getQuote(int id) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT QUOTE FROM QUOTES WHERE ID=?", new Integer[]{id});
+        if (c != null && c.moveToFirst()) {
+            return c.getString(c.getColumnIndexOrThrow("QUOTE"));
+        }
+        return StringUtils.EMPTY;
+    }
+
+    public KuralData getKural(int id) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.query(Table.Kural.NAME, null, Table.Kural.COL_ID + "=?",
+                new String[]{id + ""}, null, null, null);
+        if (c != null && c.moveToFirst()) {
+            KuralData kd = new KuralData();
+            kd.setId(id);
+            kd.setIyalkal(c.getString(c.getColumnIndexOrThrow(Table.Kural.COL_IYALKAL)));
+            kd.setPaakal(c.getString(c.getColumnIndexOrThrow(Table.Kural.COL_PAAKAL)));
+            kd.setAthigaram(c.getString(c.getColumnIndexOrThrow(Table.Kural.COL_ATHIGARAM)));
+            kd.setAthigaramNum(c.getInt(c.getColumnIndexOrThrow(Table.Kural.COL_ATHIGARAM_NUM)));
+            kd.setKural(c.getString(c.getColumnIndexOrThrow(Table.Kural.COL_KURAL)));
+
+            kd.setMuVaUrai(c.getString(c.getColumnIndexOrThrow(Table.Kural.COL_MU_VA_URAI)));
+            kd.setSalamanUrai(c.getString(c.getColumnIndexOrThrow(Table.Kural.COL_SALAMAN_URAI)));
+            kd.setKarunaUrai(c.getString(c.getColumnIndexOrThrow(Table.Kural.COL_KARUNA_URAI)));
+            kd.setParimelUrai(c.getString(c.getColumnIndexOrThrow(Table.Kural.COL_PARIMEL_URAI)));
+
+            kd.setIyalkalEn(c.getString(c.getColumnIndexOrThrow(Table.Kural.COL_IYALKAL_EN)));
+            kd.setPaakalEn(c.getString(c.getColumnIndexOrThrow(Table.Kural.COL_PAAKAL_EN)));
+            kd.setAthigaramEn(c.getString(c.getColumnIndexOrThrow(Table.Kural.COL_ATHIGARAM_EN)));
+            kd.setKuralEn(c.getString(c.getColumnIndexOrThrow(Table.Kural.COL_KURAL_EN)));
+            kd.setExplanation(c.getString(c.getColumnIndexOrThrow(Table.Kural.COL_EXPLAINATION)));
+
+            return kd;
+        }
+        return null;
     }
 }

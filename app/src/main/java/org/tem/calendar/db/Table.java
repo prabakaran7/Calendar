@@ -170,4 +170,25 @@ public class Table {
         String COL_DATE = "DATE";
         String COL_TIME = "TIME";
     }
+
+    public interface Kural {
+        String NAME = "THIRUKKUAL";
+        String COL_ID = "ID";
+        String COL_IYALKAL = "IYALKAL";
+        String COL_PAAKAL = "PAAKAL";
+        String COL_ATHIGARAM = "ATHIGARAM";
+        String COL_ATHIGARAM_NUM = "ATHIGARAM_NUM";
+        String COL_KURAL = "KURAL";
+
+        String COL_MU_VA_URAI = "MU_VA_URAI";
+        String COL_SALAMAN_URAI = "SALAMAN_URAI";
+        String COL_KARUNA_URAI = "KARUNA_URAI";
+        String COL_PARIMEL_URAI = "PARIMEL_URAI";
+
+        String COL_IYALKAL_EN = "IYALKAL_EN";
+        String COL_PAAKAL_EN = "PAAKAL_EN";
+        String COL_ATHIGARAM_EN = "ATHIGARAM_EN";
+        String COL_KURAL_EN = "KURAL_EN";
+        String COL_EXPLAINATION = "EXPLAINATION";
+    }
 }

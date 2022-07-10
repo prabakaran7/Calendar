@@ -357,6 +357,8 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
                     break;
 
                 case 3:
+
+                case 7: //Maha Sivarathri
                     binding.importantDayLayout.thitiImage.setVisibility(View.VISIBLE);
                     binding.importantDayLayout.thitiImage.setImageResource(R.drawable.sivarathri);
                     break;
@@ -374,11 +376,6 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
                 case 6:
                     binding.importantDayLayout.thitiImage.setVisibility(View.VISIBLE);
                     binding.importantDayLayout.thitiImage.setImageResource(R.drawable.shasti);
-                    break;
-
-                case 7: //Maha Sivarathri
-                    binding.importantDayLayout.thitiImage.setVisibility(View.VISIBLE);
-                    binding.importantDayLayout.thitiImage.setImageResource(R.drawable.sivarathri);
                     break;
 
                 case 8:

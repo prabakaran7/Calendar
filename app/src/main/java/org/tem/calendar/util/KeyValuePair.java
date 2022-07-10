@@ -1,5 +1,7 @@
 package org.tem.calendar.util;
 
+import androidx.annotation.NonNull;
+
 import java.time.LocalDate;
 
 public class KeyValuePair implements Comparable<KeyValuePair> {
@@ -25,6 +27,7 @@ public class KeyValuePair implements Comparable<KeyValuePair> {
         return o.key.compareTo(this.key);
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "KeyValuePair{" +

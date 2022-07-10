@@ -1,5 +1,7 @@
 package org.tem.calendar.model;
 
+import androidx.annotation.NonNull;
+
 public class FestivalDayData {
     private final String date;
     private String hindhu;
@@ -65,6 +67,7 @@ public class FestivalDayData {
         this.important = important;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "FestivalDayData{" +

@@ -71,7 +71,7 @@ public class VasthuRecyclerAdapter extends RecyclerView.Adapter<VasthuRecyclerAd
     }
 
     protected static class ViewHolder extends RecyclerView.ViewHolder {
-        VasthuItemBinding binding;
+        final VasthuItemBinding binding;
 
         public ViewHolder(VasthuItemBinding binding) {
             super(binding.getRoot());

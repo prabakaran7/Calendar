@@ -1,5 +1,7 @@
 package org.tem.calendar.model;
 
+import androidx.annotation.NonNull;
+
 public class VirathamData {
     private final String date;
     private int viratham;
@@ -29,6 +31,7 @@ public class VirathamData {
         this.timing = timing;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "VirathamData{" +

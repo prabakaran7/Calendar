@@ -1,5 +1,7 @@
 package org.tem.calendar.custom;
 
+import androidx.annotation.NonNull;
+
 import java.time.LocalDate;
 
 public class DateModel {
@@ -77,6 +79,7 @@ public class DateModel {
         this.special = special;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "DateModel{" +

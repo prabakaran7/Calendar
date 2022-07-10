@@ -1,5 +1,7 @@
 package org.tem.calendar.model;
 
+import androidx.annotation.NonNull;
+
 public class VasthuData extends MonthData{
     private String time;
 
@@ -11,6 +13,7 @@ public class VasthuData extends MonthData{
         this.time = time;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "VasthuData{" +

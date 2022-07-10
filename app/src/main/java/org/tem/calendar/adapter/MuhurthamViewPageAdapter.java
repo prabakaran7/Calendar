@@ -1,8 +1,5 @@
 package org.tem.calendar.adapter;
 
-import android.app.Activity;
-import android.content.Context;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;

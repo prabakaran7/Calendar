@@ -22,7 +22,7 @@ public class DateUtil {
     public static String expandedTime(String time) {
 
         LocalTime lt = LocalTime.parse(time.replace(".", ":"), new DateTimeFormatterBuilder().parseCaseInsensitive().appendPattern("h:mm a").toFormatter());
-        String returnValue = "";
+        String returnValue;
         if (lt.isBefore(adhiKaalai)) {
             returnValue= "அதிகாலை";
         } else if (lt.isBefore(kaalai)) {

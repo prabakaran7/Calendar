@@ -5,8 +5,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.ScaleAnimation;
-import android.view.animation.TranslateAnimation;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -91,7 +89,7 @@ public class MuhurthamRecyclerAdapter extends RecyclerView.Adapter<MuhurthamRecy
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        MuhurthamItemBinding binding;
+        final MuhurthamItemBinding binding;
 
         public ViewHolder(MuhurthamItemBinding binding) {
             super(binding.getRoot());

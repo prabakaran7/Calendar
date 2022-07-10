@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="CalendarDay">
-        <item name="android:background">@drawable/day_bg</item>
-    </style>
-    <style name="CalendarDaySelected">
-        <item name="android:background">@drawable/day_today_holiday_bg</item>
-    </style>
-</resources>

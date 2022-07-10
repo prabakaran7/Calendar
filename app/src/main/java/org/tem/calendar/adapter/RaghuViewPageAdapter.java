@@ -9,7 +9,6 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import org.tem.calendar.fragment.RaghuEmaKuligaiFragment;
 
 import java.time.DayOfWeek;
-import java.util.List;
 
 public class RaghuViewPageAdapter extends FragmentStateAdapter {
     // TODO Mapping between weekday and weeknames as in string

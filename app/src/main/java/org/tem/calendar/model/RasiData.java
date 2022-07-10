@@ -1,5 +1,7 @@
 package org.tem.calendar.model;
 
+import androidx.annotation.NonNull;
+
 public class RasiData {
     private final String date;
     private int mesham;
@@ -119,6 +121,7 @@ public class RasiData {
         this.meenam = meenam;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "RasiData{" +
