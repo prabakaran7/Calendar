@@ -16,12 +16,12 @@
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/panchangamTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/purple_200"
+                android:background="?attr/bgSubTitle"
                 android:gravity="center"
                 android:padding="5dp"
-                android:id="@+id/panchangamTxt"
                 android:text="@string/gowriPanchangamLabel"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/white"
@@ -35,68 +35,62 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/teal_200"
+                android:background="?attr/bgSideText"
                 android:paddingVertical="2dp">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:autoSizeTextType="uniform"
                     android:gravity="center"
                     android:maxLines="1"
                     android:text="@string/kalamLabel"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/tcSideText"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/white" />
+                    android:background="?attr/tcSideText" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:autoSizeTextType="uniform"
                     android:gravity="center"
                     android:maxLines="1"
                     android:text="@string/dayLabel"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/tcSideText"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/white" />
+                    android:background="?attr/tcSideText" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:autoSizeTextType="uniform"
                     android:gravity="center"
                     android:maxLines="1"
                     android:paddingHorizontal="10dp"
                     android:text="@string/nightLabel"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    app:autoSizeTextType="uniform" />
+                    android:textColor="?attr/tcSideText"
+                    android:textStyle="bold" />
+
                 <TextView
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/teal_200" />
+                    android:background="?attr/tcSideText" />
 
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/panchangamRecyclerView"
                 android:layout_width="match_parent"
-                android:nestedScrollingEnabled="false"
                 android:layout_height="match_parent"
+                android:nestedScrollingEnabled="false"
                 tools:listitem="@layout/panchangam_item" />
 
         </LinearLayout>

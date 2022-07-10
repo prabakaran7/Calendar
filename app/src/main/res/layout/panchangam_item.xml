@@ -16,13 +16,13 @@
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_weight="3"
-                android:background="@color/white" />
+                android:background="?attr/tcSideText" />
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_weight="6"
-                android:background="@color/teal_200" />
+                android:background="?attr/bgSideText" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,13 +34,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:background="@color/teal_200"
+                android:background="?attr/bgSideText"
                 android:gravity="center_horizontal"
                 android:padding="5dp"
                 android:text="6:00-7:30"
-                app:autoSizeTextType="uniform"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/white"
+                android:textColor="?attr/tcSideText"
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -52,13 +50,12 @@
                 android:maxLines="1"
                 android:padding="5dp"
                 android:text="9:00 - 10:00"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                app:autoSizeTextType="uniform" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
             <TextView
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="@color/teal_200" />
+                android:background="?attr/tcSideText" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/eveningValueTxt"
@@ -69,12 +66,11 @@
                 android:maxLines="1"
                 android:padding="5dp"
                 android:text="9:00 - 10:00"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                app:autoSizeTextType="uniform" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
             <TextView
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="@color/teal_200" />
+                android:background="?attr/tcSideText" />
 
         </LinearLayout>
 

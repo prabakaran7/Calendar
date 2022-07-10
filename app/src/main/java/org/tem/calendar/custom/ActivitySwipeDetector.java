@@ -10,9 +10,9 @@ import android.view.ViewConfiguration;
 public class ActivitySwipeDetector implements View.OnTouchListener {
     static final String logTag = "SwipeDetector";
     private final float MIN_DISTANCE;
-    private final int VELOCITY;
+    private final float VELOCITY;
     private final float MAX_OFF_PATH;
-    private SwipeInterface activity;
+    private final SwipeInterface activity;
     private float downX, downY;
     private long timeDown;
     private CalendarDayOnClickListener onClickListener;
@@ -52,11 +52,7 @@ public class ActivitySwipeDetector implements View.OnTouchListener {
                 float deltaY = y_up - downY;
                 float absDeltaYMove = Math.abs(deltaY);
 
-                if (absDeltaYMove > 60) {
-                    v.getParent().requestDisallowInterceptTouchEvent(false);
-                } else {
-                    v.getParent().requestDisallowInterceptTouchEvent(true);
-                }
+                v.getParent().requestDisallowInterceptTouchEvent(!(absDeltaYMove > 60));
             }
 
             break;
@@ -92,18 +88,18 @@ public class ActivitySwipeDetector implements View.OnTouchListener {
                         this.onRightToLeftSwipe(v);
                         return true;
                     }
-                } else {
-                    Log.i(logTag,
-                            String.format(
-                                    "absDeltaX=%.2f, MIN_DISTANCE=%.2f, absDeltaX > MIN_DISTANCE=%b",
-                                    absDeltaX, MIN_DISTANCE,
-                                    (absDeltaX > MIN_DISTANCE)));
-                    Log.i(logTag,
-                            String.format(
-                                    "absDeltaX=%.2f, time=%d, VELOCITY=%d, time*VELOCITY/M_SEC=%d, absDeltaX > time * VELOCITY / M_SEC=%b",
-                                    absDeltaX, time, VELOCITY, time * VELOCITY
-                                            / M_SEC, (absDeltaX > time * VELOCITY
-                                            / M_SEC)));
+//                } else {
+//                    Log.i(logTag,
+//                            String.format(
+//                                    "absDeltaX=%.2f, MIN_DISTANCE=%.2f, absDeltaX > MIN_DISTANCE=%b",
+//                                    absDeltaX, MIN_DISTANCE,
+//                                    (absDeltaX > MIN_DISTANCE)));
+//                    Log.i(logTag,
+//                            String.format(
+//                                    "absDeltaX=%.2f, time=%d, VELOCITY=%f, time*VELOCITY/M_SEC=%d, absDeltaX > time * VELOCITY / M_SEC=%b",
+//                                    absDeltaX, time, VELOCITY, time * VELOCITY
+//                                            / M_SEC, (absDeltaX > time * VELOCITY
+//                                            / M_SEC)));
                 }
 
                 v.getParent().requestDisallowInterceptTouchEvent(false);

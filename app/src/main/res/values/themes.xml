@@ -20,7 +20,6 @@
         <item name="actionBarItemBackground">@color/purple_500</item>
         <item name="actionMenuTextColor">@color/white</item>
         <item name="colorControlNormal">@color/white</item>
-
         <item name="bgMain">@color/white</item>
         <item name="bgTitleCardStart">@color/purple_200</item>
         <item name="bgTitleCardCenter">@color/purple_500</item>
@@ -31,14 +30,33 @@
         <item name="bgSeparator">@color/teal_700</item>
         <item name="bgSideText">@color/teal_200</item>
         <item name="tcSideText">@color/white</item>
+        <item name="month_header_bg">@color/white</item>
     </style>
 
-    <style name="Theme.Calendar.Default.AppWidgetContainerParent" parent="@android:style/Theme.DeviceDefault">
+    <style name="Theme.Calendar.Red" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/light_blue_50</item>
+        <item name="actionBarItemBackground">@color/purple_500</item>
+        <item name="actionMenuTextColor">@color/white</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="bgMain">@color/purple_200</item>
+        <item name="bgTitleCardStart">@color/red_1</item>
+        <item name="bgTitleCardCenter">@color/red_2</item>
+        <item name="bgTitleCardEnd">@color/red_1</item>
+        <item name="bgSubTitle">@color/red_1</item>
+        <item name="tcSubTitle">@color/white</item>
+        <item name="tcTitle">@color/white</item>
+        <item name="bgSeparator">@color/red_1</item>
+        <item name="bgSideText">@color/red_2</item>
+        <item name="tcSideText">@color/white</item>
+        <item name="month_header_bg">@color/purple_200</item>
+        <item name="headerTxt">@color/white</item>
+    </style>
+
+    <style name="Theme.Calendar.Default.AppWidget" parent="@style/Theme.Material3.DynamicColors.DayNight">
         <item name="appWidgetRadius">8dp</item>
         <item name="appWidgetPadding">4dp</item>
         <item name="appWidgetInnerRadius">4dp</item>
+        <item name="android:background">@drawable/background_widget</item>
     </style>
-
-    <style name="Theme.Calendar.Default.AppWidgetContainer" parent="Theme.Calendar.Default.AppWidgetContainerParent" />
 
 </resources>

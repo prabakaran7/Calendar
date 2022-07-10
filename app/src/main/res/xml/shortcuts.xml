@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/daily_calendar"
+        android:shortcutDisabledMessage="@string/daily_calendar_txt"
+        android:shortcutId="daily"
+        android:shortcutLongLabel="@string/daily_calendar_txt"
+        android:shortcutShortLabel="@string/daily_calendar_txt">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="org.tem.calendar.activities.DailyActivity"
+            android:targetPackage="org.tem.calendar" />
+        <categories android:name="android.shortcut.conversation" />
+        <capability-binding android:key="actions.intent.CREATE_MESSAGE" />
+    </shortcut>
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/monthly_calendar"
+        android:shortcutDisabledMessage="@string/monthly_calendar_txt"
+        android:shortcutId="monthly"
+        android:shortcutLongLabel="@string/monthly_calendar_txt"
+        android:shortcutShortLabel="@string/monthly_calendar_txt">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="org.tem.calendar.activities.MonthActivity"
+            android:targetPackage="org.tem.calendar" />
+        <categories android:name="android.shortcut.conversation" />
+        <capability-binding android:key="actions.intent.CREATE_MESSAGE" />
+    </shortcut>
+</shortcuts>

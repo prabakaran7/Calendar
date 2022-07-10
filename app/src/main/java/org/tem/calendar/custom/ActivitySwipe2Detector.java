@@ -8,7 +8,7 @@ public class ActivitySwipe2Detector implements View.OnTouchListener {
 
     static final String logTag = "ActivitySwipeDetector";
     static final int MIN_DISTANCE = 100;
-    private SwipeInterface activity;
+    private final SwipeInterface activity;
     private float downX, downY, upX, upY;
 
     public ActivitySwipe2Detector(SwipeInterface activity) {

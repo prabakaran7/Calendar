@@ -14,12 +14,6 @@ public class MonthVirathamViewPageAdapter extends FragmentStateAdapter {
     private final int type;
     private final int year;
 
-    public MonthVirathamViewPageAdapter(FragmentActivity fragmentActivity, int year) {
-        super(fragmentActivity);
-        this.year = year;
-        this.type = MonthVirathamFragment.SUBA_VIRATHAM;
-    }
-
     public MonthVirathamViewPageAdapter(FragmentActivity fragmentActivity, int year, int type) {
         super(fragmentActivity);
         this.year = year;

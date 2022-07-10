@@ -4,6 +4,6 @@
     <item
         android:id="@+id/action_bar_spinner"
         app:showAsAction="ifRoom"
-        app:actionViewClass="androidx.appcompat.widget.AppCompatSpinner"
+        app:actionViewClass="android.widget.Spinner"
         android:title="Year" />
 </menu>

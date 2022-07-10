@@ -121,7 +121,6 @@
     <string name="kalamLabel">காலம்</string>
     <string name="dayLabel">பகல்</string>
     <string name="nightLabel">இரவு</string>
-    <string name="title_activity_gowri_panchangam">GowriPanchangamActivity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="graha_orai_label">கிரஹ ஓரை பஞ்சாங்கம்</string>
@@ -525,4 +524,5 @@
     <string name="configure">Configure</string>
     <string name="add_widget">Add widget</string>
     <string name="app_widget_description">This is an app widget description</string>
+    <string name="app_name_long">நாட்காட்டி 2022</string>
 </resources>

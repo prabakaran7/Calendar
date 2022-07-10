@@ -124,7 +124,8 @@ public class MonthActivity extends AppCompatActivity implements SwipeInterface {
     private void loadCalendar(LocalDate date) {
         binding.monthlyCalendar.setDates(generateDates(date));
         binding.monthlyCalendar.setPrimeYearTxt(date.getYear() + "");
-        binding.monthlyCalendar.setPrimeMonthTxt(date.getMonth().getDisplayName(TextStyle.SHORT, Locale.ENGLISH));
+        String[] monthEnNames = getResources().getStringArray(R.array.en_month_names);
+        binding.monthlyCalendar.setPrimeMonthTxt(monthEnNames[date.getMonthValue() - 1]);
         String[] monthNames = getResources().getStringArray(R.array.tamizh_month_names);
         if (!tamilMonth.isEmpty()) {
             String sb = monthNames[tamilMonth.get(0) - 1] +

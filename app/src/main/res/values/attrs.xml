@@ -10,6 +10,9 @@
     <attr name="bgSeparator" format="reference" />
     <attr name="bgSideText" format="reference" />
     <attr name="tcSideText" format="reference" />
+    <attr name="month_header_bg" format="reference"/>
+    <attr name="month_header_border" format="reference"/>
+    <attr name="headerTxt" format="reference"/>
     <declare-styleable name="AppWidgetAttrs">
         <attr name="appWidgetPadding" format="dimension" />
         <attr name="appWidgetInnerRadius" format="dimension" />

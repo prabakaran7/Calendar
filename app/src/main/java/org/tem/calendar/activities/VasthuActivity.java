@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 
@@ -48,7 +49,7 @@ public class VasthuActivity extends AppCompatActivity implements AdapterView.OnI
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_dropdown, menu);
         MenuItem item = menu.findItem(R.id.action_bar_spinner);
-        AppCompatSpinner spinner = (AppCompatSpinner) item.getActionView();
+        Spinner spinner = (Spinner) item.getActionView();
         ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this, R.layout.layout_drop_title, yearList);
         adapter.setDropDownViewResource(R.layout.layout_drop_list);
         spinner.setAdapter(adapter);

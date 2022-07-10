@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,6 +32,7 @@ public class FestivalActivity extends AppCompatActivity implements AdapterView.O
     private final List<Integer> yearList = new ArrayList<>();
     private ActivityFestivalBinding binding;
     private int type;
+    private int selected = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,24 +79,28 @@ public class FestivalActivity extends AppCompatActivity implements AdapterView.O
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_dropdown, menu);
         MenuItem item = menu.findItem(R.id.action_bar_spinner);
-        AppCompatSpinner spinner = (AppCompatSpinner) item.getActionView();
+        Spinner spinner = (Spinner) item.getActionView();
         ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this, R.layout.layout_drop_title, yearList);
         adapter.setDropDownViewResource(R.layout.layout_drop_list);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+        spinner.setSelection(selected, false);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        loadData(yearList.get(position));
+        if(selected != position) {
+            loadData(yearList.get(position));
+            selected = position;
+        }
     }
 
     private void loadData(int year) {
         binding.viewPager.setAdapter(new FestivalViewPageAdapter(this, year, type));
         LocalDate ld = LocalDate.now();
         if (ld.getYear() == year) {
-            binding.viewPager.post(() -> binding.viewPager.setCurrentItem(ld.getMonthValue() - 1));
+            binding.viewPager.post(() -> binding.viewPager.setCurrentItem(ld.getMonthValue() - 1, false));
         }
         String[] monthNames = getResources().getStringArray(R.array.en_month_names);
         new TabLayoutMediator(binding.tabLayout, binding.viewPager, (tab, position) -> tab.setText(monthNames[position])).attach();

@@ -53,21 +53,13 @@ public class DBHelper extends SQLiteOpenHelper {
         DB_FILE = context.getDatabasePath(DB_NAME);
         this.mContext = context;
 
-        try {
-            createDataBase();
-        } catch (IOException e) {
-            Toast.makeText(mContext, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-        }
+        createDataBase();
         getReadableDatabase();
         if (mDatabase.getVersion() != DB_VERSION) {
             mContext.deleteDatabase(DB_NAME);
             mDatabase = null;
         }
-        try {
-            createDataBase();
-        } catch (IOException e) {
-            Toast.makeText(mContext, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-        }
+        createDataBase();
     }
 
     public static DBHelper getInstance(Context context) {
@@ -78,7 +70,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return dbHelper;
     }
 
-    public void createDataBase() throws IOException {
+    public void createDataBase() {
         // If the database does not exist, copy it from the assets.
         boolean mDataBaseExist = checkDataBase();
         if (!mDataBaseExist) {
@@ -120,7 +112,6 @@ public class DBHelper extends SQLiteOpenHelper {
             mDatabase = SQLiteDatabase.openDatabase(DB_FILE.getPath(), "123", null, SQLiteDatabase.OPEN_READWRITE);
             // mDataBase = SQLiteDatabase.openDatabase(DB_FILE, null, SQLiteDatabase.NO_LOCALIZED_COLLATORS);
         }
-        System.out.println("---------->" + getDatabaseName() + ", " + mDatabase.getVersion());
         return mDatabase;
     }
 

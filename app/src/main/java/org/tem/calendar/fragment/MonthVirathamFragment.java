@@ -2,6 +2,8 @@ package org.tem.calendar.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -17,6 +19,7 @@ import org.tem.calendar.db.DBHelper;
 import org.tem.calendar.model.VirathamMonthData;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class MonthVirathamFragment extends Fragment {
@@ -49,6 +52,7 @@ public class MonthVirathamFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         final List<VirathamMonthData> virathamList = DBHelper.getInstance(this.requireActivity())
                 .getVirathamList(selectedDate.getYear(), selectedDate.getMonthValue());
+        System.out.println(LocalDateTime.now() +", Viratham table loaded.-->" + type + " , " + selectedDate);
         for (VirathamMonthData vd : virathamList) {
             if (ASUBA_VIRATHAM == type) {
                 switch (vd.getViratham()) {
@@ -149,7 +153,6 @@ public class MonthVirathamFragment extends Fragment {
 
         }
         if (ASUBA_VIRATHAM == type) {
-
             List<LocalDate> knList = DBHelper.getInstance(this.requireActivity()).KariNaalList(selectedDate.getYear(), selectedDate.getMonthValue());
             if (!knList.isEmpty()) {
                 binding.karinaal.getRoot().setVisibility(View.VISIBLE);
@@ -160,7 +163,7 @@ public class MonthVirathamFragment extends Fragment {
                 }
             }
         }
-        super.onViewCreated(view, savedInstanceState);
+
     }
 
     private void setMuhurtham(AppCompatTextView virathamTxt, String date) {

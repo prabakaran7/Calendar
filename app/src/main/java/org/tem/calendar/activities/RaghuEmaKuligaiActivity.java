@@ -48,7 +48,7 @@ public class RaghuEmaKuligaiActivity extends AppCompatActivity {
         int weekDay = LocalDate.now().getDayOfWeek().getValue();
         for (int index = 0; index < weekNames.size(); index++) {
             if(weekNames.get(index).first == weekDay){
-                binding.viewPager.setCurrentItem(index);
+                binding.viewPager.setCurrentItem(index, false);
                 break;
             }
         }

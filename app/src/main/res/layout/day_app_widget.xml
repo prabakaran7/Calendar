@@ -1,24 +1,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/Widget.Calendar.AppWidget.Container"
+    android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:id="@+id/rootView"
-    android:theme="@style/Theme.Calendar.Default.AppWidgetContainer">
-
+    android:padding="5dp"
+    android:theme="@style/Theme.Calendar.Default.AppWidget">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/gradient_bg"
-        android:baselineAligned="false"
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="4"
             android:gravity="center"
+            android:layout_weight="2"
             android:orientation="vertical"
             android:paddingVertical="10dp">
 
@@ -26,6 +23,7 @@
                 android:id="@+id/tamilYearTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
                 android:text="SubhaSree"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="@color/white" />
@@ -36,6 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Avani"
+                android:textStyle="bold"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/white" />
 
@@ -45,24 +44,19 @@
             android:id="@+id/tamilDateTxt"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:autoSizeTextType="uniform"
             android:fontFamily="@font/tourney_black"
             android:gravity="center"
             android:text="12"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/white"
             android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="@color/white" />
-
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="5"
+            android:layout_weight="2"
             android:orientation="vertical">
 
             <TextView
@@ -86,33 +80,44 @@
                 android:textColor="@color/white" />
         </LinearLayout>
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3"
+            android:layout_weight="2"
             android:gravity="center"
-            android:textStyle="bold"
-            android:text="@string/nallaNeramLabelShort"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            android:lines="2"
+            android:textColor="@color/white"
+            android:paddingHorizontal="5dp"
+            android:text="@string/nallaNeramLabel"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:orientation="horizontal"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingHorizontal="5dp"
             android:paddingVertical="5dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="@string/morningLabelShort"
+                android:text="@string/morningLabel"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
 
             <TextView
@@ -120,6 +125,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
+                android:textColor="@color/white"
                 android:text="9.00 - 10.30" />
         </LinearLayout>
 
@@ -127,14 +133,17 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:orientation="horizontal"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingHorizontal="5dp"
             android:paddingVertical="5dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="@string/eveningLabelShort"
+                android:text="@string/eveningLabel"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
 
             <TextView
@@ -142,10 +151,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
+                android:textColor="@color/white"
                 android:text="9.00 - 10.30" />
         </LinearLayout>
     </LinearLayout>
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"/>
     <TextView
         android:id="@+id/virathamTxt"
         android:layout_width="match_parent"
@@ -163,11 +176,11 @@
         android:layout_height="wrap_content"
         android:background="@android:color/holo_red_dark"
         android:gravity="center"
-        android:visibility="gone"
         android:padding="1dp"
         android:text="Important day message will come here."
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textColor="@color/white"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:visibility="gone" />
 </LinearLayout>
 
