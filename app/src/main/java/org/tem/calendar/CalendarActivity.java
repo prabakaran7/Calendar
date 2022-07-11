@@ -1,6 +1,7 @@
 package org.tem.calendar;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -112,6 +113,28 @@ public class CalendarActivity extends AppCompatActivity {
             Intent intent = new Intent(CalendarActivity.this, ManaiyadiSastharamActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        });
+
+
+        // other apps
+        binding.otherAppCard.setOnClickListener(view-> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/developer?id=Tem+Tech"))));
+
+        binding.privacyCard.setOnClickListener(view ->{
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://text2tem.github.io/")));
+        });
+
+        binding.shareCard.setOnClickListener(view->{
+            try {
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name_long));
+                String shareMessage= "\nLet me recommend you this application\n\n";
+                shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID +"\n\n";
+                shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+                startActivity(Intent.createChooser(shareIntent, "choose one"));
+            } catch(Exception e) {
+                //e.toString();
+            }
         });
     }
 

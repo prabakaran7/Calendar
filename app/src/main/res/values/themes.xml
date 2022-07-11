@@ -31,6 +31,7 @@
         <item name="bgSideText">@color/teal_200</item>
         <item name="tcSideText">@color/white</item>
         <item name="month_header_bg">@color/white</item>
+        <item name="headerTxt">@color/purple_500</item>
     </style>
 
     <style name="Theme.Calendar.Red" parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -42,11 +43,11 @@
         <item name="bgTitleCardStart">@color/red_1</item>
         <item name="bgTitleCardCenter">@color/red_2</item>
         <item name="bgTitleCardEnd">@color/red_1</item>
-        <item name="bgSubTitle">@color/red_1</item>
+        <item name="bgSubTitle">@color/red_2</item>
         <item name="tcSubTitle">@color/white</item>
         <item name="tcTitle">@color/white</item>
-        <item name="bgSeparator">@color/red_1</item>
-        <item name="bgSideText">@color/red_2</item>
+        <item name="bgSeparator">@color/red_2</item>
+        <item name="bgSideText">@color/red_3</item>
         <item name="tcSideText">@color/white</item>
         <item name="month_header_bg">@color/purple_200</item>
         <item name="headerTxt">@color/white</item>

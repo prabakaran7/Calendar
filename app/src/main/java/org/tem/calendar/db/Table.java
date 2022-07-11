@@ -172,7 +172,7 @@ public class Table {
     }
 
     public interface Kural {
-        String NAME = "THIRUKKUAL";
+        String NAME = "THIRUKKURAL";
         String COL_ID = "ID";
         String COL_IYALKAL = "IYALKAL";
         String COL_PAAKAL = "PAAKAL";

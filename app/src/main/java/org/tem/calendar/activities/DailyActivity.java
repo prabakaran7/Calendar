@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.databinding.DataBindingUtil;
 
+import org.tem.calendar.CalendarApp;
 import org.tem.calendar.Constants;
 import org.tem.calendar.R;
 import org.tem.calendar.custom.ActivitySwipeDetector;
@@ -18,8 +19,10 @@ import org.tem.calendar.custom.StringUtils;
 import org.tem.calendar.custom.SwipeInterface;
 import org.tem.calendar.databinding.ActivityDailyBinding;
 import org.tem.calendar.db.DBHelper;
+import org.tem.calendar.db.Table;
 import org.tem.calendar.model.FestivalDayData;
 import org.tem.calendar.model.KaranamData;
+import org.tem.calendar.model.KuralData;
 import org.tem.calendar.model.MonthData;
 import org.tem.calendar.model.MuhurthamData;
 import org.tem.calendar.model.NallaNeramData;
@@ -455,6 +458,33 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
             } else {
                 binding.importantDayLayout.specialDayLayout.setVisibility(View.GONE);
             }
+        }
+
+        loadMiscData();
+    }
+
+    public void loadMiscData(){
+        long epochDays = LocalDate.now().toEpochDay();
+        String quote = DBHelper.getInstance(this).getQuote((int) (epochDays% CalendarApp.getMaxQuoteNumber(this) + 1));
+        KuralData kd = DBHelper.getInstance(this).getKural((int) (epochDays%1330 + 1));
+        if(StringUtils.isBlank(quote) && null == kd){
+            binding.miscLayout.getRoot().setVisibility(View.GONE);
+        }
+        if(!StringUtils.isBlank(quote)){
+            binding.miscLayout.quoteTxt.setText(quote);
+            binding.miscLayout.quoteTxt.setVisibility(View.VISIBLE);
+        } else {
+            binding.miscLayout.quoteTxt.setVisibility(View.GONE);
+        }
+
+        if(null != kd){
+            System.out.println(kd.getKural());
+            binding.miscLayout.kuralLayout.setVisibility(View.VISIBLE);
+            binding.miscLayout.kuralNumberTxt.setText(getString(R.string.kural_number_txt, kd.getId()));
+            binding.miscLayout.athigaramTxt.setText(kd.getAthigaram());
+            binding.miscLayout.kuralTxt.setText(kd.getKural());
+        } else {
+            binding.miscLayout.kuralLayout.setVisibility(View.GONE);
         }
     }
 

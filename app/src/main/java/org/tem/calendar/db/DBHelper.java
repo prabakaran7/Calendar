@@ -659,9 +659,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public int getQuoteMaxNumber() {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT COUNT(*) FROM QUOTES", null);
+        Cursor c = db.rawQuery("SELECT COUNT(*) as COUNT FROM QUOTES", null);
         if (c != null && c.moveToFirst()) {
-            return c.getInt(1);
+            return c.getInt(c.getColumnIndexOrThrow("COUNT"));
         }
         return -1;
     }

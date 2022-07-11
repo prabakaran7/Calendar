@@ -525,4 +525,10 @@
     <string name="add_widget">Add widget</string>
     <string name="app_widget_description">This is an app widget description</string>
     <string name="app_name_long">நாட்காட்டி 2022</string>
+    <string name="kural_number_txt">குறள்: %1$d</string>
+    <string name="miscTxt">மற்றவை</string>
+    <string name="settings">அமைப்புகள்</string>
+    <string name="privacy_policy">தனியுரிமைக் கொள்கை</string>
+    <string name="otherApps">மற்ற பயன்பாடுகள்</string>
+    <string name="shareTxt">பகிர்</string>
 </resources>

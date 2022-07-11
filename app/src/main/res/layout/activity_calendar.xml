@@ -346,8 +346,7 @@
                             android:maxLines="1"
                             android:padding="5dp"
                             android:text="@string/holidaysAndFestivals"
-                            android:textStyle="bold"
-                            app:autoSizeTextType="uniform" />
+                            android:textStyle="bold" />
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -383,8 +382,7 @@
                             android:maxLines="1"
                             android:padding="5dp"
                             android:text="@string/raghu_ema_kuligai_title"
-                            android:textStyle="bold"
-                            app:autoSizeTextType="uniform" />
+                            android:textStyle="bold" />
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -415,7 +413,6 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:autoSizeTextType="uniform"
                             android:gravity="center"
                             android:maxLines="1"
                             android:padding="5dp"
@@ -451,7 +448,6 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:autoSizeTextType="uniform"
                             android:gravity="center"
                             android:maxLines="1"
                             android:padding="5dp"
@@ -487,7 +483,6 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:autoSizeTextType="uniform"
                             android:gravity="center"
                             android:maxLines="1"
                             android:padding="5dp"
@@ -536,7 +531,6 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:autoSizeTextType="uniform"
                             android:gravity="center"
                             android:maxLines="1"
                             android:padding="5dp"
@@ -572,11 +566,168 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:autoSizeTextType="uniform"
                             android:gravity="center"
                             android:maxLines="1"
                             android:padding="5dp"
                             android:text="@string/manaiyadi_label"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/miscLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="5dp"
+                    android:text="@string/miscTxt"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vasthu_card" />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/settings_card"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/monthly_calendar_card"
+                    app:layout_constraintStart_toEndOf="@id/vasthu_card"
+                    app:layout_constraintTop_toBottomOf="@id/miscLabel">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="20pt"
+                            android:src="@android:drawable/ic_menu_preferences" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:padding="5dp"
+                            android:text="@string/settings"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/privacy_card"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/monthly_calendar_card"
+                    app:layout_constraintStart_toEndOf="@id/vasthu_card"
+                    app:layout_constraintTop_toBottomOf="@id/miscLabel">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="20pt"
+                            android:src="@android:drawable/ic_lock_lock" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:padding="5dp"
+                            android:text="@string/privacy_policy"
+                            android:autoSizeTextType="uniform"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/other_app_card"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/monthly_calendar_card"
+                    app:layout_constraintStart_toEndOf="@id/vasthu_card"
+                    app:layout_constraintTop_toBottomOf="@id/settings_card">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="20pt"
+                            android:src="@drawable/temtech" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:padding="5dp"
+                            android:text="@string/otherApps"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/share_card"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/monthly_calendar_card"
+                    app:layout_constraintStart_toEndOf="@id/vasthu_card"
+                    app:layout_constraintTop_toBottomOf="@id/settings_card">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="20pt"
+                            android:src="@android:drawable/ic_menu_share" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:padding="5dp"
+                            android:text="@string/shareTxt"
+                            android:autoSizeTextType="uniform"
                             android:textStyle="bold" />
 
                     </LinearLayout>
