@@ -96,6 +96,7 @@
         <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/nalla_neram_layout.xml" value="0.17552083333333332" />
         <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/panchangam_item.xml" value="0.17552083333333332" />
         <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/panchangam_layout.xml" value="0.1140625" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/settings_activity.xml" value="0.17552083333333332" />
         <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/simple_day_app_widget.xml" value="0.14635416666666667" />
         <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/simple_textview_item.xml" value="0.17552083333333332" />
         <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/layout/spinner_layout.xml" value="0.14010416666666667" />
@@ -105,6 +106,7 @@
         <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/menu/menu_dropdown.xml" value="0.1" />
         <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/xml/day_appwidget_info.xml" value="0.17552083333333332" />
+        <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/xml/root_preferences.xml" value="0.17552083333333332" />
         <entry key="..\:/TEM/Workspace/Android/Calendar/app/src/main/res/xml/shortcuts.xml" value="0.15729166666666666" />
       </map>
     </option>

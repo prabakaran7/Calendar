@@ -14,7 +14,13 @@
         <!-- Customize your theme here. -->
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
+
     </style>
+
+    <style name="Theme.calendar.SplashScreen" parent="Theme.Calendar.Default">
+        <item name="android:windowBackground">@color/purple_700</item>
+    </style>
+
 
     <style name="Theme.Calendar.Default" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="actionBarItemBackground">@color/purple_500</item>

@@ -30,12 +30,11 @@ public class PanchangamActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         String type = GRAHA_ORAI_PANCHANGAM;
         binding = DataBindingUtil.setContentView(this, R.layout.activity_panchangam);
 
 
-        if(getIntent() != null && getIntent().getExtras().containsKey(Constants.EXTRA_PANCHANGAM)){
+        if (getIntent() != null && null != getIntent().getExtras() && getIntent().getExtras().containsKey(Constants.EXTRA_PANCHANGAM)) {
             type = getIntent().getStringExtra(Constants.EXTRA_PANCHANGAM);
         }
 
@@ -44,7 +43,7 @@ public class PanchangamActivity extends AppCompatActivity {
         setCurrentDayIndex(weeks);
         if (GOWRI_PANCHANGAM.equals(type)) {
             binding.toolbar.setSubtitle(R.string.gowriPanchangamLabel);
-        }else if(GRAHA_ORAI_PANCHANGAM.equals(type)){
+        } else if (GRAHA_ORAI_PANCHANGAM.equals(type)) {
             binding.toolbar.setSubtitle(R.string.graha_orai_label);
         }
         setSupportActionBar(binding.toolbar);
@@ -65,7 +64,7 @@ public class PanchangamActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == android.R.id.home){
+        if (item.getItemId() == android.R.id.home) {
             finish();
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }

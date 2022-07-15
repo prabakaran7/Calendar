@@ -82,6 +82,10 @@ public class DateUtil {
     }
 
     public static String format(LocalDate date) {
-        return date.format(DateTimeFormatter.ofPattern(DATE_FORMAT));
+        return format(date, DATE_FORMAT);
+    }
+
+    public static String format(LocalDate date, String pattern) {
+        return date.format(DateTimeFormatter.ofPattern(pattern));
     }
 }

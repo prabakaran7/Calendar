@@ -19,7 +19,6 @@ import org.tem.calendar.custom.StringUtils;
 import org.tem.calendar.custom.SwipeInterface;
 import org.tem.calendar.databinding.ActivityDailyBinding;
 import org.tem.calendar.db.DBHelper;
-import org.tem.calendar.db.Table;
 import org.tem.calendar.model.FestivalDayData;
 import org.tem.calendar.model.KaranamData;
 import org.tem.calendar.model.KuralData;
@@ -33,6 +32,7 @@ import org.tem.calendar.model.ThitiData;
 import org.tem.calendar.model.VirathamData;
 import org.tem.calendar.model.WeekData;
 import org.tem.calendar.model.YogamData;
+import org.tem.calendar.util.TextMessageBuilder;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -45,10 +45,12 @@ import java.util.Set;
 
 public class DailyActivity extends AppCompatActivity implements SwipeInterface {
 
+    private static final String DASHES = "-------------------";
+    private final TextMessageBuilder tmb = new TextMessageBuilder();
     private ActivityDailyBinding binding;
-
     private LocalDate selectedDate;
     private String dateString;
+    private String nokku = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,11 +66,16 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
         }
         dateString = selectedDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
-        System.out.println("CURRENT DATE: " + selectedDate);
+        tmb.reset();
+        tmb.append(0, getString(R.string.app_name_long));
+        tmb.append(1, "====================");
+
         binding.headerLayout.dateTxt.setText(selectedDate.format(DateTimeFormatter.ofPattern("d-M-yyyy")));
         if (selectedDate.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
             binding.headerLayout.dateTxt.setTypeface(ResourcesCompat.getFont(this, R.font.tourney_semi_bold), Typeface.NORMAL);
         }
+        tmb.append(2, getString(R.string.date_txt, binding.headerLayout.dateTxt.getText().toString()));
+
         binding.headerLayout.monthHeaderTxt.setText(monthText());
 
         if (!LocalDate.now().equals(selectedDate)) {
@@ -104,6 +111,14 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
                             md.getTday()
                     )
             );
+
+            tmb.append(3,
+                    getString(
+                            R.string.tn_date_txt, md.getTday(),
+                            getResources().getStringArray(R.array.tamizh_month_names)[md.getTmonth() - 1],
+                            getResources().getStringArray(R.array.tamil_year_names)[md.getTyear() - 1]
+                    )
+            );
         }
 
         binding.headerLayout.prevBtn.setOnClickListener(v -> moveToPrevDay());
@@ -111,26 +126,9 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
         binding.rootView.setOnTouchListener(new ActivitySwipeDetector(this, this));
         binding.scrollView.setOnTouchListener(new ActivitySwipeDetector(this, this));
 
-        // raaghu & soolam
-        WeekData wd = DBHelper.getInstance(this).getWeekData(selectedDate.getDayOfWeek());
-        binding.raaghuEmaLayout.raaghuTxt.setText(wd.getRaaghu());
-        binding.raaghuEmaLayout.emaTxt.setText(wd.getEma());
-        binding.raaghuEmaLayout.kuligaiTxt.setText(wd.getKuligai());
-        binding.raaghuEmaLayout.karananTxt.setText(wd.getKaranan());
-        binding.vaaraSoolaiLayout.soolamTxt.setText(getResources().getStringArray(R.array.directions)[wd.getSoolam() - 1]);
-        binding.vaaraSoolaiLayout.parigaramTxt.setText(getResources().getStringArray(R.array.parigaram)[wd.getParigaram() - 1]);
-        int naa = wd.getSoolamTime();
-        int[] hourMin = DateUtil.naazhigaiToHourMin(naa);
-        binding.vaaraSoolaiLayout.soolamTimeTxt.setText(getString(R.string.nazhigaiTime, naa, hourMin[0], hourMin[1]));
+        raaghuSoolamData();
 
-        //NallaNeram
-        NallaNeramData nd = DBHelper.getInstance(this).getNallaNeram(dateString);
-        binding.nallaLayout.nallaNeramMorning.setText(nd.getNallaNeramM());
-        binding.nallaLayout.nallaNeramEvening.setText(nd.getNallaNeramE());
-        binding.nallaLayout.gowriMorning.setText(nd.getGowriM());
-        binding.nallaLayout.gowriEvening.setText(nd.getGowriE());
-        binding.sunriseLayout.sunriseTxt.setText(nd.getSunRise());
-        binding.sunriseLayout.sunriseLaknamTxt.setText(getSunRiseLaknamText(nd.getLaknam(), nd.getLaknamTime()));
+        nallaNeramData();
 
         // panchangam
 
@@ -152,19 +150,26 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
             if (td.getPirai() == -1) { //Amavasai
                 binding.importantDayLayout.piraiImage.setImageResource(R.drawable.new_moon);
                 binding.importantDayLayout.piraiImage.setOnClickListener(v -> Toast.makeText(this, R.string.today_new_moon, Toast.LENGTH_SHORT).show());
+                nokku += getString(R.string.today_new_moon);
             } else if (td.getPirai() == -2) { //pournami
                 binding.importantDayLayout.piraiImage.setImageResource(R.drawable.full_moon);
                 binding.importantDayLayout.piraiImage.setOnClickListener(v -> Toast.makeText(this, R.string.today_full_moon, Toast.LENGTH_SHORT).show());
+                nokku += getString(R.string.today_full_moon);
             } else if (td.getPirai() == 2) { //valarpirai
                 binding.importantDayLayout.piraiImage.setImageResource(R.drawable.cresent_white);
                 binding.importantDayLayout.piraiImage.setOnClickListener(v -> Toast.makeText(this, R.string.today_waxing_moon, Toast.LENGTH_SHORT).show());
+                nokku += getString(R.string.today_waxing_moon);
             } else { //theipirai
                 binding.importantDayLayout.piraiImage.setImageResource(R.drawable.cresent_black);
                 binding.importantDayLayout.piraiImage.setOnClickListener(v -> Toast.makeText(this, R.string.today_waning_moon, Toast.LENGTH_SHORT).show());
+                nokku += getString(R.string.today_waning_moon);
             }
             binding.importantDayLayout.piraiImage.setVisibility(View.VISIBLE);
         }
         binding.panchangamLayout.thitiTxt.setText(thiti);
+
+        tmb.append(DASHES);
+        tmb.append(getString(R.string.thitiLabel) + getString(R.string.colon_separator) + thiti);
 
         //Stars
         StarData sd = DBHelper.getInstance(this).getStar(dateString);
@@ -187,20 +192,30 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
                     sb.append(",");
                 }
             }
+            tmb.append(4, getString(R.string.chandrastamamLabel) + getString(R.string.colon_separator) + sb.toString());
+
             binding.chandrastamLayout.chandrastamamTxt.setText(sb.toString());
+            nokku += System.lineSeparator();
             if (sd.getNokku() == 1) {
                 binding.importantDayLayout.nokkuImage.setImageResource(R.drawable.up_arrow);
                 binding.importantDayLayout.nokkuImage.setOnClickListener(v -> Toast.makeText(this, R.string.mel_nokku_naal, Toast.LENGTH_SHORT).show());
+                nokku += getString(R.string.mel_nokku_naal);
             } else if (sd.getNokku() == 2) {
                 binding.importantDayLayout.nokkuImage.setImageResource(R.drawable.down_arrow);
                 binding.importantDayLayout.nokkuImage.setOnClickListener(v -> Toast.makeText(this, R.string.kizh_nokku_naal, Toast.LENGTH_SHORT).show());
+                nokku += getString(R.string.mel_nokku_naal);
             } else {
                 binding.importantDayLayout.nokkuImage.setImageResource(R.drawable.both_side_arrow);
                 binding.importantDayLayout.nokkuImage.setOnClickListener(v -> Toast.makeText(this, R.string.sama_nokku_naal, Toast.LENGTH_SHORT).show());
+                nokku += getString(R.string.mel_nokku_naal);
             }
             binding.importantDayLayout.nokkuImage.setVisibility(View.VISIBLE);
         }
         binding.panchangamLayout.starTxt.setText(star);
+        tmb.append("");
+        tmb.append(4, nokku);
+        tmb.append("");
+        tmb.append(getString(R.string.starLabel) + getString(R.string.colon_separator) + star);
 
         KaranamData kd = DBHelper.getInstance(this).getKaranam(dateString);
         String kara = "-";
@@ -223,6 +238,7 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
             }
         }
         binding.panchangamLayout.karanamTxt.setText(kara);
+        tmb.append(getString(R.string.kalamLabel) + getString(R.string.colon_separator) + kara);
 
         String yogam = "-";
         YogamData yd = DBHelper.getInstance(this).getYogam(dateString);
@@ -241,6 +257,8 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
             }
         }
         binding.panchangamLayout.yogamTxt.setText(yogam);
+        tmb.append(getString(R.string.yogamLabel) + getString(R.string.colon_separator) + yogam);
+        tmb.append("");
 
         // load rasi
         RasiData rd = DBHelper.getInstance(this).getRasi(dateString);
@@ -259,6 +277,22 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
             binding.rasiLayout.magaramTxt.setText(values[rd.getMagaram()]);
             binding.rasiLayout.kumbamTxt.setText(values[rd.getKumbam()]);
             binding.rasiLayout.meenamTxt.setText(values[rd.getMeenam()]);
+
+            tmb.append(getString(R.string.todayRasiPalanLabel));
+            tmb.append(DASHES);
+            tmb.append(getString(R.string.mesham) + getString(R.string.colon_separator) + binding.rasiLayout.meshamTxt.getText());
+            tmb.append(getString(R.string.rishabam) + getString(R.string.colon_separator) + binding.rasiLayout.rishabamTxt.getText());
+            tmb.append(getString(R.string.mithunam) + getString(R.string.colon_separator) + binding.rasiLayout.mithunamTxt.getText());
+            tmb.append(getString(R.string.kadagam) + getString(R.string.colon_separator) + binding.rasiLayout.kadagamTxt.getText());
+            tmb.append(getString(R.string.simmam) + getString(R.string.colon_separator) + binding.rasiLayout.simmamTxt.getText());
+            tmb.append(getString(R.string.kanni) + getString(R.string.colon_separator) + binding.rasiLayout.kanniTxt.getText());
+            tmb.append(getString(R.string.thulam) + getString(R.string.colon_separator) + binding.rasiLayout.thulamTxt.getText());
+            tmb.append(getString(R.string.vrichagam) + getString(R.string.colon_separator) + binding.rasiLayout.viruchagamTxt.getText());
+            tmb.append(getString(R.string.thanusu) + getString(R.string.colon_separator) + binding.rasiLayout.dhanusuTxt.getText());
+            tmb.append(getString(R.string.magaram) + getString(R.string.colon_separator) + binding.rasiLayout.magaramTxt.getText());
+            tmb.append(getString(R.string.kumbam) + getString(R.string.colon_separator) + binding.rasiLayout.kumbamTxt.getText());
+            tmb.append(getString(R.string.meenam) + getString(R.string.colon_separator) + binding.rasiLayout.meenamTxt.getText());
+            tmb.append("");
         } else {
             binding.rasiLayout.getRoot().setVisibility(View.GONE);
         }
@@ -411,7 +445,6 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
 
 
             }
-            System.out.println(vd);
             sb.append(virathams[vd.getViratham()]);
             if (vd.getTiming().length() > 1) {
                 sb.append("[").append(vd.getTiming()).append("]");
@@ -432,6 +465,8 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
                 sb.setLength(sb.toString().length() - 2);
             }
             binding.importantDayLayout.viruthamTxt.setText(sb.toString());
+            tmb.append("");
+            tmb.append(4, binding.importantDayLayout.viruthamTxt.getText().toString());
         } else {
             binding.importantDayLayout.viruthamTxt.setVisibility(View.GONE);
         }
@@ -455,30 +490,119 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
             if (!festivals.isEmpty()) {
                 binding.importantDayLayout.specialDayLayout.setVisibility(View.VISIBLE);
                 binding.importantDayLayout.specialDayTxt.setText(StringUtils.join(festivals, ","));
+                tmb.append("");
+                tmb.append(4, binding.importantDayLayout.specialDayTxt.getText().toString());
             } else {
                 binding.importantDayLayout.specialDayLayout.setVisibility(View.GONE);
             }
         }
 
         loadMiscData();
+
+        binding.shareBtn.setOnClickListener(view -> {
+            tmb.append("..............................");
+
+            /*Create an ACTION_SEND Intent*/
+            Intent intentShare = new Intent(android.content.Intent.ACTION_SEND);
+
+            /*This will be the actual content you wish you share.*/
+            String shareBody = "Here is the share content body"; //TODO
+
+            /*The type of the content is text, obviously.*/
+            intentShare.setType("text/plain");
+
+            /*Applying information Subject and Body.*/
+            intentShare.putExtra(android.content.Intent.EXTRA_SUBJECT, getString(R.string.app_name_long));
+            intentShare.putExtra(android.content.Intent.EXTRA_TEXT, tmb.build());
+            /*Fire!*/
+            startActivity(Intent.createChooser(intentShare, shareBody));
+        });
     }
 
-    public void loadMiscData(){
+    private void nallaNeramData() {
+        //NallaNeram
+        NallaNeramData nd = DBHelper.getInstance(this).getNallaNeram(dateString);
+        if (null != nd) {
+            tmb.append(getString(R.string.nallaNeramLabel));
+            tmb.append(DASHES);
+
+            binding.nallaLayout.nallaNeramMorning.setText(nd.getNallaNeramM());
+            tmb.append(getString(R.string.morningLabel) + getString(R.string.colon_separator) + nd.getNallaNeramM());
+
+            binding.nallaLayout.nallaNeramEvening.setText(nd.getNallaNeramE());
+            tmb.append(getString(R.string.eveningLabel) + getString(R.string.colon_separator) + nd.getNallaNeramE());
+
+            binding.nallaLayout.gowriMorning.setText(nd.getGowriM());
+            tmb.append(getString(R.string.gowriNallaNeramLabel) + " " + getString(R.string.morningLabelShort) + " " + getString(R.string.colon_separator) + nd.getGowriM());
+
+            binding.nallaLayout.gowriEvening.setText(nd.getGowriE());
+            tmb.append(getString(R.string.gowriNallaNeramLabel) + " " + getString(R.string.eveningLabelShort) + " " + getString(R.string.colon_separator) + nd.getGowriE());
+
+            binding.sunriseLayout.sunriseTxt.setText(nd.getSunRise());
+            tmb.append(getString(R.string.sunriseLabel) + getString(R.string.colon_separator) + nd.getSunRise());
+
+            binding.sunriseLayout.sunriseLaknamTxt.setText(getSunRiseLaknamText(nd.getLaknam(), nd.getLaknamTime()));
+            tmb.append(binding.sunriseLayout.sunriseLaknamTxt.getText().toString());
+            tmb.append("");
+        }
+    }
+
+    private void raaghuSoolamData() {
+        // raaghu & soolam
+        WeekData wd = DBHelper.getInstance(this).getWeekData(selectedDate.getDayOfWeek());
+        if (null != wd) {
+            tmb.append("");
+            tmb.append(getString(R.string.raaghuEmaKuligaiLabel));
+            tmb.append(DASHES);
+
+            binding.raaghuEmaLayout.raaghuTxt.setText(wd.getRaaghu());
+
+            tmb.append(getString(R.string.raghu) + getString(R.string.colon_separator) + wd.getRaaghu());
+
+            binding.raaghuEmaLayout.emaTxt.setText(wd.getEma());
+
+            tmb.append(getString(R.string.emakandam) + getString(R.string.colon_separator) + wd.getEma());
+
+            binding.raaghuEmaLayout.kuligaiTxt.setText(wd.getKuligai());
+
+            tmb.append(getString(R.string.kuligai) + getString(R.string.colon_separator) + wd.getKuligai());
+
+            binding.raaghuEmaLayout.karananTxt.setText(wd.getKaranan());
+
+            tmb.append(getString(R.string.karananLabel) + getString(R.string.colon_separator) + wd.getKaranan());
+
+            binding.vaaraSoolaiLayout.soolamTxt.setText(getResources().getStringArray(R.array.directions)[wd.getSoolam() - 1]);
+
+            tmb.append(getString(R.string.soolam) + getString(R.string.colon_separator) + binding.vaaraSoolaiLayout.soolamTxt.getText());
+
+            binding.vaaraSoolaiLayout.parigaramTxt.setText(getResources().getStringArray(R.array.parigaram)[wd.getParigaram() - 1]);
+
+            tmb.append(getString(R.string.parigaram) + getString(R.string.colon_separator) + binding.vaaraSoolaiLayout.parigaramTxt.getText());
+
+            int naa = wd.getSoolamTime();
+            int[] hourMin = DateUtil.naazhigaiToHourMin(naa);
+            binding.vaaraSoolaiLayout.soolamTimeTxt.setText(getString(R.string.nazhigaiTime, naa, hourMin[0], hourMin[1]));
+
+            tmb.append(getString(R.string.nazhigai) + getString(R.string.colon_separator) + binding.vaaraSoolaiLayout.soolamTimeTxt.getText());
+            tmb.append("");
+        }
+    }
+
+    public void loadMiscData() {
         long epochDays = LocalDate.now().toEpochDay();
-        String quote = DBHelper.getInstance(this).getQuote((int) (epochDays% CalendarApp.getMaxQuoteNumber(this) + 1));
-        KuralData kd = DBHelper.getInstance(this).getKural((int) (epochDays%1330 + 1));
-        if(StringUtils.isBlank(quote) && null == kd){
+        String quote = DBHelper.getInstance(this).getQuote((int) (epochDays % CalendarApp.getMaxQuoteNumber(this) + 1));
+        KuralData kd = DBHelper.getInstance(this).getKural((int) (epochDays % 1330 + 1));
+        if (StringUtils.isBlank(quote) && null == kd) {
             binding.miscLayout.getRoot().setVisibility(View.GONE);
         }
-        if(!StringUtils.isBlank(quote)){
+        if (!StringUtils.isBlank(quote)) {
             binding.miscLayout.quoteTxt.setText(quote);
             binding.miscLayout.quoteTxt.setVisibility(View.VISIBLE);
         } else {
             binding.miscLayout.quoteTxt.setVisibility(View.GONE);
         }
 
-        if(null != kd){
-            System.out.println(kd.getKural());
+        if (null != kd) {
             binding.miscLayout.kuralLayout.setVisibility(View.VISIBLE);
             binding.miscLayout.kuralNumberTxt.setText(getString(R.string.kural_number_txt, kd.getId()));
             binding.miscLayout.athigaramTxt.setText(kd.getAthigaram());
@@ -496,6 +620,8 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
     private String monthText() {
         String[] monthNames = getResources().getStringArray(R.array.en_month_names);
         String[] weekDayNames = getResources().getStringArray(R.array.weekday_names);
+
+        tmb.append(getString(R.string.day_txt, weekDayNames[selectedDate.getDayOfWeek().getValue() - 1]));
 
         return monthNames[selectedDate.getMonthValue() - 1] + " - " + weekDayNames[selectedDate.getDayOfWeek().getValue() - 1];
     }
@@ -545,5 +671,17 @@ public class DailyActivity extends AppCompatActivity implements SwipeInterface {
     public void finish() {
         super.finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
+    @Override
+    protected void onDestroy() {
+        System.out.println("++++++++++++++++++++++++++++++");
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onStop() {
+        System.out.println("STOPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPING");
+        super.onStop();
     }
 }

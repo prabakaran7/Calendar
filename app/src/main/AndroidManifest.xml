@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.tem.calendar">
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+
 
     <application
         android:name=".CalendarApp"
@@ -11,8 +14,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Calendar.Default">
+        <meta-data android:name="firebase_analytics_collection_enabled" android:value="false" />
+
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_settings" />
         <activity
             android:name=".SplashActivity"
+            android:theme="@style/Theme.Calendar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,6 +32,7 @@
             <meta-data
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
+
         </activity>
 
         <receiver
@@ -68,7 +79,9 @@
             android:exported="false" />
         <activity
             android:name=".CalendarActivity"
-            android:exported="false" />
+            android:exported="false" >
+
+        </activity>
         <activity
             android:name=".activities.MuhurthamActivity"
             android:exported="false" />
@@ -78,7 +91,7 @@
             android:parentActivityName=".CalendarActivity" />
         <activity
             android:name=".activities.DailyActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".activities.RaghuEmaKuligaiActivity"
             android:exported="false" />
