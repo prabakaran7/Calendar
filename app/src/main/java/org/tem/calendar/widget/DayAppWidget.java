@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.RemoteViews;
 
 import org.tem.calendar.R;
-import org.tem.calendar.activities.DailyActivity;
+import org.tem.calendar.activities.DayActivity;
 import org.tem.calendar.custom.DateUtil;
 import org.tem.calendar.custom.StringUtils;
 import org.tem.calendar.db.DBHelper;
@@ -31,7 +31,7 @@ public class DayAppWidget extends AppWidgetProvider {
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
-        Intent intent = new Intent(context, DailyActivity.class);
+        Intent intent = new Intent(context, DayActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
 
         LocalDate selectedDate = LocalDate.now();

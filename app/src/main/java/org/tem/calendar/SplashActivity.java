@@ -5,10 +5,6 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import net.sqlcipher.database.SQLiteDatabase;
-
-import org.tem.calendar.db.DBHelper;
-
 public class SplashActivity extends AppCompatActivity {
 
 
@@ -18,7 +14,9 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         /* Create an Intent that will start the Menu-Activity. */
-        Intent mainIntent = new Intent(SplashActivity.this, CalendarActivity.class);
+        Intent mainIntent = new Intent(SplashActivity.this, DashboardActivity.class);
+//        Intent mainIntent = new Intent(SplashActivity.this, CalendarActivity.class);
+//        Intent mainIntent = new Intent(SplashActivity.this, ScrollingDayActivity.class);
         SplashActivity.this.startActivity(mainIntent);
         SplashActivity.this.finish();
 

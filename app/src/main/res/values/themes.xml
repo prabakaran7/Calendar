@@ -66,4 +66,13 @@
         <item name="android:background">@drawable/background_widget</item>
     </style>
 
+    <style name="Theme.Calendar.Default.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Calendar.Default.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Calendar.Default.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dp"
+            android:paddingBottom="1dp"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/headerLayout"
+                layout="@layout/daily_header_layout" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/govtHolidayTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:text="@string/govtHoliday"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@android:color/holo_red_dark"
+                android:textStyle="bold" />
+
+            <include android:id="@+id/important_day_layout"
+                layout="@layout/daily_important_layout"/>
+
+            <include
+                android:id="@+id/nallaLayout"
+                layout="@layout/daily_nalla_neram_layout" />
+
+            <include
+                android:id="@+id/sunriseLayout"
+                layout="@layout/daily_sunrise_layout" />
+
+            <include android:id="@+id/chandrastam_layout"
+                layout="@layout/daily_chandrastamam_layout"/>
+
+            <include
+                android:id="@+id/panchangamLayout"
+                layout="@layout/daily_panchangam_layout" />
+
+            <include
+                android:id="@+id/raaghuEmaLayout"
+                layout="@layout/daily_raaghu_ema_layout" />
+
+            <include
+                android:id="@+id/vaaraSoolaiLayout"
+                layout="@layout/daily_soolam_layout" />
+
+            <include
+                android:id="@+id/rasiLayout"
+                layout="@layout/daily_rasi_layout" />
+
+            <include
+                android:id="@+id/rasi_chart_layout"
+                layout="@layout/daily_rasi_chart" />
+
+            <include android:id="@+id/misc_layout"
+                layout="@layout/daily_misc_layout"/>
+        </LinearLayout>
+    </ScrollView>
+</layout>

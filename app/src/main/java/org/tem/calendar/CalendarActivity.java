@@ -11,7 +11,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
-import org.tem.calendar.activities.DailyActivity;
 import org.tem.calendar.activities.FestivalIndexActivity;
 import org.tem.calendar.activities.ManaiyadiSastharamActivity;
 import org.tem.calendar.activities.MonthActivity;
@@ -19,6 +18,7 @@ import org.tem.calendar.activities.MonthVirathamActivity;
 import org.tem.calendar.activities.MuhurthamActivity;
 import org.tem.calendar.activities.PanchangamActivity;
 import org.tem.calendar.activities.RaghuEmaKuligaiActivity;
+import org.tem.calendar.activities.DayActivity;
 import org.tem.calendar.activities.VasthuActivity;
 import org.tem.calendar.custom.DateUtil;
 import org.tem.calendar.custom.StringUtils;
@@ -46,7 +46,7 @@ public class CalendarActivity extends AppCompatActivity {
         loadCurrentDay();
 
         binding.dailyCalendarCard.setOnClickListener(view -> {
-            Intent intent = new Intent(CalendarActivity.this, DailyActivity.class);
+            Intent intent = new Intent(CalendarActivity.this, DayActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });

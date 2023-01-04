@@ -35,10 +35,10 @@ import java.util.stream.Collectors;
 
 public class MonthActivity extends AppCompatActivity implements SwipeInterface {
 
-    final List<Integer> tamilMonth = new ArrayList<>();
-    ActivityMonthBinding binding;
-    LocalDate selectedDate;
-    String[] weekNames;
+    private final List<Integer> tamilMonth = new ArrayList<>();
+    private ActivityMonthBinding binding;
+    private LocalDate selectedDate;
+    private String[] weekNames;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +69,7 @@ public class MonthActivity extends AppCompatActivity implements SwipeInterface {
         binding.monthlyCalendar.setDayOnClickListener(clickedDate -> {
             finish();
             overridePendingTransition(0, 0);
-            Intent intent = new Intent(MonthActivity.this, DailyActivity.class);
+            Intent intent = new Intent(MonthActivity.this, DayActivity.class);
             intent.putExtra(Constants.EXTRA_DATE_SELECTED, clickedDate);
             startActivity(intent);
             overridePendingTransition(0, 0);

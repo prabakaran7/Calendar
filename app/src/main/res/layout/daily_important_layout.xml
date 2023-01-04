@@ -20,56 +20,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:id="@+id/image_layout"
                 android:orientation="horizontal">
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/specialImage"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:padding="5dp"
-                    android:src="@drawable/magaram"
-                    android:visibility="gone" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/thitiImage"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:padding="5dp"
-                    android:src="@drawable/sivarathri"
-                    android:visibility="gone" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/starImage"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:padding="5dp"
-                    android:src="@drawable/star"
-                    android:visibility="gone" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/muhurthamImage"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:padding="5dp"
-                    android:src="@drawable/wedding"
-                    android:visibility="gone" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/nokkuImage"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:padding="5dp"
-                    android:src="@drawable/up_arrow"
-                    android:visibility="gone" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/piraiImage"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:padding="5dp"
-                    android:rotation="150"
-                    android:src="@drawable/cresent_white"
-                    android:visibility="gone" />
             </LinearLayout>
 
             <View
@@ -84,7 +38,6 @@
                 android:gravity="center"
                 android:maxLines="5"
                 android:paddingVertical="10dp"
-                android:text="Placeholder for Virutham Days"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textStyle="bold" />
 
@@ -105,8 +58,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:maxLines="5"
-                    android:paddingVertical="10dp"
-                    android:text="Placeholder for Special Days" />
+                    android:paddingVertical="10dp"/>
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

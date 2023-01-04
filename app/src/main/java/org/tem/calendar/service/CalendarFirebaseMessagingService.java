@@ -15,7 +15,7 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 import org.tem.calendar.R;
-import org.tem.calendar.activities.DailyActivity;
+import org.tem.calendar.activities.DayActivity;
 
 import java.util.Objects;
 
@@ -30,7 +30,7 @@ public class CalendarFirebaseMessagingService extends FirebaseMessagingService {
     }
 
     private void sendNotification(@NonNull RemoteMessage remoteMessage) {
-        Intent intent = new Intent(this, DailyActivity.class);
+        Intent intent = new Intent(this, DayActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                 | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
