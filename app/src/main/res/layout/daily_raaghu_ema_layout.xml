@@ -47,8 +47,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:gravity="center_vertical"
-                    android:padding="5dp"
-                    android:text="dfsdsdfsdfsdf sd sdf fs  sfsdf sdf sf dsf sd sfsdfs dfsd fs sdf sdf" />
+                    android:padding="5dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -93,7 +92,6 @@
                     android:gravity="center_vertical"
                     android:maxLines="3"
                     android:padding="5dp"
-                    android:text="dfsdf"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     app:autoSizeTextType="uniform" />
             </LinearLayout>
@@ -139,8 +137,7 @@
                     android:layout_weight="4"
                     android:gravity="center_vertical"
                     android:maxLines="3"
-                    android:padding="5dp"
-                    android:text="dfsdf" />
+                    android:padding="5dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -184,8 +181,7 @@
                     android:layout_weight="4"
                     android:gravity="center_vertical"
                     android:maxLines="3"
-                    android:padding="5dp"
-                    android:text="dfsdf" />
+                    android:padding="5dp" />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

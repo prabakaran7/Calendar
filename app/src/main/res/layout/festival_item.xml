@@ -27,15 +27,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="31"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textStyle="bold" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/dayTxt"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sunday" />
+                    android:layout_height="wrap_content"/>
 
             </LinearLayout>
 
@@ -47,7 +45,6 @@
                 android:layout_weight="6"
                 android:gravity="center_vertical"
                 android:padding="5dp"
-                android:text="Good Morning"
                 android:textStyle="bold" />
 
         </LinearLayout>

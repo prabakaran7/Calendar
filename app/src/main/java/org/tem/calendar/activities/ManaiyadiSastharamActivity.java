@@ -7,12 +7,16 @@ import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
+
 import org.tem.calendar.R;
+import org.tem.calendar.adapter.ManaiyadiViewPageAdapter;
 import org.tem.calendar.databinding.ActivityManaiyadiSastharamBinding;
 
 import java.util.Objects;
 
-public class ManaiyadiSastharamActivity extends AppCompatActivity {
+public class ManaiyadiSastharamActivity extends BaseActivity {
 
     ActivityManaiyadiSastharamBinding binding;
 
@@ -25,7 +29,9 @@ public class ManaiyadiSastharamActivity extends AppCompatActivity {
         setSupportActionBar(binding.toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-        binding.webView.loadUrl("file:///android_asset/manaiyadi_sastharam.html");
+        binding.viewPager.setAdapter(new ManaiyadiViewPageAdapter(this));
+
+        new TabLayoutMediator(binding.tabLayout, binding.viewPager, ((tab, position) -> tab.setText(getResources().getStringArray(R.array.manaiyadi_types)[position]))).attach();
     }
 
     @Override
@@ -35,5 +41,11 @@ public class ManaiyadiSastharamActivity extends AppCompatActivity {
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

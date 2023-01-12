@@ -1,6 +1,9 @@
 package org.tem.calendar.db;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+
+import androidx.core.util.Pair;
 
 import net.sqlcipher.Cursor;
 import net.sqlcipher.SQLException;
@@ -15,10 +18,13 @@ import org.tem.calendar.model.KuralData;
 import org.tem.calendar.model.MonthData;
 import org.tem.calendar.model.MuhurthamData;
 import org.tem.calendar.model.NallaNeramData;
+import org.tem.calendar.model.PalliPalanData;
 import org.tem.calendar.model.PanchangamData;
 import org.tem.calendar.model.RasiChartData;
 import org.tem.calendar.model.RasiData;
 import org.tem.calendar.model.StarData;
+import org.tem.calendar.model.StarMatching;
+import org.tem.calendar.model.StarsData;
 import org.tem.calendar.model.ThitiData;
 import org.tem.calendar.model.VasthuData;
 import org.tem.calendar.model.VirathamData;
@@ -42,8 +48,9 @@ import java.util.TreeMap;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static final int DB_VERSION = 4;
+    private static final int DB_VERSION = 5;
     private static final String DB_NAME = "tamizh_calendar.db";
+    @SuppressLint("StaticFieldLeak")
     private static DBHelper dbHelper;
     private final File DB_FILE;
     private final Context mContext;
@@ -131,7 +138,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        System.out.println("OLD: " + oldVersion + ", newVersion::" + newVersion);
         checkDataBase();
     }
 
@@ -432,7 +438,6 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor c = db.query(Table.Muhurtham.NAME, null,
                 Table.Muhurtham.COL_DATE + "=?",
                 new String[]{dateString}, null, null, null);
-        System.out.println("DATE:-" + dateString);
         if (null != c && c.moveToFirst()) {
             MuhurthamData md = new MuhurthamData(c.getString(c.getColumnIndexOrThrow(Table.Muhurtham.COL_DATE)));
             //md.setTday(c.getInt(c.getColumnIndexOrThrow(Table.Master.COL_TDAY)));
@@ -698,9 +703,92 @@ public class DBHelper extends SQLiteOpenHelper {
             kd.setAthigaramEn(c.getString(c.getColumnIndexOrThrow(Table.Kural.COL_ATHIGARAM_EN)));
             kd.setKuralEn(c.getString(c.getColumnIndexOrThrow(Table.Kural.COL_KURAL_EN)));
             kd.setExplanation(c.getString(c.getColumnIndexOrThrow(Table.Kural.COL_EXPLAINATION)));
-
+            c.close();
             return kd;
         }
         return null;
+    }
+
+    public Map<Integer, String> getManaiyadiByType(int type) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.query(Table.Manaiyadi.NAME, null, Table.Manaiyadi.COL_TYPE + "=?", new String[]{type + ""}, null, null, null);
+        Map<Integer, String> result = new TreeMap<>();
+        if (c != null && c.moveToFirst()) {
+            do {
+                result.put(c.getInt(c.getColumnIndexOrThrow(Table.Manaiyadi.COL_ADI)),
+                        c.getString(c.getColumnIndexOrThrow(Table.Manaiyadi.COL_EXPLANATION)));
+            } while (c.moveToNext());
+            c.close();
+        }
+
+        return result;
+    }
+
+    public List<PalliPalanData> getPalliPalans() {
+        List<PalliPalanData> ppdList = new ArrayList<>();
+
+        SQLiteDatabase db = getReadableDatabase();
+        try (Cursor c = db.query(Table.PalliPalan.NAME, null, null, null, null, null, null, null)) {
+            if (c != null && c.moveToFirst()) {
+                do {
+                    PalliPalanData ppd = new PalliPalanData();
+                    ppd.setId(c.getInt(c.getColumnIndexOrThrow(Table.PalliPalan.COL_ID)));
+                    ppd.setPart(c.getString(c.getColumnIndexOrThrow(Table.PalliPalan.COL_PART)));
+                    ppd.setLeft(c.getString(c.getColumnIndexOrThrow(Table.PalliPalan.COL_LEFT)));
+                    ppd.setRight(c.getString(c.getColumnIndexOrThrow(Table.PalliPalan.COL_RIGHT)));
+                    ppdList.add(ppd);
+                } while (c.moveToNext());
+            }
+        }
+
+        return ppdList;
+    }
+
+    public List<StarsData> getStarMap() {
+        SQLiteDatabase db = getReadableDatabase();
+        List<StarsData> result = new ArrayList<>();
+        try (Cursor c = db.query(Table.StarRasi.NAME, null, null, null, null, null, Table.StarRasi.COL_ID)) {
+            if (c != null && c.moveToFirst()) {
+                do {
+                    StarsData sd = new StarsData();
+                    sd.setId(c.getInt(c.getColumnIndexOrThrow(Table.StarRasi.COL_ID)));
+                    sd.setStar(c.getString(c.getColumnIndexOrThrow(Table.StarRasi.COL_STAR)));
+                    sd.setRasi(c.getString(c.getColumnIndexOrThrow(Table.StarRasi.COL_RASI)));
+                    result.add(sd);
+                } while (c.moveToNext());
+            }
+        }
+
+        return result;
+    }
+
+    public StarMatching getStarPorutham(int boyIndex, int girlIndex) {
+        SQLiteDatabase db = getReadableDatabase();
+        StarMatching sm = null;
+        try (Cursor c = db.query(Table.StarMatching.NAME, null,
+                Table.StarMatching.COL_BOY_STAR_INDEX + "=? AND " + Table.StarMatching.COL_GIRL_STAR_INDEX + "=?",
+                new String[]{boyIndex + "", girlIndex + ""}, null, null, null)) {
+            if (c != null && c.moveToFirst()) {
+
+                sm = new StarMatching(boyIndex, girlIndex);
+                sm.setP1(c.getInt(c.getColumnIndexOrThrow(Table.StarMatching.COL_P1)));
+                sm.setP2(c.getInt(c.getColumnIndexOrThrow(Table.StarMatching.COL_P2)));
+                sm.setP3(c.getInt(c.getColumnIndexOrThrow(Table.StarMatching.COL_P3)));
+                sm.setP4(c.getInt(c.getColumnIndexOrThrow(Table.StarMatching.COL_P4)));
+                sm.setP5(c.getInt(c.getColumnIndexOrThrow(Table.StarMatching.COL_P5)));
+                sm.setP6(c.getInt(c.getColumnIndexOrThrow(Table.StarMatching.COL_P6)));
+                sm.setP7(c.getInt(c.getColumnIndexOrThrow(Table.StarMatching.COL_P7)));
+                sm.setP8(c.getInt(c.getColumnIndexOrThrow(Table.StarMatching.COL_P8)));
+                sm.setP9(c.getInt(c.getColumnIndexOrThrow(Table.StarMatching.COL_P9)));
+                sm.setP10(c.getInt(c.getColumnIndexOrThrow(Table.StarMatching.COL_P10)));
+                sm.setP11(c.getInt(c.getColumnIndexOrThrow(Table.StarMatching.COL_P11)));
+                sm.setP12(c.getInt(c.getColumnIndexOrThrow(Table.StarMatching.COL_P12)));
+                sm.setTotal(c.getInt(c.getColumnIndexOrThrow(Table.StarMatching.COL_TOTAL)));
+
+
+            }
+        }
+
+        return sm;
     }
 }

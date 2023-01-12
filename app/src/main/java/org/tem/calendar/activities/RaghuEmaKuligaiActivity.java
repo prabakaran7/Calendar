@@ -19,7 +19,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
-public class RaghuEmaKuligaiActivity extends AppCompatActivity {
+public class RaghuEmaKuligaiActivity extends BaseActivity {
 
     ActivityRaghuEmaKuligaiBinding binding;
 
@@ -42,7 +42,7 @@ public class RaghuEmaKuligaiActivity extends AppCompatActivity {
 
     }
 
-    private void setCurrentDayIndex(List<Pair<Integer, String>> weekNames) {
+    private void setCurrentDayIndex(@NonNull List<Pair<Integer, String>> weekNames) {
         int weekDay = LocalDate.now().getDayOfWeek().getValue();
         for (int index = 0; index < weekNames.size(); index++) {
             if(weekNames.get(index).first == weekDay){
@@ -61,4 +61,9 @@ public class RaghuEmaKuligaiActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
 }

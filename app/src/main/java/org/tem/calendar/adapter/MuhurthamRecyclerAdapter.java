@@ -16,11 +16,11 @@ import org.tem.calendar.model.MuhurthamData;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 
 public class MuhurthamRecyclerAdapter extends RecyclerView.Adapter<MuhurthamRecyclerAdapter.ViewHolder> {
 
     private final List<MuhurthamData> dataSet;
-    private final Context mContext;
     private final String[] dayNames;
     private final String[] tamilMonths;
     private final String[] thitiNames;
@@ -31,21 +31,19 @@ public class MuhurthamRecyclerAdapter extends RecyclerView.Adapter<MuhurthamRecy
     private int mExpandedPosition = -1;
 
     public MuhurthamRecyclerAdapter(Context context, List<MuhurthamData> dataSet) {
-        this.mContext = context;
         this.dataSet = dataSet;
-        dayNames = mContext.getResources().getStringArray(R.array.weekday_names);
-        this.tamilMonths = mContext.getResources().getStringArray(R.array.tamizh_month_names);
-        this.thitiNames = mContext.getResources().getStringArray(R.array.thiti_names);
-        this.starNames = mContext.getResources().getStringArray(R.array.star_names);
-        this.yogamNames = mContext.getResources().getStringArray(R.array.yogam_names);
-        this.laknamNames = mContext.getResources().getStringArray(R.array.rasi_names);
+        dayNames = context.getResources().getStringArray(R.array.weekday_names);
+        this.tamilMonths = context.getResources().getStringArray(R.array.tamizh_month_names);
+        this.thitiNames = context.getResources().getStringArray(R.array.thiti_names);
+        this.starNames = context.getResources().getStringArray(R.array.star_names);
+        this.yogamNames = context.getResources().getStringArray(R.array.yogam_names);
+        this.laknamNames = context.getResources().getStringArray(R.array.rasi_names);
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        MuhurthamItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.muhurtham_item, parent, false);
-        return new ViewHolder(binding);
+        return ViewHolder.of(parent);
     }
 
     @Override
@@ -54,7 +52,7 @@ public class MuhurthamRecyclerAdapter extends RecyclerView.Adapter<MuhurthamRecy
         MuhurthamData data = dataSet.get(pos);
         holder.binding.dateTxt.setText(data.getDate().format(DateTimeFormatter.ofPattern("d-M-yyyy")));
         holder.binding.dayTxt.setText(dayNames[data.getDate().getDayOfWeek().getValue() - 1]);
-        holder.binding.tamilDayTxt.setText(tamilMonths[data.getTmonth() - 1] + ", " + data.getTday());
+        holder.binding.tamilDayTxt.setText(String.format(Locale.getDefault(), "%s, %d", tamilMonths[data.getTmonth() - 1], data.getTday()));
         holder.binding.piraiImage.setImageResource(data.isValarPirai() ? R.drawable.cresent_white : R.drawable.cresent_black);
         final boolean isExpanded = pos==mExpandedPosition;
         // Add animation
@@ -91,9 +89,16 @@ public class MuhurthamRecyclerAdapter extends RecyclerView.Adapter<MuhurthamRecy
 
         final MuhurthamItemBinding binding;
 
-        public ViewHolder(MuhurthamItemBinding binding) {
+        public ViewHolder(@NonNull MuhurthamItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
+        }
+
+        @NonNull
+        public static ViewHolder of(@NonNull ViewGroup parent) {
+            return new ViewHolder(
+                    MuhurthamItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false)
+            );
         }
     }
 }

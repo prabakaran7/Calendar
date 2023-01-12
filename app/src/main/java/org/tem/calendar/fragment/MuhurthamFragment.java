@@ -17,6 +17,8 @@ import org.tem.calendar.db.DBHelper;
 import org.tem.calendar.model.MuhurthamData;
 
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class MuhurthamFragment extends Fragment {
@@ -46,6 +48,7 @@ public class MuhurthamFragment extends Fragment {
             binding.muhurthamRecyclerView.setVisibility(View.VISIBLE);
             binding.emptyMessageTxt.setVisibility(View.GONE);
             binding.infoLayout.setVisibility(View.VISIBLE);
+            muhurthamDataList.sort(Comparator.comparing(MuhurthamData::getDate));
             MuhurthamRecyclerAdapter adapter = new MuhurthamRecyclerAdapter(requireContext(), muhurthamDataList);
             binding.muhurthamRecyclerView.setAdapter(adapter);
             binding.muhurthamRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));

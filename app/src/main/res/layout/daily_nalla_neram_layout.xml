@@ -73,8 +73,7 @@
                 android:layout_weight="3"
                 android:gravity="center"
                 android:maxLines="1"
-                android:padding="5dp"
-                android:text="9:00 - 10:00" />
+                android:padding="5dp" />
 
             <TextView
                 android:layout_width="1dp"
@@ -88,8 +87,7 @@
                 android:layout_weight="3"
                 android:gravity="center"
                 android:maxLines="1"
-                android:padding="5dp"
-                android:text="9:00 - 10:00" />
+                android:padding="5dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -131,8 +129,7 @@
                 android:layout_weight="3"
                 android:gravity="center"
                 android:maxLines="1"
-                android:padding="5dp"
-                android:text="9:00 - 10:00" />
+                android:padding="5dp" />
 
             <TextView
                 android:layout_width="1dp"
@@ -146,8 +143,7 @@
                 android:layout_weight="3"
                 android:gravity="center"
                 android:maxLines="1"
-                android:padding="5dp"
-                android:text="9:00 - 10:00" />
+                android:padding="5dp" />
         </LinearLayout>
 
 

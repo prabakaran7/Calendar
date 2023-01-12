@@ -61,7 +61,7 @@ public class MonthMuhurthamRecyclerAdapter extends RecyclerView.Adapter<MonthMuh
     protected static class ViewHolder extends RecyclerView.ViewHolder {
         final MonthlyMuhurthamItemBinding binding;
 
-        public ViewHolder(MonthlyMuhurthamItemBinding binding) {
+        public ViewHolder(@NonNull MonthlyMuhurthamItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

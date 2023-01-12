@@ -18,9 +18,6 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/h12Txt"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/h1Txt"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_row="0"
@@ -30,13 +27,12 @@
                 android:gravity="center"
                 android:minHeight="50dp"
                 android:padding="5dp"
-                android:text="HOUSE 12" />
+                app:layout_constraintEnd_toStartOf="@id/h1Txt"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/h1Txt"
-                app:layout_constraintStart_toEndOf="@id/h12Txt"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/h2Txt"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_row="0"
@@ -46,14 +42,13 @@
                 android:gravity="center"
                 android:minHeight="50dp"
                 android:padding="5dp"
-                android:text="HOUSE 1" />
+                app:layout_constraintEnd_toStartOf="@id/h2Txt"
+                app:layout_constraintStart_toEndOf="@id/h12Txt"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/h2Txt"
                 android:layout_width="0dp"
-                app:layout_constraintStart_toEndOf="@id/h1Txt"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/h3Txt"
                 android:layout_height="wrap_content"
                 android:layout_row="0"
                 android:layout_column="2"
@@ -62,15 +57,14 @@
                 android:gravity="center"
                 android:minHeight="50dp"
                 android:padding="5dp"
-                android:text="HOUSE 2" />
+                app:layout_constraintEnd_toStartOf="@id/h3Txt"
+                app:layout_constraintStart_toEndOf="@id/h1Txt"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/h3Txt"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/h2Txt"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 android:layout_row="0"
                 android:layout_column="3"
                 android:layout_columnWeight="1"
@@ -78,16 +72,14 @@
                 android:gravity="center"
                 android:minHeight="50dp"
                 android:padding="5dp"
-                android:text="HOUSE 3" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/h2Txt"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/h11Txt"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/h12Txt"
-                app:layout_constraintEnd_toStartOf="@id/c_layout"
-                app:layout_constraintBottom_toTopOf="@id/h10Txt"
                 android:layout_row="1"
                 android:layout_column="0"
                 android:layout_columnWeight="1"
@@ -95,15 +87,15 @@
                 android:gravity="center"
                 android:minHeight="50dp"
                 android:padding="5dp"
-                android:text="HOUSE 11" />
+                app:layout_constraintBottom_toTopOf="@id/h10Txt"
+                app:layout_constraintEnd_toStartOf="@id/c_layout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/h12Txt" />
 
             <LinearLayout
                 android:id="@+id/c_layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@id/h1Txt"
-                app:layout_constraintTop_toBottomOf="@id/h1Txt"
-                app:layout_constraintEnd_toEndOf="@id/h2Txt"
                 android:layout_row="1"
                 android:layout_rowSpan="2"
                 android:layout_rowWeight="2"
@@ -114,63 +106,59 @@
                 android:gravity="center"
                 android:minHeight="100dp"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="5dp"
+                app:layout_constraintEnd_toEndOf="@id/h2Txt"
+                app:layout_constraintStart_toStartOf="@id/h1Txt"
+                app:layout_constraintTop_toBottomOf="@id/h1Txt">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/c1Txt"
-                    android:text="c1"
-                    android:visibility="gone"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:visibility="gone" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/c2Txt"
-                    android:text="c2"
-                    android:visibility="gone"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:layout_height="wrap_content" />
+                    android:visibility="gone" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/c3Txt"
-                    android:text="c3"
-                    android:visibility="gone"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:layout_height="wrap_content" />
+                    android:visibility="gone" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/c4Txt"
-                    android:text="c4"
-                    android:visibility="gone"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:layout_height="wrap_content" />
+                    android:visibility="gone" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/c5Txt"
-                    android:text="c5"
-                    android:visibility="gone"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:layout_height="wrap_content" />
+                    android:visibility="gone" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/c6Txt"
-                    android:text="c6"
-                    android:visibility="gone"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:layout_height="wrap_content" />
+                    android:visibility="gone" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/c7Txt"
-                    android:text="c7"
-                    android:visibility="gone"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:layout_height="wrap_content" />
+                    android:visibility="gone" />
 
             </LinearLayout>
 
@@ -178,10 +166,6 @@
                 android:id="@+id/h4Txt"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintTop_toBottomOf="@id/h3Txt"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/c_layout"
-                app:layout_constraintBottom_toTopOf="@id/h5Txt"
                 android:layout_row="1"
                 android:layout_column="3"
                 android:layout_columnWeight="1"
@@ -189,14 +173,13 @@
                 android:gravity="center"
                 android:minHeight="50dp"
                 android:padding="5dp"
-                android:text="HOUSE 4" />
+                app:layout_constraintBottom_toTopOf="@id/h5Txt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/c_layout"
+                app:layout_constraintTop_toBottomOf="@id/h3Txt" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/h10Txt"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/h11Txt"
-                app:layout_constraintEnd_toStartOf="@id/c_layout"
-                app:layout_constraintBottom_toBottomOf="@id/c_layout"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_row="2"
@@ -206,16 +189,15 @@
                 android:gravity="center"
                 android:minHeight="50dp"
                 android:padding="5dp"
-                android:text="HOUSE 10" />
+                app:layout_constraintBottom_toBottomOf="@id/c_layout"
+                app:layout_constraintEnd_toStartOf="@id/c_layout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/h11Txt" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/h5Txt"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintStart_toEndOf="@id/c_layout"
-                app:layout_constraintTop_toBottomOf="@id/h4Txt"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="@id/c_layout"
                 android:layout_row="2"
                 android:layout_column="3"
                 android:layout_columnWeight="1"
@@ -223,15 +205,15 @@
                 android:gravity="center"
                 android:minHeight="50dp"
                 android:padding="5dp"
-                android:text="HOUSE 6" />
+                app:layout_constraintBottom_toBottomOf="@id/c_layout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/c_layout"
+                app:layout_constraintTop_toBottomOf="@id/h4Txt" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/h9Txt"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/h8Txt"
-                app:layout_constraintEnd_toStartOf="@id/c_layout"
                 android:layout_row="3"
                 android:layout_column="0"
                 android:layout_columnWeight="1"
@@ -239,15 +221,14 @@
                 android:gravity="center"
                 android:minHeight="50dp"
                 android:padding="5dp"
-                android:text="HOUSE 6" />
+                app:layout_constraintEnd_toStartOf="@id/c_layout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/h8Txt" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/h8Txt"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@id/c_layout"
-                app:layout_constraintTop_toBottomOf="@id/c_layout"
-                app:layout_constraintEnd_toStartOf="@id/h7Txt"
                 android:layout_row="3"
                 android:layout_column="1"
                 android:layout_columnWeight="1"
@@ -255,15 +236,14 @@
                 android:gravity="center"
                 android:minHeight="50dp"
                 android:padding="5dp"
-                android:text="HOUSE 6" />
+                app:layout_constraintEnd_toStartOf="@id/h7Txt"
+                app:layout_constraintStart_toStartOf="@id/c_layout"
+                app:layout_constraintTop_toBottomOf="@id/c_layout" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/h7Txt"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/h8Txt"
-                app:layout_constraintTop_toTopOf="@id/h8Txt"
-                app:layout_constraintEnd_toEndOf="@id/c_layout"
                 android:layout_row="3"
                 android:layout_column="2"
                 android:layout_columnWeight="1"
@@ -271,15 +251,14 @@
                 android:gravity="center"
                 android:minHeight="50dp"
                 android:padding="5dp"
-                android:text="HOUSE 6" />
+                app:layout_constraintEnd_toEndOf="@id/c_layout"
+                app:layout_constraintStart_toEndOf="@id/h8Txt"
+                app:layout_constraintTop_toTopOf="@id/h8Txt" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/h6Txt"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/h7Txt"
-                app:layout_constraintStart_toEndOf="@id/h7Txt"
                 android:layout_row="3"
                 android:layout_column="3"
                 android:layout_columnWeight="1"
@@ -287,7 +266,9 @@
                 android:gravity="center"
                 android:minHeight="50dp"
                 android:padding="5dp"
-                android:text="HOUSE 6" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/h7Txt"
+                app:layout_constraintTop_toTopOf="@id/h7Txt" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

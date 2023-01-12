@@ -1,5 +1,6 @@
 package org.tem.calendar.service;
 
+import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -34,7 +35,7 @@ public class CalendarFirebaseMessagingService extends FirebaseMessagingService {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                 | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
+        @SuppressLint("UnspecifiedImmutableFlag") PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
                 intent, PendingIntent.FLAG_UPDATE_CURRENT);
         String channelId = getString(R.string.default_notification_channel_id);
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
@@ -57,7 +58,6 @@ public class CalendarFirebaseMessagingService extends FirebaseMessagingService {
 
     @Override
     public void onNewToken(@NonNull String token) {
-        System.out.println("TOKEN+++++++++++++++=" + token);
         super.onNewToken(token);
     }
 }

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".activities.PoruthamActivity">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/actionBarItemBackground"
+                app:layout_constraintTop_toTopOf="parent"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:subtitleTextColor="?attr/actionMenuTextColor"
+                app:title="@string/natchitra_porutham"
+                app:titleTextColor="?attr/actionMenuTextColor" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/headerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:drawable/editbox_background"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="5dp"
+                        android:paddingVertical="10dp"
+                        android:weightSum="10">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:gravity="center"
+                            android:minHeight="48dp"
+                            android:text="@string/boy"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                        <Spinner
+                            android:id="@+id/boySpinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="7"
+                            android:contentDescription="@string/boy"
+                            android:minHeight="48dp"
+                            android:paddingBottom="10dp"
+                            android:theme="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:drawable/editbox_background"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="5dp"
+                        android:paddingVertical="10dp"
+                        android:weightSum="10">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:gravity="center"
+                            android:minHeight="48dp"
+                            android:text="@string/girl"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+
+                        <Spinner
+                            android:id="@+id/girlSpinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="7"
+                            android:contentDescription="@string/girl"
+                            android:minHeight="48dp"
+                            android:spinnerMode="dialog"
+                            android:theme="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox" />
+                    </LinearLayout>
+
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/matchBtn"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/ripple"
+                        android:padding="15dp"
+                        android:text="@string/match"
+                        android:textStyle="bold"
+                        app:cornerRadius="10dp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/errMsg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/colorOnError"
+                        android:textColor="?attr/colorError" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                app:layout_constraintTop_toBottomOf="@id/headerLayout">
+
+                <LinearLayout
+                    android:id="@+id/container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/bgTitleCardCenter"
+                        android:gravity="center"
+                        android:paddingVertical="5dp"
+                        android:text="@string/poruthams"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textColor="?attr/tcTitle"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/matchTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingVertical="20dp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textStyle="bold" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

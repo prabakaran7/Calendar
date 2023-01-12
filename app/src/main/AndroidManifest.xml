@@ -13,7 +13,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Calendar.Default">
         <activity
-            android:name=".DashboardActivity"
+            android:name=".activities.PoruthamActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.PalliPalanActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.MonthActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.DashboardActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -89,20 +110,14 @@
             android:name=".activities.VasthuActivity"
             android:exported="false" />
         <activity
-            android:name=".CalendarActivity"
-            android:exported="false" />
-        <activity
             android:name=".activities.MuhurthamActivity"
             android:exported="false" />
         <activity
             android:name=".activities.PanchangamActivity"
             android:exported="false"
-            android:parentActivityName=".CalendarActivity" />
+            android:parentActivityName=".activities.DashboardActivity" />
         <activity
             android:name=".activities.RaghuEmaKuligaiActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.MonthActivity"
             android:exported="false" />
 
         <service

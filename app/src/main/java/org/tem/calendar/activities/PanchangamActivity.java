@@ -23,7 +23,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
-public class PanchangamActivity extends AppCompatActivity {
+public class PanchangamActivity extends BaseActivity {
 
     private ActivityPanchangamBinding binding;
 
@@ -52,7 +52,7 @@ public class PanchangamActivity extends AppCompatActivity {
         new TabLayoutMediator(binding.tabLayout, binding.viewPager, (tab, position) -> tab.setText(weeks.get(position).second)).attach();
     }
 
-    private void setCurrentDayIndex(List<Pair<Integer, String>> weekNames) {
+    private void setCurrentDayIndex(@NonNull List<Pair<Integer, String>> weekNames) {
         int weekDay = LocalDate.now().getDayOfWeek().getValue();
         for (int index = 0; index < weekNames.size(); index++) {
             if (weekNames.get(index).first == weekDay) {
@@ -69,5 +69,11 @@ public class PanchangamActivity extends AppCompatActivity {
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

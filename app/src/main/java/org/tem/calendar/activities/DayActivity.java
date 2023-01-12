@@ -1,14 +1,14 @@
 package org.tem.calendar.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.MutableLiveData;
-import androidx.viewpager2.widget.ViewPager2;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.MutableLiveData;
+import androidx.viewpager2.widget.ViewPager2;
 
 import org.tem.calendar.Constants;
 import org.tem.calendar.R;
@@ -19,12 +19,11 @@ import org.tem.calendar.model.DayViewModel;
 
 import java.time.LocalDate;
 
-public class DayActivity extends AppCompatActivity {
-
-    private ActivityDayBinding binding;
-    private DayViewModel viewModel;
+public class DayActivity extends BaseActivity {
 
     private final MutableLiveData<Integer> currentPosition = new MutableLiveData<>();
+    private ActivityDayBinding binding;
+    private DayViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,25 +61,25 @@ public class DayActivity extends AppCompatActivity {
             @Override
             public void onPageScrollStateChanged(int state) {
                 super.onPageScrollStateChanged(state);
-                if(state == ViewPager2.SCROLL_STATE_IDLE) {
-                    if(binding.viewPager.getCurrentItem() == viewModel.getList().size() - 1){
-                        viewModel.shiftForward();
-                        binding.viewPager.setCurrentItem(0, false);
-                        binding.viewPager.post(adapter::notifyDataSetChanged);
-
-                    } else if (binding.viewPager.getCurrentItem() == 0){
-                        viewModel.shiftBackward();
-                        binding.viewPager.setCurrentItem(viewModel.getList().size() - 1, false);
-                        binding.viewPager.post(adapter::notifyDataSetChanged);
-
+                if (state == ViewPager2.SCROLL_STATE_IDLE) {
+                    if (binding.viewPager.getCurrentItem() == viewModel.getList().size() - 1) {
+                        if (viewModel.shiftForward()) {
+                            binding.viewPager.setCurrentItem(0, false);
+                            binding.viewPager.post(adapter::notifyDataSetChanged);
+                        }
+                    } else if (binding.viewPager.getCurrentItem() == 0) {
+                        if (viewModel.shiftBackward()) {
+                            binding.viewPager.setCurrentItem(viewModel.getList().size() - 1, false);
+                            binding.viewPager.post(adapter::notifyDataSetChanged);
+                        }
                     }
                 }
             }
         });
 
-        currentPosition.observe(this, position->{
+        currentPosition.observe(this, position -> {
             LocalDate ld = viewModel.getList().get(position);
-            if(!ld.equals(LocalDate.now())){
+            if (!ld.equals(LocalDate.now())) {
                 binding.resetBtn.setVisibility(View.VISIBLE);
             } else {
                 binding.resetBtn.setVisibility(View.GONE);
@@ -88,7 +87,7 @@ public class DayActivity extends AppCompatActivity {
         });
 
 
-        binding.resetBtn.setOnClickListener(view ->{
+        binding.resetBtn.setOnClickListener(view -> {
             viewModel = new DayViewModel(LocalDate.now());
             binding.viewPager.setAdapter(new DayRecyclerAdapter(this, viewModel));
             binding.viewPager.setCurrentItem(2);
@@ -97,11 +96,11 @@ public class DayActivity extends AppCompatActivity {
 
     }
 
-    public void moveForward(){
+    public void moveForward() {
         binding.viewPager.setCurrentItem(binding.viewPager.getCurrentItem() + 1);
     }
 
-    public void moveBackward(){
+    public void moveBackward() {
         binding.viewPager.setCurrentItem(binding.viewPager.getCurrentItem() - 1);
     }
 

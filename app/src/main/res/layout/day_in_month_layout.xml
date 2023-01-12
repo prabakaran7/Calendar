@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools">
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,8 +23,8 @@
             android:paddingTop="5dp"
             android:paddingEnd="5dp"
             android:paddingStart="0dp"
-            android:text="4"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            tools:ignore="RelativeOverlap" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/primeDayTxt"
@@ -35,7 +35,6 @@
             android:layout_alignParentEnd="true"
             android:gravity="center"
             android:padding="5dp"
-            android:text="31"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textStyle="bold" />
 

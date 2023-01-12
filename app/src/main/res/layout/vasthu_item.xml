@@ -20,7 +20,6 @@
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="5dp"
-                android:text="July 34, Sunday - 23 Thai"
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -28,8 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="10dp"
-                android:paddingVertical="5dp"
-                android:text="morning 5- 6" />
+                android:paddingVertical="5dp" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

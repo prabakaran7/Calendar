@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class FestivalActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class FestivalActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
 
     private final List<Integer> yearList = new ArrayList<>();
     private ActivityFestivalBinding binding;

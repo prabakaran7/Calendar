@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -49,15 +48,15 @@ import java.util.Set;
 
 public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.ViewHolder> {
 
-    private final DayViewModel model;
-    private final DayActivity activity;
-
     private static final LinearLayout.LayoutParams params;
 
     static {
-        params = new LinearLayout.LayoutParams(50, 50);
-        params.setMargins(10, 10,10,10);
+        params = new LinearLayout.LayoutParams((int) (48 * CalendarApp.getDpFactor()), (int) (48 * CalendarApp.getDpFactor()));
+        params.setMargins(10, 10, 10, 10);
     }
+
+    private final DayViewModel model;
+    private final DayActivity activity;
 
     public DayRecyclerAdapter(DayActivity activity, DayViewModel model) {
         this.model = model;
@@ -77,10 +76,15 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
 
         binding.importantDayLayout.imageLayout.removeAllViews();
 
+        binding.headerLayout.nextBtn.setVisibility(selectedDate.isEqual(CalendarApp.MAX_DATE) ? View.INVISIBLE : View.VISIBLE);
+        binding.headerLayout.prevBtn.setVisibility(selectedDate.isEqual(CalendarApp.MIN_DATE) ? View.INVISIBLE : View.VISIBLE);
+
         String dateString = selectedDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         binding.headerLayout.dateTxt.setText(selectedDate.format(DateTimeFormatter.ofPattern("d-M-yyyy")));
         if (selectedDate.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
             binding.headerLayout.dateTxt.setTypeface(ResourcesCompat.getFont(activity, R.font.tourney_semi_bold), Typeface.NORMAL);
+        } else {
+            binding.headerLayout.dateTxt.setTypeface(ResourcesCompat.getFont(activity, R.font.tourney_black), Typeface.NORMAL);
         }
 
         binding.headerLayout.monthHeaderTxt.setText(monthText(selectedDate));
@@ -121,6 +125,7 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
 
             ImageView iv = new ImageView(activity.getApplicationContext());
             iv.setRotation(150);
+            iv.setMinimumHeight((int) (48 * CalendarApp.getDpFactor()));
 
             if (td.getPirai() == -1) { //Amavasai
                 iv.setImageResource(R.drawable.new_moon);
@@ -212,7 +217,6 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
                 yogam = activity.getString(R.string.two_panchangam, DateUtil.expandedTime(yd.getTime1()),
                         yogaNames[yd.getYogam1() - 1], yogaNames[yd.getYogam2() - 1]);
             } else {
-                System.out.println(yd);
                 yogam = activity.getString(R.string.three_panchangam, DateUtil.expandedTime(yd.getTime1()),
                         DateUtil.expandedTime(yd.getTime2()), yogaNames[yd.getYogam1() - 1],
                         yogaNames[yd.getYogam2() - 1], yogaNames[yd.getYogam3() - 1]);
@@ -310,7 +314,6 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
         StringBuilder sb = new StringBuilder();
         MuhurthamData muh = DBHelper.getInstance(activity).getMuhurtham(dateString);
         if (null != muh) {
-            //binding.importantDayLayout.muhurthamImage.setVisibility(View.VISIBLE);
             ImageView iv = new ImageView(activity.getApplicationContext());
             iv.setImageResource(R.drawable.wedding);
             binding.importantDayLayout.imageLayout.addView(iv, params);
@@ -409,17 +412,14 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
                             view -> {
                                 assert td != null;
                                 Toast.makeText(activity,
-                                        activity.getString(R.string.day_msg, activity.getString((td.getPirai() == 2)? R.string.pradosamValarPiraiTxt : R.string.pradosamTheiPiraiTxt)), Toast.LENGTH_SHORT).show();
+                                        activity.getString(R.string.day_msg, activity.getString((td.getPirai() == 2) ? R.string.pradosamValarPiraiTxt : R.string.pradosamTheiPiraiTxt)), Toast.LENGTH_SHORT).show();
                             });
                     break;
-
-
             }
             sb.append(virathams[vd.getViratham()]);
             if (vd.getTiming().length() > 1) {
                 sb.append("[").append(vd.getTiming()).append("]");
             }
-
             sb.append(", ");
         }
 
@@ -427,6 +427,11 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
         if (null != md && DBHelper.getInstance(activity).isKariNaal(md.getTmonth(), md.getTday())) {
             sb.append(activity.getResources().getString(R.string.kari_naal));
             sb.append(", ");
+            ImageView iv = new ImageView(activity.getApplicationContext());
+            iv.setImageResource(R.drawable.hotsun);
+            iv.setOnClickListener(view -> Toast.makeText(activity, String.format("%s %s", activity.getString(R.string.today),
+                    activity.getString(R.string.kari_naal)), Toast.LENGTH_SHORT).show());
+            binding.importantDayLayout.imageLayout.addView(iv, params);
         }
 
 
@@ -492,7 +497,6 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
     }
 
 
-
     private void nallaNeramData(DayItemBinding binding, String dateString) {
         // NallaNeram
         NallaNeramData nd = DBHelper.getInstance(activity).getNallaNeram(dateString);
@@ -511,7 +515,7 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
         }
     }
 
-    private void raaghuSoolamData(DayItemBinding binding, LocalDate selectedDate) {
+    private void raaghuSoolamData(@NonNull DayItemBinding binding, @NonNull LocalDate selectedDate) {
         // raaghu & soolam
         WeekData wd = DBHelper.getInstance(activity).getWeekData(selectedDate.getDayOfWeek());
         if (null != wd) {
@@ -539,12 +543,14 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
         return model.getList().size();
     }
 
-    private String getSunRiseLaknamText(int laknam, String laknamTime) {
+    @NonNull
+    private String getSunRiseLaknamText(int laknam, @NonNull String laknamTime) {
         String[] time = laknamTime.split("[.]");
         return activity.getResources().getString(R.string.sunrise_laknam_msg, activity.getResources().getStringArray(R.array.rasi_short_names)[laknam - 1], time[0], time[1]);
     }
 
-    private String monthText(LocalDate selectedDate) {
+    @NonNull
+    private String monthText(@NonNull LocalDate selectedDate) {
         String[] monthNames = activity.getResources().getStringArray(R.array.en_month_names);
         String[] weekDayNames = activity.getResources().getStringArray(R.array.weekday_names);
 
@@ -552,17 +558,20 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+
         private final DayItemBinding binding;
 
-        public ViewHolder(DayItemBinding binding) {
+        public ViewHolder(@NonNull DayItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
 
-        public static ViewHolder from(ViewGroup parent) {
-            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-            DayItemBinding binding = DataBindingUtil.inflate(inflater, R.layout.day_item, parent, false);
-            return new ViewHolder(binding);
+        @NonNull
+        public static ViewHolder from(@NonNull ViewGroup parent) {
+            return new ViewHolder(
+                    DayItemBinding.inflate(
+                            LayoutInflater.from(parent.getContext()), parent, false)
+            );
         }
     }
 }

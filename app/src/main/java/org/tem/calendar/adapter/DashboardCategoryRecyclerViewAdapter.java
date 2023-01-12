@@ -6,11 +6,10 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.tem.calendar.CalendarApp;
-import org.tem.calendar.DashboardActivity;
+import org.tem.calendar.activities.DashboardActivity;
 import org.tem.calendar.custom.StringUtils;
 import org.tem.calendar.databinding.DashboardCategoryBinding;
 import org.tem.calendar.model.Dashboard;
@@ -45,8 +44,6 @@ public class DashboardCategoryRecyclerViewAdapter extends RecyclerView.Adapter<D
             holder.binding.catLabel.setText(entry.getKey());
         }
 
-        System.out.println(entry.getValue());
-
         holder.binding.categoryItemRecyclerView.setAdapter(new DashboardCategoryItemRecyclerViewAdapter(activity, entry.getValue()));
         holder.binding.categoryItemRecyclerView.setHasFixedSize(true);
         holder.binding.categoryItemRecyclerView.setLayoutManager(new GridLayoutManager(activity, 2));
@@ -58,17 +55,16 @@ public class DashboardCategoryRecyclerViewAdapter extends RecyclerView.Adapter<D
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        DashboardCategoryBinding binding;
+        private final DashboardCategoryBinding binding;
 
         public ViewHolder(@NonNull DashboardCategoryBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
 
-        public static ViewHolder of(ViewGroup parent) {
-            return new ViewHolder(
-                    DashboardCategoryBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false)
-            );
+        @NonNull
+        public static ViewHolder of(@NonNull ViewGroup parent) {
+            return new ViewHolder(DashboardCategoryBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
         }
     }
 }

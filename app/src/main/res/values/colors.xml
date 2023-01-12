@@ -18,4 +18,8 @@
     <color name="red_1">#CC0707</color>
     <color name="red_2">#FF0000</color>
     <color name="red_3">#E68484</color>
+
+    <color name="green2">#4D9F4D</color>
+    <color name="green3">#488748</color>
+    <color name="light_green_50">#C6F4CA</color>
 </resources>

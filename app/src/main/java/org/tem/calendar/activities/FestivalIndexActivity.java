@@ -15,7 +15,7 @@ import org.tem.calendar.fragment.FestivalFragment;
 
 import java.util.Objects;
 
-public class FestivalIndexActivity extends AppCompatActivity {
+public class FestivalIndexActivity extends BaseActivity {
 
     ActivityFestivalIndexBinding binding;
 

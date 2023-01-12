@@ -9,7 +9,7 @@
         android:shortcutShortLabel="@string/daily_calendar_txt">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetClass="org.tem.calendar.activities.DailyActivity"
+            android:targetClass="org.tem.calendar.activities.DayActivity"
             android:targetPackage="org.tem.calendar" />
         <categories android:name="android.shortcut.conversation" />
         <capability-binding android:key="actions.intent.CREATE_MESSAGE" />

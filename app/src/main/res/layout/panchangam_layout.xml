@@ -93,6 +93,16 @@
                 android:nestedScrollingEnabled="false"
                 tools:listitem="@layout/panchangam_item" />
 
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:paddingHorizontal="10pt"
+                android:paddingVertical="5dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:id="@+id/notesTxt"/>
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

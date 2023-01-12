@@ -1,44 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/rootView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".activities.MonthActivity">
 
-        <LinearLayout
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
             android:layout_width="match_parent"
+            android:overScrollMode="never"
+            android:layout_height="match_parent"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginBottom="25dp"
+            android:layout_marginEnd="25dp"
+            android:id="@+id/resetBtn"
+            android:src="@android:drawable/ic_menu_today"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:contentDescription="@string/today" />
 
-            <org.tem.calendar.custom.CustomCalendar
-                android:id="@+id/monthlyCalendar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <include android:id="@+id/viratham"
-                layout="@layout/month_viratham_layout"/>
-
-            <include
-                android:id="@+id/muhurtham_layout"
-                layout="@layout/monthly_muhurtham_layout" />
-
-            <include android:id="@+id/otherDays"
-                layout="@layout/month_asuba_layout"/>
-
-            <include android:id="@+id/hinduFestivalLayout"
-                layout="@layout/monthly_festival_layout"/>
-
-            <include android:id="@+id/govtHolidayLayout"
-                layout="@layout/monthly_festival_layout"/>
-
-
-
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

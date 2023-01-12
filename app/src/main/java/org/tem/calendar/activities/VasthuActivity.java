@@ -1,10 +1,5 @@
 package org.tem.calendar.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +8,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import org.tem.calendar.R;
 import org.tem.calendar.adapter.VasthuRecyclerAdapter;
@@ -25,10 +23,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class VasthuActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class VasthuActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
 
-    private ActivityVasthuBinding binding;
     private final List<Integer> yearList = new ArrayList<>();
+    private ActivityVasthuBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,19 +62,25 @@ public class VasthuActivity extends AppCompatActivity implements AdapterView.OnI
 
     }
 
-    private void loadData(int year){
+    private void loadData(int year) {
         List<VasthuData> vasthuDataList = DBHelper.getInstance(this).getVasthuList(year);
         VasthuRecyclerAdapter adapter = new VasthuRecyclerAdapter(this, vasthuDataList);
-        binding.recylerView.setLayoutManager(new LinearLayoutManager(this));
-        binding.recylerView.setAdapter(adapter);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        binding.recyclerView.setAdapter(adapter);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == android.R.id.home){
+        if (item.getItemId() == android.R.id.home) {
             finish();
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

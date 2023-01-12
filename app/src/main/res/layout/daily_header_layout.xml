@@ -19,7 +19,6 @@
             android:gravity="center"
             android:padding="5dp"
             android:id="@+id/monthHeaderTxt"
-            android:text="ஜூன் - ஞாயிறு"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="?attr/tcTitle"
             android:textStyle="bold" />
@@ -31,8 +30,8 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/prevBtn"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:rotation="90"
@@ -48,7 +47,6 @@
                 android:gravity="center"
                 android:id="@+id/dateTxt"
                 android:maxLines="1"
-                android:text="21-02-2022"
                 android:textColor="?attr/tcTitle"
                 android:autoSizeTextType="uniform"
                 android:textSize="50sp"
@@ -56,8 +54,8 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/nextBtn"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:rotation="-90"
@@ -80,7 +78,6 @@
                 android:paddingVertical="5dp"
                 android:paddingHorizontal="15dp"
                 android:gravity="center"
-                android:text="Subha Kruthu Thai 1"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="?attr/tcTitle"
                 android:textStyle="bold" />

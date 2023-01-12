@@ -22,7 +22,7 @@ public class RasiRecyclerAdapter extends RecyclerView.Adapter<RasiRecyclerAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return ViewHolder.from(parent);
+        return ViewHolder.of(parent);
     }
 
     @Override
@@ -47,7 +47,8 @@ public class RasiRecyclerAdapter extends RecyclerView.Adapter<RasiRecyclerAdapte
             this.binding = binding;
         }
 
-        public static ViewHolder from(ViewGroup parent) {
+        @NonNull
+        public static ViewHolder of(@NonNull ViewGroup parent) {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
             RasiLayoutItemBinding binding = RasiLayoutItemBinding.inflate(inflater, parent, false);
             return new ViewHolder(binding);

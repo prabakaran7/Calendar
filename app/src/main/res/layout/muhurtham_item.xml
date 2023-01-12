@@ -26,8 +26,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     app:cardCornerRadius="5dp"
-                    app:cardElevation="5dp"
 
+                    app:cardElevation="5dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -35,19 +35,18 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
+                        android:background="?attr/bgSubTitle"
                         android:gravity="center"
-                        android:background="@color/teal_200"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/dateTxt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="12-45--2022"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                             android:textColor="@color/white"
-                            android:textStyle="bold"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                            android:textStyle="bold" />
 
                         <View
                             android:layout_width="match_parent"
@@ -58,10 +57,9 @@
                             android:id="@+id/dayTxt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Sunday"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
                             android:textColor="@color/white"
-                            android:textStyle="bold"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -72,11 +70,10 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:paddingHorizontal="10dp"
-                    android:text="Vaikasi, 23"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/dayTextCard"
                     app:layout_constraintEnd_toStartOf="@id/piraiImage"
+                    app:layout_constraintStart_toEndOf="@id/dayTextCard"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -107,9 +104,13 @@
                 android:id="@+id/detailsView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/orange"
                 android:orientation="vertical"
                 android:visibility="visible">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?attr/bgSeparator" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -127,7 +128,7 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=":" />
+                        android:text="@string/colon_separator" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/thitiTxt"
@@ -154,7 +155,7 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=":" />
+                        android:text="@string/colon_separator" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/timeTxt"
@@ -181,7 +182,7 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=":" />
+                        android:text="@string/colon_separator" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/yogamTxt"
@@ -208,7 +209,7 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=":" />
+                        android:text="@string/colon_separator" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/starTxt"
@@ -235,7 +236,7 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=":" />
+                        android:text="@string/colon_separator" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/laknamTxt"

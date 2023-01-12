@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.tem.calendar.R;
@@ -26,7 +25,7 @@ public class VasthuRecyclerAdapter extends RecyclerView.Adapter<VasthuRecyclerAd
     private final String[] dayNames;
     private final String[] taMonths;
 
-    public VasthuRecyclerAdapter(Context context, List<VasthuData> dataList) {
+    public VasthuRecyclerAdapter(@NonNull Context context, List<VasthuData> dataList) {
         this.dataList = dataList;
         this.context = context;
         enMonths = context.getResources().getStringArray(R.array.en_month_names);
@@ -37,9 +36,7 @@ public class VasthuRecyclerAdapter extends RecyclerView.Adapter<VasthuRecyclerAd
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        VasthuItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
-                R.layout.vasthu_item, parent, false);
-        return new ViewHolder(binding);
+        return ViewHolder.of(parent);
     }
 
     @Override
@@ -56,7 +53,8 @@ public class VasthuRecyclerAdapter extends RecyclerView.Adapter<VasthuRecyclerAd
         }
     }
 
-    private String getPrefixedTime(Context context, String time) {
+    @NonNull
+    private String getPrefixedTime(@NonNull Context context, @NonNull String time) {
         LocalTime lt = LocalTime.parse(time.split("[ ]*[-][ ]*")[0], DateTimeFormatter.ofPattern("H.m"));
         if (lt.getHour() < 12) {
             return context.getString(R.string.morningLabel) + " " + time;
@@ -73,9 +71,16 @@ public class VasthuRecyclerAdapter extends RecyclerView.Adapter<VasthuRecyclerAd
     protected static class ViewHolder extends RecyclerView.ViewHolder {
         final VasthuItemBinding binding;
 
-        public ViewHolder(VasthuItemBinding binding) {
+        public ViewHolder(@NonNull VasthuItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
+        }
+
+        @NonNull
+        public static ViewHolder of(@NonNull ViewGroup parent) {
+            VasthuItemBinding binding = VasthuItemBinding.inflate(LayoutInflater.from(parent.getContext()),
+                    parent, false);
+            return new ViewHolder(binding);
         }
     }
 }

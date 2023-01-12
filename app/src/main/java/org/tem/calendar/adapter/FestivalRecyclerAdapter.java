@@ -13,17 +13,16 @@ import org.tem.calendar.databinding.FestivalItemBinding;
 import org.tem.calendar.util.KeyValuePair;
 
 import java.util.List;
+import java.util.Locale;
 
 public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecyclerAdapter.ViewHolder> {
 
     private final List<KeyValuePair> dataSet;
-    private final Context mContext;
     private final String[] weekNames;
 
     public FestivalRecyclerAdapter(Context context, List<KeyValuePair> list) {
-        this.mContext = context;
         this.dataSet = list;
-        weekNames = context.getResources().getStringArray(R.array.weekday_names);
+        this.weekNames = context.getResources().getStringArray(R.array.weekday_names);
     }
 
     @NonNull
@@ -36,7 +35,7 @@ public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecycl
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         KeyValuePair kvp = dataSet.get(position);
         if (null == kvp) return;
-        holder.binding.dateTxt.setText(kvp.getKey().getDayOfMonth() +"");
+        holder.binding.dateTxt.setText(String.format(Locale.getDefault(), "%d", kvp.getKey().getDayOfMonth()));
         holder.binding.dayTxt.setText(weekNames[kvp.getKey().getDayOfWeek().getValue() - 1]);
         holder.binding.festivalTxt.setText(kvp.getValue());
     }
@@ -49,7 +48,7 @@ public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecycl
     public static class ViewHolder extends RecyclerView.ViewHolder {
         final FestivalItemBinding binding;
 
-        public ViewHolder(FestivalItemBinding binding) {
+        public ViewHolder(@NonNull FestivalItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

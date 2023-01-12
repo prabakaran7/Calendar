@@ -13,6 +13,13 @@
     <attr name="month_header_bg" format="reference"/>
     <attr name="month_header_border" format="reference"/>
     <attr name="headerTxt" format="reference"/>
+
+    <attr name="bgHoliday" format="reference"/>
+    <attr name="tcHoliday" format="reference"/>
+
+    <attr name="bgToday" format="reference"/>
+    <attr name="tcToday" format="reference"/>
+
     <declare-styleable name="AppWidgetAttrs">
         <attr name="appWidgetPadding" format="dimension" />
         <attr name="appWidgetInnerRadius" format="dimension" />

@@ -5,7 +5,7 @@
     android:initialLayout="@layout/simple_day_app_widget"
     android:minWidth="110dp"
     android:minHeight="110dp"
-    android:previewImage="@drawable/simple_day_widget"
+    android:previewImage="@drawable/widget2x2"
     android:resizeMode="none"
     android:updatePeriodMillis="7200000"
     android:widgetCategory="home_screen" />

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dayCellRoot"
+        android:gravity="center"
+        android:padding="5dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image2"
+            android:layout_width="5pt"
+            android:layout_height="5pt"
+            android:minHeight="5pt"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/secDayTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/mainDayTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/secDayTxt" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+
+            android:id="@+id/image1"
+            android:layout_width="5pt"
+            android:layout_height="5pt"
+            android:minHeight="5pt"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mainDayTxt" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image3"
+            android:layout_width="5pt"
+            android:layout_height="5pt"
+            android:minHeight="5pt"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mainDayTxt"  />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

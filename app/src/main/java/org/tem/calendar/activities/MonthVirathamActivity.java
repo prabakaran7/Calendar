@@ -27,7 +27,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class MonthVirathamActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class MonthVirathamActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
 
     private final List<Integer> yearList = new ArrayList<>();
     private ActivityMonthVirathamBinding binding;
@@ -104,5 +104,11 @@ public class MonthVirathamActivity extends AppCompatActivity implements AdapterV
                 binding.viewPager,
                 (tab, position) -> tab.setText(monthNames[position])
         ).attach();
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

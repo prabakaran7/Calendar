@@ -191,4 +191,47 @@ public class Table {
         String COL_KURAL_EN = "KURAL_EN";
         String COL_EXPLAINATION = "EXPLAINATION";
     }
+
+    public interface Manaiyadi {
+        String NAME = "MANAIYADI";
+        String COL_ADI = "ADI";
+        String COL_TYPE = "TYPE";
+        String COL_EXPLANATION = "EXPLANATION";
+    }
+
+    public interface PalliPalan {
+        String NAME = "PALLI_PALAN";
+        String COL_ID = "ID";
+        String COL_PART = "PART";
+        String COL_LEFT = "LEFT";
+        String COL_RIGHT = "RIGHT";
+    }
+
+
+    public interface StarMatching {
+        String NAME = "STAR_MATCHING";
+        String COL_BOY_STAR_INDEX = "BOY_STAR_INDEX";
+        String COL_GIRL_STAR_INDEX = "GIRL_STAR_INDEX";
+        String COL_P1 = "P1";
+        String COL_P2 = "P2";
+        String COL_P3 = "P3";
+        String COL_P4 = "P4";
+        String COL_P5 = "P5";
+        String COL_P6 = "P6";
+        String COL_P7 = "P7";
+        String COL_P8 = "P8";
+        String COL_P9 = "P9";
+        String COL_P10 = "P10";
+        String COL_P11 = "P11";
+        String COL_P12 = "P12";
+        String COL_TOTAL = "TOTAL";
+    }
+
+    public interface StarRasi {
+        String NAME = "STARS";
+        String COL_ID = "ID";
+        String COL_STAR = "STAR";
+        String COL_RASI = "RASI";
+    }
+
 }

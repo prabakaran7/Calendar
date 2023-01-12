@@ -1,0 +1,97 @@
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/actionBarItemBackground"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:subtitleTextColor="?attr/actionMenuTextColor"
+            app:title="@string/settings"
+            app:titleTextColor="?attr/actionMenuTextColor" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/bgSubTitle"
+                android:paddingHorizontal="10pt"
+                android:paddingVertical="5pt"
+                android:text="@string/theme"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="?attr/tcSubTitle" />
+
+            <RadioGroup
+                android:id="@+id/radioTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5pt"
+                android:paddingHorizontal="10pt">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/themeDefault"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/default_txt"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textStyle="bold"
+                    android:theme="@style/Widget.Material3.CompoundButton.RadioButton" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/themeRed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/red"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textStyle="bold"
+                    android:theme="@style/Widget.Material3.CompoundButton.RadioButton" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/themeGreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/green"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textStyle="bold"
+                    android:theme="@style/Widget.Material3.CompoundButton.RadioButton" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/bgSubTitle"
+            android:orientation="horizontal"
+            android:paddingHorizontal="10pt"
+            android:paddingVertical="5pt">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:text="@string/general_notifications"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="?attr/tcSubTitle"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/general_notification"
+                android:layout_width="wrap_content"
+                android:backgroundTint="?attr/tcSubTitle"
+                android:button="?attr/tcSubTitle"
+                android:layout_height="wrap_content"
+                android:gravity="end|center_vertical" />
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

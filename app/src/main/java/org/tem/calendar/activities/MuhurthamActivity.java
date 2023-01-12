@@ -26,7 +26,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class MuhurthamActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class MuhurthamActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
 
     private final List<Integer> yearList = new ArrayList<>();
     private ActivityMuhurthamBinding binding;
@@ -43,11 +43,6 @@ public class MuhurthamActivity extends AppCompatActivity implements AdapterView.
         yearList.addAll(DBHelper.getInstance(this).getMuhurthamYearList());
         Collections.sort(yearList);
         Collections.reverse(yearList);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Arrays.asList("2020", "2021", "2022"));
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-
     }
 
     private void loadData(int year) {
@@ -95,5 +90,11 @@ public class MuhurthamActivity extends AppCompatActivity implements AdapterView.
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

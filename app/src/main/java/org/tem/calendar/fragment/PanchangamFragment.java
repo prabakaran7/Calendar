@@ -98,6 +98,7 @@ public class PanchangamFragment extends Fragment {
                 data.setEveningText(values[data.getEveningIndex() - 1]);
             }
             binding.panchangamLayout.panchangamTxt.setText(getString(R.string.gowriPanchangamLabel));
+            binding.panchangamLayout.notesTxt.setText(R.string.suba_panchangam_note);
 
         } else if(GRAHA_ORAI_PANCHANGAM.equals(panchangamType)){
             gdList.addAll(DBHelper.getInstance(requireContext()).getGrahaOraiPanchangamWeekData(dayOfWeek));
@@ -108,6 +109,7 @@ public class PanchangamFragment extends Fragment {
                 data.setEveningText(values[data.getEveningIndex() - 1]);
             }
             binding.panchangamLayout.panchangamTxt.setText(getString(R.string.graha_orai_label));
+            binding.panchangamLayout.notesTxt.setText(R.string.suba_orai_note);
         }
         binding.panchangamLayout.panchangamRecyclerView.setAdapter(new PanchangamRecyclerAdapter(gdList));
         binding.panchangamLayout.panchangamRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));

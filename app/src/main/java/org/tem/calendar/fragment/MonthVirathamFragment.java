@@ -50,7 +50,7 @@ public class MonthVirathamFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         final List<VirathamMonthData> virathamList = DBHelper.getInstance(this.requireActivity())
                 .getVirathamList(selectedDate.getYear(), selectedDate.getMonthValue());
-        System.out.println(LocalDateTime.now() +", Viratham table loaded.-->" + type + " , " + selectedDate);
+
         for (VirathamMonthData vd : virathamList) {
             if (ASUBA_VIRATHAM == type) {
                 switch (vd.getViratham()) {

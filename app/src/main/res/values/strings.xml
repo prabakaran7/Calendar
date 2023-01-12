@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">நாட்காட்டி</string>
+    <string name="app_name">நாட்காட்டி 2023</string>
+    <string name="app_name_long">நாட்காட்டி 2023</string>
     <string name="raghu">இராகு</string>
     <string name="kuligai">குளிகை</string>
     <string name="emakandam">எமகண்டம்</string>
@@ -132,19 +133,19 @@
         <item>ரோகம்</item>
         <item>சோரம்</item>
         <item>விஷம்</item>
-        <item>லாபம்</item>
-        <item>தனம்</item>
-        <item>சுகம்</item>
-        <item>உத்தி</item>
-        <item>அமிர்த</item>
+        <item>லாபம்*</item>
+        <item>தனம்*</item>
+        <item>சுகம்*</item>
+        <item>உத்தி*</item>
+        <item>அமிர்த*</item>
     </string-array>
     <string-array name="orai_values">
         <item>சூரியன்</item>
-        <item>சுக்கிரன்</item>
-        <item>புதன்</item>
-        <item>சந்திரன்</item>
+        <item>சுக்கிரன்*</item>
+        <item>புதன்*</item>
+        <item>சந்திரன்*</item>
         <item>சனி</item>
-        <item>குரு</item>
+        <item>குரு*</item>
         <item>செவ்வாய்</item>
     </string-array>
     <string-array name="thiti_names">
@@ -525,7 +526,6 @@
         <item>பிரதோஷம்</item>
     </string-array>
 
-    <string name="app_name_long">நாட்காட்டி 2022</string>
     <string name="kural_number_txt">குறள்: %1$d</string>
     <string name="miscTxt">மற்றவை</string>
     <string name="settings">அமைப்புகள்</string>
@@ -546,4 +546,69 @@
     <string name="action_settings">Settings</string>
     <string name="day_msg">இன்று %1$s</string>
     <string name="today">இன்று</string>
+    <string name="manaiyadi_notes">பொதுவாக 6 அடிக்கு கீழ் கழிவறையை தவிர மற்ற அறைகள் இருக்க கூடாது என்பது மனையடி சாஸ்திர விதியாகும். அதே போல கீழே கூற பட்டுள்ள மனையடி சாஸ்திரம் அட்டவணை என்பது ஒரு அறையின் உள்ளடக்கமே ஆகும். சுவரின் அளவு இதில் சேராது. மொத்த வீட்டின் அளவில் சுவரின் அளவு சேர்ந்துவிடும். கீழே கூறப்பட்டுள்ள அளவுகளில் நன்மை தரக்கூடிய எண்ணிக்கையில் வீட்டின் அகலமும் நீளமும் அதே போல அறைகளின் அகலமும் நீளமும் இருப்பது நல்லது.</string>
+    <string name="notes">குறிப்பு</string>
+    <string name="adiTxt">அடி</string>
+    <string name="palanTxt">பலன்</string>
+    <string name="press_back_again_to_exit">வெளியேற மீண்டும் பொத்தானை அழுத்தவும்</string>
+    <string name="body_part">உறுப்பு</string>
+    <string name="left_side_txt">இடப்பக்கம்</string>
+    <string name="right_side_txt">வலப்பக்கம்</string>
+    <string name="palli_palan">பல்லி விழும் பலன்கள்</string>
+    <string name="marriage_matching">திருமணப் பொருத்தம்</string>
+    <string name="boy">ஆண்</string>
+    <string name="girl">பெண்</string>
+    <string name="match">பொருத்தம்</string>
+    <string name="natchitra_porutham">நட்சத்திரப்பொருத்தம்</string>
+    <string name="select_star">--நட்சத்திரம்--</string>
+    <string name="poruthams">பொருத்தங்கள்</string>
+    <string name="select_boy_star">ஆணின் நட்சத்திரத்தைத் தேர்ந்தெடுக்கவும்</string>
+    <string name="select_girl_star">பெண்ணின் நட்சத்திரத்தைத் தேர்ந்தெடுக்கவும்</string>
+    <string name="not_matching">பொருந்தாது</string>
+    <string name="matching">பொருந்தும்</string>
+    <string name="matched_str">பொருந்தியது : %1$d / %2$d</string>
+    <string name="suba_panchangam_note">* - சுபகாரியங்கள் செய்யலாம்.</string>
+    <string name="suba_orai_note">* - சுப ஓரைகள்</string>
+    <string name="hyphen_separator">-</string>
+    <string name="theme">Theme</string>
+    <string name="default_txt">Default</string>
+    <string name="red">Red</string>
+    <string name="green">Green</string>
+    <string name="general_notifications">General Notifications</string>
+
+    <string-array name="manaiyadi_types">
+        <item>அகலம், நீளம்</item>
+        <item>சுவரின் உயரம்</item>
+    </string-array>
+
+    <string-array name="poruthams">
+        <item>தினப்பொருத்தம்</item>
+        <item>கணப்பொருத்தம்</item>
+        <item>மகேந்திரப்பொருத்தம்</item>
+        <item>ஸ்திரி பொருத்தம்</item>
+        <item>யோனி பொருத்தம்</item>
+        <item>வேதைப்பொருத்தம்</item>
+        <item>ரஜ்ஜிப்பொருத்தம்*</item>
+        <item>ராசி பொருத்தம்</item>
+        <item>ராசி அதிபதி பொருத்தம்</item>
+        <item>வசிய பொருத்தம்</item>
+        <item>நாடி பொருத்தம்</item>
+        <item>விருட்சப்பொருத்தம்</item>
+    </string-array>
+
+    <string-array name="poruthams_explanations">
+        <item>நல்ல ஆரோக்கியம் மற்றும் செழிப்பு</item>
+        <item>குணங்களின் பொருத்தம்</item>
+        <item>செழிப்பை கூறும் பொருளாதார வளம்</item>
+        <item>செழிப்பை கூறும் பொருளாதார வளத்தை குறிக்கும் பொருத்தம்</item>
+        <item>திருமணத்தில் இணையும் மணங்கள், உடல் இன்பத்திலும் களித்தால் வாழ்நால் மிகச்சிறப்பாக அமையும்</item>
+        <item>துக்கத்தை நீக்கக்கூடிய பொருத்தம்</item>
+        <item>தீர்க்க சுமங்கலியாக வாழ இந்த பொருத்தம் அவசியம்</item>
+        <item>தலைமுறை விருத்தி செய்வதற்காக பார்க்கப்படும் முக்கிய பொருத்தம்</item>
+        <item>சந்ததி விருத்திக்காகவும், தம்பதிகள் இணக்கமாக வாழ வழி வகுக்க உதவும் பொருத்தம்</item>
+        <item>மணமக்களின் நேச வாழ்விற்காக பார்க்கப்படும் பொருத்தம்</item>
+        <item>வம்சம் விருத்தியாகி, வாழையடி வாழையாக குடும்பம் தழைக்கும்</item>
+        <item>குழந்தை செல்வம்</item>
+    </string-array>
+
 </resources>

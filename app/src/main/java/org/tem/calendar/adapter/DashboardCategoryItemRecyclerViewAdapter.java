@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.tem.calendar.DashboardActivity;
+import org.tem.calendar.activities.DashboardActivity;
 import org.tem.calendar.databinding.DashboardCategoryItemBinding;
 import org.tem.calendar.model.Dashboard;
 
@@ -30,12 +30,9 @@ public class DashboardCategoryItemRecyclerViewAdapter extends RecyclerView.Adapt
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Dashboard dashboard = dataSet.get(position);
-        System.out.println(dashboard);
         holder.binding.itemImage.setImageResource(dashboard.getImageResourceId());
         holder.binding.itemTxt.setText(dashboard.getName());
-        holder.binding.getRoot().setOnClickListener(view->{
-            activity.onClick(dashboard);
-        });
+        holder.binding.getRoot().setOnClickListener(view-> activity.onClick(dashboard));
     }
 
     @Override
@@ -51,7 +48,8 @@ public class DashboardCategoryItemRecyclerViewAdapter extends RecyclerView.Adapt
             this.binding = binding;
         }
 
-        public static ViewHolder of(ViewGroup parent) {
+        @NonNull
+        public static ViewHolder of(@NonNull ViewGroup parent) {
             return new ViewHolder(DashboardCategoryItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
         }
     }

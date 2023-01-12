@@ -1,0 +1,39 @@
+package org.tem.calendar.activities;
+
+import android.content.SharedPreferences;
+import android.os.Bundle;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import org.tem.calendar.Constants;
+import org.tem.calendar.R;
+
+public class BaseActivity extends AppCompatActivity {
+
+    private int themeId;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        SharedPreferences pref = getSharedPreferences(Constants.SETTINGS, MODE_PRIVATE);
+        int theme = pref.getInt(Constants.PREF_THEME, Constants.THEME_DEFAULT);
+        if (theme == Constants.THEME_RED) {
+            setTheme(R.style.Theme_Calendar_Red);
+        } else if (theme == Constants.THEME_GREEN) {
+            setTheme(R.style.Theme_Calendar_Green);
+        } else {
+            setTheme(R.style.Theme_Calendar_Default);
+        }
+        themeId = theme;
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onResume() {
+        int themeNew = getSharedPreferences(Constants.SETTINGS, MODE_PRIVATE).getInt(Constants.PREF_THEME, Constants.THEME_DEFAULT);
+        if (themeId != themeNew) {
+            recreate();
+        }
+        super.onResume();
+    }
+}

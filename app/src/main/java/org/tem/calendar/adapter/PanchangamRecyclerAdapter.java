@@ -25,8 +25,7 @@ public class PanchangamRecyclerAdapter extends RecyclerView.Adapter<PanchangamRe
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        PanchangamItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.panchangam_item, parent, false);
-        return new ViewHolder(binding);
+        return ViewHolder.of(parent);
     }
 
     @Override
@@ -50,6 +49,11 @@ public class PanchangamRecyclerAdapter extends RecyclerView.Adapter<PanchangamRe
         public ViewHolder(PanchangamItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
+        }
+
+        public static ViewHolder of(@NonNull ViewGroup parent) {
+            PanchangamItemBinding binding = PanchangamItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+            return new ViewHolder(binding);
         }
     }
 }
