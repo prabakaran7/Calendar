@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">நாட்காட்டி 2023</string>
+    <string name="app_name">Tamil Calendar 2023</string>
     <string name="app_name_long">நாட்காட்டி 2023</string>
     <string name="raghu">இராகு</string>
     <string name="kuligai">குளிகை</string>
@@ -552,8 +552,8 @@
     <string name="palanTxt">பலன்</string>
     <string name="press_back_again_to_exit">வெளியேற மீண்டும் பொத்தானை அழுத்தவும்</string>
     <string name="body_part">உறுப்பு</string>
-    <string name="left_side_txt">இடப்பக்கம்</string>
-    <string name="right_side_txt">வலப்பக்கம்</string>
+    <string name="left_side_txt">இடது</string>
+    <string name="right_side_txt">வலது</string>
     <string name="palli_palan">பல்லி விழும் பலன்கள்</string>
     <string name="marriage_matching">திருமணப் பொருத்தம்</string>
     <string name="boy">ஆண்</string>
@@ -575,6 +575,7 @@
     <string name="red">Red</string>
     <string name="green">Green</string>
     <string name="general_notifications">General Notifications</string>
+    <string name="year_calendar">வருட காட்டி</string>
 
     <string-array name="manaiyadi_types">
         <item>அகலம், நீளம்</item>
@@ -582,18 +583,18 @@
     </string-array>
 
     <string-array name="poruthams">
-        <item>தினப்பொருத்தம்</item>
-        <item>கணப்பொருத்தம்</item>
-        <item>மகேந்திரப்பொருத்தம்</item>
-        <item>ஸ்திரி பொருத்தம்</item>
-        <item>யோனி பொருத்தம்</item>
-        <item>வேதைப்பொருத்தம்</item>
-        <item>ரஜ்ஜிப்பொருத்தம்*</item>
-        <item>ராசி பொருத்தம்</item>
-        <item>ராசி அதிபதி பொருத்தம்</item>
-        <item>வசிய பொருத்தம்</item>
-        <item>நாடி பொருத்தம்</item>
-        <item>விருட்சப்பொருத்தம்</item>
+        <item>தினம்</item>
+        <item>கணம்</item>
+        <item>மகேந்திரம்</item>
+        <item>ஸ்திரி</item>
+        <item>யோனி</item>
+        <item>வேதை</item>
+        <item>ரஜ்ஜி*</item>
+        <item>ராசி</item>
+        <item>ராசி அதிபதி</item>
+        <item>வசியம்</item>
+        <item>நாடி</item>
+        <item>விருட்சம்</item>
     </string-array>
 
     <string-array name="poruthams_explanations">

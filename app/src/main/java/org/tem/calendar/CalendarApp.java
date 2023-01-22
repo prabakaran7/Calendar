@@ -20,6 +20,7 @@ import org.tem.calendar.activities.PoruthamActivity;
 import org.tem.calendar.activities.RaghuEmaKuligaiActivity;
 import org.tem.calendar.activities.SettingsActivity;
 import org.tem.calendar.activities.VasthuActivity;
+import org.tem.calendar.activities.YearActivity;
 import org.tem.calendar.custom.DateUtil;
 import org.tem.calendar.db.DBHelper;
 import org.tem.calendar.fragment.MonthVirathamFragment;
@@ -94,6 +95,7 @@ public class CalendarApp extends Application {
         DASHBOARD_MAP.put("", Arrays.asList(
                 Dashboard.of(this, R.string.app_name, R.drawable.daily_calendar, DayActivity.class),
                 Dashboard.of(this, R.string.monthly_calendar_txt, R.drawable.monthly_calendar, MonthActivity.class),
+                Dashboard.of(this, R.string.year_calendar, R.drawable.year_calendar, YearActivity.class),
                 Dashboard.of(this, R.string.viratha_thinangal, R.drawable.viratham_women, MonthVirathamActivity.class),
                 Dashboard.of(this, R.string.muhurtham_days, R.drawable.wedding, MuhurthamActivity.class),
                 Dashboard.of(this, R.string.holidaysAndFestivals, R.drawable.hindu_festival, FestivalIndexActivity.class),

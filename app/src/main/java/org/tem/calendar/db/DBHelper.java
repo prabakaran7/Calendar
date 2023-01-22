@@ -3,8 +3,6 @@ package org.tem.calendar.db;
 import android.annotation.SuppressLint;
 import android.content.Context;
 
-import androidx.core.util.Pair;
-
 import net.sqlcipher.Cursor;
 import net.sqlcipher.SQLException;
 import net.sqlcipher.database.SQLiteDatabase;
@@ -790,5 +788,20 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         return sm;
+    }
+
+    public List<Integer> getMasterYearList() {
+
+        List<Integer> years = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        try (Cursor c = db.rawQuery("select DISTINCT YEAR from MASTER", null)) {
+            if (null != c && c.moveToFirst()) {
+                do {
+                    years.add(c.getInt(c.getColumnIndexOrThrow("YEAR")));
+                } while (c.moveToNext());
+            }
+        }
+
+        return years;
     }
 }

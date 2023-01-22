@@ -27,7 +27,7 @@
                     android:id="@+id/text1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="6"
+                    android:layout_weight="5"
                     android:maxLines="2"
                     android:textColor="?attr/tcSubTitle"
                     android:textStyle="bold" />
@@ -46,7 +46,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:layout_weight="3"
+                    android:layout_weight="4"
                     android:maxLines="1"
                     android:textColor="?attr/tcSubTitle"
                     android:textStyle="bold" />

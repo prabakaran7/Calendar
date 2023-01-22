@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Calendar.Default">
         <activity
+            android:name=".activities.YearActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.PoruthamActivity"
             android:exported="false">
             <meta-data
