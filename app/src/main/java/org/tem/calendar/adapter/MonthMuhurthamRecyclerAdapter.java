@@ -8,6 +8,8 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import org.tem.calendar.R;
 import org.tem.calendar.databinding.MonthlyMuhurthamItemBinding;
 import org.tem.calendar.model.MuhurthamData;
@@ -38,7 +40,9 @@ public class MonthMuhurthamRecyclerAdapter extends RecyclerView.Adapter<MonthMuh
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         MuhurthamData md = dataSet.get(position);
         if (null != md) {
-            holder.binding.piraiImage.setImageResource(md.isValarPirai() ? R.drawable.cresent_white : R.drawable.cresent_black);
+            Glide.with(mContext)
+                            .load(md.isValarPirai() ? R.drawable.cresent_white : R.drawable.cresent_black)
+                                    .into(holder.binding.piraiImage);
             holder.binding.muhurthamTxt.setText(
                     mContext.getString(R.string.muhurtham_msg,
                             md.getDate().getDayOfMonth(),

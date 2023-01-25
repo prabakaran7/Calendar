@@ -16,6 +16,8 @@ import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 
+import com.bumptech.glide.Glide;
+
 import org.tem.calendar.R;
 import org.tem.calendar.custom.CalendarDayOnClickListener;
 import org.tem.calendar.custom.DateModel;
@@ -24,7 +26,6 @@ import org.tem.calendar.databinding.MonthDayCellBinding;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
 import java.util.List;
 import java.util.Locale;
 
@@ -144,9 +145,7 @@ public class MonthCalendarView extends LinearLayoutCompat {
             weekLayout.setWeightSum(7);
             addView(weekLayout, new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             for (DateModel dm : weekData) {
-                MonthDayCellBinding mdc = MonthDayCellBinding.inflate(
-                        LayoutInflater.from(getContext()));
-
+                MonthDayCellBinding mdc = MonthDayCellBinding.inflate(LayoutInflater.from(getContext()));
                 CardView cv = new CardView(getContext());
                 cv.setPadding(5, 5, 5, 5);
                 cv.addView(mdc.getRoot());
@@ -156,29 +155,40 @@ public class MonthCalendarView extends LinearLayoutCompat {
                 if (null != dm) {
                     LocalDate ld = dm.getDate();
                     mdc.mainDayTxt.setText(String.format(Locale.getDefault(), "%d", dm.getDate().getDayOfMonth()));
-                    if(ld.getDayOfWeek().equals(DayOfWeek.SUNDAY)){
+                    if (ld.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
                         mdc.mainDayTxt.setTextColor(Color.RED);
                     }
 
                     mdc.secDayTxt.setText(String.format(Locale.getDefault(), "%d", dm.getSecondaryDay()));
 
-                    if(dm.getTithi() > -1) {
+                    if (dm.getTithi() > 0) {
+//                        Glide.with(getContext())
+//                                .load(dm.getTithi())
+//                                .placeholder(R.drawable.chathurthi)
+//                                .into(mdc.image1);
                         mdc.image1.setImageResource(dm.getTithi());
                     }
 
-                    if(dm.getStar() > -1){
-                        mdc.image3.setImageResource(dm.getStar());
+                    if (dm.getStar() > 0) {
+//                        Glide.with(getContext())
+//                                .load(dm.getStar())
+//                                .placeholder(R.drawable.chathurthi)
+//                                .into(mdc.image3);
+                        mdc.image2.setImageResource(dm.getStar());
                     }
 
-                    if(dm.getMuhurtham() > -1){
-                        mdc.image2.setImageResource(dm.getMuhurtham());
+                    if (dm.getMuhurtham() > 0) {
+//                        Glide.with(getContext())
+//                                .load(dm.getMuhurtham())
+//                                .placeholder(R.drawable.chathurthi)
+//
+                        mdc.image3.setImageResource(dm.getMuhurtham());
                     }
 
-                    if(dm.isHoliday()) {
+                    if (dm.isHoliday()) {
                         TypedValue typedValue = new TypedValue();
                         getContext().getTheme().resolveAttribute(R.attr.bgHoliday, typedValue, true);
                         mdc.getRoot().setBackgroundResource(typedValue.resourceId);
-
                         getContext().getTheme().resolveAttribute(R.attr.tcHoliday, typedValue, true);
                         mdc.mainDayTxt.setTextColor(ContextCompat.getColor(getContext(), typedValue.resourceId));
                         mdc.secDayTxt.setTextColor(ContextCompat.getColor(getContext(), typedValue.resourceId));
@@ -188,7 +198,6 @@ public class MonthCalendarView extends LinearLayoutCompat {
                         TypedValue typedValue = new TypedValue();
                         getContext().getTheme().resolveAttribute(R.attr.bgToday, typedValue, true);
                         mdc.getRoot().setBackgroundResource(typedValue.resourceId);
-
                         getContext().getTheme().resolveAttribute(R.attr.tcToday, typedValue, true);
                         mdc.mainDayTxt.setTextColor(ContextCompat.getColor(getContext(), typedValue.resourceId));
                         mdc.secDayTxt.setTextColor(ContextCompat.getColor(getContext(), typedValue.resourceId));

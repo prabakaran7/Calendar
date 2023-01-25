@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import org.tem.calendar.activities.DashboardActivity;
 import org.tem.calendar.databinding.DashboardCategoryItemBinding;
 import org.tem.calendar.model.Dashboard;
@@ -30,9 +32,13 @@ public class DashboardCategoryItemRecyclerViewAdapter extends RecyclerView.Adapt
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Dashboard dashboard = dataSet.get(position);
-        holder.binding.itemImage.setImageResource(dashboard.getImageResourceId());
+        if (dashboard.getImageResourceId() > 0) {
+            Glide.with(holder.itemView.getContext())
+                    .load(dashboard.getImageResourceId())
+                    .into(holder.binding.itemImage);
+        }
         holder.binding.itemTxt.setText(dashboard.getName());
-        holder.binding.getRoot().setOnClickListener(view-> activity.onClick(dashboard));
+        holder.binding.getRoot().setOnClickListener(view -> activity.onClick(dashboard));
     }
 
     @Override

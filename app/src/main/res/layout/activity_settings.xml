@@ -38,18 +38,29 @@
                 android:paddingHorizontal="10pt">
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:padding="5dp"
+                    android:layout_margin="5dp"
                     android:id="@+id/themeDefault"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/default_txt"
+                    android:background="@color/purple_700"
+                    android:textColor="@color/white"
+                    app:buttonTint="@color/white"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textStyle="bold"
                     android:theme="@style/Widget.Material3.CompoundButton.RadioButton" />
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
                     android:id="@+id/themeRed"
-                    android:layout_width="wrap_content"
+
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_margin="5dp"
+                    android:background="@color/red_2"
+                    android:textColor="@color/white"
+                    app:buttonTint="@color/white"
                     android:text="@string/red"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textStyle="bold"
@@ -57,9 +68,54 @@
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
                     android:id="@+id/themeGreen"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_margin="5dp"
+                    android:background="@color/green2"
+                    android:textColor="@color/white"
+                    app:buttonTint="@color/white"
                     android:text="@string/green"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textStyle="bold"
+                    android:theme="@style/Widget.Material3.CompoundButton.RadioButton" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/themeGrey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_margin="5dp"
+                    android:background="@color/teal_500"
+                    android:textColor="@color/white"
+                    app:buttonTint="@color/white"
+                    android:text="@string/Grey"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textStyle="bold"
+                    android:theme="@style/Widget.Material3.CompoundButton.RadioButton" />
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/themeOrange"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_margin="5dp"
+                    android:background="@color/orange_2"
+                    android:textColor="@color/white"
+                    app:buttonTint="@color/white"
+                    android:text="@string/Orange"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textStyle="bold"
+                    android:theme="@style/Widget.Material3.CompoundButton.RadioButton" />
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/themeNight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_margin="5dp"
+                    android:background="@color/black"
+                    android:textColor="@color/white"
+                    app:buttonTint="@color/white"
+                    android:text="@string/Night"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textStyle="bold"
                     android:theme="@style/Widget.Material3.CompoundButton.RadioButton" />

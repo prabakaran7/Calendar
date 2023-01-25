@@ -53,7 +53,6 @@
                                 android:id="@+id/tamilDateTxt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/tourney_semi_bold"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                                 android:textColor="@color/white"
                                 android:textStyle="bold" />

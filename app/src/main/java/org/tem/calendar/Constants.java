@@ -16,4 +16,7 @@ public class Constants {
     public static final int THEME_GREEN = 2;
     public static final String PREF_GENERAL_NOTIFICATIONS = "settings.general_notifications";
     public static final String NOTIFICATION_CALENDAR = "calendar";
+    public static final int THEME_GREY = 3;
+    public static final int THEME_ORANGE = 4;
+    public static final int THEME_NIGHT = 5;
 }

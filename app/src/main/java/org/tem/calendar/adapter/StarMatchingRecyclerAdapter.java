@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
+import org.jetbrains.annotations.Contract;
 import org.tem.calendar.R;
 import org.tem.calendar.databinding.StarMatchingItemBinding;
 
@@ -35,7 +38,9 @@ public class StarMatchingRecyclerAdapter extends RecyclerView.Adapter<StarMatchi
         holder.binding.text1.setText(String.format(Locale.getDefault(), "%d. %s", position + 1, data[0]));
         boolean notMatched = Integer.parseInt(data[1].toString()) == 0;
         holder.binding.text2.setText(holder.itemView.getContext().getString(notMatched ? R.string.not_matching : R.string.matching));
-        holder.binding.image1.setImageResource(notMatched ? R.drawable.cross : R.drawable.tick);
+        Glide.with(holder.itemView.getContext())
+                .load(notMatched ? R.drawable.cross : R.drawable.tick)
+                .into(holder.binding.image1);
         holder.binding.expTxt.setText(data[2].toString());
     }
 
@@ -82,7 +87,9 @@ public class StarMatchingRecyclerAdapter extends RecyclerView.Adapter<StarMatchi
 
         }
 
-        public static ViewHolder of(ViewGroup parent) {
+        @NonNull
+        @Contract("_ -> new")
+        public static ViewHolder of(@NonNull ViewGroup parent) {
             return new ViewHolder(StarMatchingItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
         }
     }

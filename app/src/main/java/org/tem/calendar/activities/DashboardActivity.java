@@ -1,15 +1,18 @@
 package org.tem.calendar.activities;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -26,7 +29,9 @@ import org.tem.calendar.model.FestivalDayData;
 import org.tem.calendar.model.MonthData;
 import org.tem.calendar.model.NallaNeramData;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Locale;
@@ -108,6 +113,15 @@ public class DashboardActivity extends BaseActivity {
 
         binding.monthDayTxt.setText(String.format("%s-%s", getResources().getStringArray(R.array.en_month_names)[md.getMonth() - 1], getResources().getStringArray(R.array.weekday_names)[md.getWeekday() - 1]));
         binding.dateTxt.setText(md.getDate());
+        LocalDate today = LocalDate.parse(md.getDate(), DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        Typeface font;
+        if(today.getDayOfWeek().equals(DayOfWeek.SUNDAY)){
+            font = ResourcesCompat.getFont(this, R.font.tourney_semi_bold);
+
+        } else {
+            font = ResourcesCompat.getFont(this, R.font.tourney_black);
+        }
+        binding.dateTxt.setTypeface(font);
 
         FestivalDayData fdd = DBHelper.getInstance(this).getFestivalDays(DateUtil.format(LocalDate.now()));
         if (fdd != null) {

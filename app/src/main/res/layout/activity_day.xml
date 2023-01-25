@@ -18,8 +18,12 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"
             android:layout_marginEnd="25dp"
+            android:src="@drawable/back2today"
             android:id="@+id/resetBtn"
-            android:src="@android:drawable/ic_menu_today"
+            app:backgroundTint="?attr/tcSubTitle"
+            app:tint="?attr/bgSubTitle"
+            app:borderWidth="0dp"
+            app:rippleColor="?attr/colorPrimaryVariant"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:contentDescription="@string/today" />

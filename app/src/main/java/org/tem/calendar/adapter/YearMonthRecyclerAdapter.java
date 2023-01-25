@@ -52,7 +52,7 @@ public class YearMonthRecyclerAdapter extends RecyclerView.Adapter<YearMonthRecy
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        private YearMonthItemBinding binding;
+        private final YearMonthItemBinding binding;
 
         public ViewHolder(@NonNull YearMonthItemBinding binding) {
             super(binding.getRoot());

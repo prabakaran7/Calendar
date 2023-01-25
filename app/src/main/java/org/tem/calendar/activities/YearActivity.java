@@ -1,5 +1,6 @@
 package org.tem.calendar.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -37,7 +37,7 @@ import java.util.Objects;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
-public class YearActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, CalendarDayOnClickListener {
+public class YearActivity extends BaseActivity implements AdapterView.OnItemSelectedListener, CalendarDayOnClickListener {
 
     private ActivityYearBinding binding;
     private final List<Integer> yearList = new ArrayList<>();
@@ -46,32 +46,34 @@ public class YearActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        new Thread(() -> {
+            yearList.addAll(DBHelper.getInstance(this).getMasterYearList());
+            Collections.sort(yearList);
+            Collections.reverse(yearList);
+        }).start();
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_year);
 
         binding.toolbar.setTitle(R.string.year_calendar);
         setSupportActionBar(binding.toolbar);
 
-        yearList.addAll(DBHelper.getInstance(this).getMasterYearList());
-
-        Collections.sort(yearList);
-        Collections.reverse(yearList);
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         binding.recyclerView.setHasFixedSize(false);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setAdapter(new YearMonthRecyclerAdapter(this, yearDataList));
+
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private void loadMonthView(Integer year) {
+        yearDataList.clear();
 
         for (Month month : Month.values()) {
-            runOnUiThread(() -> {
-                List<DateModel> model = generateMonthData(year, month.getValue());
-                yearDataList.add(month.ordinal(), model);
-                Objects.requireNonNull(binding.recyclerView.getAdapter()).notifyItemInserted(month.ordinal());
-            });
+            yearDataList.add(generateMonthData(year, month.getValue()));
         }
+
+        Objects.requireNonNull(binding.recyclerView.getAdapter()).notifyDataSetChanged();
 
     }
 
@@ -84,13 +86,14 @@ public class YearActivity extends AppCompatActivity implements AdapterView.OnIte
         adapter.setDropDownViewResource(R.layout.layout_drop_list);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
-        //spinner.setSelection(selected, false);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        binding.progressBar.setVisibility(View.VISIBLE);
         loadMonthView(yearList.get(position));
+        binding.progressBar.setVisibility(View.GONE);
     }
 
     @Override

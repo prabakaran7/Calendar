@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import org.tem.calendar.R;
 import org.tem.calendar.databinding.MuhurthamItemBinding;
 import org.tem.calendar.model.MuhurthamData;
@@ -53,7 +55,9 @@ public class MuhurthamRecyclerAdapter extends RecyclerView.Adapter<MuhurthamRecy
         holder.binding.dateTxt.setText(data.getDate().format(DateTimeFormatter.ofPattern("d-M-yyyy")));
         holder.binding.dayTxt.setText(dayNames[data.getDate().getDayOfWeek().getValue() - 1]);
         holder.binding.tamilDayTxt.setText(String.format(Locale.getDefault(), "%s, %d", tamilMonths[data.getTmonth() - 1], data.getTday()));
-        holder.binding.piraiImage.setImageResource(data.isValarPirai() ? R.drawable.cresent_white : R.drawable.cresent_black);
+        Glide.with(holder.itemView.getContext())
+                .load(data.isValarPirai() ? R.drawable.cresent_white : R.drawable.cresent_black)
+                .into(holder.binding.piraiImage);
         final boolean isExpanded = pos==mExpandedPosition;
         // Add animation
         holder.binding.detailsView.setVisibility(isExpanded ? View.VISIBLE:View.GONE);

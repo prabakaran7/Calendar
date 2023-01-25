@@ -1,5 +1,0 @@
-<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle" >
-    <solid android:color="?attr/month_header_bg" />
-    <stroke android:width="1dip" android:color="?attr/month_header_border"/>
-    <corners android:radius="2dp"/>
-</shape>

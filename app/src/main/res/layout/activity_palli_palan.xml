@@ -15,7 +15,8 @@
             android:background="?attr/actionBarItemBackground"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:subtitleTextColor="?attr/actionMenuTextColor"
-            app:title="@string/palli_palan"
+            app:title="@string/tamil_calendar"
+            app:subtitle="@string/palli_palan"
             app:titleTextColor="?attr/actionMenuTextColor" />
 
         <androidx.cardview.widget.CardView

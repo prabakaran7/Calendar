@@ -20,7 +20,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:subtitleTextColor="?attr/actionMenuTextColor"
-                app:title="@string/natchitra_porutham"
+                app:title="@string/tamil_calendar"
+                app:subtitle="@string/natchitra_porutham"
                 app:titleTextColor="?attr/actionMenuTextColor" />
 
             <androidx.cardview.widget.CardView

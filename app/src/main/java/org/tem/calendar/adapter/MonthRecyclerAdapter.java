@@ -10,6 +10,8 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import org.tem.calendar.CalendarApp;
 import org.tem.calendar.R;
 import org.tem.calendar.activities.MonthActivity;
@@ -207,21 +209,27 @@ public class MonthRecyclerAdapter extends RecyclerView.Adapter<MonthRecyclerAdap
                                 dateModel.setTithi(R.drawable.new_moon);
                                 binding.viratham.amavasai.getRoot().setVisibility(View.VISIBLE);
                                 binding.viratham.amavasai.virathamHeader.setText(activity.getString(R.string.amavasaiTxt));
-                                binding.viratham.amavasai.virathamImage.setImageResource(R.drawable.new_moon);
+                                Glide.with(activity)
+                                        .load(R.drawable.new_moon)
+                                        .into(binding.viratham.amavasai.virathamImage);
                                 setMuhurtham(binding.viratham.amavasai.virathamTxt, vd.getDate());
                                 break;
                             case 1:
                                 dateModel.setTithi(R.drawable.full_moon);
                                 binding.viratham.pournami.getRoot().setVisibility(View.VISIBLE);
                                 binding.viratham.pournami.virathamHeader.setText(activity.getString(R.string.pournamiTxt));
-                                binding.viratham.pournami.virathamImage.setImageResource(R.drawable.full_moon);
+                                Glide.with(activity)
+                                        .load(R.drawable.full_moon)
+                                        .into(binding.viratham.pournami.virathamImage);
                                 setMuhurtham(binding.viratham.pournami.virathamTxt, vd.getDate());
                                 break;
                             case 2:
                                 dateModel.setStar(R.drawable.star);
                                 binding.viratham.karthigai.getRoot().setVisibility(View.VISIBLE);
                                 binding.viratham.karthigai.virathamHeader.setText(activity.getString(R.string.karthigaiTxt));
-                                binding.viratham.karthigai.virathamImage.setImageResource(R.drawable.star);
+                                Glide.with(activity)
+                                        .load(R.drawable.star)
+                                        .into(binding.viratham.karthigai.virathamImage);
                                 setMuhurtham(binding.viratham.karthigai.virathamTxt, vd.getDate());
                                 break;
                             case 3:
@@ -229,7 +237,9 @@ public class MonthRecyclerAdapter extends RecyclerView.Adapter<MonthRecyclerAdap
                                 dateModel.setTithi(R.drawable.sivarathri);
                                 binding.viratham.sivarathri.getRoot().setVisibility(View.VISIBLE);
                                 binding.viratham.sivarathri.virathamHeader.setText(activity.getString(R.string.sivarathriTxt));
-                                binding.viratham.sivarathri.virathamImage.setImageResource(R.drawable.sivarathri);
+                                Glide.with(activity)
+                                        .load(R.drawable.sivarathri)
+                                        .into(binding.viratham.sivarathri.virathamImage);
                                 setMuhurtham(binding.viratham.sivarathri.virathamTxt, vd.getDate());
                                 break;
                             case 4:
@@ -237,12 +247,16 @@ public class MonthRecyclerAdapter extends RecyclerView.Adapter<MonthRecyclerAdap
                                 if (vd.getPirai() == 2) { //valarpirai
                                     binding.viratham.chathurthi.getRoot().setVisibility(View.VISIBLE);
                                     binding.viratham.chathurthi.virathamHeader.setText(activity.getString(R.string.chathurthiTxt));
-                                    binding.viratham.chathurthi.virathamImage.setImageResource(R.drawable.chathurthi);
+                                    Glide.with(activity)
+                                            .load(R.drawable.chathurthi)
+                                            .into(binding.viratham.pournami.virathamImage);
                                     setMuhurtham(binding.viratham.chathurthi.virathamTxt, vd.getDate());
                                 } else if (vd.getPirai() == 1) { //theipirai
                                     binding.viratham.sankataChathurthi.getRoot().setVisibility(View.VISIBLE);
                                     binding.viratham.sankataChathurthi.virathamHeader.setText(activity.getString(R.string.sankada_chathurthi_txt));
-                                    binding.viratham.sankataChathurthi.virathamImage.setImageResource(R.drawable.chathurthi);
+                                    Glide.with(activity)
+                                            .load(R.drawable.chathurthi)
+                                            .into(binding.viratham.chathurthi.virathamImage);
                                     setMuhurtham(binding.viratham.sankataChathurthi.virathamTxt, vd.getDate());
                                 }
                                 break;
@@ -250,7 +264,9 @@ public class MonthRecyclerAdapter extends RecyclerView.Adapter<MonthRecyclerAdap
                                 dateModel.setStar(R.drawable.thiruvonam);
                                 binding.viratham.thiruvonam.getRoot().setVisibility(View.VISIBLE);
                                 binding.viratham.thiruvonam.virathamHeader.setText(activity.getString(R.string.thiruvonamTxt));
-                                binding.viratham.thiruvonam.virathamImage.setImageResource(R.drawable.thiruvonam);
+                                Glide.with(activity)
+                                        .load(R.drawable.thiruvonam)
+                                        .into(binding.viratham.thiruvonam.virathamImage);
                                 setMuhurtham(binding.viratham.thiruvonam.virathamTxt, vd.getDate());
                                 break;
                             case 6:
@@ -258,12 +274,16 @@ public class MonthRecyclerAdapter extends RecyclerView.Adapter<MonthRecyclerAdap
                                 if (vd.getPirai() == 2) { //valarpirai
                                     binding.viratham.shastiPlus.getRoot().setVisibility(View.VISIBLE);
                                     binding.viratham.shastiPlus.virathamHeader.setText(activity.getString(R.string.shastiValarpiraiTxt));
-                                    binding.viratham.shastiPlus.virathamImage.setImageResource(R.drawable.shasti);
+                                    Glide.with(activity)
+                                            .load(R.drawable.shasti)
+                                            .into(binding.viratham.shastiPlus.virathamImage);
                                     setMuhurtham(binding.viratham.shastiPlus.virathamTxt, vd.getDate());
                                 } else if (vd.getPirai() == 1) { //theipirai
                                     binding.viratham.shasti.getRoot().setVisibility(View.VISIBLE);
                                     binding.viratham.shasti.virathamHeader.setText(activity.getString(R.string.shastiTxt));
-                                    binding.viratham.shasti.virathamImage.setImageResource(R.drawable.shasti);
+                                    Glide.with(activity)
+                                            .load(R.drawable.shasti)
+                                            .into(binding.viratham.shasti.virathamImage);
                                     setMuhurtham(binding.viratham.shasti.virathamTxt, vd.getDate());
                                 }
                                 break;
@@ -271,21 +291,27 @@ public class MonthRecyclerAdapter extends RecyclerView.Adapter<MonthRecyclerAdap
                                 dateModel.setTithi(R.drawable.astami);
                                 binding.otherDays.astami.getRoot().setVisibility(View.VISIBLE);
                                 binding.otherDays.astami.virathamHeader.setText(activity.getString(R.string.astamiTxt));
-                                binding.otherDays.astami.virathamImage.setImageResource(R.drawable.astami);
+                                Glide.with(activity)
+                                        .load(R.drawable.astami)
+                                        .into(binding.otherDays.astami.virathamImage);
                                 setMuhurtham(binding.otherDays.astami.virathamTxt, vd.getDate());
                                 break;
                             case 9:
                                 dateModel.setTithi(R.drawable.navami);
                                 binding.otherDays.navami.getRoot().setVisibility(View.VISIBLE);
                                 binding.otherDays.navami.virathamHeader.setText(activity.getString(R.string.navamiTxt));
-                                binding.otherDays.navami.virathamImage.setImageResource(R.drawable.navami);
+                                Glide.with(activity)
+                                        .load(R.drawable.navami)
+                                        .into(binding.otherDays.navami.virathamImage);
                                 setMuhurtham(binding.otherDays.navami.virathamTxt, vd.getDate());
                                 break;
                             case 12:
                                 dateModel.setTithi(R.drawable.ekadeshi);
                                 binding.viratham.egadesi.getRoot().setVisibility(View.VISIBLE);
                                 binding.viratham.egadesi.virathamHeader.setText(activity.getString(R.string.ekadeshiTxt));
-                                binding.viratham.egadesi.virathamImage.setImageResource(R.drawable.ekadeshi);
+                                Glide.with(activity)
+                                        .load(R.drawable.ekadeshi)
+                                        .into(binding.viratham.egadesi.virathamImage);
                                 setMuhurtham(binding.viratham.egadesi.virathamTxt, vd.getDate());
                                 break;
                             case 13:
@@ -293,12 +319,16 @@ public class MonthRecyclerAdapter extends RecyclerView.Adapter<MonthRecyclerAdap
                                 if (vd.getPirai() == 2) { //valarpirai
                                     binding.viratham.pradosamPlus.getRoot().setVisibility(View.VISIBLE);
                                     binding.viratham.pradosamPlus.virathamHeader.setText(activity.getString(R.string.pradosamValarPiraiTxt));
-                                    binding.viratham.pradosamPlus.virathamImage.setImageResource(R.drawable.pradhosam);
+                                    Glide.with(activity)
+                                            .load(R.drawable.pradhosam)
+                                            .into(binding.viratham.pradosamPlus.virathamImage);
                                     setMuhurtham(binding.viratham.pradosamPlus.virathamTxt, vd.getDate());
                                 } else if (vd.getPirai() == 1) { //theipirai
                                     binding.viratham.pradosam.getRoot().setVisibility(View.VISIBLE);
                                     binding.viratham.pradosam.virathamHeader.setText(activity.getString(R.string.pradosamTheiPiraiTxt));
-                                    binding.viratham.pradosam.virathamImage.setImageResource(R.drawable.pradhosam);
+                                    Glide.with(activity)
+                                            .load(R.drawable.pradhosam)
+                                            .into(binding.viratham.pradosam.virathamImage);
                                     setMuhurtham(binding.viratham.pradosam.virathamTxt, vd.getDate());
                                 }
                                 break;
@@ -317,7 +347,9 @@ public class MonthRecyclerAdapter extends RecyclerView.Adapter<MonthRecyclerAdap
             Collections.sort(knList);
             if (!knList.isEmpty()) {
                 binding.otherDays.karinaal.virathamHeader.setText(activity.getString(R.string.kariNaalTxt));
-                binding.otherDays.karinaal.virathamImage.setImageResource(R.drawable.hotsun);
+                Glide.with(activity)
+                        .load(R.drawable.hotsun)
+                        .into(binding.otherDays.karinaal.virathamImage);
                 for (LocalDate ld : knList) {
                     setMuhurtham(binding.otherDays.karinaal.virathamTxt, ld);
                 }

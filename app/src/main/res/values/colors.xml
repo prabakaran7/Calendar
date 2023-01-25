@@ -2,9 +2,11 @@
 <resources>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
+    <color name="purple_300">#8839FA</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <color name="teal_500">#44AAA0</color>
+    <color name="teal_700">#086E6D</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#7B7A7C</color>
@@ -15,11 +17,22 @@
     <color name="light_blue_600">#FF039BE5</color>
     <color name="light_blue_900">#FF01579B</color>
     <color name="green1">#64C864</color>
-    <color name="red_1">#CC0707</color>
-    <color name="red_2">#FF0000</color>
-    <color name="red_3">#E68484</color>
+    <color name="red_1">#BB0101</color>
+    <color name="red_2">#E80606</color>
+    <color name="red_3">#F34545</color>
+    <color name="red_4">#FFE1E1</color>
 
     <color name="green2">#4D9F4D</color>
     <color name="green3">#488748</color>
     <color name="light_green_50">#C6F4CA</color>
+
+    <!-- Theme 1 Materials -->
+    <color name="grey_50">#EFE7E7</color>
+    <color name="grey_100">#D1C2C2</color>
+
+
+    <color name="orange_1">#E47D00</color>
+    <color name="orange_2">#FBA404</color>
+    <color name="orange_3">#FFB631</color>
+    <color name="orange_4">#FFF2DA</color>
 </resources>

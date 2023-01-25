@@ -16,7 +16,7 @@
             android:background="?attr/actionBarItemBackground"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:subtitleTextColor="?attr/actionMenuTextColor"
-            app:title="@string/app_name"
+            app:title="@string/tamil_calendar"
             app:titleTextColor="?attr/actionMenuTextColor" />
 
 

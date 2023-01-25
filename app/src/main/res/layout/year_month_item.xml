@@ -21,7 +21,7 @@
                 android:minHeight="48dp"
                 android:textStyle="bold"
                 android:textColor="?attr/tcTitle"
-                android:background="?attr/bgTitleCardCenter"
+                android:background="?attr/bgTitleCardStart"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 

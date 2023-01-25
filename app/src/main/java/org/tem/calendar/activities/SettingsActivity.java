@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.databinding.DataBindingUtil;
 
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -34,6 +35,12 @@ public class SettingsActivity extends BaseActivity {
             binding.radioTheme.check(binding.themeRed.getId());
         } else if (theme == Constants.THEME_GREEN) {
             binding.radioTheme.check(binding.themeGreen.getId());
+        } else if (theme == Constants.THEME_GREY) {
+            binding.radioTheme.check(binding.themeGrey.getId());
+        } else if (theme == Constants.THEME_ORANGE) {
+            binding.radioTheme.check(binding.themeOrange.getId());
+        } else if (theme == Constants.THEME_NIGHT) {
+            binding.radioTheme.check(binding.themeNight.getId());
         } else {
             binding.radioTheme.check(binding.themeDefault.getId());
         }
@@ -46,6 +53,12 @@ public class SettingsActivity extends BaseActivity {
                 themeNew = Constants.THEME_RED;
             } else if (checkedId == binding.themeGreen.getId()) {
                 themeNew = Constants.THEME_GREEN;
+            } else if (checkedId == binding.themeGrey.getId()) {
+                themeNew = Constants.THEME_GREY;
+            } else if (checkedId == binding.themeOrange.getId()) {
+                themeNew = Constants.THEME_ORANGE;
+            } else if (checkedId == binding.themeNight.getId()) {
+                themeNew = Constants.THEME_NIGHT;
             } else {
                 themeNew = Constants.THEME_DEFAULT;
             }

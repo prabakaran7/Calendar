@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import org.tem.calendar.Constants;
 import org.tem.calendar.R;
@@ -21,6 +22,12 @@ public class BaseActivity extends AppCompatActivity {
             setTheme(R.style.Theme_Calendar_Red);
         } else if (theme == Constants.THEME_GREEN) {
             setTheme(R.style.Theme_Calendar_Green);
+        } else if (theme == Constants.THEME_GREY) {
+            setTheme(R.style.Theme_Calendar_Grey);
+        } else if (theme == Constants.THEME_ORANGE) {
+            setTheme(R.style.Theme_Calendar_Orange);
+        } else if (theme == Constants.THEME_NIGHT) {
+            setTheme(R.style.Theme_Calendar_Night);
         } else {
             setTheme(R.style.Theme_Calendar_Default);
         }

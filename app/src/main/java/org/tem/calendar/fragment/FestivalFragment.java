@@ -50,7 +50,6 @@ public class FestivalFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         Map<LocalDate, String> mapList;
-        System.out.println(date);
         if (type == FestivalFragment.HINDU_FESTIVALS) {
             mapList = DBHelper.getInstance(requireActivity()).getHinduFestivalDays(date.getYear(), date.getMonthValue());
         } else if (type == FestivalFragment.CHRIST_FESTIVALS) {

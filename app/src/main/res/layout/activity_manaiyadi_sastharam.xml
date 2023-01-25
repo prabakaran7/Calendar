@@ -16,22 +16,22 @@
             android:background="?attr/actionBarItemBackground"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:subtitleTextColor="?attr/actionMenuTextColor"
-            app:title="@string/app_name"
+            app:title="@string/tamil_calendar"
             app:layout_constraintTop_toTopOf="parent"
             app:titleTextColor="?attr/actionMenuTextColor" />
+
         <com.google.android.material.tabs.TabLayout
-            app:layout_constraintTop_toBottomOf="@id/toolbar"
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/holo_red_dark"
-            app:tabIconTint="@android:color/holo_red_dark"
-            app:tabIndicatorColor="@color/yellow"
-            app:tabMode="scrollable"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            android:background="?attr/bgTitleCardCenter"
+            app:tabIndicatorColor="?attr/tcTitle"
             app:tabGravity="fill"
-            app:tabSelectedTextColor="@color/yellow"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="?attr/tcTitle"
             app:tabTextAppearance="@style/TextAppearance.AppCompat.Medium"
-            app:tabTextColor="@color/white" />
+            app:tabTextColor="?attr/tcTab" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:layout_width="match_parent"

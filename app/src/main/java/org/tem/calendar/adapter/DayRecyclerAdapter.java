@@ -13,6 +13,8 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import org.tem.calendar.CalendarApp;
 import org.tem.calendar.R;
 import org.tem.calendar.activities.DayActivity;
@@ -127,19 +129,24 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
             iv.setRotation(150);
             iv.setMinimumHeight((int) (48 * CalendarApp.getDpFactor()));
 
+            int resourceId;
             if (td.getPirai() == -1) { //Amavasai
-                iv.setImageResource(R.drawable.new_moon);
+                resourceId = R.drawable.new_moon;
                 iv.setOnClickListener(v -> Toast.makeText(activity, R.string.today_new_moon, Toast.LENGTH_SHORT).show());
             } else if (td.getPirai() == -2) { //pournami
-                iv.setImageResource(R.drawable.full_moon);
+                resourceId = R.drawable.full_moon;
                 iv.setOnClickListener(v -> Toast.makeText(activity, R.string.today_full_moon, Toast.LENGTH_SHORT).show());
             } else if (td.getPirai() == 2) { //valarpirai
-                iv.setImageResource(R.drawable.cresent_white);
+                resourceId = R.drawable.cresent_white;
                 iv.setOnClickListener(v -> Toast.makeText(activity, R.string.today_waxing_moon, Toast.LENGTH_SHORT).show());
             } else { //theipirai
-                iv.setImageResource(R.drawable.cresent_black);
+                resourceId = R.drawable.cresent_black;
                 iv.setOnClickListener(v -> Toast.makeText(activity, R.string.today_waning_moon, Toast.LENGTH_SHORT).show());
             }
+
+            Glide.with(activity)
+                    .load(resourceId)
+                    .into(iv);
 
             binding.importantDayLayout.imageLayout.addView(iv, params);
 
@@ -170,17 +177,20 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
 
             binding.chandrastamLayout.chandrastamamTxt.setText(sb.toString());
             ImageView iv = new ImageView(activity.getApplicationContext());
+            int resourceId;
             if (sd.getNokku() == 1) {
-                iv.setImageResource(R.drawable.up_arrow);
+                resourceId = R.drawable.up_arrow;
                 iv.setOnClickListener(v -> Toast.makeText(activity, R.string.mel_nokku_naal, Toast.LENGTH_SHORT).show());
             } else if (sd.getNokku() == 2) {
-                iv.setImageResource(R.drawable.down_arrow);
+                resourceId = R.drawable.down_arrow;
                 iv.setOnClickListener(v -> Toast.makeText(activity, R.string.kizh_nokku_naal, Toast.LENGTH_SHORT).show());
             } else {
-                iv.setImageResource(R.drawable.both_side_arrow);
+                resourceId = R.drawable.both_side_arrow;
                 iv.setOnClickListener(v -> Toast.makeText(activity, R.string.sama_nokku_naal, Toast.LENGTH_SHORT).show());
-
             }
+            Glide.with(activity)
+                    .load(resourceId)
+                    .into(iv);
             binding.importantDayLayout.imageLayout.addView(iv, params);
         }
         binding.panchangamLayout.starTxt.setText(star);
@@ -315,7 +325,9 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
         MuhurthamData muh = DBHelper.getInstance(activity).getMuhurtham(dateString);
         if (null != muh) {
             ImageView iv = new ImageView(activity.getApplicationContext());
-            iv.setImageResource(R.drawable.wedding);
+            Glide.with(activity)
+                    .load(R.drawable.wedding)
+                    .into(iv);
             binding.importantDayLayout.imageLayout.addView(iv, params);
             sb.append(activity.getResources().getString(
                     R.string.suba_muhurtham,
@@ -340,7 +352,9 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
 
                 case 2:
                     iv = new ImageView(activity.getApplicationContext());
-                    iv.setImageResource(R.drawable.star);
+                    Glide.with(activity)
+                            .load(R.drawable.star)
+                            .into(iv);
                     binding.importantDayLayout.imageLayout.addView(iv, params);
                     binding.importantDayLayout.imageLayout.setOnClickListener(view -> Toast.makeText(activity, activity.getString(R.string.day_msg, activity.getString(R.string.karthigaiTxt)), Toast.LENGTH_SHORT).show());
                     break;
@@ -349,42 +363,54 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
 
                 case 7: //Maha Sivarathri
                     iv = new ImageView(activity.getApplicationContext());
-                    iv.setImageResource(R.drawable.sivarathri);
+                    Glide.with(activity)
+                            .load(R.drawable.sivarathri)
+                            .into(iv);
                     binding.importantDayLayout.imageLayout.addView(iv, params);
                     binding.importantDayLayout.imageLayout.setOnClickListener(view -> Toast.makeText(activity, activity.getString(R.string.day_msg, activity.getString(R.string.sivarathriTxt)), Toast.LENGTH_SHORT).show());
                     break;
 
                 case 4:
                     iv = new ImageView(activity.getApplicationContext());
-                    iv.setImageResource(R.drawable.chathurthi);
+                    Glide.with(activity)
+                            .load(R.drawable.chathurthi)
+                            .into(iv);
                     binding.importantDayLayout.imageLayout.addView(iv, params);
                     binding.importantDayLayout.imageLayout.setOnClickListener(view -> Toast.makeText(activity, activity.getString(R.string.day_msg, activity.getString(R.string.sankada_chathurthi_txt)), Toast.LENGTH_SHORT).show());
                     break;
 
                 case 5:
                     iv = new ImageView(activity.getApplicationContext());
-                    iv.setImageResource(R.drawable.thiruvonam);
+                    Glide.with(activity)
+                            .load(R.drawable.thiruvonam)
+                            .into(iv);
                     binding.importantDayLayout.imageLayout.addView(iv, params);
                     binding.importantDayLayout.imageLayout.setOnClickListener(view -> Toast.makeText(activity, activity.getString(R.string.day_msg, activity.getString(R.string.thiruvonamTxt)), Toast.LENGTH_SHORT).show());
                     break;
 
                 case 6:
                     iv = new ImageView(activity.getApplicationContext());
-                    iv.setImageResource(R.drawable.shasti);
+                    Glide.with(activity)
+                            .load(R.drawable.shasti)
+                            .into(iv);
                     binding.importantDayLayout.imageLayout.addView(iv, params);
                     binding.importantDayLayout.imageLayout.setOnClickListener(view -> Toast.makeText(activity, activity.getString(R.string.day_msg, activity.getString(R.string.shastiTxt)), Toast.LENGTH_SHORT).show());
                     break;
 
                 case 8:
                     iv = new ImageView(activity.getApplicationContext());
-                    iv.setImageResource(R.drawable.astami);
+                    Glide.with(activity)
+                            .load(R.drawable.astami)
+                            .into(iv);
                     binding.importantDayLayout.imageLayout.addView(iv, params);
                     binding.importantDayLayout.imageLayout.setOnClickListener(view -> Toast.makeText(activity, activity.getString(R.string.day_msg, activity.getString(R.string.astamiTxt)), Toast.LENGTH_SHORT).show());
                     break;
 
                 case 9:
                     iv = new ImageView(activity.getApplicationContext());
-                    iv.setImageResource(R.drawable.navami);
+                    Glide.with(activity)
+                            .load(R.drawable.navami)
+                            .into(iv);
                     binding.importantDayLayout.imageLayout.addView(iv, params);
                     binding.importantDayLayout.imageLayout.setOnClickListener(view -> Toast.makeText(activity, activity.getString(R.string.day_msg, activity.getString(R.string.navamiTxt)), Toast.LENGTH_SHORT).show());
                     break;
@@ -398,14 +424,18 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
 
                 case 12:
                     iv = new ImageView(activity.getApplicationContext());
-                    iv.setImageResource(R.drawable.ekadeshi);
+                    Glide.with(activity)
+                            .load(R.drawable.ekadeshi)
+                            .into(iv);
                     binding.importantDayLayout.imageLayout.addView(iv, params);
                     binding.importantDayLayout.imageLayout.setOnClickListener(view -> Toast.makeText(activity, activity.getString(R.string.day_msg, activity.getString(R.string.ekadeshiTxt)), Toast.LENGTH_SHORT).show());
                     break;
 
                 case 13:
                     iv = new ImageView(activity.getApplicationContext());
-                    iv.setImageResource(R.drawable.pradhosam);
+                    Glide.with(activity)
+                            .load(R.drawable.pradhosam)
+                            .into(iv);
                     binding.importantDayLayout.imageLayout.addView(iv, params);
 
                     binding.importantDayLayout.imageLayout.setOnClickListener(
@@ -428,7 +458,9 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
             sb.append(activity.getResources().getString(R.string.kari_naal));
             sb.append(", ");
             ImageView iv = new ImageView(activity.getApplicationContext());
-            iv.setImageResource(R.drawable.hotsun);
+            Glide.with(activity)
+                    .load(R.drawable.hotsun)
+                    .into(iv);
             iv.setOnClickListener(view -> Toast.makeText(activity, String.format("%s %s", activity.getString(R.string.today),
                     activity.getString(R.string.kari_naal)), Toast.LENGTH_SHORT).show());
             binding.importantDayLayout.imageLayout.addView(iv, params);

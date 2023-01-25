@@ -43,7 +43,6 @@ public class VasthuRecyclerAdapter extends RecyclerView.Adapter<VasthuRecyclerAd
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         VasthuData vd = dataList.get(position);
         if (null != vd) {
-            System.out.println(vd);
             LocalDate date = DateUtil.ofLocalDate(vd.getDate());
             String title = enMonths[date.getMonthValue() - 1] + " " + date.getDayOfMonth() + ", " + dayNames[date.getDayOfWeek().getValue() - 1];
             title += " - " + taMonths[vd.getTmonth() - 1] + " " + vd.getTday();

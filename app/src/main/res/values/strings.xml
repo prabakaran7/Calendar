@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">Tamil Calendar 2023</string>
-    <string name="app_name_long">நாட்காட்டி 2023</string>
+    <string name="app_name">Azhagu Tamil Calendar</string>
+    <string name="app_name_long">அழகு நாட்காட்டி 2023</string>
+    <string name="tamil_calendar">அழகு நாட்காட்டி</string>
     <string name="raghu">இராகு</string>
     <string name="kuligai">குளிகை</string>
     <string name="emakandam">எமகண்டம்</string>
@@ -576,6 +577,9 @@
     <string name="green">Green</string>
     <string name="general_notifications">General Notifications</string>
     <string name="year_calendar">வருட காட்டி</string>
+    <string name="Grey">Grey</string>
+    <string name="Orange">Orange</string>
+    <string name="Night">Dark</string>
 
     <string-array name="manaiyadi_types">
         <item>அகலம், நீளம்</item>

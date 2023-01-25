@@ -6,6 +6,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
+import org.tem.calendar.R;
 import org.tem.calendar.databinding.RasiLayoutItemBinding;
 import org.tem.calendar.util.RasiViewData;
 
@@ -28,7 +31,9 @@ public class RasiRecyclerAdapter extends RecyclerView.Adapter<RasiRecyclerAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         RasiViewData rvd = dataSet.get(position);
-        holder.binding.rasiImage.setImageResource(rvd.getImageResourceId());
+        Glide.with(holder.itemView.getContext())
+                .load(rvd.getImageResourceId())
+                .into(holder.binding.rasiImage);
         holder.binding.rasiLabel.setText(rvd.getLabel());
         holder.binding.rasiTxt.setText(rvd.getValue());
     }

@@ -93,7 +93,7 @@ public class CalendarApp extends Application {
 
         DASHBOARD_MAP.clear();
         DASHBOARD_MAP.put("", Arrays.asList(
-                Dashboard.of(this, R.string.app_name, R.drawable.daily_calendar, DayActivity.class),
+                Dashboard.of(this, R.string.daily_calendar_txt, R.drawable.daily_calendar, DayActivity.class),
                 Dashboard.of(this, R.string.monthly_calendar_txt, R.drawable.monthly_calendar, MonthActivity.class),
                 Dashboard.of(this, R.string.year_calendar, R.drawable.year_calendar, YearActivity.class),
                 Dashboard.of(this, R.string.viratha_thinangal, R.drawable.viratham_women, MonthVirathamActivity.class),
