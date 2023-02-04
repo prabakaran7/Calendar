@@ -1,5 +1,6 @@
 package org.tem.calendar.activities;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.google.android.gms.ads.AdRequest;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import org.tem.calendar.Constants;
@@ -33,10 +35,12 @@ public class FestivalActivity extends BaseActivity implements AdapterView.OnItem
     private int type;
     private int selected = -1;
 
+    @SuppressLint("VisibleForTests")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_festival);
+        binding.adView.loadAd(new AdRequest.Builder().build());
         setSupportActionBar(binding.toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         yearList.addAll(DBHelper.getInstance(this).getFestivalYears());

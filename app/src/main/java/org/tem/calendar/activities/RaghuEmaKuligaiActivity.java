@@ -1,5 +1,6 @@
 package org.tem.calendar.activities;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.MenuItem;
@@ -8,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.google.android.gms.ads.AdRequest;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import org.tem.calendar.CalendarApp;
@@ -23,10 +25,13 @@ public class RaghuEmaKuligaiActivity extends BaseActivity {
 
     ActivityRaghuEmaKuligaiBinding binding;
 
+    @SuppressLint("VisibleForTests")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_raghu_ema_kuligai);
+
+        binding.adView.loadAd(new AdRequest.Builder().build());
 
         binding.viewPager.setAdapter(new RaghuViewPageAdapter(getSupportFragmentManager(), getLifecycle()));
 

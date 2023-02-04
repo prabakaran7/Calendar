@@ -24,4 +24,8 @@ public class StringUtils {
 
         return sb.toString();
     }
+
+    public static boolean isNotBlank(String txt) {
+        return !isBlank(txt);
+    }
 }

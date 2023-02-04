@@ -501,11 +501,11 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
             }
         }
 
-        loadMiscData(binding);
+        loadMiscData(selectedDate, binding);
     }
 
-    public void loadMiscData(DayItemBinding binding) {
-        long epochDays = LocalDate.now().toEpochDay();
+    public void loadMiscData(LocalDate selectedDate, DayItemBinding binding) {
+        long epochDays =  selectedDate.toEpochDay();
         String quote = DBHelper.getInstance(activity).getQuote((int) (epochDays % CalendarApp.getMaxQuoteNumber(activity) + 1));
         KuralData kd = DBHelper.getInstance(activity).getKural((int) (epochDays % 1330 + 1));
         if (StringUtils.isBlank(quote) && null == kd) {

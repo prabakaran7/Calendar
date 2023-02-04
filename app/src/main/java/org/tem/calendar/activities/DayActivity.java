@@ -10,6 +10,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.MutableLiveData;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.gms.ads.AdRequest;
+
 import org.tem.calendar.Constants;
 import org.tem.calendar.R;
 import org.tem.calendar.adapter.DayRecyclerAdapter;
@@ -25,6 +27,7 @@ public class DayActivity extends BaseActivity {
     private ActivityDayBinding binding;
     private DayViewModel viewModel;
 
+    @SuppressLint("VisibleForTests")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +41,7 @@ public class DayActivity extends BaseActivity {
             selectedDate = (LocalDate) intent.getSerializableExtra(Constants.EXTRA_DATE_SELECTED);
         }
 
+        binding.adView.loadAd(new AdRequest.Builder().build());
         viewModel = new DayViewModel(selectedDate);
 
         DayRecyclerAdapter adapter = new DayRecyclerAdapter(this, viewModel);

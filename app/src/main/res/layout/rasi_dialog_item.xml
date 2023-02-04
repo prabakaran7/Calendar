@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="5dp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/image"
+            android:background="@drawable/circle_button"
+            android:layout_width="25pt"
+            android:layout_height="25pt"
+            android:padding="5pt"
+            android:layout_gravity="center"
+            android:contentDescription="@string/image_placeholder"
+            android:src="@drawable/mesham" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/mesham"
+            android:maxLines="1"
+            android:autoSizeTextType="uniform"
+            android:textColor="@color/black" />
+    </LinearLayout>
+</layout>

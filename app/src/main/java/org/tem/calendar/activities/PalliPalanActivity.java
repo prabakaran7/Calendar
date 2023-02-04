@@ -6,8 +6,11 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
+
+import com.google.android.gms.ads.AdRequest;
 
 import org.tem.calendar.R;
 import org.tem.calendar.adapter.ThreeTextViewRecyclerAdapter;
@@ -21,10 +24,13 @@ import java.util.Objects;
 
 public class PalliPalanActivity extends BaseActivity {
 
+    @SuppressLint("VisibleForTests")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityPalliPalanBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_palli_palan);
+
+        binding.adView.loadAd(new AdRequest.Builder().build());
 
         List<PalliPalanData> ppList = DBHelper.getInstance(this).getPalliPalans();
         List<String[]> dataSet = new ArrayList<>();

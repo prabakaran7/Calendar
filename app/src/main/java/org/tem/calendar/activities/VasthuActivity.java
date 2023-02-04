@@ -1,5 +1,6 @@
 package org.tem.calendar.activities;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,6 +12,8 @@ import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
+import com.google.android.gms.ads.AdRequest;
 
 import org.tem.calendar.R;
 import org.tem.calendar.adapter.VasthuRecyclerAdapter;
@@ -28,10 +31,14 @@ public class VasthuActivity extends BaseActivity implements AdapterView.OnItemSe
     private final List<Integer> yearList = new ArrayList<>();
     private ActivityVasthuBinding binding;
 
+    @SuppressLint("VisibleForTests")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_vasthu);
+
+        binding.adView.loadAd(new AdRequest.Builder().build());
+
         binding.toolbar.setSubtitle(R.string.vasthu_days);
         setSupportActionBar(binding.toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);

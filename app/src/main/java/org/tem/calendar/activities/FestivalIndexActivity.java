@@ -1,5 +1,6 @@
 package org.tem.calendar.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -7,6 +8,8 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+
+import com.google.android.gms.ads.AdRequest;
 
 import org.tem.calendar.Constants;
 import org.tem.calendar.R;
@@ -19,10 +22,12 @@ public class FestivalIndexActivity extends BaseActivity {
 
     ActivityFestivalIndexBinding binding;
 
+    @SuppressLint("VisibleForTests")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_festival_index);
+        binding.adView.loadAd(new AdRequest.Builder().build());
         binding.toolbar.setSubtitle(R.string.holidaysAndFestivals);
         setSupportActionBar(binding.toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);

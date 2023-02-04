@@ -6,11 +6,14 @@ import androidx.core.util.Pair;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+
+import com.google.android.gms.ads.AdRequest;
 
 import org.tem.calendar.R;
 import org.tem.calendar.adapter.StarMatchingRecyclerAdapter;
@@ -30,11 +33,13 @@ public class PoruthamActivity extends BaseActivity {
 
     private ActivityPoruthamBinding binding;
 
+    @SuppressLint("VisibleForTests")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_porutham);
 
+        binding.adView.loadAd(new AdRequest.Builder().build());
         setSupportActionBar(binding.toolbar);
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);

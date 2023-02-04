@@ -3,6 +3,7 @@ package org.tem.calendar.activities;
 import static org.tem.calendar.fragment.PanchangamFragment.GOWRI_PANCHANGAM;
 import static org.tem.calendar.fragment.PanchangamFragment.GRAHA_ORAI_PANCHANGAM;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.MenuItem;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.google.android.gms.ads.AdRequest;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import org.tem.calendar.CalendarApp;
@@ -27,12 +29,14 @@ public class PanchangamActivity extends BaseActivity {
 
     private ActivityPanchangamBinding binding;
 
+    @SuppressLint("VisibleForTests")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String type = GRAHA_ORAI_PANCHANGAM;
         binding = DataBindingUtil.setContentView(this, R.layout.activity_panchangam);
 
+        binding.adView.loadAd(new AdRequest.Builder().build());
 
         if (getIntent() != null && null != getIntent().getExtras() && getIntent().getExtras().containsKey(Constants.EXTRA_PANCHANGAM)) {
             type = getIntent().getStringExtra(Constants.EXTRA_PANCHANGAM);

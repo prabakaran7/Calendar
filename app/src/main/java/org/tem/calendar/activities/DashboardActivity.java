@@ -1,5 +1,6 @@
 package org.tem.calendar.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -17,6 +18,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.android.datatransport.BuildConfig;
+import com.google.android.gms.ads.AdRequest;
 
 import org.tem.calendar.R;
 import org.tem.calendar.adapter.DashboardCategoryRecyclerViewAdapter;
@@ -42,12 +44,13 @@ public class DashboardActivity extends BaseActivity {
     private ActivityDashboardBinding binding;
     private boolean doubleBackToExitPressedOnce = false;
 
-
-
+    @SuppressLint("VisibleForTests")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_dashboard);
+
+        binding.adView.loadAd(new AdRequest.Builder().build());
 
         runOnUiThread(this::loadCurrentDay);
 
@@ -63,6 +66,8 @@ public class DashboardActivity extends BaseActivity {
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 }
         );
+
+
 
     }
 
@@ -85,7 +90,7 @@ public class DashboardActivity extends BaseActivity {
                     shareIntent.setType("text/plain");
                     shareIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name_long));
                     String shareMessage = "\nLet me recommend you this application\n\n";
-                    shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID + "\n\n";
+                    shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + this.getPackageName() + "\n\n";
                     shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
                     startActivity(Intent.createChooser(shareIntent, "choose one"));
                 } catch (Exception e) {

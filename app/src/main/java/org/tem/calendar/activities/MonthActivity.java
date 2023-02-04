@@ -10,6 +10,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.MutableLiveData;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.gms.ads.AdRequest;
+
 import org.tem.calendar.Constants;
 import org.tem.calendar.R;
 import org.tem.calendar.adapter.MonthRecyclerAdapter;
@@ -26,11 +28,13 @@ public class MonthActivity extends BaseActivity implements CalendarDayOnClickLis
     private MonthViewModel viewModel;
     private ActivityMonthBinding binding;
 
+    @SuppressLint("VisibleForTests")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_month);
 
+        binding.adView.loadAd(new AdRequest.Builder().build());
         LocalDate selectedDate;
         if (null != getIntent() && null != getIntent().getExtras() && getIntent().getExtras().containsKey(Constants.EXTRA_DATE_SELECTED)) {
             selectedDate = (LocalDate) getIntent().getSerializableExtra(Constants.EXTRA_DATE_SELECTED);

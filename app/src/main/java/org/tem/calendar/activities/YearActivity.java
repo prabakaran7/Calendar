@@ -14,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.android.gms.ads.AdRequest;
+
 import org.tem.calendar.Constants;
 import org.tem.calendar.R;
 import org.tem.calendar.adapter.YearMonthRecyclerAdapter;
@@ -44,6 +46,7 @@ public class YearActivity extends BaseActivity implements AdapterView.OnItemSele
 
     private final List<List<DateModel>> yearDataList = new ArrayList<>();
 
+    @SuppressLint("VisibleForTests")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         new Thread(() -> {
@@ -53,6 +56,8 @@ public class YearActivity extends BaseActivity implements AdapterView.OnItemSele
         }).start();
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_year);
+
+        binding.adView.loadAd(new AdRequest.Builder().build());
 
         binding.toolbar.setTitle(R.string.year_calendar);
         setSupportActionBar(binding.toolbar);

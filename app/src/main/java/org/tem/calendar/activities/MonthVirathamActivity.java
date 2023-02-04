@@ -1,5 +1,6 @@
 package org.tem.calendar.activities;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.google.android.gms.ads.AdRequest;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import org.tem.calendar.Constants;
@@ -34,10 +36,12 @@ public class MonthVirathamActivity extends BaseActivity implements AdapterView.O
     private int type = MonthVirathamFragment.SUBA_VIRATHAM;
     private int selected = -1;
 
+    @SuppressLint("VisibleForTests")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_month_viratham);
+        binding.adView.loadAd(new AdRequest.Builder().build());
         if (getIntent() != null) {
             type = getIntent().getIntExtra(Constants.EXTRA_TYPE, MonthVirathamFragment.SUBA_VIRATHAM);
         }

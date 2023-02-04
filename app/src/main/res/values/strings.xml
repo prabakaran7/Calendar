@@ -580,6 +580,10 @@
     <string name="Grey">Grey</string>
     <string name="Orange">Orange</string>
     <string name="Night">Dark</string>
+    <string name="year_palan">ஆண்டு பலன் - 2023</string>
+    <string name="rasiPalankal">ஜோதிட பலன்கள்</string>
+    <string name="rasi">ராசி : </string>
+    <string name="image_placeholder">image</string>
 
     <string-array name="manaiyadi_types">
         <item>அகலம், நீளம்</item>

@@ -1,5 +1,6 @@
 package org.tem.calendar.activities;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.google.android.gms.ads.AdRequest;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import org.tem.calendar.R;
@@ -32,10 +34,13 @@ public class MuhurthamActivity extends BaseActivity implements AdapterView.OnIte
     private ActivityMuhurthamBinding binding;
     private int selected = -1;
 
+    @SuppressLint("VisibleForTests")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_muhurtham);
+
+        binding.adView.loadAd(new AdRequest.Builder().build());
 
         binding.toolbar.setSubtitle(R.string.muhurtham_days);
         setSupportActionBar(binding.toolbar);

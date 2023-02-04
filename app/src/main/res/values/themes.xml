@@ -32,6 +32,7 @@
         <item name="tcHoliday">@color/white</item>
         <item name="bgToday">@color/green1</item>
         <item name="tcToday">@color/white</item>
+        <item name="txt_color">@color/teal_900</item>
     </style>
 
     <style name="Theme.Calendar.Red" parent="Theme.Calendar.Default">

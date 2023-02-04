@@ -6,8 +6,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Pair;
 
+import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.messaging.FirebaseMessaging;
+
 import net.sqlcipher.database.SQLiteDatabase;
+
 import org.tem.calendar.activities.DayActivity;
 import org.tem.calendar.activities.FestivalIndexActivity;
 import org.tem.calendar.activities.ManaiyadiSastharamActivity;
@@ -37,14 +40,13 @@ import java.util.Map;
 public class CalendarApp extends Application {
 
     public static final LocalDate MAX_DATE = LocalDate.of(2023, 12, 31);
-    public static final LocalDate MIN_DATE = LocalDate.of(2022, 1, 1);
+    public static final LocalDate MIN_DATE = LocalDate.of(2020, 1, 1);
     private static final int weekStartIndex = 7;
     private static final List<Pair<Integer, String>> weekDayNameList = new ArrayList<>();
     private static final List<Pair<Integer, String>> weekDayShortNameList = new ArrayList<>();
     private static final Map<String, List<Dashboard>> DASHBOARD_MAP = new LinkedHashMap<>();
     private static int MAX_QUOTE_NUMBER = -1;
     private static float factor = 1.0f;
-    //private FirebaseAnalytics mFirebaseAnalytics;
 
     public static List<Pair<Integer, String>> getWeekDayNameList() {
         return weekDayNameList;
@@ -64,6 +66,9 @@ public class CalendarApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        MobileAds.initialize(this, initializationStatus -> {
+        });
 
         factor = getResources().getDisplayMetrics().density;
         // Initialize SQL Net Cipher Libraries
@@ -107,6 +112,10 @@ public class CalendarApp extends Application {
                 Dashboard.of(this, R.string.palli_palan, R.drawable.palli, PalliPalanActivity.class),
                 Dashboard.of(this, R.string.marriage_matching, R.drawable.wedding_match, PoruthamActivity.class)
         ));
+
+//        DASHBOARD_MAP.put(getString(R.string.rasiPalankal),
+//                Arrays.asList(
+//                        Dashboard.of(this, R.string.year_palan, R.drawable.year_calendar, YearPalanActivity.class)));
 
         DASHBOARD_MAP.put(getString(R.string.vasthu), Arrays.asList(
                 Dashboard.of(this, R.string.vasthu_days, R.drawable.vasthu_calendar, VasthuActivity.class),
