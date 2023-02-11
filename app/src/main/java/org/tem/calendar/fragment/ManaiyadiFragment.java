@@ -27,6 +27,10 @@ public class ManaiyadiFragment extends Fragment {
 
     private FragmentManaiyadiBinding binding;
 
+    public ManaiyadiFragment(){
+        this(0);
+    }
+
     private ManaiyadiFragment(int position){
         this.position = position;
     }

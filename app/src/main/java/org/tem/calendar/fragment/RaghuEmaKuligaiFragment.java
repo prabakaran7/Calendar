@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -28,13 +29,14 @@ public class RaghuEmaKuligaiFragment extends Fragment {
     private final int type;
 
 
+    @Keep
+    public RaghuEmaKuligaiFragment(){
+        this(DayOfWeek.FRIDAY, TYPE_DAILY);
+    }
+
     public RaghuEmaKuligaiFragment(DayOfWeek dayOfWeek, int type) {
         this.dayOfWeek = dayOfWeek;
         this.type = type;
-    }
-
-    public static RaghuEmaKuligaiFragment newInstance(DayOfWeek dayOfWeek, int type) {
-        return new RaghuEmaKuligaiFragment(dayOfWeek, type);
     }
 
     public static RaghuEmaKuligaiFragment newInstance(int position) {

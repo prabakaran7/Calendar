@@ -63,6 +63,9 @@ public class PanchangamFragment extends Fragment {
     private final String panchangamType;
     private FragmentPanchangamBinding binding;
 
+    public PanchangamFragment(){
+        this(DayOfWeek.FRIDAY, TYPE_DAILY, GOWRI_PANCHANGAM);
+    }
 
     public PanchangamFragment(DayOfWeek dayOfWeek, int displayType, String panchangamType) {
         this.dayOfWeek = dayOfWeek;

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -17,13 +18,17 @@ import org.tem.calendar.db.DBHelper;
 import org.tem.calendar.model.MuhurthamData;
 
 import java.time.LocalDate;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 public class MuhurthamFragment extends Fragment {
     private final LocalDate date;
     private FragmentMuhurthamBinding binding;
+
+    @Keep
+    public MuhurthamFragment() {
+        this(LocalDate.now());
+    }
 
     public MuhurthamFragment(LocalDate date) {
         this.date = date;

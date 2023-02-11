@@ -31,6 +31,10 @@ public class MonthVirathamFragment extends Fragment {
     private String[] weekNames;
     private FragmentMonthVirathamBinding binding;
 
+    public MonthVirathamFragment(){
+        this(LocalDate.now(), ASUBA_VIRATHAM);
+    }
+
     private MonthVirathamFragment(LocalDate date, int type) {
         this.selectedDate = date;
         this.type = type;
