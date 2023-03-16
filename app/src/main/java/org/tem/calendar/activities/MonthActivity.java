@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.MutableLiveData;
 import androidx.viewpager2.widget.ViewPager2;
@@ -93,9 +92,8 @@ public class MonthActivity extends BaseActivity implements CalendarDayOnClickLis
 
 
         binding.resetBtn.setOnClickListener(view -> {
-            viewModel = new MonthViewModel(LocalDate.now());
-            binding.viewPager.setAdapter(new MonthRecyclerAdapter(this, viewModel));
-            binding.viewPager.setCurrentItem(2);
+            finish();
+            startActivity(new Intent(this, MonthActivity.class));
         });
 
 

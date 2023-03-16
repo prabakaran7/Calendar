@@ -117,9 +117,9 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
         String thiti = "-";
         if (null != td) {
             String[] thitiNames = activity.getResources().getStringArray(R.array.thiti_names);
-            if (td.getTime1().length() < 2) {
+            if (td.getTime1().trim().length() < 2) {
                 thiti = activity.getString(R.string.fullday_pangachangam, thitiNames[td.getThiti1()]);
-            } else if (td.getTime2().length() < 2) {
+            } else if (td.getTime2().trim().length() < 2) {
                 thiti = activity.getString(R.string.two_panchangam, DateUtil.expandedTime(td.getTime1()), thitiNames[td.getThiti1()], thitiNames[td.getThiti2()]);
             } else {
                 thiti = activity.getString(R.string.three_panchangam, DateUtil.expandedTime(td.getTime1()), DateUtil.expandedTime(td.getTime2()), thitiNames[td.getThiti1()], thitiNames[td.getThiti2()], thitiNames[td.getThiti3()]);
@@ -158,9 +158,9 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
         String star = "-";
         if (null != sd) {
             String[] starNames = activity.getResources().getStringArray(R.array.star_names);
-            if (sd.getTime1().length() < 2) {
+            if (sd.getTime1().trim().length() < 2) {
                 star = activity.getString(R.string.fullday_pangachangam, starNames[sd.getStar1() - 1]);
-            } else if (sd.getTime2().length() < 2) {
+            } else if (sd.getTime2().trim().length() < 2) {
                 star = activity.getString(R.string.two_panchangam, DateUtil.expandedTime(sd.getTime1()), starNames[sd.getStar1() - 1], starNames[sd.getStar2() - 1]);
             } else {
                 star = activity.getString(R.string.three_panchangam, DateUtil.expandedTime(sd.getTime1()), DateUtil.expandedTime(sd.getTime2()),
@@ -199,12 +199,12 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
         String kara = "-";
         if (null != kd) {
             String[] karaNames = activity.getResources().getStringArray(R.array.karanam_names);
-            if (kd.getTime1().length() < 2) {
+            if (kd.getTime1().trim().length() < 2) {
                 kara = activity.getString(R.string.fullday_pangachangam, karaNames[kd.getKara1() - 1]);
-            } else if (kd.getTime2().length() < 2) {
+            } else if (kd.getTime2().trim().length() < 2) {
                 kara = activity.getString(R.string.two_panchangam, DateUtil.expandedTime(kd.getTime1()),
                         karaNames[kd.getKara1() - 1], karaNames[kd.getKara2() - 1]);
-            } else if (kd.getTime3().length() < 2) {
+            } else if (kd.getTime3().trim().length() < 2) {
                 kara = activity.getString(R.string.three_panchangam, DateUtil.expandedTime(kd.getTime1()),
                         DateUtil.expandedTime(kd.getTime2()), karaNames[kd.getKara1() - 1],
                         karaNames[kd.getKara2() - 1], karaNames[kd.getKara3() - 1]);
@@ -221,9 +221,9 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
         YogamData yd = DBHelper.getInstance(activity).getYogam(dateString);
         if (null != yd) {
             String[] yogaNames = activity.getResources().getStringArray(R.array.yogam_names);
-            if (yd.getTime1().equals("-")) {
+            if (yd.getTime1().trim().equals("-")) {
                 yogam = activity.getString(R.string.fullday_pangachangam, yogaNames[yd.getYogam1() - 1]);
-            } else if (yd.getTime2().equals("-")) {
+            } else if (yd.getTime2().trim().equals("-")) {
                 yogam = activity.getString(R.string.two_panchangam, DateUtil.expandedTime(yd.getTime1()),
                         yogaNames[yd.getYogam1() - 1], yogaNames[yd.getYogam2() - 1]);
             } else {
@@ -504,7 +504,7 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
         loadMiscData(selectedDate, binding);
     }
 
-    public void loadMiscData(LocalDate selectedDate, DayItemBinding binding) {
+    public void loadMiscData(@NonNull LocalDate selectedDate, DayItemBinding binding) {
         long epochDays =  selectedDate.toEpochDay();
         String quote = DBHelper.getInstance(activity).getQuote((int) (epochDays % CalendarApp.getMaxQuoteNumber(activity) + 1));
         KuralData kd = DBHelper.getInstance(activity).getKural((int) (epochDays % 1330 + 1));

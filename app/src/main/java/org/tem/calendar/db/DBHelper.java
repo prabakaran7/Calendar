@@ -8,6 +8,7 @@ import net.sqlcipher.SQLException;
 import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.SQLiteOpenHelper;
 
+import org.tem.calendar.R;
 import org.tem.calendar.custom.DateUtil;
 import org.tem.calendar.custom.StringUtils;
 import org.tem.calendar.model.FestivalDayData;
@@ -35,6 +36,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Files;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -46,7 +48,7 @@ import java.util.TreeMap;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static final int DB_VERSION = 5;
+    private static final int DB_VERSION = 6;
     private static final String DB_NAME = "tamizh_calendar.db";
     @SuppressLint("StaticFieldLeak")
     private static DBHelper dbHelper;
@@ -80,7 +82,7 @@ public class DBHelper extends SQLiteOpenHelper {
         // If the database does not exist, copy it from the assets.
         boolean mDataBaseExist = checkDataBase();
         if (!mDataBaseExist) {
-            this.getReadableDatabase("123");
+            this.getReadableDatabase(mContext.getString(R.string.calendar_db));
             this.close();
             try {
                 // Copy the database from assets
@@ -99,7 +101,7 @@ public class DBHelper extends SQLiteOpenHelper {
     // Copy the database from assets
     private void copyDataBase() throws IOException {
         InputStream mInput = mContext.getAssets().open(DB_NAME);
-        OutputStream mOutput = new FileOutputStream(DB_FILE);
+        OutputStream mOutput = Files.newOutputStream(DB_FILE.toPath());
         byte[] mBuffer = new byte[1024];
         int mLength;
         while ((mLength = mInput.read(mBuffer)) > 0) {
@@ -115,7 +117,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         if (null == mDatabase) {
             // Log.v("DB_PATH", DB_FILE.getAbsolutePath());
-            mDatabase = SQLiteDatabase.openDatabase(DB_FILE.getPath(), "123", null, SQLiteDatabase.OPEN_READWRITE);
+            mDatabase = SQLiteDatabase.openDatabase(DB_FILE.getPath(), mContext.getString(R.string.calendar_db), null, SQLiteDatabase.OPEN_READWRITE);
             // mDataBase = SQLiteDatabase.openDatabase(DB_FILE, null, SQLiteDatabase.NO_LOCALIZED_COLLATORS);
         }
         return mDatabase;

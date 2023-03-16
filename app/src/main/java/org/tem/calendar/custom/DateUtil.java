@@ -2,6 +2,8 @@ package org.tem.calendar.custom;
 
 import android.util.Pair;
 
+import androidx.annotation.NonNull;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -19,22 +21,27 @@ public class DateUtil {
     public static final String DATE_FORMAT = "dd-MM-yyyy";
 
 
-    public static String expandedTime(String time) {
-
-        LocalTime lt = LocalTime.parse(time.trim().replace(".", ":"), new DateTimeFormatterBuilder().parseCaseInsensitive().appendPattern("h:mm a").toFormatter());
-        String returnValue;
-        if (lt.isBefore(adhiKaalai)) {
-            returnValue= "அதிகாலை";
-        } else if (lt.isBefore(kaalai)) {
-            returnValue= "காலை";
-        } else if (lt.isBefore(pirpagal)) {
-            returnValue = "பிற்பகல்";
-        } else if (lt.isBefore(maalai)) {
-            returnValue = "மாலை";
-        } else {
-            returnValue = "இரவு";
+    @NonNull
+    public static String expandedTime(@NonNull String time) {
+        try {
+            LocalTime lt = LocalTime.parse(time.trim().replace(".", ":"), new DateTimeFormatterBuilder().parseCaseInsensitive().appendPattern("h:mm a").toFormatter());
+            String returnValue;
+            if (lt.isBefore(adhiKaalai)) {
+                returnValue = "அதிகாலை";
+            } else if (lt.isBefore(kaalai)) {
+                returnValue = "காலை";
+            } else if (lt.isBefore(pirpagal)) {
+                returnValue = "பிற்பகல்";
+            } else if (lt.isBefore(maalai)) {
+                returnValue = "மாலை";
+            } else {
+                returnValue = "இரவு";
+            }
+            return returnValue + " " + lt.format(DateTimeFormatter.ofPattern("h.mm"));
+        } catch (Exception e){
+            // do nothing
         }
-        return returnValue+" " + lt.format(DateTimeFormatter.ofPattern("h.mm"));
+        return "-";
     }
 
     public static int[] naazhigaiToHourMin(int naazhigai) {

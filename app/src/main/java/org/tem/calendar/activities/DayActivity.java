@@ -92,9 +92,8 @@ public class DayActivity extends BaseActivity {
 
 
         binding.resetBtn.setOnClickListener(view -> {
-            viewModel = new DayViewModel(LocalDate.now());
-            binding.viewPager.setAdapter(new DayRecyclerAdapter(this, viewModel));
-            binding.viewPager.setCurrentItem(2);
+            finish();
+            startActivity(new Intent(this, DayActivity.class));
         });
 
 
