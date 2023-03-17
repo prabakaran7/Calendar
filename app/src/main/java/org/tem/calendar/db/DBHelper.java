@@ -30,9 +30,9 @@ import org.tem.calendar.model.VirathamData;
 import org.tem.calendar.model.VirathamMonthData;
 import org.tem.calendar.model.WeekData;
 import org.tem.calendar.model.YogamData;
+import org.tem.calendar.util.CipherUtils;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -48,7 +48,7 @@ import java.util.TreeMap;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static final int DB_VERSION = 6;
+    private static final int DB_VERSION = 1;
     private static final String DB_NAME = "tamizh_calendar.db";
     @SuppressLint("StaticFieldLeak")
     private static DBHelper dbHelper;
@@ -60,6 +60,7 @@ public class DBHelper extends SQLiteOpenHelper {
         super(context, DB_NAME, null, DB_VERSION);
         DB_FILE = context.getDatabasePath(DB_NAME);
         this.mContext = context;
+
 
         createDataBase();
         getReadableDatabase();
@@ -82,19 +83,28 @@ public class DBHelper extends SQLiteOpenHelper {
         // If the database does not exist, copy it from the assets.
         boolean mDataBaseExist = checkDataBase();
         if (!mDataBaseExist) {
-            this.getReadableDatabase(mContext.getString(R.string.calendar_db));
-            this.close();
             try {
                 // Copy the database from assets
                 copyDataBase();
             } catch (IOException mIOException) {
                 throw new Error("ErrorCopyingDataBase");
             }
+
         }
     }
 
     // Check that the database file exists in databases folder
     private boolean checkDataBase() {
+        try {
+            String dbFileCheckSum = CipherUtils.getHash(Files.newInputStream(DB_FILE.toPath()));
+            String assetDbFileCheckSum = CipherUtils.getHash(mContext.getAssets().open(DB_NAME));
+            if (!dbFileCheckSum.equals(assetDbFileCheckSum)) {
+                mContext.deleteDatabase(DB_NAME);
+                mDatabase = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return DB_FILE.exists();
     }
 
