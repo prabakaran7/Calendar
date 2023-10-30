@@ -7,17 +7,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.TypedValue;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.google.android.datatransport.BuildConfig;
 import com.google.android.gms.ads.AdRequest;
 
 import org.tem.calendar.R;
@@ -103,8 +100,9 @@ public class DashboardActivity extends BaseActivity {
     }
 
     private void loadCurrentDay() {
-        MonthData md = DBHelper.getInstance(this).getDate(LocalDate.now());
 
+        MonthData md = DBHelper.getInstance(this).getDate(LocalDate.now());
+        LocalDate today = LocalDate.parse(md.getDate(), DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         if (md.getTyear() > 0) {
             binding.tamilYearTxt.setText(getResources().getStringArray(R.array.tamil_year_names)[md.getTyear() - 1]);
             binding.tamilDateTxt.setText(String.format(Locale.getDefault(), "%d", md.getTday()));
@@ -116,9 +114,9 @@ public class DashboardActivity extends BaseActivity {
             }
         }
 
-        binding.monthDayTxt.setText(String.format("%s-%s", getResources().getStringArray(R.array.en_month_names)[md.getMonth() - 1], getResources().getStringArray(R.array.weekday_names)[md.getWeekday() - 1]));
+        binding.monthDayTxt.setText(String.format("%s-%s", getResources().getStringArray(R.array.en_month_names)[md.getMonth() - 1], getResources().getStringArray(R.array.weekday_names)[today.getDayOfWeek().getValue() - 1]));
         binding.dateTxt.setText(md.getDate());
-        LocalDate today = LocalDate.parse(md.getDate(), DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+
         Typeface font;
         if(today.getDayOfWeek().equals(DayOfWeek.SUNDAY)){
             font = ResourcesCompat.getFont(this, R.font.tourney_semi_bold);
@@ -177,4 +175,5 @@ public class DashboardActivity extends BaseActivity {
 
         new Handler(Looper.getMainLooper()).postDelayed(() -> doubleBackToExitPressedOnce = false, 2000);
     }
+
 }

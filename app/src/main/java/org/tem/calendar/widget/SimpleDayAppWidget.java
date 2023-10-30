@@ -24,7 +24,7 @@ public class SimpleDayAppWidget extends AppWidgetProvider {
                                 int appWidgetId) {
 
         Intent intent = new Intent(context, DayActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
         LocalDate selectedDate = LocalDate.now();
         // Construct the RemoteViews object

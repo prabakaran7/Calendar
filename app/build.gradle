@@ -15,8 +15,8 @@ android {
         applicationId "org.tem.calendar"
         minSdk 26
         targetSdk 34
-        versionCode 6
-        versionName "1.5"
+        versionCode 7
+        versionName "1.6"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -35,19 +35,19 @@ android {
 
 dependencies {
 
-    implementation 'androidx.sqlite:sqlite:2.3.1'
+    implementation 'androidx.sqlite:sqlite:2.4.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'net.zetetic:android-database-sqlcipher:4.5.3'
-    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'com.google.android.material:material:1.10.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.core:core:1.12.0'
 //    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.0'
 //    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0'
-    implementation 'androidx.navigation:navigation-fragment:2.7.2'
-    implementation 'androidx.navigation:navigation-ui:2.7.2'
-    implementation 'com.google.firebase:firebase-messaging:23.2.1'
+    implementation 'androidx.navigation:navigation-fragment:2.7.4'
+    implementation 'androidx.navigation:navigation-ui:2.7.4'
+    implementation 'com.google.firebase:firebase-messaging:23.3.1'
     implementation 'androidx.preference:preference:1.2.1'
-    implementation 'com.google.firebase:firebase-analytics:21.3.0'
+    implementation 'com.google.firebase:firebase-analytics:21.4.0'
     implementation 'com.google.android.gms:play-services-ads:22.4.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
