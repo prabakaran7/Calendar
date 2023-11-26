@@ -20,7 +20,7 @@ public class MonthViewModel {
 
     public boolean shiftForward(){
         LocalDate date = list.get(list.size() - 1);
-        if(date.getYear() == CalendarApp.MAX_DATE.getYear() && date.getMonthValue() == CalendarApp.MAX_DATE.getMonthValue()) {
+        if(date.getYear() == CalendarApp.MAX_DATE.getYear() && date.getMonthValue() > CalendarApp.MAX_DATE.getMonthValue()) {
             return false;
         }
         list.clear();
@@ -37,7 +37,7 @@ public class MonthViewModel {
 
     public boolean shiftBackward(){
         LocalDate date = list.get(0);
-        if(date.getYear() == CalendarApp.MIN_DATE.getYear() && date.getMonthValue() == CalendarApp.MIN_DATE.getMonthValue()) {
+        if(date.getYear() == CalendarApp.MIN_DATE.getYear() && date.getMonthValue() < CalendarApp.MIN_DATE.getMonthValue()) {
             return false;
         }
         list.clear();

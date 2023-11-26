@@ -19,13 +19,13 @@ public class DayViewModel {
 
     public boolean shiftForward() {
         LocalDate date = list.get(list.size() - 1);
-        if (date.equals(CalendarApp.MAX_DATE)) {
+        if (date.isAfter(CalendarApp.MAX_DATE)) {
             return false;
         }
         list.clear();
         for (int index = 0; index < SIZE; index++) {
             LocalDate ld = date.plusDays(index);
-            if (ld.isEqual(CalendarApp.MAX_DATE) || ld.isBefore(CalendarApp.MAX_DATE)) {
+            if (!ld.isAfter(CalendarApp.MAX_DATE)) {
                 list.add(ld);
             }
         }
@@ -34,13 +34,13 @@ public class DayViewModel {
 
     public boolean shiftBackward() {
         LocalDate date = list.get(0);
-        if (date.isEqual(CalendarApp.MIN_DATE)) {
+        if (date.isBefore(CalendarApp.MIN_DATE)) {
             return false;
         }
         list.clear();
         for (int index = SIZE - 1; index >= 0; index--) {
             LocalDate ld = date.minusDays(index);
-            if (ld.isEqual(CalendarApp.MIN_DATE) || ld.isAfter(CalendarApp.MIN_DATE)) {
+            if (!ld.isBefore(CalendarApp.MIN_DATE)) {
                 list.add(ld);
             }
         }

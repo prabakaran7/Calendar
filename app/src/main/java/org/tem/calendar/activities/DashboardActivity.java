@@ -10,6 +10,7 @@ import android.os.Looper;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.databinding.DataBindingUtil;
@@ -35,11 +36,12 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class DashboardActivity extends BaseActivity {
 
     private ActivityDashboardBinding binding;
-    private boolean doubleBackToExitPressedOnce = false;
+    private final AtomicBoolean doubleBackToExitPressedOnce = new AtomicBoolean(false);
 
     @SuppressLint("VisibleForTests")
     @Override
@@ -64,7 +66,20 @@ public class DashboardActivity extends BaseActivity {
                 }
         );
 
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (doubleBackToExitPressedOnce.get()) {
+                    getOnBackPressedDispatcher().onBackPressed();
+                    return;
+                }
 
+                doubleBackToExitPressedOnce.set(true);
+                Toast.makeText(DashboardActivity.this, R.string.press_back_again_to_exit, Toast.LENGTH_SHORT).show();
+
+                new Handler(Looper.getMainLooper()).postDelayed(() -> doubleBackToExitPressedOnce.set(false), 2000);
+            }
+        });
 
     }
 
@@ -161,19 +176,6 @@ public class DashboardActivity extends BaseActivity {
             binding.importantDayTxt.setVisibility(View.GONE);
         }
 
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (doubleBackToExitPressedOnce) {
-            super.onBackPressed();
-            return;
-        }
-
-        this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, R.string.press_back_again_to_exit, Toast.LENGTH_SHORT).show();
-
-        new Handler(Looper.getMainLooper()).postDelayed(() -> doubleBackToExitPressedOnce = false, 2000);
     }
 
 }

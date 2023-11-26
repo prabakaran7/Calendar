@@ -43,6 +43,7 @@ public class LineDataModel {
         return text;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "LineDataModel{" +

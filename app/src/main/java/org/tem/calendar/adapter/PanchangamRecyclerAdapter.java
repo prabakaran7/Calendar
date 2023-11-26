@@ -4,10 +4,8 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.tem.calendar.R;
 import org.tem.calendar.databinding.PanchangamItemBinding;
 import org.tem.calendar.model.PanchangamData;
 

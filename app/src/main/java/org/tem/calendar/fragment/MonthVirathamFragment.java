@@ -19,7 +19,6 @@ import org.tem.calendar.db.DBHelper;
 import org.tem.calendar.model.VirathamMonthData;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class MonthVirathamFragment extends Fragment {

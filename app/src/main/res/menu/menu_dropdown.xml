@@ -5,5 +5,5 @@
         android:id="@+id/action_bar_spinner"
         app:showAsAction="ifRoom"
         app:actionViewClass="android.widget.Spinner"
-        android:title="Year" />
+        android:title="@string/year" />
 </menu>

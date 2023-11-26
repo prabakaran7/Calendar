@@ -27,7 +27,7 @@ public class SplashActivity extends BaseActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S_V2) {
             pauseTime = 0;
         }
-        new Handler(Looper.myLooper()).postDelayed(() -> {
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
             /* Create an Intent that will start the Menu-Activity. */
             Intent mainIntent = new Intent(SplashActivity.this, DashboardActivity.class);
             SplashActivity.this.startActivity(mainIntent);

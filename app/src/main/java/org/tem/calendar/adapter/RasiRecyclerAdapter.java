@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
-import org.tem.calendar.R;
 import org.tem.calendar.databinding.RasiLayoutItemBinding;
 import org.tem.calendar.util.RasiViewData;
 
@@ -45,7 +44,7 @@ public class RasiRecyclerAdapter extends RecyclerView.Adapter<RasiRecyclerAdapte
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        RasiLayoutItemBinding binding;
+        final RasiLayoutItemBinding binding;
 
         public ViewHolder(@NonNull RasiLayoutItemBinding binding) {
             super(binding.getRoot());

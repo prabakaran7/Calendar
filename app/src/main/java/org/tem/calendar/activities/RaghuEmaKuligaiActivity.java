@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.util.Pair;
 import android.view.MenuItem;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.google.android.gms.ads.AdRequest;
@@ -44,7 +44,13 @@ public class RaghuEmaKuligaiActivity extends BaseActivity {
 
         new TabLayoutMediator(binding.tabLayout, binding.viewPager, (tab, position) -> tab.setText(weeks.get(position).second)).attach();
 
-
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
+        });
     }
 
     private void setCurrentDayIndex(@NonNull List<Pair<Integer, String>> weekNames) {
@@ -66,9 +72,4 @@ public class RaghuEmaKuligaiActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onBackPressed() {
-        finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-    }
 }

@@ -16,8 +16,6 @@ import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 
-import com.bumptech.glide.Glide;
-
 import org.tem.calendar.R;
 import org.tem.calendar.custom.CalendarDayOnClickListener;
 import org.tem.calendar.custom.DateModel;

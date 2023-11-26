@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -46,6 +47,8 @@ public class YearActivity extends BaseActivity implements AdapterView.OnItemSele
 
     private final List<List<DateModel>> yearDataList = new ArrayList<>();
 
+    private int selected;
+
     @SuppressLint("VisibleForTests")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +71,13 @@ public class YearActivity extends BaseActivity implements AdapterView.OnItemSele
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setAdapter(new YearMonthRecyclerAdapter(this, yearDataList));
 
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
+        });
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -89,16 +99,32 @@ public class YearActivity extends BaseActivity implements AdapterView.OnItemSele
         Spinner spinner = (Spinner) item.getActionView();
         ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this, R.layout.layout_drop_title, yearList);
         adapter.setDropDownViewResource(R.layout.layout_drop_list);
+        assert spinner != null;
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+        spinner.setSelection(currentYearPosition(), false);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    private int currentYearPosition() {
+        int index = 0;
+        for(int year: yearList){
+            if(LocalDate.now().getYear() == year) {
+                return index;
+            }
+            index++;
+        }
+        return 0;
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        binding.progressBar.setVisibility(View.VISIBLE);
-        loadMonthView(yearList.get(position));
-        binding.progressBar.setVisibility(View.GONE);
+        if(selected != position) {
+            binding.progressBar.setVisibility(View.VISIBLE);
+            loadMonthView(yearList.get(position));
+            binding.progressBar.setVisibility(View.GONE);
+            selected = position;
+        }
     }
 
     @Override
@@ -109,15 +135,9 @@ public class YearActivity extends BaseActivity implements AdapterView.OnItemSele
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
+            getOnBackPressedDispatcher().onBackPressed();
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onBackPressed() {
-        finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
     private List<DateModel> generateMonthData(int year, int month) {

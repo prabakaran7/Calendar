@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.google.android.gms.ads.AdRequest;
@@ -39,6 +39,14 @@ public class FestivalIndexActivity extends BaseActivity {
         binding.christinaFestivals.setOnClickListener(view -> loadNextPage(FestivalFragment.CHRIST_FESTIVALS));
 
         binding.muslimFestivals.setOnClickListener(view -> loadNextPage(FestivalFragment.MUSLIM_FESTIVALS));
+
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
+        });
     }
 
     private void loadNextPage(int index) {
@@ -56,11 +64,5 @@ public class FestivalIndexActivity extends BaseActivity {
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onBackPressed() {
-        finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

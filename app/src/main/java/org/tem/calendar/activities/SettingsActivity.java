@@ -4,8 +4,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.databinding.DataBindingUtil;
 
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -79,15 +79,15 @@ public class SettingsActivity extends BaseActivity {
                 FirebaseMessaging.getInstance().unsubscribeFromTopic(Constants.NOTIFICATION_CALENDAR);
             }
         });
+
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
+        });
     }
-
-
-    @Override
-    public void onBackPressed() {
-        finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-    }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

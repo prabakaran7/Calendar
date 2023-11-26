@@ -1,17 +1,16 @@
 package org.tem.calendar.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.util.Pair;
-import androidx.databinding.DataBindingUtil;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+
+import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.android.gms.ads.AdRequest;
 
@@ -24,9 +23,7 @@ import org.tem.calendar.model.StarsData;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
-import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 public class PoruthamActivity extends BaseActivity {
@@ -141,6 +138,14 @@ public class PoruthamActivity extends BaseActivity {
             }
 
         });
+
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
+        });
     }
 
     @Override
@@ -152,9 +157,4 @@ public class PoruthamActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onBackPressed() {
-        finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-    }
 }

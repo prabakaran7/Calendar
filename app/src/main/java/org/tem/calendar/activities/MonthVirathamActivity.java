@@ -9,8 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.google.android.gms.ads.AdRequest;
@@ -56,6 +56,13 @@ public class MonthVirathamActivity extends BaseActivity implements AdapterView.O
         Collections.sort(yearList);
         Collections.reverse(yearList);
 
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
+        });
     }
 
     @Override
@@ -68,18 +75,30 @@ public class MonthVirathamActivity extends BaseActivity implements AdapterView.O
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(@NonNull Menu menu) {
         menu.clear();
         getMenuInflater().inflate(R.menu.menu_dropdown, menu);
         MenuItem item = menu.findItem(R.id.action_bar_spinner);
         Spinner spinner = (Spinner) item.getActionView();
+        assert spinner != null;
         spinner.setOnItemSelectedListener(this);
         ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this, R.layout.layout_drop_title, yearList);
         adapter.setDropDownViewResource(R.layout.layout_drop_list);
         spinner.setAdapter(adapter);
-        spinner.setSelection(selected, false);
+        spinner.setSelection(currentYearPosition(), false);
 
         return true;
+    }
+
+    private int currentYearPosition(){
+        int index = 0;
+        for(int year: yearList){
+            if(LocalDate.now().getYear() == year) {
+                return index;
+            }
+            index++;
+        }
+        return 0;
     }
 
     @Override
@@ -110,9 +129,4 @@ public class MonthVirathamActivity extends BaseActivity implements AdapterView.O
         ).attach();
     }
 
-    @Override
-    public void onBackPressed() {
-        finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-    }
 }

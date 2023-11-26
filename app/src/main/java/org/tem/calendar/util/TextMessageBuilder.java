@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TextMessageBuilder {
-    List<String> lines = new ArrayList<>();
+    final List<String> lines = new ArrayList<>();
 
 
     public void reset() {

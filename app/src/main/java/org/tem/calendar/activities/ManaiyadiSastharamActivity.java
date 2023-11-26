@@ -1,15 +1,14 @@
 package org.tem.calendar.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
+
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import org.tem.calendar.R;
@@ -36,6 +35,13 @@ public class ManaiyadiSastharamActivity extends BaseActivity {
         binding.viewPager.setAdapter(new ManaiyadiViewPageAdapter(this));
 
         new TabLayoutMediator(binding.tabLayout, binding.viewPager, ((tab, position) -> tab.setText(getResources().getStringArray(R.array.manaiyadi_types)[position]))).attach();
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
+        });
     }
 
     @Override
@@ -47,9 +53,4 @@ public class ManaiyadiSastharamActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onBackPressed() {
-        finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-    }
 }

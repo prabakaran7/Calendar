@@ -16,7 +16,7 @@ import java.util.Random;
 
 public class RasiDialogItemAdapter extends RecyclerView.Adapter<RasiDialogItemAdapter.ViewHolder> {
 
-    private String[] rasiNames;
+    private final String[]  rasiNames;
     private final RasiItemOnClickListener listener;
 
     private final List<Integer> dataSet;

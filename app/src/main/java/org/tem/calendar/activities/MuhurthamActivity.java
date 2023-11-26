@@ -9,8 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.google.android.gms.ads.AdRequest;
@@ -23,7 +23,6 @@ import org.tem.calendar.db.DBHelper;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -48,6 +47,14 @@ public class MuhurthamActivity extends BaseActivity implements AdapterView.OnIte
         yearList.addAll(DBHelper.getInstance(this).getMuhurthamYearList());
         Collections.sort(yearList);
         Collections.reverse(yearList);
+
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
+        });
     }
 
     private void loadData(int year) {
@@ -78,10 +85,22 @@ public class MuhurthamActivity extends BaseActivity implements AdapterView.OnIte
         Spinner spinner = (Spinner) item.getActionView();
         ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this, R.layout.layout_drop_title, yearList);
         adapter.setDropDownViewResource(R.layout.layout_drop_list);
+        assert spinner != null;
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
-        spinner.setSelection(selected, false);
+        spinner.setSelection(currentYearPosition(), false);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    private int currentYearPosition(){
+        int index = 0;
+        for(int year: yearList){
+            if(LocalDate.now().getYear() == year) {
+                return index;
+            }
+            index++;
+        }
+        return 0;
     }
 
     @Override
@@ -97,9 +116,4 @@ public class MuhurthamActivity extends BaseActivity implements AdapterView.OnIte
 
     }
 
-    @Override
-    public void onBackPressed() {
-        finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-    }
 }

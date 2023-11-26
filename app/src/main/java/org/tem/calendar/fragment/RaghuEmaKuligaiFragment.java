@@ -23,7 +23,7 @@ import java.time.DayOfWeek;
 public class RaghuEmaKuligaiFragment extends Fragment {
 
     public static final int TYPE_STAND_ALONE = 1;
-    public static int TYPE_DAILY = 0;
+    public static final int TYPE_DAILY = 0;
     private final DayOfWeek dayOfWeek;
     private FragmentRaghuEmaKuligaiBinding binding;
     private final int type;

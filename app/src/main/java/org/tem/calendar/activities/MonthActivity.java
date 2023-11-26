@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.MutableLiveData;
 import androidx.viewpager2.widget.ViewPager2;
@@ -41,6 +42,7 @@ public class MonthActivity extends BaseActivity implements CalendarDayOnClickLis
             selectedDate = LocalDate.now().withDayOfMonth(1);
         }
 
+        assert selectedDate != null;
         viewModel = new MonthViewModel(selectedDate);
 
         MonthRecyclerAdapter adapter = new MonthRecyclerAdapter(this, viewModel);
@@ -96,7 +98,13 @@ public class MonthActivity extends BaseActivity implements CalendarDayOnClickLis
             startActivity(new Intent(this, MonthActivity.class));
         });
 
-
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
+        });
     }
 
     public void moveForward() {
@@ -120,9 +128,4 @@ public class MonthActivity extends BaseActivity implements CalendarDayOnClickLis
         startActivity(intent);
     }
 
-    @Override
-    public void onBackPressed() {
-        finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-    }
 }

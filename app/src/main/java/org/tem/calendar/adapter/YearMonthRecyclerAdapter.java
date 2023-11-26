@@ -39,9 +39,7 @@ public class YearMonthRecyclerAdapter extends RecyclerView.Adapter<YearMonthRecy
         holder.binding.monthView.setListener(activity);
         holder.binding.monthView.refreshData(dataModel);
 
-        holder.binding.monthTitle.setOnClickListener(view ->{
-            activity.monthClick(dataModel.get(0).getDate());
-        });
+        holder.binding.monthTitle.setOnClickListener(view -> activity.monthClick(dataModel.get(0).getDate()));
 
     }
 

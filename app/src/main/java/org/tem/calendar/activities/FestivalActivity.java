@@ -9,8 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.google.android.gms.ads.AdRequest;
@@ -39,6 +39,7 @@ public class FestivalActivity extends BaseActivity implements AdapterView.OnItem
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_festival);
         binding.adView.loadAd(new AdRequest.Builder().build());
         setSupportActionBar(binding.toolbar);
@@ -47,6 +48,14 @@ public class FestivalActivity extends BaseActivity implements AdapterView.OnItem
         type = getIntent().getIntExtra(Constants.EXTRA_TYPE, FestivalFragment.HOLIDAY);
 
         binding.toolbar.setSubtitle(getSubtitle(type));
+
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
+        });
     }
 
     public static int getSubtitle(int type) {
@@ -73,22 +82,29 @@ public class FestivalActivity extends BaseActivity implements AdapterView.OnItem
     }
 
     @Override
-    public void onBackPressed() {
-        finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(@NonNull Menu menu) {
+
         getMenuInflater().inflate(R.menu.menu_dropdown, menu);
         MenuItem item = menu.findItem(R.id.action_bar_spinner);
         Spinner spinner = (Spinner) item.getActionView();
         ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this, R.layout.layout_drop_title, yearList);
         adapter.setDropDownViewResource(R.layout.layout_drop_list);
+        assert spinner != null;
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
-        spinner.setSelection(selected, false);
+        spinner.setSelection(currentYearPosition(), false);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    private int currentYearPosition(){
+        int index = 0;
+        for(int year: yearList){
+            if(LocalDate.now().getYear() == year) {
+                return index;
+            }
+            index++;
+        }
+        return 0;
     }
 
     @Override

@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,6 +22,7 @@ import org.tem.calendar.databinding.ActivityVasthuBinding;
 import org.tem.calendar.db.DBHelper;
 import org.tem.calendar.model.VasthuData;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -30,6 +32,8 @@ public class VasthuActivity extends BaseActivity implements AdapterView.OnItemSe
 
     private final List<Integer> yearList = new ArrayList<>();
     private ActivityVasthuBinding binding;
+
+    private int selected;
 
     @SuppressLint("VisibleForTests")
     @Override
@@ -45,6 +49,13 @@ public class VasthuActivity extends BaseActivity implements AdapterView.OnItemSe
         yearList.addAll(DBHelper.getInstance(this).getVasthuYearList());
         Collections.sort(yearList);
         Collections.reverse(yearList);
+        getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
+        });
     }
 
     @Override
@@ -54,14 +65,30 @@ public class VasthuActivity extends BaseActivity implements AdapterView.OnItemSe
         Spinner spinner = (Spinner) item.getActionView();
         ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this, R.layout.layout_drop_title, yearList);
         adapter.setDropDownViewResource(R.layout.layout_drop_list);
+        assert spinner != null;
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+        spinner.setSelection(currentYearPosition(), false);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    private int currentYearPosition(){
+        int index = 0;
+        for(int year: yearList){
+            if(LocalDate.now().getYear() == year) {
+                return index;
+            }
+            index++;
+        }
+        return 0;
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        loadData(yearList.get(position));
+        if(selected != position) {
+            loadData(yearList.get(position));
+            selected = position;
+        }
     }
 
     @Override
@@ -85,9 +112,4 @@ public class VasthuActivity extends BaseActivity implements AdapterView.OnItemSe
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onBackPressed() {
-        finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-    }
 }

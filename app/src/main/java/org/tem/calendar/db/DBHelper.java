@@ -48,7 +48,7 @@ import java.util.TreeMap;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 2;
     private static final String DB_NAME = "tamizh_calendar.db";
     @SuppressLint("StaticFieldLeak")
     private static DBHelper dbHelper;

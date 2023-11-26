@@ -47,7 +47,7 @@ public class DashboardCategoryItemRecyclerViewAdapter extends RecyclerView.Adapt
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        DashboardCategoryItemBinding binding;
+        final DashboardCategoryItemBinding binding;
 
         public ViewHolder(@NonNull DashboardCategoryItemBinding binding) {
             super(binding.getRoot());
