@@ -47,7 +47,7 @@ public class YearActivity extends BaseActivity implements AdapterView.OnItemSele
 
     private final List<List<DateModel>> yearDataList = new ArrayList<>();
 
-    private int selected;
+    private int selected = -1;
 
     @SuppressLint("VisibleForTests")
     @Override
@@ -103,7 +103,7 @@ public class YearActivity extends BaseActivity implements AdapterView.OnItemSele
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
         spinner.setSelection(currentYearPosition(), false);
-        return super.onCreateOptionsMenu(menu);
+        return true;
     }
 
     private int currentYearPosition() {
@@ -140,6 +140,7 @@ public class YearActivity extends BaseActivity implements AdapterView.OnItemSele
         return super.onOptionsItemSelected(item);
     }
 
+    @NonNull
     private List<DateModel> generateMonthData(int year, int month) {
         List<DateModel> dates = new ArrayList<>();
         List<MonthData> dataList = DBHelper.getInstance(this).getDates(year, month);

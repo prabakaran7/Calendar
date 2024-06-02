@@ -33,7 +33,7 @@ public class VasthuActivity extends BaseActivity implements AdapterView.OnItemSe
     private final List<Integer> yearList = new ArrayList<>();
     private ActivityVasthuBinding binding;
 
-    private int selected;
+    private int selected = -1;
 
     @SuppressLint("VisibleForTests")
     @Override
@@ -69,7 +69,7 @@ public class VasthuActivity extends BaseActivity implements AdapterView.OnItemSe
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
         spinner.setSelection(currentYearPosition(), false);
-        return super.onCreateOptionsMenu(menu);
+        return true;
     }
 
     private int currentYearPosition(){
