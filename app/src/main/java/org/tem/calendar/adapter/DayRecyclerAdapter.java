@@ -169,6 +169,9 @@ public class DayRecyclerAdapter extends RecyclerView.Adapter<DayRecyclerAdapter.
             String[] chandArr = sd.getChandrastamam().split("[ ]*[,][ ]*");
             StringBuilder sb = new StringBuilder();
             for (int index = 0; index < chandArr.length; index++) {
+                if(!StringUtils.isDigits(chandArr[index])){
+                    continue;
+                }
                 sb.append(starNames[Integer.parseInt(chandArr[index]) - 1]);
                 if (index != chandArr.length - 1) {
                     sb.append(",");

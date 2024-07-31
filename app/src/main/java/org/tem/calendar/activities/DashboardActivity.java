@@ -70,7 +70,8 @@ public class DashboardActivity extends BaseActivity {
             @Override
             public void handleOnBackPressed() {
                 if (doubleBackToExitPressedOnce.get()) {
-                    getOnBackPressedDispatcher().onBackPressed();
+                    finish();
+                    System.exit(0);
                     return;
                 }
 

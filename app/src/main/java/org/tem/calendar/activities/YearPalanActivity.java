@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,6 +59,13 @@ public class YearPalanActivity extends AppCompatActivity {
         setSupportActionBar(binding.toolbar);
 
         showDialog();
+
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finish();
+            }
+        });
 
     }
 
@@ -122,13 +130,7 @@ public class YearPalanActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
-        finish();
-        super.onBackPressed();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(@NonNull Menu menu) {
         menu.clear();
         menu.add(Menu.NONE, 1001, Menu.NONE, "Change").setIcon(R.drawable.ic_change_dark)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
