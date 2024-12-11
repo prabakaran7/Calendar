@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Azhagu Tamil Calendar</string>
-    <string name="app_name_long">அழகு நாட்காட்டி 2024</string>
+    <string name="app_name_long">அழகு நாட்காட்டி 2025</string>
     <string name="tamil_calendar">அழகு நாட்காட்டி</string>
     <string name="raghu">இராகு</string>
     <string name="kuligai">குளிகை</string>
@@ -307,7 +307,7 @@
         <item>சுபகிருது</item>
         <item>சோபகிருது</item>
         <item>க்ரோதி</item>
-        <item>விசுவாசுவ</item>
+        <item>விசுவாவசு</item>
         <item>பரபாவ</item>
         <item>ப்லவங்க</item>
         <item>கீலக</item>
@@ -515,6 +515,12 @@
         <item>மனக்கவலை</item>
         <item>சுபசெலவு</item>
         <item>பொறமை</item>
+        <item>சிக்கனம்</item>
+        <item>பணவரவு</item>
+        <item>செய்தி</item>
+        <item>கனிவு</item>
+        <item>முடிவு</item>
+        <item>இனிமை</item>
     </string-array>
 
     <string-array name="viratham_names">

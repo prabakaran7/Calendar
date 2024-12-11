@@ -39,7 +39,7 @@ import java.util.Map;
 
 public class CalendarApp extends Application {
 
-    public static final LocalDate MAX_DATE = LocalDate.of(2024, 12, 31);
+    public static final LocalDate MAX_DATE = LocalDate.of(2025, 12, 31);
     public static final LocalDate MIN_DATE = LocalDate.of(2020, 1, 1);
     private static final int weekStartIndex = 7;
     private static final List<Pair<Integer, String>> weekDayNameList = new ArrayList<>();

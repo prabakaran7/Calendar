@@ -48,7 +48,7 @@ import java.util.TreeMap;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static final int DB_VERSION = 2;
+    private static final int DB_VERSION = 3;
     private static final String DB_NAME = "tamizh_calendar.db";
     @SuppressLint("StaticFieldLeak")
     private static DBHelper dbHelper;
@@ -590,7 +590,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public List<VasthuData> getVasthuList(int year) {
         List<VasthuData> result = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT m.DATE, TMONTH,TDAY,TIME  from MASTER m, VASTHU_DAYS vd where m.DATE = vd.DATE and m.YEAR=?", new Object[]{year});
+        Cursor c = db.rawQuery("SELECT m.DATE, TMONTH,TDAY,TIME  from MASTER m, VASTHU_DAYS vd where m.DATE = vd.DATE and m.YEAR=? order by m.MONTH, m.DAY ", new Object[]{year});
         if (c != null && c.moveToFirst()) {
             do {
                 VasthuData vd = new VasthuData();
