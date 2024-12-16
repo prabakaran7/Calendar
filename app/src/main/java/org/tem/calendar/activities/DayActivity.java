@@ -81,11 +81,13 @@ public class DayActivity extends BaseActivity {
         });
 
         currentPosition.observe(this, position -> {
-            LocalDate ld = viewModel.getList().get(position);
-            if (!ld.equals(LocalDate.now())) {
-                binding.resetBtn.setVisibility(View.VISIBLE);
-            } else {
-                binding.resetBtn.setVisibility(View.GONE);
+            if(!viewModel.getList().isEmpty() && position < viewModel.getList().size()) {
+                LocalDate ld = viewModel.getList().get(position);
+                if (!ld.equals(LocalDate.now())) {
+                    binding.resetBtn.setVisibility(View.VISIBLE);
+                } else {
+                    binding.resetBtn.setVisibility(View.GONE);
+                }
             }
         });
 

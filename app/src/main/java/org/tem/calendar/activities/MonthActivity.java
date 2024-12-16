@@ -84,11 +84,17 @@ public class MonthActivity extends BaseActivity implements CalendarDayOnClickLis
         });
 
         currentPosition.observe(this, position -> {
-            LocalDate ld = viewModel.getList().get(position);
-            if (ld.getMonthValue() != LocalDate.now().getMonthValue()) {
-                binding.resetBtn.setVisibility(View.VISIBLE);
-            } else {
-                binding.resetBtn.setVisibility(View.GONE);
+            if(!viewModel.getList().isEmpty() && position < viewModel.getList().size()) {
+                try {
+                    LocalDate ld = viewModel.getList().get(position);
+                    if (ld.getMonthValue() != LocalDate.now().getMonthValue()) {
+                        binding.resetBtn.setVisibility(View.VISIBLE);
+                    } else {
+                        binding.resetBtn.setVisibility(View.GONE);
+                    }
+                } catch (Exception e) {
+                    // do nothing
+                }
             }
         });
 
